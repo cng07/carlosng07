@@ -55,7 +55,7 @@ const About = () => {
                                     <span style={{ color: 'var(--text-main)', fontSize: '1.1rem' }}>{resumeData.mobile}</span>
                                 </div>
 
-                                <div style={{ borderTop: '1px solid rgba(var(--primary-rgb), 0.2)', margin: '0.4rem 0' }} />
+                                <div style={{ borderTop: '1px solid rgba(var(--primary-rgb), 0.2)', margin: 0 }} />
 
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingLeft: '0.5rem', marginTop: '0.4rem', marginBottom: '0.8rem' }}>
                                     <Mail size={24} color="var(--primary)" />
