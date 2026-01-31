@@ -45,18 +45,14 @@ const Home = () => {
                         />
                     </div>
                     <motion.h2
-                        className="glitch-text"
-                        data-text={resumeData.name}
+                        className="matrix-text"
                         style={{
-                            fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
-                            marginBottom: '0.5rem',
-                            fontWeight: 800,
-                            letterSpacing: '-0.04em',
-                            textTransform: 'uppercase'
+                            fontSize: 'clamp(2rem, 6vw, 3.5rem)',
+                            marginBottom: '1rem'
                         }}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
                     >
                         {resumeData.name}
                     </motion.h2>

@@ -125,148 +125,16 @@ a {
   }
 }
 
-.glitch-text {
-  position: relative;
-  color: #fff;
+.matrix-text {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ff41;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  text-shadow:
+    0 0 4px rgba(0, 255, 65, 0.8),
+    0 0 10px rgba(0, 255, 65, 0.4);
+  font-weight: 700;
   display: inline-block;
-  z-index: 1;
-}
-
-.glitch-text::before,
-.glitch-text::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-.glitch-text::before {
-  left: 4px;
-  text-shadow: -3px 0 #00fff9;
-  animation: glitch-anim-1 0.8s infinite linear alternate-reverse;
-}
-
-.glitch-text::after {
-  left: -4px;
-  text-shadow: 3px 0 #ff00c1;
-  animation: glitch-anim-2 0.8s infinite linear alternate-reverse;
-}
-
-@keyframes glitch-anim-1 {
-  0% {
-    clip-path: inset(10% 0 80% 0);
-  }
-
-  10% {
-    clip-path: inset(40% 0 50% 0);
-  }
-
-  20% {
-    clip-path: inset(20% 0 70% 0);
-  }
-
-  30% {
-    clip-path: inset(60% 0 35% 0);
-  }
-
-  40% {
-    clip-path: inset(15% 0 80% 0);
-  }
-
-  50% {
-    clip-path: inset(80% 0 10% 0);
-  }
-
-  60% {
-    clip-path: inset(5% 0 90% 0);
-  }
-
-  70% {
-    clip-path: inset(70% 0 20% 0);
-  }
-
-  80% {
-    clip-path: inset(30% 0 60% 0);
-  }
-
-  90% {
-    clip-path: inset(55% 0 40% 0);
-  }
-
-  100% {
-    clip-path: inset(10% 0 85% 0);
-  }
-}
-
-@keyframes glitch-anim-2 {
-  0% {
-    clip-path: inset(25% 0 60% 0);
-  }
-
-  10% {
-    clip-path: inset(50% 0 35% 0);
-  }
-
-  20% {
-    clip-path: inset(5% 0 90% 0);
-  }
-
-  30% {
-    clip-path: inset(80% 0 10% 0);
-  }
-
-  40% {
-    clip-path: inset(20% 0 70% 0);
-  }
-
-  50% {
-    clip-path: inset(40% 0 50% 0);
-  }
-
-  60% {
-    clip-path: inset(65% 0 25% 0);
-  }
-
-  70% {
-    clip-path: inset(15% 0 80% 0);
-  }
-
-  80% {
-    clip-path: inset(85% 0 5% 0);
-  }
-
-  90% {
-    clip-path: inset(35% 0 55% 0);
-  }
-
-  100% {
-    clip-path: inset(20% 0 75% 0);
-  }
-}
-
-@keyframes glitch-anim-2 {
-  0% {
-    clip-path: inset(10% 0 80% 0);
-  }
-
-  25% {
-    clip-path: inset(50% 0 20% 0);
-  }
-
-  50% {
-    clip-path: inset(30% 0 40% 0);
-  }
-
-  75% {
-    clip-path: inset(70% 0 10% 0);
-  }
-
-  100% {
-    clip-path: inset(20% 0 50% 0);
-  }
 }
 
 .nav-logo {
