@@ -32,7 +32,7 @@ const App = () => {
                 zIndex: 100, width: '90%', maxWidth: '800px', padding: '0.75rem 2rem',
                 display: 'flex', justifyContent: 'space-between', alignItems: 'center'
             }}>
-                <span style={{ fontWeight: 700, fontSize: '1.25rem', color: 'var(--primary)' }}>C.NG</span>
+                <span style={{ fontWeight: 700, fontSize: '1.25rem', color: 'var(--primary)' }}>Carlos Angelo E. Ng</span>
                 <div style={{ display: 'flex', gap: '1.5rem', fontSize: '0.9rem', fontWeight: 500 }}>
                     <a href="#experience">Experience</a>
                     <a href="#skills">Skills</a>
