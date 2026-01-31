@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { resumeData } from '../data/resumeData';
-import { User, Target, Zap } from 'lucide-react';
+import { User, Target, Zap, Github, Linkedin, Phone, Mail } from 'lucide-react';
 
 const About = () => {
     return (
@@ -27,12 +27,44 @@ const About = () => {
                                     <p key={i} style={{
                                         color: 'var(--text-muted)',
                                         fontSize: '1.1rem',
-                                        lineHeight: '1.7',
-                                        marginBottom: i === resumeData.about.length - 1 ? 0 : '0.5rem'
+                                        lineHeight: '1.7'
                                     }}>
                                         {paragraph}
                                     </p>
                                 ))}
+                            </div>
+
+                            {/* Contact Details in requested format */}
+                            <div style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+                                <div style={{ borderTop: '1px solid rgba(var(--primary-rgb), 0.3)', marginBottom: '0.5rem' }} />
+
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingLeft: '0.5rem' }}>
+                                    <Github size={24} color="var(--primary)" />
+                                    <a href={resumeData.github} target="_blank" rel="noreferrer" style={{ color: 'var(--text-main)', fontSize: '1.1rem', textDecoration: 'none' }}>
+                                        @{resumeData.github.split('/').pop()}
+                                    </a>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingLeft: '0.5rem' }}>
+                                    <Linkedin size={24} color="var(--primary)" />
+                                    <a href={resumeData.linkedIn} target="_blank" rel="noreferrer" style={{ color: 'var(--text-main)', fontSize: '1.1rem', textDecoration: 'none' }}>
+                                        @{resumeData.linkedIn.split('/').pop()}
+                                    </a>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingLeft: '0.5rem' }}>
+                                    <Phone size={24} color="var(--primary)" />
+                                    <span style={{ color: 'var(--text-main)', fontSize: '1.1rem' }}>{resumeData.mobile}</span>
+                                </div>
+
+                                <div style={{ borderTop: '1px solid rgba(var(--primary-rgb), 0.3)', margin: '0.5rem 0' }} />
+
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingLeft: '0.5rem' }}>
+                                    <Mail size={24} color="var(--primary)" />
+                                    <a href={`mailto:${resumeData.email}`} style={{ color: 'var(--text-main)', fontSize: '1.1rem', textDecoration: 'none' }}>
+                                        {resumeData.email}
+                                    </a>
+                                </div>
+
+                                <div style={{ borderTop: '1px solid rgba(var(--primary-rgb), 0.3)', marginTop: '0.5rem' }} />
                             </div>
                         </div>
 
