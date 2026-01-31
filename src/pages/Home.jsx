@@ -52,7 +52,7 @@ const Home = () => {
                         <span style={{ color: 'var(--primary)' }}>Delivering Excellence</span>
                     </h1>
                     <p id="about" style={{ maxWidth: '600px', margin: '0 auto 2rem', color: 'var(--text-muted)', fontSize: '1.1rem' }}>
-                        Hi, I'm <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{resumeData.name}</span>.
+                        Hi, I'm <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>Carlos Ng</span>.
                         A Senior QA Automation Engineer specialized in building robust,
                         scalable testing frameworks that accelerate delivery.
                     </p>
