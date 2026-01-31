@@ -59,7 +59,7 @@ const App = () => {
                             />
                         </div>
                         <span className="badge" style={{ marginBottom: '1rem', display: 'inline-block' }}>
-                            Available for new opportunities
+                            Senior Quality Assurance Automation Engineer
                         </span>
                         <h1 style={{ fontSize: 'clamp(2.5rem, 8vw, 4rem)', lineHeight: 1.1, marginBottom: '1.5rem' }}>
                             Automating Quality <br />
