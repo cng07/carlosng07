@@ -97,17 +97,17 @@ const Home = () => {
                             </div>
 
                             {exp.roles ? (
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
                                     {exp.roles.map((role, ri) => (
-                                        <div key={ri} style={{ borderLeft: '2px solid rgba(var(--primary-rgb), 0.3)', paddingLeft: '1.5rem', marginLeft: '0.5rem' }}>
-                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '0.75rem' }}>
-                                                <h4 style={{ fontSize: '1.1rem', color: 'var(--text-main)' }}>{role.title}</h4>
-                                                <span style={{ fontSize: '0.9rem', color: 'var(--primary)', fontWeight: 600 }}>{role.period}</span>
+                                        <div key={ri} style={{ borderLeft: '2px solid rgba(var(--primary-rgb), 0.2)', paddingLeft: '2rem', marginLeft: '0.25rem' }}>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem' }}>
+                                                <h4 style={{ fontSize: '1.2rem', color: 'var(--primary)', fontWeight: 600 }}>{role.title}</h4>
+                                                <span style={{ fontSize: '0.95rem', color: 'var(--text-muted)', fontWeight: 600 }}>{role.period}</span>
                                             </div>
-                                            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                                            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                                                 {role.achievements.map((item, i) => (
-                                                    <li key={i} style={{ display: 'flex', gap: '0.75rem', color: 'var(--text-muted)', fontSize: '0.95rem' }}>
-                                                        <CheckCircle2 size={16} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.2rem' }} />
+                                                    <li key={i} style={{ display: 'flex', gap: '1rem', color: 'var(--text-muted)', fontSize: '1rem', lineHeight: '1.5' }}>
+                                                        <CheckCircle2 size={18} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.25rem' }} />
                                                         <span>{item}</span>
                                                     </li>
                                                 ))}
@@ -118,7 +118,7 @@ const Home = () => {
                             ) : (
                                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                                     {exp.achievements.map((item, i) => (
-                                        <li key={i} style={{ display: 'flex', gap: '0.75rem', color: 'var(--text-muted)' }}>
+                                        <li key={i} style={{ display: 'flex', gap: '1rem', color: 'var(--text-muted)', fontSize: '1rem', lineHeight: '1.5' }}>
                                             <CheckCircle2 size={18} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.25rem' }} />
                                             <span>{item}</span>
                                         </li>

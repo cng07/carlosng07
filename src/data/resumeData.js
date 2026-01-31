@@ -97,7 +97,7 @@ export const resumeData = {
     },
     {
       company: "Accenture",
-      role: "Software Engineering Associate",
+      role: "Software Engineering Associate || Test Engineering Associate",
       period: "November 2018 - March 2021",
       location: "Mandaluyong City, Philippines",
       achievements: [
