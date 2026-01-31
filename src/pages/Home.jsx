@@ -44,6 +44,9 @@ const Home = () => {
                             }}
                         />
                     </div>
+                    <h2 style={{ fontSize: '1.2rem', color: 'var(--text-main)', marginBottom: '0.4rem', fontWeight: 600 }}>
+                        {resumeData.name}
+                    </h2>
                     <span className="badge" style={{
                         marginBottom: '1rem',
                         display: 'inline-block',
