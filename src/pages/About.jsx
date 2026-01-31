@@ -35,8 +35,8 @@ const About = () => {
                             </div>
 
                             {/* Contact Details in requested format */}
-                            <div style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-                                <div style={{ borderTop: '1px solid rgba(var(--primary-rgb), 0.3)', marginBottom: '0.5rem' }} />
+                            <div style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
+                                <div style={{ borderTop: '1px solid rgba(var(--primary-rgb), 0.2)' }} />
 
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingLeft: '0.5rem' }}>
                                     <Github size={24} color="var(--primary)" />
@@ -55,7 +55,7 @@ const About = () => {
                                     <span style={{ color: 'var(--text-main)', fontSize: '1.1rem' }}>{resumeData.mobile}</span>
                                 </div>
 
-                                <div style={{ borderTop: '1px solid rgba(var(--primary-rgb), 0.3)', margin: '0.5rem 0' }} />
+                                <div style={{ borderTop: '1px solid rgba(var(--primary-rgb), 0.2)' }} />
 
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingLeft: '0.5rem' }}>
                                     <Mail size={24} color="var(--primary)" />
@@ -64,7 +64,7 @@ const About = () => {
                                     </a>
                                 </div>
 
-                                <div style={{ borderTop: '1px solid rgba(var(--primary-rgb), 0.3)', marginTop: '0.5rem' }} />
+                                <div style={{ borderTop: '1px solid rgba(var(--primary-rgb), 0.2)' }} />
                             </div>
                         </div>
 
