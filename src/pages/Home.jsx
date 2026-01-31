@@ -197,7 +197,10 @@ const Home = () => {
                             <div key={i} className="glass" style={{ padding: '1.5rem' }}>
                                 <h4 style={{ marginBottom: '0.25rem' }}>{edu.degree}</h4>
                                 <p style={{ color: 'var(--primary)', fontWeight: 600, fontSize: '0.9rem', marginBottom: '0.5rem' }}>{edu.school}</p>
-                                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{edu.period}</p>
+                                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '0.25rem' }}>{edu.period}</p>
+                                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                                    <MapPin size={14} /> {edu.address}
+                                </p>
                             </div>
                         ))}
                     </div>

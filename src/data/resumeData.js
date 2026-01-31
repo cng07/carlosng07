@@ -103,7 +103,8 @@ export const resumeData = {
     {
       school: "Asia Pacific College",
       degree: "BS Electronics Engineering",
-      period: "2013 – 2018",
+      period: "June 2013 – April 2018",
+      address: "#3 Humabon Place, Magallanes, Makati City, Philippines",
       highlights: ["Best Exhibit, Engineering Symposium 2018", "SM Foundation Scholar", "Dean's List Awardee"]
     }
   ],
