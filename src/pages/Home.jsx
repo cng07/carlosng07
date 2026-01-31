@@ -45,12 +45,12 @@ const Home = () => {
                         />
                     </div>
                     <motion.h2
-                        className="matrix-text"
+                        className="hero-name"
                         style={{
-                            fontSize: 'clamp(2rem, 6vw, 3.5rem)',
+                            fontSize: 'clamp(2.5rem, 8vw, 4rem)',
                             marginBottom: '1rem'
                         }}
-                        initial={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
