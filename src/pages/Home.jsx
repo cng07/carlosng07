@@ -201,6 +201,14 @@ const Home = () => {
                                 <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
                                     <MapPin size={14} /> {edu.address}
                                 </p>
+                                {edu.scholarship && (
+                                    <div style={{ marginTop: '1rem', padding: '0.75rem', borderLeft: '2px solid var(--primary)', background: 'rgba(var(--primary-rgb), 0.1)' }}>
+                                        <p style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--text-main)' }}>Scholar: {edu.scholarship.name}</p>
+                                        <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.25rem', marginTop: '0.25rem' }}>
+                                            <MapPin size={12} /> {edu.scholarship.address}
+                                        </p>
+                                    </div>
+                                )}
                             </div>
                         ))}
                     </div>

@@ -105,7 +105,11 @@ export const resumeData = {
       degree: "BS Electronics Engineering",
       period: "June 2013 – April 2018",
       address: "#3 Humabon Place, Magallanes, Makati City, Philippines",
-      highlights: ["Best Exhibit, Engineering Symposium 2018", "SM Foundation Scholar", "Dean's List Awardee"]
+      scholarship: {
+        name: "SM Foundation, Inc.",
+        address: "SM Corporate Offices Building B, J.W. Diokno Blvd, Pasay City, Philippines"
+      },
+      highlights: ["Best Exhibit, Engineering Symposium 2018", "Dean's List Awardee"]
     }
   ],
 
