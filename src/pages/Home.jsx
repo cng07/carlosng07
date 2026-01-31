@@ -44,9 +44,20 @@ const Home = () => {
                             }}
                         />
                     </div>
-                    <h2 style={{ fontSize: '1.2rem', color: 'var(--text-main)', marginBottom: '0.4rem', fontWeight: 600 }}>
+                    <motion.h2
+                        className="gradient-text"
+                        style={{
+                            fontSize: 'clamp(1.8rem, 5vw, 2.5rem)',
+                            marginBottom: '0.5rem',
+                            fontWeight: 800,
+                            letterSpacing: '-0.02em'
+                        }}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
                         {resumeData.name}
-                    </h2>
+                    </motion.h2>
                     <span className="badge" style={{
                         marginBottom: '1rem',
                         display: 'inline-block',
