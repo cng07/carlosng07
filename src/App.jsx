@@ -33,15 +33,15 @@ const App = () => {
                     <span className="nav-logo-short">C.NG</span>
                 </div>
                 <div className="nav-links">
-                    <a href="#experience">Experience</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#certifications">Certifications</a>
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
                 </div>
             </nav>
 
             <main className="container">
                 {/* Hero Section */}
-                <section className="section" style={{ paddingTop: '8rem', textAlign: 'center' }}>
+                <section id="home" className="section" style={{ paddingTop: '8rem', textAlign: 'center' }}>
                     <motion.div {...fadeIn}>
                         <div style={{ position: 'relative', width: '150px', height: '150px', margin: '0 auto 2rem' }}>
                             <div style={{
@@ -65,7 +65,7 @@ const App = () => {
                             Automating Quality <br />
                             <span style={{ color: 'var(--primary)' }}>Delivering Excellence</span>
                         </h1>
-                        <p style={{ maxWidth: '600px', margin: '0 auto 2rem', color: 'var(--text-muted)', fontSize: '1.1rem' }}>
+                        <p id="about" style={{ maxWidth: '600px', margin: '0 auto 2rem', color: 'var(--text-muted)', fontSize: '1.1rem' }}>
                             Hi, I'm <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{resumeData.name}</span>.
                             A Senior QA Automation Engineer specialized in building robust,
                             scalable testing frameworks that accelerate delivery.
@@ -189,7 +189,7 @@ const App = () => {
                 </section>
 
                 {/* Footer */}
-                <footer style={{ padding: '4rem 0', borderTop: '1px solid var(--border)', textAlign: 'center' }}>
+                <footer id="contact" style={{ padding: '4rem 0', borderTop: '1px solid var(--border)', textAlign: 'center' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginBottom: '1.5rem' }}>
                         <a href={resumeData.linkedIn}><Linkedin size={24} /></a>
                         <a href={resumeData.github}><Github size={24} /></a>
