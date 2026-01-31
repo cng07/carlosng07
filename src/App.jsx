@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import {
     Github,
     Linkedin,
-    Mail
+    Mail,
+    Library
 } from 'lucide-react';
 import { resumeData } from './data/resumeData';
 

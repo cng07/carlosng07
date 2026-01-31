@@ -2,6 +2,7 @@ import React from 'react';
 import {
     Github,
     Linkedin,
+    Library,
     ExternalLink,
     CheckCircle2,
     Award,
@@ -61,6 +62,9 @@ const Home = () => {
                         </a>
                         <a href={resumeData.github} className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <Github size={20} /> GitHub
+                        </a>
+                        <a href={resumeData.ieee} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                            <Library size={20} /> IEEE Xplore
                         </a>
                     </div>
                 </motion.div>
