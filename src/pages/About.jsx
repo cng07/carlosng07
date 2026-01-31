@@ -35,29 +35,29 @@ const About = () => {
                             </div>
 
                             {/* Contact Details in requested format */}
-                            <div style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-                                <div style={{ borderTop: '1px solid rgba(var(--primary-rgb), 0.2)' }} />
+                            <div style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column' }}>
+                                <div style={{ borderTop: '1px solid rgba(var(--primary-rgb), 0.2)', marginBottom: '1rem' }} />
 
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingLeft: '0.5rem' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingLeft: '0.5rem', marginBottom: '0.8rem' }}>
                                     <Github size={24} color="var(--primary)" />
                                     <a href={resumeData.github} target="_blank" rel="noreferrer" style={{ color: 'var(--text-main)', fontSize: '1.1rem', textDecoration: 'none' }}>
                                         @{resumeData.github.split('/').pop()}
                                     </a>
                                 </div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingLeft: '0.5rem' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingLeft: '0.5rem', marginBottom: '0.8rem' }}>
                                     <Linkedin size={24} color="var(--primary)" />
                                     <a href={resumeData.linkedIn} target="_blank" rel="noreferrer" style={{ color: 'var(--text-main)', fontSize: '1.1rem', textDecoration: 'none' }}>
                                         @{resumeData.linkedIn.split('/').pop()}
                                     </a>
                                 </div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingLeft: '0.5rem' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingLeft: '0.5rem', marginBottom: '0.4rem' }}>
                                     <Phone size={24} color="var(--primary)" />
                                     <span style={{ color: 'var(--text-main)', fontSize: '1.1rem' }}>{resumeData.mobile}</span>
                                 </div>
 
-                                <div style={{ borderTop: '1px solid rgba(var(--primary-rgb), 0.2)' }} />
+                                <div style={{ borderTop: '1px solid rgba(var(--primary-rgb), 0.2)', margin: '0.4rem 0' }} />
 
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingLeft: '0.5rem' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingLeft: '0.5rem', marginTop: '0.4rem', marginBottom: '0.8rem' }}>
                                     <Mail size={24} color="var(--primary)" />
                                     <a href={`mailto:${resumeData.email}`} style={{ color: 'var(--text-main)', fontSize: '1.1rem', textDecoration: 'none' }}>
                                         {resumeData.email}
