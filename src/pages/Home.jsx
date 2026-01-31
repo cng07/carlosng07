@@ -2,7 +2,6 @@ import React from 'react';
 import {
     Github,
     Linkedin,
-    Library,
     ExternalLink,
     CheckCircle2,
     Award,
@@ -16,6 +15,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { resumeData } from '../data/resumeData';
+import IeeeIcon from '../components/CustomIcons';
 
 const Home = () => {
     const fadeIn = {
@@ -64,7 +64,7 @@ const Home = () => {
                             <Github size={20} /> GitHub
                         </a>
                         <a href={resumeData.ieee} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <Library size={20} /> IEEE Xplore
+                            <IeeeIcon size={20} /> IEEE Xplore
                         </a>
                     </div>
                 </motion.div>

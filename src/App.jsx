@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import {
     Github,
     Linkedin,
-    Mail,
-    Library
+    Mail
 } from 'lucide-react';
+import IeeeIcon from './components/CustomIcons';
 import { resumeData } from './data/resumeData';
 
 // Pages
@@ -44,7 +44,7 @@ const App = () => {
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginBottom: '1.5rem' }}>
                         <a href={resumeData.linkedIn} target="_blank" rel="noreferrer"><Linkedin size={24} /></a>
                         <a href={resumeData.github} target="_blank" rel="noreferrer"><Github size={24} /></a>
-                        <a href={resumeData.ieee} target="_blank" rel="noreferrer"><Library size={24} /></a>
+                        <a href={resumeData.ieee} target="_blank" rel="noreferrer"><IeeeIcon size={24} /></a>
                         <a href={`mailto:${resumeData.email}`}><Mail size={24} /></a>
                     </div>
                     <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
