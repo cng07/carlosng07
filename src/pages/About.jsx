@@ -84,7 +84,7 @@ const About = () => {
                                 <User size={20} color="var(--primary)" /> QA Philosophy
                             </h3>
                             <p style={{ color: 'var(--text-muted)', lineHeight: '1.6', fontSize: '0.95rem' }}>
-                                I believe automation should provide immediate value to dev teams. My goal is always to create test frameworks that serve as a "safety net," not a burden.
+                                My goal in QA is simple: reduce risk, increase confidence, and keep releases smooth.
                             </p>
                         </div>
                     </div>
