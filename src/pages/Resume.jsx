@@ -25,14 +25,22 @@ const Resume = () => {
                     </a>
                 </div>
 
-                <div className="glass" style={{ height: '80vh', padding: '1rem', overflow: 'hidden' }}>
-                    <iframe
-                        src="/Carlos_Ng_Resume.pdf"
-                        title="Carlos Ng Resume"
+                <div className="glass" style={{ height: '80vh', padding: '1rem', overflow: 'hidden', position: 'relative', background: '#1e293b' }}>
+                    <object
+                        data="/Carlos_Ng_Resume.pdf"
+                        type="application/pdf"
                         width="100%"
                         height="100%"
-                        style={{ border: 'none', borderRadius: '8px' }}
-                    />
+                        style={{ borderRadius: '8px' }}
+                    >
+                        <iframe
+                            src={`https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + '/Carlos_Ng_Resume.pdf')}&embedded=true`}
+                            title="Carlos Ng Resume"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 'none', borderRadius: '8px' }}
+                        />
+                    </object>
                 </div>
             </motion.div>
         </div>
