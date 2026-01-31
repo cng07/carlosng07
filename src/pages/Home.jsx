@@ -45,42 +45,20 @@ const Home = () => {
                         />
                     </div>
                     <motion.h2
-                        className="gradient-text"
+                        className="glitch-text"
+                        data-text={resumeData.name}
                         style={{
                             fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
                             marginBottom: '0.5rem',
                             fontWeight: 800,
                             letterSpacing: '-0.04em',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            flexWrap: 'wrap'
+                            textTransform: 'uppercase'
                         }}
-                        initial="hidden"
-                        animate="visible"
-                        variants={{
-                            visible: {
-                                transition: {
-                                    staggerChildren: 0.05
-                                }
-                            }
-                        }}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
                     >
-                        {resumeData.name.split('').map((char, index) => (
-                            <motion.span
-                                key={index}
-                                variants={{
-                                    hidden: { opacity: 0, y: 20 },
-                                    visible: {
-                                        opacity: 1,
-                                        y: 0,
-                                        transition: { type: "spring", damping: 12, stiffness: 200 }
-                                    }
-                                }}
-                                style={{ display: 'inline-block', minWidth: char === ' ' ? '1rem' : 'auto' }}
-                            >
-                                {char}
-                            </motion.span>
-                        ))}
+                        {resumeData.name}
                     </motion.h2>
                     <span className="badge" style={{
                         marginBottom: '1rem',
