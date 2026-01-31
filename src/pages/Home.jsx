@@ -44,7 +44,13 @@ const Home = () => {
                             }}
                         />
                     </div>
-                    <span className="badge" style={{ marginBottom: '1rem', display: 'inline-block' }}>
+                    <span className="badge" style={{
+                        marginBottom: '1rem',
+                        display: 'inline-block',
+                        color: '#fff',
+                        borderColor: 'var(--primary)',
+                        padding: '0.4rem 1.25rem'
+                    }}>
                         Senior Quality Assurance Automation Engineer at Datacom
                     </span>
                     <h1 style={{ fontSize: 'clamp(2.5rem, 8vw, 4rem)', lineHeight: 1.1, marginBottom: '1.5rem' }}>
