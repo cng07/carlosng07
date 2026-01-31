@@ -27,13 +27,12 @@ const App = () => {
     return (
         <div className="portfolio">
             {/* Navigation */}
-            <nav className="glass" style={{
-                position: 'fixed', top: '1rem', left: '50%', transform: 'translateX(-50%)',
-                zIndex: 100, width: '90%', maxWidth: '800px', padding: '0.75rem 2rem',
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center'
-            }}>
-                <span style={{ fontWeight: 700, fontSize: '1.25rem', color: 'var(--primary)' }}>Carlos Angelo E. Ng</span>
-                <div style={{ display: 'flex', gap: '1.5rem', fontSize: '0.9rem', fontWeight: 500 }}>
+            <nav className="glass nav-bar">
+                <div className="nav-logo">
+                    <span className="nav-logo-full">Carlos Angelo E. Ng</span>
+                    <span className="nav-logo-short">C.NG</span>
+                </div>
+                <div className="nav-links">
                     <a href="#experience">Experience</a>
                     <a href="#skills">Skills</a>
                     <a href="#certifications">Certifications</a>

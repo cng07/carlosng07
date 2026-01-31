@@ -3,7 +3,8 @@
 :root {
   --background: #0f172a;
   --surface: rgba(30, 41, 59, 0.7);
-  --primary: #10b981; /* Emerald */
+  --primary: #10b981;
+  /* Emerald */
   --primary-glow: rgba(16, 185, 129, 0.2);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
@@ -25,7 +26,10 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-weight: 700;
   letter-spacing: -0.025em;
 }
@@ -77,6 +81,59 @@ a {
   font-size: 0.875rem;
   font-weight: 500;
   border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.nav-bar {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 90%;
+  max-width: 800px;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .nav-bar {
+    padding: 0.75rem 1rem;
+    width: 95%;
+  }
+
+  .nav-logo-full {
+    display: none;
+  }
+
+  .nav-logo-short {
+    display: inline;
+  }
+
+  .nav-links {
+    gap: 0.75rem;
+  }
+}
+
+@media (min-width: 641px) {
+  .nav-logo-short {
+    display: none;
+  }
 }
 
 /* Scrollbar */
