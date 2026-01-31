@@ -11,6 +11,7 @@ import { resumeData } from './data/resumeData';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Resume from './pages/Resume';
 
 const App = () => {
     return (
@@ -25,6 +26,7 @@ const App = () => {
                     <div className="nav-links">
                         <Link to="/">Home</Link>
                         <Link to="/about">About</Link>
+                        <Link to="/resume">Resume</Link>
                         <Link to="/contact">Contact</Link>
                     </div>
                 </nav>
@@ -32,6 +34,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
+                    <Route path="/resume" element={<Resume />} />
                     <Route path="/contact" element={<Contact />} />
                 </Routes>
 
