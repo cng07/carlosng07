@@ -93,7 +93,8 @@ export const resumeData = {
     {
       title: "Automation Anywhere Certified Advanced RPA Professional",
       issuer: "Automation Anywhere",
-      credentialId: "AAADVC-21147163"
+      credentialId: "AAADVC-21147163",
+      link: "https://certificates.automationanywhere.com/0b9f6c08-c724-44cc-81e0-c68c84d18225"
     }
   ],
 
