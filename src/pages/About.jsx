@@ -54,26 +54,47 @@ const About = () => {
                     {/* Right Side: Profile Image & Stats */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                         <div className="glass" style={{ padding: '1.5rem', textAlign: 'center' }}>
-                            <div style={{
-                                width: '100%',
-                                borderRadius: '12px',
-                                overflow: 'hidden',
-                                background: 'rgba(255,255,255,0.03)',
-                                border: '1px solid rgba(255,255,255,0.1)',
-                                marginBottom: '1.5rem',
-                                padding: '1rem'
-                            }}>
-                                <img
-                                    src="https://lh3.googleusercontent.com/d/1P2ZGuFyJVUCVMHp7HpGS6qzuU_P3eTJ0"
-                                    alt={resumeData.name}
-                                    style={{
-                                        width: '100%',
-                                        height: 'auto',
-                                        display: 'block',
-                                        borderRadius: '8px',
-                                        objectFit: 'contain'
-                                    }}
-                                />
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                                <div style={{
+                                    width: '100%',
+                                    borderRadius: '12px',
+                                    overflow: 'hidden',
+                                    background: 'rgba(255,255,255,0.03)',
+                                    border: '1px solid rgba(255,255,255,0.1)',
+                                    padding: '0.75rem'
+                                }}>
+                                    <img
+                                        src="https://lh3.googleusercontent.com/d/1BlPdr2IeVY27ariXXSDuiUTgxrzC3UGE"
+                                        alt={`${resumeData.name} - Professional`}
+                                        style={{
+                                            width: '100%',
+                                            height: 'auto',
+                                            display: 'block',
+                                            borderRadius: '8px',
+                                            objectFit: 'contain'
+                                        }}
+                                    />
+                                </div>
+                                <div style={{
+                                    width: '100%',
+                                    borderRadius: '12px',
+                                    overflow: 'hidden',
+                                    background: 'rgba(255,255,255,0.03)',
+                                    border: '1px solid rgba(255,255,255,0.1)',
+                                    padding: '0.75rem'
+                                }}>
+                                    <img
+                                        src="https://lh3.googleusercontent.com/d/1P2ZGuFyJVUCVMHp7HpGS6qzuU_P3eTJ0"
+                                        alt={`${resumeData.name} - Original`}
+                                        style={{
+                                            width: '100%',
+                                            height: 'auto',
+                                            display: 'block',
+                                            borderRadius: '8px',
+                                            objectFit: 'contain'
+                                        }}
+                                    />
+                                </div>
                             </div>
                             <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem' }}>{resumeData.name}</h3>
                             <p style={{ color: 'var(--primary)', fontWeight: 600 }}>{resumeData.role}</p>
