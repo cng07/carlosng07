@@ -166,16 +166,29 @@ const Home = () => {
                         <h2 className="section-title"><Award size={28} color="var(--primary)" /> Certifications</h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                             {resumeData.certifications.map((cert, i) => (
-                                <div key={i} className="glass" style={{ padding: '1.25rem' }}>
-                                    <h4 style={{ color: 'var(--text-main)', marginBottom: '0.25rem' }}>{cert.title}</h4>
-                                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>{cert.issuer}</p>
-                                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                                        Credential ID: {cert.link ? (
+                                <div key={i} className="glass" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem' }}>
+                                        <div style={{ flex: 1 }}>
+                                            <h4 style={{ color: 'var(--text-main)', fontSize: '1.1rem', marginBottom: '0.2rem', textDecoration: 'underline' }}>{cert.title}</h4>
+                                            {cert.subtitle && <p style={{ color: 'var(--text-main)', fontWeight: 600, fontSize: '1rem', marginBottom: '0.25rem' }}>{cert.subtitle}</p>}
+                                            <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', fontWeight: 600 }}>{cert.issuer}</p>
+                                        </div>
+                                        <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', whiteSpace: 'nowrap', fontWeight: 600, marginTop: '0.2rem' }}>{cert.period}</span>
+                                    </div>
+
+                                    <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+                                        {cert.idLabel || 'Credential ID'}: {cert.link ? (
                                             <a href={cert.link} target="_blank" rel="noreferrer" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>
                                                 {cert.credentialId}
                                             </a>
                                         ) : cert.credentialId}
                                     </p>
+
+                                    {cert.additionalLinks && cert.additionalLinks.map((al, idx) => (
+                                        <p key={idx} style={{ fontSize: '0.9rem', marginTop: '0.25rem' }}>
+                                            <a href={al.url} target="_blank" rel="noreferrer" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>{al.label}</a>
+                                        </p>
+                                    ))}
                                 </div>
                             ))}
                         </div>
