@@ -56,7 +56,7 @@ const Home = () => {
                     >
                         {resumeData.name}
                     </motion.h2>
-                    <div style={{ marginBottom: '1rem' }}>
+                    <div style={{ marginBottom: '2.5rem' }}>
                         <span className="badge" style={{
                             display: 'inline-block',
                             color: '#fff',
@@ -90,7 +90,7 @@ const Home = () => {
             </section>
 
             {/* Experience Section */}
-            <section id="experience" className="section">
+            <section id="experience" className="section" style={{ paddingTop: '1rem' }}>
                 <h2 className="section-title"><Briefcase size={28} color="var(--primary)" /> Experience</h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
                     {resumeData.experience.map((exp, index) => (
