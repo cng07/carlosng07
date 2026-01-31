@@ -101,6 +101,7 @@ export const resumeData = {
 
   education: [
     {
+      type: "Tertiary",
       school: "Asia Pacific College",
       degree: "BS Electronics Engineering",
       period: "June 2013 – April 2018",
@@ -109,7 +110,17 @@ export const resumeData = {
         name: "SM Foundation, Inc.",
         address: "SM Corporate Offices Building B, J.W. Diokno Blvd, Pasay City, Philippines"
       },
-      highlights: ["Best Exhibit, Engineering Symposium 2018", "Dean's List Awardee"]
+      highlights: [
+        "Best Exhibit, Engineering Symposium and Exhibit, April 2018",
+        "Dean's List Awardee, June 2015",
+        "Dean's List Awardee, June 2014"
+      ]
+    },
+    {
+      type: "Secondary",
+      school: "Makati Science High School",
+      period: "June 2009 – March 2013",
+      address: "9 Kalayaan Ave, Makati City, Philippines"
     }
   ],
 

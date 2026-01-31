@@ -193,24 +193,46 @@ const Home = () => {
                         ))}
 
                         <h2 className="section-title" style={{ marginTop: '3rem' }}><GraduationCap size={28} color="var(--primary)" /> Education</h2>
-                        {resumeData.education.map((edu, i) => (
-                            <div key={i} className="glass" style={{ padding: '1.5rem' }}>
-                                <h4 style={{ marginBottom: '0.25rem' }}>{edu.degree}</h4>
-                                <p style={{ color: 'var(--primary)', fontWeight: 600, fontSize: '0.9rem', marginBottom: '0.5rem' }}>{edu.school}</p>
-                                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '0.25rem' }}>{edu.period}</p>
-                                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                                    <MapPin size={14} /> {edu.address}
-                                </p>
-                                {edu.scholarship && (
-                                    <div style={{ marginTop: '1rem', padding: '0.75rem', borderLeft: '2px solid var(--primary)', background: 'rgba(var(--primary-rgb), 0.1)' }}>
-                                        <p style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--text-main)' }}>Scholar: {edu.scholarship.name}</p>
-                                        <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.25rem', marginTop: '0.25rem' }}>
-                                            <MapPin size={12} /> {edu.scholarship.address}
-                                        </p>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                            {resumeData.education.map((edu, i) => (
+                                <div key={i} className="glass" style={{ padding: '2rem' }}>
+                                    <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.5rem', letterSpacing: '0.05em' }}>
+                                        {edu.type}
+                                    </p>
+                                    <h3 style={{ color: 'var(--text-main)', fontSize: '1.4rem', marginBottom: '0.25rem' }}>{edu.school}</h3>
+                                    {edu.degree && <h4 style={{ marginBottom: '0.5rem', color: 'var(--text-main)' }}>{edu.degree}</h4>}
+
+                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+                                        <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                                            <Terminal size={14} color="var(--primary)" /> {edu.period}
+                                        </span>
+                                        <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                                            <MapPin size={14} color="var(--primary)" /> {edu.address}
+                                        </span>
                                     </div>
-                                )}
-                            </div>
-                        ))}
+
+                                    {edu.highlights && (
+                                        <ul style={{ listStyle: 'none', padding: 0, marginTop: '1rem' }}>
+                                            {edu.highlights.map((h, idx) => (
+                                                <li key={idx} style={{ display: 'flex', gap: '0.75rem', color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '0.4rem' }}>
+                                                    <CheckCircle2 size={16} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.2rem' }} />
+                                                    {h}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+
+                                    {edu.scholarship && (
+                                        <div style={{ marginTop: '1.5rem', padding: '1rem', borderLeft: '3px solid var(--primary)', background: 'rgba(var(--primary-rgb), 0.05)', borderRadius: '0 8px 8px 0' }}>
+                                            <p style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--text-main)', marginBottom: '0.4rem' }}>College scholarship: {edu.scholarship.name}</p>
+                                            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                                                <MapPin size={14} /> {edu.scholarship.address}
+                                            </p>
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
