@@ -48,7 +48,7 @@ export const resumeData = {
     {
       company: "DXC Technology",
       period: "March 2022 – September 2024",
-      location: "Intellectual Property Center Building, Upper McKinley Rd, Taguig City, Philippines",
+      location: "Taguig City, Philippines",
       roles: [
         {
           title: "Senior Analyst I Software Engineering || Test Automation Engineer",
@@ -111,7 +111,7 @@ export const resumeData = {
       company: "Accenture",
       role: "Intern",
       period: "February 2017 – August 2017",
-      location: "Robinsons Cybergate Tower 3, Mandaluyong City, Philippines",
+      location: "Mandaluyong City, Philippines",
       achievements: [
         "Tertiary Page Dev and Test",
         "Metadata Verification"
