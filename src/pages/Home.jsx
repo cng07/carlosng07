@@ -144,7 +144,13 @@ const Home = () => {
                             {resumeData.certifications.map((cert, i) => (
                                 <div key={i} className="glass" style={{ padding: '1.25rem' }}>
                                     <h4 style={{ color: 'var(--text-main)', marginBottom: '0.25rem' }}>{cert.title}</h4>
-                                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{cert.issuer} • ID: {cert.id}</p>
+                                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                                        {cert.issuer} • Credential ID: {cert.link ? (
+                                            <a href={cert.link} target="_blank" rel="noreferrer" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>
+                                                {cert.credentialId}
+                                            </a>
+                                        ) : cert.credentialId}
+                                    </p>
                                 </div>
                             ))}
                         </div>

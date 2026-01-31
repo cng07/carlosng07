@@ -7,7 +7,7 @@ export const resumeData = {
   linkedIn: "https://www.linkedin.com/in/carlosng07",
   github: "https://github.com/cng07",
   ieee: "https://ieeexplore.ieee.org/author/37086553247",
-  
+
   skills: {
     automation: ["Playwright", "Selenium WebDriver", "Cucumber BDD", "Screenplay Pattern"],
     languages: ["TypeScript", "Java", "JavaScript"],
@@ -81,17 +81,19 @@ export const resumeData = {
     {
       title: "ISTQB Certified Tester Foundation Level (CTFL)",
       issuer: "ASTQB - ISTQB in the U.S.",
-      id: "24-CTFL-01347-USA"
+      credentialId: "24-CTFL-01347-USA",
+      link: "https://drive.google.com/file/d/1hC1IcfeBia77IPZjuVlVPJro6JD64uiV/view?usp=sharing"
     },
     {
       title: "Certified Tester, AT*SQA DevOps Testing",
       issuer: "ASTQB",
-      id: "23-AT*DevOps-00002-USA"
+      credentialId: "23-AT*DevOps-00002-USA",
+      link: "https://drive.google.com/file/d/1UqA8qJbYtNGSCNxxyFpiJKc8G2TtYgMy/view?usp=sharing"
     },
     {
       title: "Automation Anywhere Certified Advanced RPA Professional",
       issuer: "Automation Anywhere",
-      id: "AAADVC-21147163"
+      credentialId: "AAADVC-21147163"
     }
   ],
 
