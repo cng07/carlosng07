@@ -71,4 +71,4 @@ To update your information (experience, skills, certifications), simply modify t
 The Changes will reflect across the site instantly.
 
 ---
-Built with ❤️ by Carlos Ng.
+
