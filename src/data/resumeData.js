@@ -47,14 +47,40 @@ export const resumeData = {
     },
     {
       company: "DXC Technology",
-      role: "Senior Analyst || Test Automation Engineer",
       period: "March 2022 – September 2024",
-      location: "Taguig City, Philippines",
-      achievements: [
-        "Migrated entire UI test suite from Selenium Java to Playwright TypeScript, reducing pipeline execution time from 24h to 4h for 300+ tests",
-        "Integrated automation framework with Azure DevOps Pipelines with visual reporting",
-        "Conducted brown-bag sessions on automation testing best practices",
-        "Maintained legacy Selenium/Java frameworks for critical systems"
+      location: "Intellectual Property Center Building, Upper McKinley Rd, Taguig City, Philippines",
+      roles: [
+        {
+          title: "Senior Analyst I Software Engineering || Test Automation Engineer",
+          period: "July 2024 – September 2024",
+          achievements: [
+            "Develop and execute UI automated tests using Playwright with TypeScript"
+          ]
+        },
+        {
+          title: "Senior Analyst II Software Engineering || Test Automation Engineer",
+          period: "November 2023 – June 2024",
+          achievements: [
+            "Set up the test automation framework and developed end-to-end UI tests using Playwright with TypeScript",
+            "Migrated the entire UI test suite from Selenium WebDriver to Playwright, reducing pipeline execution time from 19-24 hours to just 4 hours for 300+ tests",
+            "Configured and maintained automation agents on virtual machines for test execution",
+            "Integrated the automation framework with Azure DevOps Pipelines and enabled visual reporting of test results",
+            "Conducted brown-bag knowledge-sharing sessions on automation testing best practices",
+            "Maintained automated test scripts using Selenium WebDriver with Java and Cucumber (BDD)"
+          ]
+        },
+        {
+          title: "Technology Consultant II || Test Automation Engineer",
+          period: "March 2022 – October 2023",
+          achievements: [
+            "Developed and maintained automated test scripts using Selenium WebDriver with Java and Cucumber (BDD) in IntelliJ IDEA across multiple desktop browsers (Chrome, Firefox, Edge)",
+            "Used Git Bash to commit and push code changes to Azure DevOps repositories",
+            "Scheduled and executed automated test runs via Azure DevOps Pipelines on a weekly basis and after each QA release",
+            "Investigated test failures on both local and virtual environments, analyzed logs, and reported defects",
+            "Generated and sent pipeline execution reports summarizing failed scenarios, root causes, and fixes",
+            "Conducted brown-bag sessions and training workshops on manual and automation testing"
+          ]
+        }
       ]
     },
     {
