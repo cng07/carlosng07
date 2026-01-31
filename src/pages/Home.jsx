@@ -56,15 +56,16 @@ const Home = () => {
                     >
                         {resumeData.name}
                     </motion.h2>
-                    <span className="badge" style={{
-                        marginBottom: '1rem',
-                        display: 'inline-block',
-                        color: '#fff',
-                        borderColor: 'var(--primary)',
-                        padding: '0.4rem 1.25rem'
-                    }}>
-                        Senior Quality Assurance Automation Engineer at Datacom
-                    </span>
+                    <div style={{ marginBottom: '1rem' }}>
+                        <span className="badge" style={{
+                            display: 'inline-block',
+                            color: '#fff',
+                            borderColor: 'var(--primary)',
+                            padding: '0.4rem 1.25rem'
+                        }}>
+                            Senior Quality Assurance Automation Engineer at Datacom
+                        </span>
+                    </div>
                     <h1 style={{ fontSize: 'clamp(2.5rem, 8vw, 4rem)', lineHeight: 1.1, marginBottom: '1.5rem' }}>
                         Automating Quality <br />
                         <span style={{ color: 'var(--primary)' }}>Delivering Excellence</span>
