@@ -56,16 +56,23 @@ const About = () => {
                         <div className="glass" style={{ padding: '1.5rem', textAlign: 'center' }}>
                             <div style={{
                                 width: '100%',
-                                aspectRatio: '1',
                                 borderRadius: '12px',
                                 overflow: 'hidden',
-                                background: 'rgba(255,255,255,0.05)',
-                                marginBottom: '1.5rem'
+                                background: 'rgba(255,255,255,0.03)',
+                                border: '1px solid rgba(255,255,255,0.1)',
+                                marginBottom: '1.5rem',
+                                padding: '1rem'
                             }}>
                                 <img
                                     src="https://lh3.googleusercontent.com/d/1P2ZGuFyJVUCVMHp7HpGS6qzuU_P3eTJ0"
                                     alt={resumeData.name}
-                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                    style={{
+                                        width: '100%',
+                                        height: 'auto',
+                                        display: 'block',
+                                        borderRadius: '8px',
+                                        objectFit: 'contain'
+                                    }}
                                 />
                             </div>
                             <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem' }}>{resumeData.name}</h3>
