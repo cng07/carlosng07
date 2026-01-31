@@ -87,7 +87,7 @@ export const resumeData = {
       period: "April 2024",
       link: "https://drive.google.com/file/d/1hC1IcfeBia77IPZjuVlVPJro6JD64uiV/view?usp=sharing",
       additionalLinks: [
-        { label: "Official U.S. List of Certified & Credentialed Software Testers™ Profile", url: "https://certifiedtesters.astqb.org/" }
+        { label: "Official U.S. List of Certified & Credentialed Software Testers™ Profile", url: "https://atsqa.org/certified-testers/profile/6676da6cab1b424aa4070395ff71f490" }
       ]
     },
     {
@@ -105,7 +105,7 @@ export const resumeData = {
       idLabel: "Certificate Number",
       credentialId: "CNAG0000009961",
       period: "June 2020",
-      link: "#"
+      link: "https://drive.google.com/file/d/1wZCYGH8kWoyWfNPrV7jLUhyhJ99JWK8S/view?usp=sharing"
     },
     {
       title: "Automation Anywhere Certified Advanced RPA Professional",
