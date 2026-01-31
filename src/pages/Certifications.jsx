@@ -13,7 +13,7 @@ const Certifications = () => {
             >
                 <h1 className="section-title">Certifications</h1>
                 <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', textAlign: 'center', marginBottom: '3rem', maxWidth: '800px', margin: '0 auto 3rem' }}>
-                    My professional credentials and certifications in QA Automation, Agile methodologies, and RPA.
+                    My professional credentials and certifications.
                 </p>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
