@@ -25,9 +25,10 @@ export const resumeData = {
       achievements: [
         "Develop and execute UI automation scripts using Playwright with TypeScript (Cucumber BDD)",
         "Leveraged GitHub Copilot to accelerate development and improve code quality",
-        "Expertise in Git integration and GitHub Source Control",
+        "Commit and push code changes using VS Code’s built-in Git integration and GitHub Source Control",
         "Perform manual front-end testing for new features and releases",
-        "Review pull requests and mentor fellow Test Automation Engineers"
+        "Document test results and defects using Jira",
+        "Review pull requests and provide feedback to other Test Automation Engineers"
       ]
     },
     {
@@ -36,10 +37,12 @@ export const resumeData = {
       period: "September 2024 – March 2025",
       location: "Taguig City, Philippines",
       achievements: [
-        "Developed a utility to automate the deletion of 4,100 test data via UI, reducing effort from 18 days to just 5 days",
-        "Created integrated API and UI automation scripts using Playwright with TypeScript (Screenplay Pattern)",
-        "Performed manual API testing using Postman",
-        "Maintained high-quality code through rigorous pull request reviews"
+        "Perform manual API testing using Postman",
+        "Develop and execute integrated API and UI automation scripts using Playwright with TypeScript (Screenplay Pattern)",
+        "Commit and push changes through VS Code’s built-in Git integration",
+        "Review and provide feedback on pull requests from other Test Automation Engineers",
+        "Log defects and maintain test reporting using Jira",
+        "Developed a utility to automate the deletion of 4,100 test data via UI (as the delete API is not available to us), reducing effort from 18 days (manual deletion) to 5 days (this includes both scripting and execution)"
       ]
     },
     {
@@ -60,9 +63,10 @@ export const resumeData = {
       period: "April 2021 – February 2022",
       location: "Pasig City, Philippines",
       achievements: [
-        "Lead QA for Go Rewards sites and mobile apps (Android/iOS)",
-        "Automated desktop browser tests using Selenium",
-        "Managed test scripts and defect tracking in Azure DevOps"
+        "Main QA for Go Rewards site and CMS (www.gorewards.com.ph), Go Rewards PH App [Main app, Fly, Pay] (Android and iOS), DAVI site (www.davi.com.ph), and DAVI Finance Portal (internal site)",
+        "Provide expertise in planning, constructing, and execution of test scripts",
+        "Create and execute automation script for desktop browser using Selenium WebDriver / IDE",
+        "Use Azure DevOps for Test Scripts, Tasks, and Bugs"
       ]
     },
     {
@@ -71,9 +75,20 @@ export const resumeData = {
       period: "November 2018 - March 2021",
       location: "Mandaluyong City, Philippines",
       achievements: [
-        "Developed RPA scripts using Automation Anywhere",
-        "Executed Selenium WebDriver scripts for desktop browsers",
-        "Specialized in Dev/Test PWD (Accessibility) tools"
+        "Develop, debug, and execute Automation Anywhere Test Scripts",
+        "Create and execute automation script for desktop browser using Selenium WebDriver",
+        "Provide expertise in planning, constructing, and execution of test scripts",
+        "Dev/Test PWD (Accessibility tools)"
+      ]
+    },
+    {
+      company: "Accenture",
+      role: "Intern",
+      period: "February 2017 – August 2017",
+      location: "Robinsons Cybergate Tower 3, Mandaluyong City, Philippines",
+      achievements: [
+        "Tertiary Page Dev and Test",
+        "Metadata Verification"
       ]
     }
   ],
