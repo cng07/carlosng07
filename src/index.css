@@ -64,7 +64,7 @@ a {
 
 @media (max-width: 768px) {
   .page-header-padding {
-    padding-top: 6rem;
+    padding-top: 10rem;
   }
 }
 
@@ -131,6 +131,14 @@ a {
   justify-content: space-between;
   align-items: center;
   transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .nav-bar {
+    width: 95%;
+    top: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
 }
 
 .nav-logo {
