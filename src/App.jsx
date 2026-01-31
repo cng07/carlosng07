@@ -13,6 +13,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Resume from './pages/Resume';
+import Certifications from './pages/Certifications';
 
 const App = () => {
     return (
@@ -28,6 +29,7 @@ const App = () => {
                         <Link to="/">Home</Link>
                         <Link to="/about">About</Link>
                         <Link to="/resume">Resume</Link>
+                        <Link to="/certifications">Certifications</Link>
                         <Link to="/contact">Contact</Link>
                     </div>
                 </nav>
@@ -36,6 +38,7 @@ const App = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/resume" element={<Resume />} />
+                    <Route path="/certifications" element={<Certifications />} />
                     <Route path="/contact" element={<Contact />} />
                 </Routes>
 
