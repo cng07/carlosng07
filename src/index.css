@@ -48,19 +48,13 @@ a {
   border-radius: 1rem;
 }
 
+.section {
+  padding: 6rem 0;
+}
+
 @media (max-width: 768px) {
   .section {
     padding: 3rem 0;
-  }
-}
-
-.page-header-padding {
-  padding-top: 8rem;
-}
-
-@media (max-width: 768px) {
-  .page-header-padding {
-    padding-top: 12rem;
   }
 }
 
@@ -193,6 +187,17 @@ a {
   gap: 2rem;
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+/* Page Header Padding - High Specificity */
+.page-header-padding {
+  padding-top: 8rem !important;
+}
+
+@media (max-width: 768px) {
+  .page-header-padding {
+    padding-top: 14rem !important;
+  }
 }
 
 /* Scrollbar */
