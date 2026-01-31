@@ -27,7 +27,7 @@ const Home = () => {
     return (
         <main className="container">
             {/* Hero Section */}
-            <section id="home" className="section" style={{ paddingTop: '8rem', textAlign: 'center' }}>
+            <section id="home" className="section page-header-padding" style={{ textAlign: 'center' }}>
                 <motion.div {...fadeIn}>
                     <div style={{ position: 'relative', width: '150px', height: '150px', margin: '0 auto 2rem' }}>
                         <div style={{

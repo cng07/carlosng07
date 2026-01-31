@@ -1,9 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import {
     Github,
     Linkedin,
-    Mail
+    Mail,
+    Menu,
+    X
 } from 'lucide-react';
 import IeeeIcon from './components/CustomIcons';
 import { resumeData } from './data/resumeData';
@@ -16,6 +19,11 @@ import Resume from './pages/Resume';
 import Certifications from './pages/Certifications';
 
 const App = () => {
+    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    const closeMenu = () => setIsMenuOpen(false);
+
     return (
         <Router>
             <div className="portfolio">
@@ -25,6 +33,8 @@ const App = () => {
                         <span className="nav-logo-full">Carlos Angelo E. Ng</span>
                         <span className="nav-logo-short">C.NG</span>
                     </div>
+
+                    {/* Desktop Links */}
                     <div className="nav-links">
                         <Link to="/">Home</Link>
                         <Link to="/about">About</Link>
@@ -32,7 +42,28 @@ const App = () => {
                         <Link to="/certifications">Certifications</Link>
                         <Link to="/contact">Contact</Link>
                     </div>
+
+                    {/* Mobile Menu Button */}
+                    <button className="mobile-menu-btn" onClick={toggleMenu}>
+                        {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                    </button>
                 </nav>
+
+                {/* Mobile Menu Overlay */}
+                {isMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, x: '100%' }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: '100%' }}
+                        className="mobile-nav"
+                    >
+                        <Link to="/" onClick={closeMenu}>Home</Link>
+                        <Link to="/about" onClick={closeMenu}>About</Link>
+                        <Link to="/resume" onClick={closeMenu}>Resume</Link>
+                        <Link to="/certifications" onClick={closeMenu}>Certifications</Link>
+                        <Link to="/contact" onClick={closeMenu}>Contact</Link>
+                    </motion.div>
+                )}
 
                 <Routes>
                     <Route path="/" element={<Home />} />

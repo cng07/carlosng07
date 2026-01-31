@@ -5,7 +5,7 @@ import { resumeData } from '../data/resumeData';
 
 const Certifications = () => {
     return (
-        <div className="section container" style={{ paddingTop: '8rem' }}>
+        <div className="section container page-header-padding">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

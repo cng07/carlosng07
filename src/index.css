@@ -48,14 +48,42 @@ a {
   border-radius: 1rem;
 }
 
+.section {
+  padding: 6rem 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 0;
+  }
+}
+
+.page-header-padding {
+  padding-top: 8rem;
+}
+
+@media (max-width: 768px) {
+  .page-header-padding {
+    padding-top: 6rem;
+  }
+}
+
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-.section {
-  padding: 6rem 0;
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 0;
+  }
 }
 
 .section-title {
@@ -64,6 +92,13 @@ a {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .section-title::after {
@@ -90,31 +125,49 @@ a {
   transform: translateX(-50%);
   z-index: 1000;
   width: 90%;
-  max-width: 800px;
-  padding: 0.75rem 1.5rem;
+  max-width: 1000px;
+  padding: 0.75rem 1.75rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: all 0.3s ease;
 }
 
 .nav-logo {
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: var(--primary);
   white-space: nowrap;
 }
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
-  font-size: 0.85rem;
+  gap: 2rem;
+  font-size: 0.9rem;
   font-weight: 500;
 }
 
-@media (max-width: 640px) {
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-main);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
   .nav-bar {
-    padding: 0.75rem 1rem;
     width: 95%;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
   }
 
   .nav-logo-full {
@@ -124,20 +177,29 @@ a {
   .nav-logo-short {
     display: inline;
   }
-
-  .nav-links {
-    gap: 0.75rem;
-  }
-
-  .section {
-    padding: 3rem 0;
-  }
 }
 
-@media (min-width: 641px) {
+@media (min-width: 769px) {
   .nav-logo-short {
     display: none;
   }
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--background);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 /* Scrollbar */

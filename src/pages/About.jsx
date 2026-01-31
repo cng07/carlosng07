@@ -5,7 +5,7 @@ import { User, Target, Zap, Github, Linkedin, Phone, Mail } from 'lucide-react';
 
 const About = () => {
     return (
-        <div className="section container" style={{ paddingTop: '8rem' }}>
+        <div className="section container page-header-padding">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -15,13 +15,13 @@ const About = () => {
 
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
                     gap: '4rem',
                     alignItems: 'start'
                 }}>
                     {/* Left Side: Bio Text */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                        <div className="glass" style={{ padding: '2.5rem' }}>
+                        <div className="glass" style={{ padding: '2rem' }}>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                                 {resumeData.about.map((paragraph, i) => (
                                     <p key={i} style={{
