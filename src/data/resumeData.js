@@ -82,19 +82,38 @@ export const resumeData = {
     {
       title: "ISTQB Certified Tester Foundation Level (CTFL)",
       issuer: "ASTQB - ISTQB in the U.S.",
+      idLabel: "Credential ID",
       credentialId: "24-CTFL-01347-USA",
-      link: "https://drive.google.com/file/d/1hC1IcfeBia77IPZjuVlVPJro6JD64uiV/view?usp=sharing"
+      period: "April 2024",
+      link: "https://drive.google.com/file/d/1hC1IcfeBia77IPZjuVlVPJro6JD64uiV/view?usp=sharing",
+      additionalLinks: [
+        { label: "Official U.S. List of Certified & Credentialed Software Testers™ Profile", url: "https://certifiedtesters.astqb.org/" }
+      ]
     },
     {
       title: "Certified Tester, AT*SQA DevOps Testing",
-      issuer: "ASTQB",
+      issuer: "ASTQB - ISTQB in the U.S.",
+      idLabel: "Credential ID",
       credentialId: "23-AT*DevOps-00002-USA",
+      period: "January 2023 – January 2026",
       link: "https://drive.google.com/file/d/1UqA8qJbYtNGSCNxxyFpiJKc8G2TtYgMy/view?usp=sharing"
     },
     {
+      title: "Accenture Agile Certification Program",
+      subtitle: "Agile Professional Certified",
+      issuer: "Accenture",
+      idLabel: "Certificate Number",
+      credentialId: "CNAG0000009961",
+      period: "June 2020",
+      link: "#"
+    },
+    {
       title: "Automation Anywhere Certified Advanced RPA Professional",
+      subtitle: "Robotic Process Automation Professional (V11.0)",
       issuer: "Automation Anywhere",
+      idLabel: "Certificate Number",
       credentialId: "AAADVC-21147163",
+      period: "July 2020 – July 2022",
       link: "https://certificates.automationanywhere.com/0b9f6c08-c724-44cc-81e0-c68c84d18225"
     }
   ],
