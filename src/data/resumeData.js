@@ -9,10 +9,11 @@ export const resumeData = {
   ieee: "https://ieeexplore.ieee.org/author/37086553247",
 
   skills: {
-    automation: ["Playwright", "Selenium WebDriver", "Cucumber BDD", "Screenplay Pattern"],
-    languages: ["TypeScript", "Java", "JavaScript"],
-    tools: ["Azure DevOps", "Git", "Postman", "Jira", "GitHub Copilot", "IntelliJ IDEA", "VS Code"],
-    other: ["Manual Testing (UI/API)", "RPA (Automation Anywhere)", "Accessibility Testing"]
+    testAutomation: ["Playwright", "Selenium WebDriver"],
+    programmingLanguages: ["TypeScript", "Java"],
+    cicd: ["Azure DevOps", "GitHub"],
+    manualTesting: ["UI", "API (Postman / Bruno)"],
+    otherTools: ["Git", "Jira", "IntelliJ IDEA", "VS Code", "GitHub Copilot"]
   },
 
   experience: [

@@ -111,29 +111,49 @@ const Home = () => {
             {/* Skills Section */}
             <section id="skills" className="section">
                 <h2 className="section-title"><Cpu size={28} color="var(--primary)" /> Technical Skills</h2>
-                <div style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', display: 'grid', gap: '1.5rem' }}>
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                    gap: '1.5rem'
+                }}>
                     <div className="glass" style={{ padding: '2rem' }}>
-                        <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <Terminal size={20} color="var(--primary)" /> Automation
+                        <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.2rem' }}>
+                            <CheckCircle2 size={20} color="var(--primary)" /> Test Automation
                         </h3>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                            {resumeData.skills.automation.map(s => <span key={s} className="badge">{s}</span>)}
+                            {resumeData.skills.testAutomation.map(s => <span key={s} className="badge">{s}</span>)}
                         </div>
                     </div>
                     <div className="glass" style={{ padding: '2rem' }}>
-                        <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <Code2 size={20} color="var(--primary)" /> Languages
+                        <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.2rem' }}>
+                            <Code2 size={20} color="var(--primary)" /> Programming Languages
                         </h3>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                            {resumeData.skills.languages.map(s => <span key={s} className="badge">{s}</span>)}
+                            {resumeData.skills.programmingLanguages.map(s => <span key={s} className="badge">{s}</span>)}
                         </div>
                     </div>
                     <div className="glass" style={{ padding: '2rem' }}>
-                        <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <Cpu size={20} color="var(--primary)" /> Tools & Others
+                        <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.2rem' }}>
+                            <Terminal size={20} color="var(--primary)" /> CI/CD
                         </h3>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                            {[...resumeData.skills.tools, ...resumeData.skills.other].map(s => <span key={s} className="badge">{s}</span>)}
+                            {resumeData.skills.cicd.map(s => <span key={s} className="badge">{s}</span>)}
+                        </div>
+                    </div>
+                    <div className="glass" style={{ padding: '2rem' }}>
+                        <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.2rem' }}>
+                            <MapPin size={20} color="var(--primary)" /> Manual Testing
+                        </h3>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+                            {resumeData.skills.manualTesting.map(s => <span key={s} className="badge">{s}</span>)}
+                        </div>
+                    </div>
+                    <div className="glass" style={{ padding: '2rem' }}>
+                        <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.2rem' }}>
+                            <Cpu size={20} color="var(--primary)" /> Other Tools
+                        </h3>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+                            {resumeData.skills.otherTools.map(s => <span key={s} className="badge">{s}</span>)}
                         </div>
                     </div>
                 </div>
