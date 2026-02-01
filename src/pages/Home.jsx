@@ -241,13 +241,27 @@ const Home = () => {
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                             {resumeData.certifications.map((cert, i) => (
                                 <div key={i} className="glass" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem' }}>
-                                        <div style={{ flex: 1 }}>
-                                            <h4 style={{ color: 'var(--text-main)', fontSize: '1.1rem', marginBottom: '0.2rem', textDecoration: 'underline' }}>{cert.title}</h4>
-                                            {cert.subtitle && <p style={{ color: 'var(--text-main)', fontWeight: 600, fontSize: '1rem', marginBottom: '0.25rem' }}>{cert.subtitle}</p>}
-                                            <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', fontWeight: 600 }}>{cert.issuer}</p>
-                                        </div>
-                                        <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', whiteSpace: 'nowrap', fontWeight: 600, marginTop: '0.2rem' }}>{cert.period}</span>
+                                    <div style={{ marginBottom: '0.5rem' }}>
+                                        <h4 style={{ color: 'var(--text-main)', fontSize: '1.1rem', marginBottom: '0.2rem', textDecoration: 'underline' }}>{cert.title}</h4>
+                                        {cert.subtitle && <p style={{ color: 'var(--text-main)', fontWeight: 600, fontSize: '1rem', marginBottom: '0.25rem' }}>{cert.subtitle}</p>}
+                                        <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 700, marginBottom: '0.4rem', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
+                                            {cert.period}
+                                            {cert.noExpiry && (
+                                                <span style={{
+                                                    fontSize: '0.7rem',
+                                                    color: 'var(--primary)',
+                                                    background: 'var(--primary-glow)',
+                                                    padding: '0.1rem 0.6rem',
+                                                    borderRadius: '4px',
+                                                    border: '1px solid rgba(16, 185, 129, 0.2)',
+                                                    textTransform: 'uppercase',
+                                                    letterSpacing: '0.05em'
+                                                }}>
+                                                    No Expiry
+                                                </span>
+                                            )}
+                                        </p>
+                                        <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', fontWeight: 600 }}>{cert.issuer}</p>
                                     </div>
 
                                     <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
