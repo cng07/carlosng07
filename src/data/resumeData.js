@@ -108,10 +108,14 @@ export const resumeData = {
       period: "November 2018 - March 2021",
       location: "Mandaluyong City, Philippines",
       achievements: [
-        "Develop, debug, and execute Automation Anywhere Test Scripts",
-        "Create and execute automation script for desktop browser using Selenium WebDriver",
-        "Provide expertise in planning, constructing, and execution of test scripts",
-        "Dev/Test PWD (Accessibility tools)"
+        "Developed, debugged, and executed automated test scripts using Automation Anywhere (RPA)",
+        "Provided technical expertise in the planning, design, and execution of test scripts",
+        "Applied business and functional knowledge of testing standards and methodologies to meet team objectives",
+        "Managed the full defect lifecycle, tracking issues to closure and maintaining an accurate repository",
+        "Conducted accessibility testing (PWD) using specialized tools to ensure inclusive user experiences",
+        "Managed ticket statuses and provided technical support for the attendance website via ServiceNow",
+        "Collaborated within a Scrum Agile environment to deliver iterative software improvements",
+        "Maintained client data integrity by performing updates and management tasks on AWS DynamoDB"
       ]
     },
     {
