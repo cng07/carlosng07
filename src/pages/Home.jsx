@@ -199,7 +199,12 @@ const Home = () => {
                             <Bot size={20} color="var(--primary)" /> Test Automation
                         </h3>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                            {resumeData.skills.testAutomation.map(s => <span key={s} className="badge">{s}</span>)}
+                            {resumeData.skills.testAutomation.map(s => (
+                                <span key={s.name} className="badge" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                    <img src={s.logo} alt={s.name} style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
+                                    {s.name}
+                                </span>
+                            ))}
                         </div>
                     </div>
                     <div className="glass" style={{ padding: '2rem' }}>
@@ -207,7 +212,12 @@ const Home = () => {
                             <Code2 size={20} color="var(--primary)" /> Programming Languages
                         </h3>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                            {resumeData.skills.programmingLanguages.map(s => <span key={s} className="badge">{s}</span>)}
+                            {resumeData.skills.programmingLanguages.map(s => (
+                                <span key={s.name} className="badge" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                    <img src={s.logo} alt={s.name} style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
+                                    {s.name}
+                                </span>
+                            ))}
                         </div>
                     </div>
                     <div className="glass" style={{ padding: '2rem' }}>
@@ -215,7 +225,12 @@ const Home = () => {
                             <Infinity size={20} color="var(--primary)" /> CI/CD
                         </h3>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                            {resumeData.skills.cicd.map(s => <span key={s} className="badge">{s}</span>)}
+                            {resumeData.skills.cicd.map(s => (
+                                <span key={s.name} className="badge" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                    <img src={s.logo} alt={s.name} style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
+                                    {s.name}
+                                </span>
+                            ))}
                         </div>
                     </div>
                     <div className="glass" style={{ padding: '2rem' }}>
@@ -223,7 +238,18 @@ const Home = () => {
                             <Search size={20} color="var(--primary)" /> Manual Testing
                         </h3>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                            {resumeData.skills.manualTesting.map(s => <span key={s} className="badge">{s}</span>)}
+                            {resumeData.skills.manualTesting.map(s => (
+                                <span key={s.name} className="badge" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                    {s.logos ? (
+                                        s.logos.map((logo, idx) => (
+                                            <img key={idx} src={logo} alt={s.name} style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
+                                        ))
+                                    ) : (
+                                        <img src={s.logo} alt={s.name} style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
+                                    )}
+                                    {s.name}
+                                </span>
+                            ))}
                         </div>
                     </div>
                     <div className="glass" style={{ padding: '2rem' }}>
@@ -231,7 +257,12 @@ const Home = () => {
                             <Wrench size={20} color="var(--primary)" /> Other Tools
                         </h3>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                            {resumeData.skills.otherTools.map(s => <span key={s} className="badge">{s}</span>)}
+                            {resumeData.skills.otherTools.map(s => (
+                                <span key={s.name} className="badge" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                    <img src={s.logo} alt={s.name} style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
+                                    {s.name}
+                                </span>
+                            ))}
                         </div>
                     </div>
                 </div>
