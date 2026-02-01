@@ -17,6 +17,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Resume from './pages/Resume';
 import Certifications from './pages/Certifications';
+import Education from './pages/Education';
 
 const App = () => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -40,6 +41,7 @@ const App = () => {
                         <Link to="/about">About</Link>
                         <Link to="/resume">Resume</Link>
                         <Link to="/certifications">Certifications</Link>
+                        <Link to="/education">Education</Link>
                         <Link to="/contact">Contact</Link>
                     </div>
 
@@ -61,6 +63,7 @@ const App = () => {
                         <Link to="/about" onClick={closeMenu}>About</Link>
                         <Link to="/resume" onClick={closeMenu}>Resume</Link>
                         <Link to="/certifications" onClick={closeMenu}>Certifications</Link>
+                        <Link to="/education" onClick={closeMenu}>Education</Link>
                         <Link to="/contact" onClick={closeMenu}>Contact</Link>
                     </motion.div>
                 )}
@@ -70,6 +73,7 @@ const App = () => {
                     <Route path="/about" element={<About />} />
                     <Route path="/resume" element={<Resume />} />
                     <Route path="/certifications" element={<Certifications />} />
+                    <Route path="/education" element={<Education />} />
                     <Route path="/contact" element={<Contact />} />
                 </Routes>
 
