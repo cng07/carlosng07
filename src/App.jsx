@@ -40,7 +40,7 @@ const App = () => {
                 {/* Navigation */}
                 <nav className="glass nav-bar">
                     <Link to="/" className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                        <span className="nav-logo-full">Carlos Angelo E. Ng</span>
+                        <span className="nav-logo-full">Carlos Ng</span>
                         <span className="nav-logo-short">C.NG</span>
                     </Link>
 
