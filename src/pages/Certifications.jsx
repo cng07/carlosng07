@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, ExternalLink, CheckCircle2 } from 'lucide-react';
+import { Award, ExternalLink, CheckCircle2, Calendar } from 'lucide-react';
 import { resumeData } from '../data/resumeData';
 
 const Certifications = () => {
@@ -16,38 +16,130 @@ const Certifications = () => {
                     My professional credentials and certifications.
                 </p>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '2rem' }}>
                     {resumeData.certifications.map((cert, i) => (
                         <motion.div
                             key={i}
                             className="glass"
-                            style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}
+                            style={{
+                                padding: '2.5rem',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '1.5rem'
+                            }}
                             whileHover={{ y: -5 }}
                         >
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem' }}>
-                                <div style={{ flex: 1 }}>
-                                    <h3 style={{ color: 'var(--text-main)', fontSize: '1.2rem', marginBottom: '0.3rem', textDecoration: 'underline' }}>{cert.title}</h3>
-                                    {cert.subtitle && <p style={{ color: 'var(--text-main)', fontWeight: 600, fontSize: '1.1rem', marginBottom: '0.3rem' }}>{cert.subtitle}</p>}
-                                    <p style={{ fontSize: '1rem', color: 'var(--primary)', fontWeight: 600 }}>{cert.issuer}</p>
+                            <div>
+                                <h3 style={{
+                                    color: 'var(--text-main)',
+                                    fontSize: '1.5rem',
+                                    fontWeight: 700,
+                                    lineHeight: 1.2,
+                                    marginBottom: '0.5rem'
+                                }}>
+                                    {cert.title}
+                                </h3>
+
+                                {cert.subtitle && (
+                                    <p style={{
+                                        color: 'var(--primary)',
+                                        fontWeight: 600,
+                                        fontSize: '1.1rem',
+                                        marginBottom: '1rem'
+                                    }}>
+                                        {cert.subtitle}
+                                    </p>
+                                )}
+
+                                <div style={{ marginTop: '1.25rem' }}>
+                                    {/* Dates Row */}
+                                    <div style={{
+                                        display: 'flex',
+                                        flexWrap: 'wrap',
+                                        gap: '0.75rem',
+                                        marginBottom: '0.75rem'
+                                    }}>
+                                        <span style={{
+                                            fontSize: '0.85rem',
+                                            color: '#fff',
+                                            fontWeight: 700,
+                                            background: 'var(--primary)',
+                                            padding: '0.4rem 0.8rem',
+                                            borderRadius: '6px',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '0.4rem'
+                                        }}>
+                                            <Calendar size={14} /> {cert.period}
+                                        </span>
+                                        {cert.noExpiry && (
+                                            <span style={{
+                                                fontSize: '0.85rem',
+                                                color: '#fff',
+                                                fontWeight: 700,
+                                                background: 'rgba(59, 130, 246, 0.5)',
+                                                padding: '0.4rem 0.8rem',
+                                                borderRadius: '6px',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '0.4rem',
+                                                backdropFilter: 'blur(4px)'
+                                            }}>
+                                                No Expiry
+                                            </span>
+                                        )}
+                                    </div>
+
+                                    {/* Issuer Row */}
+                                    <div style={{
+                                        fontSize: '0.95rem',
+                                        color: 'var(--text-muted)',
+                                        fontWeight: 600,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '0.5rem',
+                                        opacity: 0.9
+                                    }}>
+                                        <Award size={18} color="var(--primary)" /> {cert.issuer}
+                                    </div>
                                 </div>
-                                <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', whiteSpace: 'nowrap', fontWeight: 600, marginTop: '0.3rem' }}>{cert.period}</span>
                             </div>
 
-                            <div style={{ marginTop: '0.5rem' }}>
-                                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>
-                                    {cert.idLabel || 'Credential ID'}: {cert.link ? (
-                                        <a href={cert.link} target="_blank" rel="noreferrer" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>
+                            <div style={{
+                                marginTop: 'auto',
+                                paddingTop: '1.5rem',
+                                borderTop: '1px solid rgba(255,255,255,0.05)',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.8rem'
+                            }}>
+                                <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)' }}>
+                                    <span style={{ fontWeight: 600 }}>{cert.idLabel || 'Credential ID'}:</span> {' '}
+                                    {cert.link ? (
+                                        <a href={cert.link} target="_blank" rel="noreferrer" style={{ color: 'var(--primary)', fontWeight: 500, wordBreak: 'break-all' }}>
                                             {cert.credentialId}
                                         </a>
                                     ) : cert.credentialId}
                                 </p>
 
                                 {cert.additionalLinks && cert.additionalLinks.map((al, idx) => (
-                                    <p key={idx} style={{ fontSize: '0.9rem', marginTop: '0.5rem' }}>
-                                        <a href={al.url} target="_blank" rel="noreferrer" style={{ color: 'var(--primary)', textDecoration: 'underline', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                                            <ExternalLink size={14} /> {al.label}
-                                        </a>
-                                    </p>
+                                    <a
+                                        key={idx}
+                                        href={al.url}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        style={{
+                                            fontSize: '0.95rem',
+                                            color: 'var(--primary)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '0.5rem',
+                                            fontWeight: 500,
+                                            width: 'fit-content'
+                                        }}
+                                    >
+                                        <ExternalLink size={16} /> {al.label}
+                                    </a>
                                 ))}
                             </div>
                         </motion.div>

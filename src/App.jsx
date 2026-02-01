@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
     Github,
@@ -19,6 +19,14 @@ import Resume from './pages/Resume';
 import Certifications from './pages/Certifications';
 import Education from './pages/Education';
 
+const ScrollToTop = () => {
+    const { pathname } = useLocation();
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+    return null;
+};
+
 const App = () => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -27,17 +35,18 @@ const App = () => {
 
     return (
         <Router>
+            <ScrollToTop />
             <div className="portfolio">
                 {/* Navigation */}
                 <nav className="glass nav-bar">
-                    <div className="nav-logo">
+                    <Link to="/" className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                         <span className="nav-logo-full">Carlos Angelo E. Ng</span>
                         <span className="nav-logo-short">C.NG</span>
-                    </div>
+                    </Link>
 
                     {/* Desktop Links */}
                     <div className="nav-links">
-                        <Link to="/">Home</Link>
+                        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Home</Link>
                         <Link to="/about">About</Link>
                         <Link to="/resume">Resume</Link>
                         <Link to="/certifications">Certifications</Link>

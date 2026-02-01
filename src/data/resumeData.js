@@ -138,6 +138,7 @@ export const resumeData = {
       idLabel: "Credential ID",
       credentialId: "24-CTFL-01347-USA",
       period: "April 2024",
+      noExpiry: true,
       link: "https://drive.google.com/file/d/1hC1IcfeBia77IPZjuVlVPJro6JD64uiV/view?usp=sharing",
       additionalLinks: [
         { label: "Official U.S. List of Certified & Credentialed Software Testers™ Profile", url: "https://atsqa.org/certified-testers/profile/6676da6cab1b424aa4070395ff71f490" }
@@ -158,6 +159,7 @@ export const resumeData = {
       idLabel: "Certificate Number",
       credentialId: "CNAG0000009961",
       period: "June 2020",
+      noExpiry: true,
       link: "https://drive.google.com/file/d/1wZCYGH8kWoyWfNPrV7jLUhyhJ99JWK8S/view?usp=sharing"
     },
     {
