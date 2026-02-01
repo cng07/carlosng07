@@ -128,8 +128,7 @@ const Education = () => {
                                     textTransform: 'uppercase',
                                     letterSpacing: '0.2em',
                                     color: 'var(--primary)',
-                                    marginBottom: '1rem',
-                                    opacity: 0.8
+                                    marginBottom: '1rem'
                                 }}>
                                     {edu.type}
                                 </div>
@@ -283,7 +282,7 @@ const Education = () => {
                         </h3>
 
                         {/* Publication Metadata */}
-                        <div style={{ marginBottom: '2rem', color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.8 }}>
+                        <div style={{ marginBottom: '2rem', color: 'var(--text-main)', fontSize: '0.9rem', lineHeight: 1.8 }}>
                             <p style={{ marginBottom: '0.5rem' }}>
                                 <strong>Published in:</strong> <a href="https://ieeexplore.ieee.org/xpl/conhome/8555972/proceeding" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>2018 IEEE 7th Global Conference on Consumer Electronics (GCCE)</a>
                             </p>
@@ -304,19 +303,19 @@ const Education = () => {
                             </p>
                             
                             <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-                                <p style={{ marginBottom: '0.4rem', fontSize: '0.85rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                                <p style={{ marginBottom: '0.4rem', fontSize: '0.85rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--primary)' }}>
                                     ISBN Information:
                                 </p>
-                                <p style={{ marginBottom: '0.3rem', marginLeft: '0.5rem' }}>
+                                <p style={{ marginBottom: '0.3rem', marginLeft: '0.5rem', color: 'var(--text-main)' }}>
                                     Electronic ISBN: 978-1-5386-6309-7
                                 </p>
-                                <p style={{ marginBottom: '0.3rem', marginLeft: '0.5rem' }}>
+                                <p style={{ marginBottom: '0.3rem', marginLeft: '0.5rem', color: 'var(--text-main)' }}>
                                     CD: 978-1-5386-6308-0
                                 </p>
-                                <p style={{ marginBottom: '0.3rem', marginLeft: '0.5rem' }}>
+                                <p style={{ marginBottom: '0.3rem', marginLeft: '0.5rem', color: 'var(--text-main)' }}>
                                     Print on Demand (PoD) ISBN: 978-1-5386-6310-3
                                 </p>
-                                <p style={{ marginLeft: '0.5rem' }}>
+                                <p style={{ marginLeft: '0.5rem', color: 'var(--text-main)' }}>
                                     Print on Demand (PoD) ISSN: 2378-8143
                                 </p>
                             </div>
@@ -341,7 +340,7 @@ const Education = () => {
                                 Abstract
                             </h4>
                             <p style={{
-                                color: 'var(--text-muted)',
+                                color: 'var(--text-main)',
                                 fontSize: '0.95rem',
                                 lineHeight: 1.7,
                                 background: 'rgba(var(--primary-rgb), 0.05)',

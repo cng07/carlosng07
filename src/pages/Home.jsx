@@ -164,7 +164,7 @@ const Home = () => {
                                             </div>
                                             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                                                 {role.achievements.map((item, i) => (
-                                                    <li key={i} style={{ display: 'flex', gap: '1rem', color: 'var(--text-muted)', fontSize: '1rem', lineHeight: '1.5' }}>
+                                                    <li key={i} style={{ display: 'flex', gap: '1rem', color: 'var(--text-main)', fontSize: '1rem', lineHeight: '1.5' }}>
                                                         <CheckCircle2 size={18} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.25rem' }} />
                                                         <span>{item}</span>
                                                     </li>
@@ -176,7 +176,7 @@ const Home = () => {
                             ) : (
                                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                                     {exp.achievements.map((item, i) => (
-                                        <li key={i} style={{ display: 'flex', gap: '1rem', color: 'var(--text-muted)', fontSize: '1rem', lineHeight: '1.5' }}>
+                                        <li key={i} style={{ display: 'flex', gap: '1rem', color: 'var(--text-main)', fontSize: '1rem', lineHeight: '1.5' }}>
                                             <CheckCircle2 size={18} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.25rem' }} />
                                             <span>{item}</span>
                                         </li>

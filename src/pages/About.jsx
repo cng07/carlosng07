@@ -34,7 +34,7 @@ const About = () => {
                                 </div>
                                 {resumeData.about.map((paragraph, i) => (
                                     <p key={i} style={{
-                                        color: 'rgba(255, 255, 255, 0.9)',
+                                        color: 'var(--text-main)',
                                         fontSize: '1.1rem',
                                         lineHeight: '1.7'
                                     }}>
@@ -93,7 +93,7 @@ const About = () => {
                             <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                                 <Lightbulb size={20} color="var(--primary)" /> QA Philosophy
                             </h3>
-                            <p style={{ color: 'rgba(255, 255, 255, 0.9)', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                            <p style={{ color: 'var(--text-main)', lineHeight: '1.6', fontSize: '0.95rem' }}>
                                 My goal in QA is simple: reduce risk, increase confidence, and keep releases smooth.
                             </p>
                         </div>
