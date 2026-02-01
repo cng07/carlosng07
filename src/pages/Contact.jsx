@@ -12,7 +12,11 @@ const Contact = () => {
             value: resumeData.email
         },
         {
-            icon: <img src="/linkedin-logo.png" alt="LinkedIn" style={{ height: '24px', width: 'auto' }} />,
+            icon: (
+                <div style={{ backgroundColor: '#fff', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2px' }}>
+                    <img src="/linkedin-logo.png" alt="LinkedIn" style={{ height: '22px', width: 'auto' }} />
+                </div>
+            ),
             label: 'LinkedIn',
             href: resumeData.linkedIn,
             value: 'Connect on LinkedIn'

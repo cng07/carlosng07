@@ -74,11 +74,14 @@ const Home = () => {
                     </p>
                     <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                         <a href={resumeData.linkedIn} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <img
-                                src="/linkedin-logo.png"
-                                alt="LinkedIn Logo"
-                                style={{ height: '20px', width: 'auto' }}
-                            /> LinkedIn
+                            <div style={{ backgroundColor: '#fff', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2px' }}>
+                                <img
+                                    src="/linkedin-logo.png"
+                                    alt="LinkedIn Logo"
+                                    style={{ height: '18px', width: 'auto' }}
+                                />
+                            </div>
+                            LinkedIn
                         </a>
                         <a href={resumeData.github} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <div style={{
