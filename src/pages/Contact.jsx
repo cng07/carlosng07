@@ -59,7 +59,7 @@ const Contact = () => {
                 <h1 className="section-title">Get in Touch</h1>
                 <div className="glass" style={{ padding: '3rem', textAlign: 'center', marginBottom: '3rem' }}>
                     <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto 3rem' }}>
-                        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+                        Let's connect to exchange ideas and discuss topics related to software engineering and innovation.
                     </p>
 
                     <div style={{

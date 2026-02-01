@@ -12,9 +12,6 @@ const Certifications = () => {
                 transition={{ duration: 0.6 }}
             >
                 <h1 className="section-title">Certifications</h1>
-                <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', textAlign: 'center', marginBottom: '3rem', maxWidth: '800px', margin: '0 auto 3rem' }}>
-                    My professional credentials and certifications.
-                </p>
 
                 <div style={{
                     display: 'flex',

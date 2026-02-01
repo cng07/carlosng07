@@ -13,7 +13,7 @@ const Resume = () => {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
                     <h1 className="section-title" style={{ marginBottom: 0 }}>
                         <FileText size={32} color="var(--primary)" style={{ verticalAlign: 'middle', marginRight: '0.75rem' }} />
-                        My Resume
+                        Resume
                     </h1>
                     <a
                         href="/Carlos_Ng_Resume.pdf"
