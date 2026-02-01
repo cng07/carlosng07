@@ -35,7 +35,7 @@ const Contact = () => {
         },
         {
             icon: <img src="https://astqb.org/assets/images/certified-tester-list-logo.png" alt="ASTQB" style={{ height: '24px', width: 'auto' }} />,
-            label: 'Official U.S. List of Certified & Credentialed Software Testers™ Profile',
+            label: 'AT*SQA Profile',
             href: resumeData.atsqaProfile,
             value: 'View Certified Tester Profile'
         }
