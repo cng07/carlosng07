@@ -2,34 +2,13 @@
 
 A premium, high-performance personal portfolio website built with React, Vite, and Framer Motion. This project showcases professional experience, technical skills, and certifications specifically tailored for a Senior Quality Assurance Automation Engineer.
 
-## ✨ Key Highlights
+## ✨ Key Features
 
-- **Technology Logos**: All technical skills display official brand logos for instant recognition
-- **Enhanced About Page**: Personalized greeting, refined bio, and QA Philosophy section
-- **Modern UI/UX**: Dark-themed glassmorphic design with emerald accents and white skill badges
-- **Responsive Design**: Mobile-first approach with adaptive navigation and layouts
-- **Smooth Animations**: Elegant transitions and scroll effects using Framer Motion
-- **Optimized Performance**: Built with Vite for lightning-fast loading
-
-## 🎨 Recent Improvements
-
-### Technology Logos
-- **Skills Visualization**: Each technology displays its official logo (Playwright, Selenium, TypeScript, Java, etc.)
-- **Browser Icons**: UI testing showcases Chrome, Edge, and Firefox logos
-- **White Badge Background**: High-contrast design ensuring all logos are clearly visible
-- **Smart Rendering**: Supports both single and multiple logos per skill
-
-### About Page Enhancements
-- **Animated Greeting**: Waving hand emoji (👋) with "Hello there!" message
-- **Improved Typography**: Larger, more prominent name display
-- **Better Readability**: Enhanced text contrast with optimized color values
-- **QA Philosophy**: Dedicated section with lightbulb icon highlighting quality mindset
-- **Visual Hierarchy**: Reordered content for better flow and engagement
-
-### Layout & Spacing
-- **Footer Margin**: Increased spacing between content and footer for better visual separation
-- **Centered Elements**: Properly aligned greeting text and profile sections
-- **Consistent Padding**: Unified spacing across all page sections
+- **Professional Design**: Dark glassmorphic UI with emerald accents and smooth animations
+- **Technology Logos**: Official brand logos for all technical skills
+- **Fully Responsive**: Mobile-first design with adaptive layouts
+- **Fast Performance**: Built with Vite for optimized loading
+- **Easy to Customize**: Centralized content management via `resumeData.js`
 
 ## 🛠️ Tech Stack
 
@@ -146,38 +125,15 @@ Edit CSS variables in `src/index.css`:
 }
 ```
 
-## 🎯 Features Breakdown
+## 📄 Page Sections
 
-### Navigation
-- Fixed header with glassmorphic effect
-- Smooth scroll to sections
-- Mobile hamburger menu
-- Responsive logo display
-
-### Hero Section
-- Profile picture with glow effect
-- Animated name and tagline
-- Job title badge with emerald accent
-- Call-to-action buttons
-
-### Skills Section
-- Categorized technical skills
-- Official technology logos
-- White badges for maximum visibility
-- Responsive grid layout
-
-### About Page
-- Personalized greeting with waving emoji
-- Professional bio
-- QA Philosophy statement
-- Profile images showcase
-- Contact details with icons
-
-### Certifications
-- Professional certification cards
-- Download buttons for credentials
-- Organized by category
+- **Home**: Hero with profile, categorized skills with logos, and call-to-action buttons
+- **About**: Bio, QA philosophy, and professional overview
+- **Education**: Educational background
+- **Certifications**: Professional certifications with download links
+- **Contact**: Contact information and details
+- **Resume**: Embedded resume viewer
 
 ---
 
-**Built with 💚 by Carlos Ng** | [LinkedIn](https://www.linkedin.com/in/carloangeloeng/) | [GitHub](https://github.com/cng07)
+**Built with 💚 by Carlos Ng** | [🔗 LinkedIn](https://www.linkedin.com/in/carloangeloeng/) | [🐙 GitHub](https://github.com/cng07)
