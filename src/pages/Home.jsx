@@ -81,11 +81,23 @@ const Home = () => {
                             /> LinkedIn
                         </a>
                         <a href={resumeData.github} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <img
-                                src="/github-logo.png"
-                                alt="GitHub Logo"
-                                style={{ height: '20px', width: 'auto' }}
-                            /> GitHub
+                            <div style={{
+                                backgroundColor: '#fff',
+                                borderRadius: '50%',
+                                width: '24px',
+                                height: '24px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                overflow: 'hidden'
+                            }}>
+                                <img
+                                    src="/github-logo.png"
+                                    alt="GitHub Logo"
+                                    style={{ width: '18px', height: '18px' }}
+                                />
+                            </div>
+                            GitHub
                         </a>
                         <a href={resumeData.ieee} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <img
