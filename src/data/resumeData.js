@@ -187,6 +187,16 @@ export const resumeData = {
       highlights: [
         "Dean's List Awardee, June 2015",
         "Dean's List Awardee, June 2014"
+      ],
+      fullHighlights: [
+        "Best Exhibit, Engineering Symposium and Exhibit, April 2018",
+        "Best Project for Transmission Media and Antenna Systems Class, Mar. 2016",
+        "Best Project for Principles of Communication Class, Sept. 2015",
+        "Dean’s List Awardee, June 2015",
+        "Best Project for Intensive Electronics Engineering Program 2 Class, Mar. 2015",
+        "Best Project for Circuits 1 Class, Dec. 2014",
+        "Best Project for Intensive Electronics Engineering Program 1 Class, Dec. 2014",
+        "Dean’s List Awardee, June 2014"
       ]
     },
     {

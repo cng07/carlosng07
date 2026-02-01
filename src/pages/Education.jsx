@@ -195,7 +195,7 @@ const Education = () => {
                                             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
                                             gap: '1.25rem'
                                         }}>
-                                            {edu.highlights.map((h, i) => (
+                                            {(edu.fullHighlights || edu.highlights).map((h, i) => (
                                                 <div key={i} style={{
                                                     display: 'flex',
                                                     gap: '1rem',
