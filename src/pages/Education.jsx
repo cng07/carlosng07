@@ -174,7 +174,7 @@ const Education = () => {
                                     </div>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-muted)' }}>
                                         <MapPin size={20} color="var(--primary)" />
-                                        <span style={{ fontWeight: 500 }}>{edu.address}</span>
+                                        <span style={{ fontWeight: 500 }}>{edu.fullAddress}</span>
                                     </div>
                                 </div>
 
@@ -238,7 +238,7 @@ const Education = () => {
                                         </div>
                                         <h4 style={{ color: '#fff', fontSize: '1.2rem', marginBottom: '0.5rem' }}>{edu.scholarship.name}</h4>
                                         <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                            <MapPin size={14} /> {edu.scholarship.address}
+                                            <MapPin size={14} /> {edu.scholarship.fullAddress}
                                         </p>
                                     </div>
                                 )}

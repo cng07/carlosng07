@@ -178,9 +178,11 @@ export const resumeData = {
       degree: "BS Electronics Engineering",
       period: "June 2013 – April 2018",
       address: "Makati City, Philippines",
+      fullAddress: "#3 Humabon Place, Magallanes, Makati City, Philippines",
       scholarship: {
         name: "SM Foundation, Inc.",
-        address: "Pasay City, Philippines"
+        address: "Pasay City, Philippines",
+        fullAddress: "SM Corporate Offices Building B, J.W. Diokno Blvd, Pasay City, Philippines"
       },
       highlights: [
         "Dean's List Awardee, June 2015",
@@ -191,7 +193,8 @@ export const resumeData = {
       type: "Secondary",
       school: "Makati Science High School",
       period: "June 2009 – March 2013",
-      address: "Makati City, Philippines"
+      address: "Makati City, Philippines",
+      fullAddress: "9 Kalayaan Ave, Makati City, Philippines"
     }
   ],
 
