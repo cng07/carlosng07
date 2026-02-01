@@ -1,15 +1,44 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { resumeData } from '../data/resumeData';
-import IeeeIcon from '../components/CustomIcons';
 
 const Contact = () => {
     const contactLinks = [
-        { icon: <Mail size={24} />, label: 'Email', href: `mailto:${resumeData.email}`, value: resumeData.email },
-        { icon: <Linkedin size={24} />, label: 'LinkedIn', href: resumeData.linkedIn, value: 'Connect on LinkedIn' },
-        { icon: <Github size={24} />, label: 'GitHub', href: resumeData.github, value: 'Follow on GitHub' },
-        { icon: <IeeeIcon size={24} />, label: 'IEEE Xplore', href: resumeData.ieee, value: 'View Publications' }
+        {
+            icon: <Mail size={24} />,
+            label: 'Email',
+            href: `mailto:${resumeData.email}`,
+            value: resumeData.email
+        },
+        {
+            icon: <img src="/linkedin-logo.png" alt="LinkedIn" style={{ height: '24px', width: 'auto' }} />,
+            label: 'LinkedIn',
+            href: resumeData.linkedIn,
+            value: 'Connect on LinkedIn'
+        },
+        {
+            icon: (
+                <div style={{ backgroundColor: '#fff', borderRadius: '50%', width: '28px', height: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+                    <img src="/github-logo.png" alt="GitHub" style={{ width: '20px', height: '20px' }} />
+                </div>
+            ),
+            label: 'GitHub',
+            href: resumeData.github,
+            value: 'Follow on GitHub'
+        },
+        {
+            icon: <img src="/ieee-logo.png" alt="IEEE" style={{ height: '24px', width: 'auto' }} />,
+            label: 'IEEE Xplore',
+            href: resumeData.ieee,
+            value: 'View Publications'
+        },
+        {
+            icon: <img src="https://astqb.org/assets/images/certified-tester-list-logo.png" alt="ASTQB" style={{ height: '24px', width: 'auto' }} />,
+            label: 'AT*SQA Profile',
+            href: resumeData.atsqaProfile,
+            value: 'View Certified Tester Profile'
+        }
     ];
 
     return (
