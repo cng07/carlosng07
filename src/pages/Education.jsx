@@ -117,13 +117,12 @@ const Education = () => {
                                 borderRadius: '32px',
                                 border: '1px solid rgba(255,255,255,0.05)',
                                 position: 'relative',
-                                overflow: 'hidden'
+                                overflow: 'hidden',
+                                display: 'flex',
+                                flexDirection: 'column'
                             }}>
                                 {/* Subtle Type Indicator */}
                                 <div style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
                                     fontSize: '0.8rem',
                                     fontWeight: 700,
                                     textTransform: 'uppercase',
@@ -132,11 +131,10 @@ const Education = () => {
                                     marginBottom: '1rem',
                                     opacity: 0.8
                                 }}>
-                                    {edu.type === 'Tertiary' ? <BookOpen size={14} /> : <School size={14} />}
                                     {edu.type}
                                 </div>
 
-                                <div style={{ marginBottom: '2.5rem' }}>
+                                <div style={{ marginBottom: '1.5rem' }}>
                                     <h2 style={{
                                         fontSize: 'clamp(1.5rem, 5vw, 2.2rem)',
                                         marginBottom: '0.75rem',
@@ -147,15 +145,16 @@ const Education = () => {
                                     </h2>
                                     {edu.degree && (
                                         <div style={{
-                                            display: 'inline-block',
-                                            padding: '0.5rem 1rem',
-                                            borderRadius: '12px',
-                                            background: 'linear-gradient(90deg, rgba(var(--primary-rgb), 0.2), transparent)',
-                                            borderLeft: '4px solid var(--primary)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '0.75rem',
+                                            padding: '0.5rem 0',
                                             color: '#fff',
                                             fontWeight: 600,
-                                            fontSize: '1.1rem'
+                                            fontSize: '1.1rem',
+                                            width: 'fit-content'
                                         }}>
+                                            <GraduationCap size={24} color="var(--primary)" />
                                             {edu.degree}
                                         </div>
                                     )}
@@ -168,11 +167,11 @@ const Education = () => {
                                     marginBottom: '3rem'
                                 }}>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-muted)' }}>
-                                        <Calendar size={20} color="var(--primary)" />
+                                        <Calendar size={24} color="var(--primary)" />
                                         <span style={{ fontWeight: 500 }}>{edu.period}</span>
                                     </div>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-muted)' }}>
-                                        <MapPin size={20} color="var(--primary)" />
+                                        <MapPin size={edu.type === 'Tertiary' ? 28 : 24} color="var(--primary)" />
                                         <span style={{ fontWeight: 500 }}>{edu.fullAddress}</span>
                                     </div>
                                 </div>
@@ -187,7 +186,7 @@ const Education = () => {
                                             alignItems: 'center',
                                             gap: '0.6rem'
                                         }}>
-                                            <Award size={22} color="var(--primary)" /> Honors & Achievements
+                                            <Award size={24} color="var(--primary)" /> Honors & Achievements
                                         </h4>
                                         <div style={{
                                             display: 'grid',
@@ -204,7 +203,7 @@ const Education = () => {
                                                     border: '1px solid rgba(255,255,255,0.05)',
                                                     transition: 'all 0.3s ease'
                                                 }}>
-                                                    <Star size={18} style={{ color: '#ffd700', flexShrink: 0, marginTop: '0.1rem' }} />
+                                                    <Star size={24} style={{ color: '#ffd700', flexShrink: 0, marginTop: '0.1rem' }} />
                                                     <span style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.5' }}>{h}</span>
                                                 </div>
                                             ))}
@@ -237,13 +236,123 @@ const Education = () => {
                                         </div>
                                         <h4 style={{ color: '#fff', fontSize: '1.2rem', marginBottom: '0.5rem' }}>{edu.scholarship.name}</h4>
                                         <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', display: 'flex', alignItems: 'flex-start', gap: '0.5rem', lineHeight: '1.5' }}>
-                                            <MapPin size={14} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.25rem' }} /> {edu.scholarship.fullAddress}
+                                            <MapPin size={24} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.25rem' }} /> {edu.scholarship.fullAddress}
                                         </p>
                                     </div>
                                 )}
                             </div>
                         </motion.div>
                     ))}
+                </div>
+
+                {/* Publications Section */}
+                <div style={{ marginTop: '6rem', maxWidth: '900px', margin: '6rem auto 0' }}>
+                    <motion.h2
+                        variants={itemVariants}
+                        style={{
+                            fontSize: 'clamp(1.8rem, 6vw, 2.5rem)',
+                            fontWeight: 800,
+                            marginBottom: '2.5rem',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '1rem',
+                            color: 'var(--text-main)'
+                        }}
+                    >
+                        <BookOpen size={32} color="var(--primary)" />
+                        Publications
+                    </motion.h2>
+
+                    <motion.div
+                        variants={itemVariants}
+                        className="glass"
+                        style={{
+                            padding: 'clamp(1.5rem, 5vw, 3rem)',
+                            borderRadius: '24px',
+                            border: '1px solid rgba(255,255,255,0.05)'
+                        }}
+                    >
+                        <h3 style={{
+                            fontSize: '1.3rem',
+                            fontWeight: 700,
+                            marginBottom: '1.5rem',
+                            color: 'var(--text-main)',
+                            lineHeight: 1.4
+                        }}>
+                            A Development of a Low-Cost 12-Lead Electrocardiogram Monitoring Device Using Android-Based Smartphone
+                        </h3>
+
+                        {/* Publication Metadata */}
+                        <div style={{ marginBottom: '2rem', color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.8 }}>
+                            <p style={{ marginBottom: '0.5rem' }}>
+                                <strong>Published in:</strong> <a href="https://ieeexplore.ieee.org/xpl/conhome/8555972/proceeding" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>2018 IEEE 7th Global Conference on Consumer Electronics (GCCE)</a>
+                            </p>
+                            <p style={{ marginBottom: '0.5rem' }}>
+                                <strong>Date of Conference:</strong> 09-12 October 2018
+                            </p>
+                            <p style={{ marginBottom: '0.5rem' }}>
+                                <strong>Date Added to IEEE Xplore:</strong> 13 December 2018
+                            </p>
+                            <p style={{ marginBottom: '0.5rem' }}>
+                                <strong>Conference Location:</strong> Nara, Japan
+                            </p>
+                            <p style={{ marginBottom: '0.5rem' }}>
+                                <strong>Publisher:</strong> IEEE
+                            </p>
+                            <p style={{ marginBottom: '0.5rem' }}>
+                                <strong>DOI:</strong> 10.1109/GCCE.2018.8574836
+                            </p>
+                            
+                            <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                                <p style={{ marginBottom: '0.4rem', fontSize: '0.85rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                                    ISBN Information:
+                                </p>
+                                <p style={{ marginBottom: '0.3rem', marginLeft: '0.5rem' }}>
+                                    Electronic ISBN: 978-1-5386-6309-7
+                                </p>
+                                <p style={{ marginBottom: '0.3rem', marginLeft: '0.5rem' }}>
+                                    CD: 978-1-5386-6308-0
+                                </p>
+                                <p style={{ marginBottom: '0.3rem', marginLeft: '0.5rem' }}>
+                                    Print on Demand (PoD) ISBN: 978-1-5386-6310-3
+                                </p>
+                                <p style={{ marginLeft: '0.5rem' }}>
+                                    Print on Demand (PoD) ISSN: 2378-8143
+                                </p>
+                            </div>
+
+                            <p style={{ marginTop: '1.5rem' }}>
+                                <a href="https://ieeexplore.ieee.org/document/8574836" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'underline', fontSize: '0.95rem', fontWeight: 600 }}>
+                                    View on IEEE Xplore →
+                                </a>
+                            </p>
+                        </div>
+
+                        {/* Abstract Section */}
+                        <div style={{ marginBottom: '1.5rem' }}>
+                            <h4 style={{
+                                fontSize: '1rem',
+                                fontWeight: 700,
+                                marginBottom: '0.75rem',
+                                color: 'var(--primary)',
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.05em'
+                            }}>
+                                Abstract
+                            </h4>
+                            <p style={{
+                                color: 'var(--text-muted)',
+                                fontSize: '0.95rem',
+                                lineHeight: 1.7,
+                                background: 'rgba(var(--primary-rgb), 0.05)',
+                                padding: '1.25rem',
+                                borderLeft: '3px solid var(--primary)',
+                                borderRadius: '8px'
+                            }}>
+                                The ECG3Gs+ is an alternative to the 12-Lead conventional electrocardiogram (ECG) device interfaced with Android smartphone via Bluetooth module. Several 12-Lead ECGs are commercially available, but are very costly. ECG3Gs+, on the other hand, is developed to have functions similar to the conventional ECG. The device is accurate, and power efficient that provides a pre-diagnostic readings and interpretation. This project targets financially-challenged people from remote areas who have heart ailments and who wanted their ECGs checked. It is capable of reading the R-R Interval, QRS Interval, Heart Rate, and Heart Rhythm. Through Bluetooth Module, ECG3Gs+ is connected to Android smartphone. An Android-based application was developed to display the ECG waveform and readings. The parallel testing of ECG3Gs+ and the conventional ECG machine yielded 92.43% accuracy for R-R Interval, 89.24% for QRS Interval, 91.62% for Heart Rate, and 100% for Heart Rhythm. The prototype is power efficient with 815.85 mW power rating.
+                            </p>
+                        </div>
+                    </motion.div>
                 </div>
             </motion.div>
         </main>
