@@ -60,9 +60,11 @@ const Home = () => {
                     <div style={{ marginBottom: '2.5rem' }}>
                         <span className="badge" style={{
                             display: 'inline-block',
+                            background: 'var(--primary-glow)',
                             color: '#fff',
                             borderColor: 'var(--primary)',
-                            padding: '0.4rem 1.25rem'
+                            padding: '0.4rem 1.25rem',
+                            boxShadow: 'none'
                         }}>
                             Senior Quality Assurance Automation Engineer at Datacom
                         </span>
