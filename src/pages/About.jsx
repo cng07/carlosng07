@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { resumeData } from '../data/resumeData';
-import { User, Target, Zap, Github, Linkedin, Phone, Mail } from 'lucide-react';
+import { User, Target, Zap, Github, Linkedin, Phone, Mail, Brain } from 'lucide-react';
 
 const About = () => {
     return (
@@ -23,9 +23,18 @@ const About = () => {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                         <div className="glass" style={{ padding: '2rem' }}>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                                <div style={{ marginBottom: '1.5rem', textAlign: 'center' }}>
+                                    <span style={{ fontSize: '1.8rem', display: 'inline-block', position: 'relative', marginBottom: '0.5rem', color: 'var(--text-muted)', fontWeight: 500 }}>
+                                        <span className="wave" style={{ position: 'absolute', left: '-3.5rem', top: '-0.2rem', fontSize: '2.2rem' }}>👋</span>
+                                        Hello there!
+                                    </span>
+                                    <h2 style={{ fontSize: '3rem', lineHeight: '1.1' }}>
+                                        I'm <span style={{ color: 'var(--primary)' }}>Carlos Ng</span>
+                                    </h2>
+                                </div>
                                 {resumeData.about.map((paragraph, i) => (
                                     <p key={i} style={{
-                                        color: 'var(--text-muted)',
+                                        color: 'rgba(255, 255, 255, 0.9)',
                                         fontSize: '1.1rem',
                                         lineHeight: '1.7'
                                     }}>
@@ -50,11 +59,6 @@ const About = () => {
                                         @{resumeData.linkedIn.split('/').pop()}
                                     </a>
                                 </div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingLeft: '0.5rem', marginBottom: '0.4rem' }}>
-                                    <Phone size={24} color="var(--primary)" />
-                                    <span style={{ color: 'var(--text-main)', fontSize: '1.1rem' }}>{resumeData.mobile}</span>
-                                </div>
-
                                 <div style={{ borderTop: '1px solid rgba(var(--primary-rgb), 0.2)', margin: 0 }} />
 
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingLeft: '0.5rem', marginTop: '0.4rem', marginBottom: '0.8rem' }}>
@@ -85,6 +89,15 @@ const About = () => {
 
                     {/* Right Side: Profile Image & Stats */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                        <div className="glass" style={{ padding: '2rem' }}>
+                            <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                                <Brain size={20} color="var(--primary)" /> QA Philosophy
+                            </h3>
+                            <p style={{ color: 'rgba(255, 255, 255, 0.9)', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                                My goal in QA is simple: reduce risk, increase confidence, and keep releases smooth.
+                            </p>
+                        </div>
+
                         <div className="glass" style={{ padding: '1.5rem', textAlign: 'center' }}>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                                 <div style={{
@@ -128,17 +141,8 @@ const About = () => {
                                     />
                                 </div>
                             </div>
-                            <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem' }}>{resumeData.name}</h3>
+                            <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem', marginTop: '1rem' }}>{resumeData.name}</h3>
                             <p style={{ color: 'var(--primary)', fontWeight: 600 }}>{resumeData.role}</p>
-                        </div>
-
-                        <div className="glass" style={{ padding: '2rem' }}>
-                            <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                                <User size={20} color="var(--primary)" /> QA Philosophy
-                            </h3>
-                            <p style={{ color: 'var(--text-muted)', lineHeight: '1.6', fontSize: '0.95rem' }}>
-                                My goal in QA is simple: reduce risk, increase confidence, and keep releases smooth.
-                            </p>
                         </div>
                     </div>
                 </div>

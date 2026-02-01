@@ -10,8 +10,8 @@ export const resumeData = {
   atsqaProfile: "https://atsqa.org/certified-testers/profile/6676da6cab1b424aa4070395ff71f490",
 
   about: [
-    "I’m a Test Automation Engineer with 7+ years of experience in software testing, helping teams ship more reliable releases through practical and maintainable automation. These days I mainly focus on UI automation using Playwright with TypeScript, building test suites that are fast, stable, and easy to maintain.",
-    "I started out in manual and Selenium-based testing, which gave me a strong QA foundation. Over time I moved into modern automation with Playwright and framework design. I’ve led major automation initiatives, including migrating full test suites from Selenium to Playwright — cutting execution time from 19–24 hours down to about 4 hours for 300+ tests.",
+    "A Test Automation Engineer with 7+ years of experience in software testing, helping teams ship more reliable releases through practical and maintainable automation. These days I mainly focus on UI automation using Playwright with TypeScript, building test suites that are fast, stable, and easy to maintain.",
+    "I started out in manual and Selenium-based testing, which gave me a strong QA foundation. Over time I moved into modern automation with Playwright and framework design. I’ve spearheaded major automation initiatives, including migrating full test suites from Selenium to Playwright — cutting execution time from 19–24 hours down to about 4 hours for 300+ tests.",
     "I’m comfortable working with both new and existing projects — whether that’s building an automation framework from scratch, improving flaky tests, adding API coverage, or plugging tests into CI/CD pipelines. I like keeping things clean, practical, and useful for the team — not just “automation for the sake of automation.”",
     "Main tool I use: Playwright (TypeScript)"
   ],

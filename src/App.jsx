@@ -129,7 +129,7 @@ const App = () => {
                 </Routes>
 
                 {/* Footer */}
-                <footer style={{ padding: '4rem 0', borderTop: '1px solid var(--border)', textAlign: 'center' }}>
+                <footer style={{ padding: '4rem 0', borderTop: '1px solid var(--border)', textAlign: 'center', marginTop: '4rem' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginBottom: '1.5rem' }}>
                         <a href={resumeData.linkedIn} target="_blank" rel="noreferrer" className="footer-social"><Linkedin size={24} /></a>
                         <a href={resumeData.github} target="_blank" rel="noreferrer" className="footer-social"><Github size={24} /></a>
