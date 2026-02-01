@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-    Github,
-    Linkedin,
     ExternalLink,
     CheckCircle2,
     Award,
@@ -76,10 +74,18 @@ const Home = () => {
                     </p>
                     <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                         <a href={resumeData.linkedIn} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <Linkedin size={20} /> LinkedIn
+                            <img
+                                src="/linkedin-logo.png"
+                                alt="LinkedIn Logo"
+                                style={{ height: '20px', width: 'auto' }}
+                            /> LinkedIn
                         </a>
                         <a href={resumeData.github} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <Github size={20} /> GitHub
+                            <img
+                                src="/github-logo.png"
+                                alt="GitHub Logo"
+                                style={{ height: '20px', width: 'auto' }}
+                            /> GitHub
                         </a>
                         <a href={resumeData.ieee} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <img
