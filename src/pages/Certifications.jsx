@@ -132,6 +132,23 @@ const Certifications = () => {
                                             }}>
                                                 <Calendar size={14} /> {cert.period}
                                             </span>
+                                            {cert.expired && (
+                                                <span style={{
+                                                    fontSize: '0.85rem',
+                                                    color: '#fff',
+                                                    fontWeight: 700,
+                                                    background: 'rgba(239, 68, 68, 0.7)',
+                                                    padding: '0.4rem 0.8rem',
+                                                    borderRadius: '6px',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '0.4rem',
+                                                    backdropFilter: 'blur(4px)',
+                                                    border: '1px solid rgba(239, 68, 68, 0.5)'
+                                                }}>
+                                                    Expired
+                                                </span>
+                                            )}
                                             {cert.noExpiry && (
                                                 <span style={{
                                                     fontSize: '0.85rem',

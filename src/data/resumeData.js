@@ -175,6 +175,7 @@ export const resumeData = {
       idLabel: "Credential ID",
       credentialId: "23-AT*DevOps-00002-USA",
       period: "January 2023 – January 2026",
+      expired: true,
       image: "https://drive.google.com/thumbnail?id=1UqA8qJbYtNGSCNxxyFpiJKc8G2TtYgMy&sz=w1000",
       link: "https://drive.google.com/file/d/1UqA8qJbYtNGSCNxxyFpiJKc8G2TtYgMy/view?usp=sharing"
     },
@@ -196,6 +197,7 @@ export const resumeData = {
       idLabel: "Certificate Number",
       credentialId: "AAADVC-21147163",
       period: "July 2020 – July 2022",
+      expired: true,
       image: "/automation-anywhere-cert.png",
       link: "https://certificates.automationanywhere.com/0b9f6c08-c724-44cc-81e0-c68c84d18225"
     }
