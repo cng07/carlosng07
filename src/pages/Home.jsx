@@ -11,12 +11,10 @@ import {
     Terminal,
     MapPin,
     Briefcase,
-    GraduationCap,
-    ShieldCheck
+    GraduationCap
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { resumeData } from '../data/resumeData';
-import IeeeIcon from '../components/CustomIcons';
 
 const Home = () => {
     const fadeIn = {
@@ -84,10 +82,20 @@ const Home = () => {
                             <Github size={20} /> GitHub
                         </a>
                         <a href={resumeData.ieee} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <IeeeIcon size={20} /> IEEE Xplore
+                            <img
+                                src="/ieee-logo.png"
+                                alt="IEEE Logo"
+                                style={{ height: '20px', width: 'auto' }}
+                            />
+                            IEEE Xplore
                         </a>
                         <a href={resumeData.atsqaProfile} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <ShieldCheck size={20} /> Official U.S. List of Certified & Credentialed Software Testers™ Profile
+                            <img
+                                src="https://astqb.org/assets/images/certified-tester-list-logo.png"
+                                alt="ASTQB Logo"
+                                style={{ height: '20px', width: 'auto', borderRadius: '2px' }}
+                            />
+                            Official U.S. List of Certified & Credentialed Software Testers™ Profile
                         </a>
                     </div>
                 </motion.div>
