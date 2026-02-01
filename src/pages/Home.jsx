@@ -139,15 +139,15 @@ const Home = () => {
                             className="glass"
                             style={{ padding: '2rem' }}
                         >
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem' }}>
                                 <div>
                                     <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>{exp.company}</h3>
-                                    {!exp.roles && <p style={{ color: 'var(--primary)', fontWeight: 600, fontSize: '1.1rem' }}>{exp.role}</p>}
+                                    {!exp.roles && <p style={{ color: 'var(--primary)', fontWeight: 600, fontSize: '1.1rem', marginBottom: '0.5rem' }}>{exp.role}</p>}
                                 </div>
-                                <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                                    <p style={{ fontWeight: 500 }}>{exp.period}</p>
-                                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.25rem' }}>
-                                        <MapPin size={14} /> {exp.location}
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                                    <p style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '1rem' }}>{exp.period}</p>
+                                    <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                                        <MapPin size={14} color="var(--primary)" /> {exp.location}
                                     </p>
                                 </div>
                             </div>
@@ -156,7 +156,7 @@ const Home = () => {
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
                                     {exp.roles.map((role, ri) => (
                                         <div key={ri} style={{ borderLeft: '2px solid rgba(var(--primary-rgb), 0.2)', paddingLeft: '2rem', marginLeft: '0.25rem' }}>
-                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem' }}>
+                                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', marginBottom: '1rem' }}>
                                                 <h4 style={{ fontSize: '1.2rem', color: 'var(--primary)', fontWeight: 600 }}>{role.title}</h4>
                                                 <span style={{ fontSize: '0.95rem', color: 'var(--text-muted)', fontWeight: 600 }}>{role.period}</span>
                                             </div>
