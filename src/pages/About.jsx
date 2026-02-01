@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { resumeData } from '../data/resumeData';
-import { User, Target, Zap, Github, Linkedin, Phone, Mail, Brain } from 'lucide-react';
+import { User, Target, Zap, Github, Linkedin, Phone, Mail, Lightbulb } from 'lucide-react';
 
 const About = () => {
     return (
@@ -91,7 +91,7 @@ const About = () => {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                         <div className="glass" style={{ padding: '2rem' }}>
                             <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                                <Brain size={20} color="var(--primary)" /> QA Philosophy
+                                <Lightbulb size={20} color="var(--primary)" /> QA Philosophy
                             </h3>
                             <p style={{ color: 'rgba(255, 255, 255, 0.9)', lineHeight: '1.6', fontSize: '0.95rem' }}>
                                 My goal in QA is simple: reduce risk, increase confidence, and keep releases smooth.
