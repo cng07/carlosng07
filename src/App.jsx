@@ -58,14 +58,22 @@ const App = () => {
                     uniqueData = await uniqueRes.json();
                 }
 
-                setVisitorStats({
+                const newStats = {
                     total: totalData.count || 0,
                     unique: uniqueData.count || 0
-                });
+                };
+
+                setVisitorStats(newStats);
+                // Store stats in localStorage as backup
+                localStorage.setItem('site_visitor_stats', JSON.stringify(newStats));
 
             } catch (error) {
                 console.error("Error fetching visitor stats:", error);
-                // Fail silently or keep default 0
+                // Try to recover from localStorage if API fails
+                const cachedStats = localStorage.getItem('site_visitor_stats');
+                if (cachedStats) {
+                    setVisitorStats(JSON.parse(cachedStats));
+                }
             }
         };
 
