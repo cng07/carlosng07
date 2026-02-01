@@ -283,16 +283,32 @@ const Home = () => {
                                         {cert.subtitle && <p style={{ color: 'var(--text-main)', fontWeight: 600, fontSize: '1rem', marginBottom: '0.25rem' }}>{cert.subtitle}</p>}
                                         <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 700, marginBottom: '0.4rem', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
                                             {cert.period}
+                                            {cert.expired && (
+                                                <span style={{
+                                                    fontSize: '0.7rem',
+                                                    color: '#fff',
+                                                    background: 'rgba(239, 68, 68, 0.7)',
+                                                    padding: '0.1rem 0.6rem',
+                                                    borderRadius: '4px',
+                                                    border: '1px solid rgba(239, 68, 68, 0.5)',
+                                                    textTransform: 'uppercase',
+                                                    letterSpacing: '0.05em',
+                                                    fontWeight: 700
+                                                }}>
+                                                    Expired
+                                                </span>
+                                            )}
                                             {cert.noExpiry && (
                                                 <span style={{
                                                     fontSize: '0.7rem',
-                                                    color: 'var(--primary)',
-                                                    background: 'var(--primary-glow)',
+                                                    color: '#fff',
+                                                    background: 'rgba(59, 130, 246, 0.7)',
                                                     padding: '0.1rem 0.6rem',
                                                     borderRadius: '4px',
-                                                    border: '1px solid rgba(16, 185, 129, 0.2)',
+                                                    border: '1px solid rgba(59, 130, 246, 0.5)',
                                                     textTransform: 'uppercase',
-                                                    letterSpacing: '0.05em'
+                                                    letterSpacing: '0.05em',
+                                                    fontWeight: 700
                                                 }}>
                                                     No Expiry
                                                 </span>
