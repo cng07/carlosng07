@@ -105,7 +105,7 @@ const Education = () => {
                     maxWidth: '900px',
                     margin: '0 auto'
                 }}>
-                    {resumeData.education.map((edu, idx) => (
+                    {resumeData.education.filter(edu => edu.type === 'Tertiary').map((edu, idx) => (
                         <motion.div
                             key={idx}
                             variants={itemVariants}
@@ -242,6 +242,179 @@ const Education = () => {
                             </div>
                         </motion.div>
                     ))}
+                </div>
+
+                {/* Leadership & Involvement Section */}
+                <div style={{ marginTop: '6rem', maxWidth: '900px', margin: '6rem auto 0' }}>
+                    <motion.h2
+                        variants={itemVariants}
+                        style={{
+                            fontSize: 'clamp(1.8rem, 6vw, 2.5rem)',
+                            fontWeight: 800,
+                            marginBottom: '2.5rem',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '1rem',
+                            color: 'var(--text-main)'
+                        }}
+                    >
+                        <Award size={32} color="var(--primary)" />
+                        Leadership &amp; Involvement
+                    </motion.h2>
+
+                    <motion.div
+                        variants={itemVariants}
+                        className="glass"
+                        style={{
+                            padding: 'clamp(1.5rem, 5vw, 2.5rem)',
+                            borderRadius: '20px',
+                            border: '1px solid rgba(255,255,255,0.05)'
+                        }}
+                    >
+                        <div style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '1.5rem'
+                        }}>
+                            {[
+                                {
+                                    organization: "APC Society of Electronics Engineering Students",
+                                    roles: [
+                                        { title: "Member", period: "SY 2013-2018" },
+                                        { title: "3rd Year Batch Representative", period: "SY 2015-2016" }
+                                    ]
+                                },
+                                {
+                                    organization: "Institute of Electronics Engineers of the Philippines (IECEP-Manila Student Chapter)",
+                                    roles: [
+                                        { title: "Member", period: "SY 2013-2018" }
+                                    ]
+                                },
+                                {
+                                    organization: "APC SM Foundation Inc. Scholars",
+                                    roles: [
+                                        { title: "Member", period: "SY 2013-2018" },
+                                        { title: "Treasurer", period: "SY 2014-2015" }
+                                    ]
+                                },
+                                {
+                                    organization: "APC Mathematics Society",
+                                    roles: [
+                                        { title: "Member", period: "SY 2013-2016" }
+                                    ]
+                                }
+                            ].map((org, idx) => (
+                                <div key={idx} style={{
+                                    paddingBottom: '1.5rem',
+                                    borderBottom: idx < 3 ? '1px solid rgba(255,255,255,0.05)' : 'none'
+                                }}>
+                                    <p style={{
+                                        fontSize: '1rem',
+                                        fontWeight: 700,
+                                        color: 'var(--text-main)',
+                                        marginBottom: '0.5rem',
+                                        lineHeight: 1.3
+                                    }}>
+                                        {org.organization}
+                                    </p>
+                                    <div style={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        gap: '0.4rem',
+                                        marginLeft: '0.5rem'
+                                    }}>
+                                        {org.roles.map((role, roleIdx) => (
+                                            <p key={roleIdx} style={{
+                                                fontSize: '0.9rem',
+                                                color: 'var(--primary)',
+                                                fontWeight: 500,
+                                                display: 'flex',
+                                                justifyContent: 'space-between',
+                                                gap: '1rem'
+                                            }}>
+                                                <span>{role.title}</span>
+                                                <span style={{ color: 'var(--text-main)', whiteSpace: 'nowrap' }}>{role.period}</span>
+                                            </p>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </motion.div>
+                </div>
+
+                {/* Secondary School Section */}
+                <div style={{ marginTop: '6rem', maxWidth: '900px', margin: '6rem auto 0' }}>
+                    <motion.h2
+                        variants={itemVariants}
+                        style={{
+                            fontSize: 'clamp(1.8rem, 6vw, 2.5rem)',
+                            fontWeight: 800,
+                            marginBottom: '2.5rem',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '1rem',
+                            color: 'var(--text-main)'
+                        }}
+                    >
+                        <GraduationCap size={32} color="var(--primary)" />
+                        Secondary Education
+                    </motion.h2>
+
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '4rem',
+                        position: 'relative',
+                        maxWidth: '900px'
+                    }}>
+                        {resumeData.education.filter(edu => edu.type === 'Secondary').map((edu, idx) => (
+                            <motion.div
+                                key={idx}
+                                variants={itemVariants}
+                                style={{ position: 'relative' }}
+                            >
+                                {/* Card Content */}
+                                <div className="glass" style={{
+                                    padding: 'clamp(1.5rem, 5vw, 3.5rem)',
+                                    borderRadius: '32px',
+                                    border: '1px solid rgba(255,255,255,0.05)',
+                                    position: 'relative',
+                                    overflow: 'hidden',
+                                    display: 'flex',
+                                    flexDirection: 'column'
+                                }}>
+
+                                <div style={{ marginBottom: '1.5rem' }}>
+                                    <h2 style={{
+                                        fontSize: 'clamp(1.5rem, 5vw, 2.2rem)',
+                                        marginBottom: '0.75rem',
+                                        color: 'var(--text-main)',
+                                        lineHeight: 1.2
+                                    }}>
+                                        {edu.school}
+                                    </h2>
+                                </div>
+
+                                <div style={{
+                                    display: 'grid',
+                                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                                    gap: '1.5rem',
+                                    marginBottom: '3rem'
+                                }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-muted)' }}>
+                                        <Calendar size={24} color="var(--primary)" />
+                                        <span style={{ fontWeight: 500 }}>{edu.period}</span>
+                                    </div>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-muted)' }}>
+                                        <MapPin size={28} color="var(--primary)" />
+                                        <span style={{ fontWeight: 500 }}>{edu.fullAddress}</span>
+                                    </div>
+                                </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
 
                 {/* Publications Section */}
