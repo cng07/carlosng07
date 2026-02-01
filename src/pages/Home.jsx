@@ -48,7 +48,7 @@ const Home = () => {
                     <motion.h2
                         className="hero-name"
                         style={{
-                            fontSize: 'clamp(2.5rem, 8vw, 4rem)',
+                            fontSize: 'clamp(1.8rem, 8vw, 4rem)',
                             marginBottom: '1rem'
                         }}
                         initial={{ opacity: 0, y: 20 }}
@@ -328,8 +328,8 @@ const Home = () => {
                                     {edu.scholarship && (
                                         <div style={{ marginTop: '1.5rem', padding: '1rem', borderLeft: '3px solid var(--primary)', background: 'rgba(var(--primary-rgb), 0.05)', borderRadius: '0 8px 8px 0' }}>
                                             <p style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--text-main)', marginBottom: '0.4rem' }}>College scholarship: {edu.scholarship.name}</p>
-                                            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                                                <MapPin size={14} /> {edu.scholarship.address}
+                                            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'flex-start', gap: '0.4rem', lineHeight: '1.4' }}>
+                                                <MapPin size={14} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.2rem' }} /> {edu.scholarship.address}
                                             </p>
                                         </div>
                                     )}

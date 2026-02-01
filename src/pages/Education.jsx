@@ -121,17 +121,16 @@ const Education = () => {
                             }}>
                                 {/* Subtle Type Indicator */}
                                 <div style={{
-                                    position: 'absolute',
-                                    top: '2rem',
-                                    right: '2rem',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.5rem',
                                     fontSize: '0.8rem',
                                     fontWeight: 700,
                                     textTransform: 'uppercase',
                                     letterSpacing: '0.2em',
-                                    color: 'rgba(var(--primary-rgb), 0.4)',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem'
+                                    color: 'var(--primary)',
+                                    marginBottom: '1rem',
+                                    opacity: 0.8
                                 }}>
                                     {edu.type === 'Tertiary' ? <BookOpen size={14} /> : <School size={14} />}
                                     {edu.type}
@@ -237,8 +236,8 @@ const Education = () => {
                                             Scholarship
                                         </div>
                                         <h4 style={{ color: '#fff', fontSize: '1.2rem', marginBottom: '0.5rem' }}>{edu.scholarship.name}</h4>
-                                        <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                            <MapPin size={14} /> {edu.scholarship.fullAddress}
+                                        <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', display: 'flex', alignItems: 'flex-start', gap: '0.5rem', lineHeight: '1.5' }}>
+                                            <MapPin size={14} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.25rem' }} /> {edu.scholarship.fullAddress}
                                         </p>
                                     </div>
                                 )}
