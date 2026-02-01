@@ -6,7 +6,9 @@ import {
     Linkedin,
     Mail,
     Menu,
-    X
+    X,
+    Eye,
+    Users
 } from 'lucide-react';
 import IeeeIcon from './components/CustomIcons';
 import { resumeData } from './data/resumeData';
@@ -29,6 +31,46 @@ const ScrollToTop = () => {
 
 const App = () => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [visitorStats, setVisitorStats] = React.useState({ total: 0, unique: 0 });
+
+    React.useEffect(() => {
+        const NAMESPACE = 'carlosng07-portfolio';
+        const API_URL = 'https://api.counterapi.dev/v1';
+
+        const fetchStats = async () => {
+            try {
+                // 1. Increment Total Visits
+                const totalRes = await fetch(`${API_URL}/${NAMESPACE}/visits/up`);
+                const totalData = await totalRes.json();
+
+                // 2. Handle Unique Visitors
+                const hasVisited = localStorage.getItem('site_has_visited');
+                let uniqueData;
+
+                if (!hasVisited) {
+                    // New visitor: Increment unique count
+                    const uniqueRes = await fetch(`${API_URL}/${NAMESPACE}/unique/up`);
+                    uniqueData = await uniqueRes.json();
+                    localStorage.setItem('site_has_visited', 'true');
+                } else {
+                    // Returning visitor: Just get unique count
+                    const uniqueRes = await fetch(`${API_URL}/${NAMESPACE}/unique`);
+                    uniqueData = await uniqueRes.json();
+                }
+
+                setVisitorStats({
+                    total: totalData.count || 0,
+                    unique: uniqueData.count || 0
+                });
+
+            } catch (error) {
+                console.error("Error fetching visitor stats:", error);
+                // Fail silently or keep default 0
+            }
+        };
+
+        fetchStats();
+    }, []);
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     const closeMenu = () => setIsMenuOpen(false);
@@ -89,11 +131,36 @@ const App = () => {
                 {/* Footer */}
                 <footer style={{ padding: '4rem 0', borderTop: '1px solid var(--border)', textAlign: 'center' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginBottom: '1.5rem' }}>
-                        <a href={resumeData.linkedIn} target="_blank" rel="noreferrer"><Linkedin size={24} /></a>
-                        <a href={resumeData.github} target="_blank" rel="noreferrer"><Github size={24} /></a>
-                        <a href={resumeData.ieee} target="_blank" rel="noreferrer"><IeeeIcon size={24} /></a>
-                        <a href={`mailto:${resumeData.email}`}><Mail size={24} /></a>
+                        <a href={resumeData.linkedIn} target="_blank" rel="noreferrer" className="footer-social"><Linkedin size={24} /></a>
+                        <a href={resumeData.github} target="_blank" rel="noreferrer" className="footer-social"><Github size={24} /></a>
+                        <a href={resumeData.ieee} target="_blank" rel="noreferrer" className="footer-social"><IeeeIcon size={24} /></a>
+                        <a href={`mailto:${resumeData.email}`} className="footer-social"><Mail size={24} /></a>
                     </div>
+
+                    {/* Visitor Counter */}
+                    <div style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '1.5rem',
+                        marginBottom: '1.5rem',
+                        padding: '0.6rem 1.25rem',
+                        background: 'rgba(255,255,255,0.03)',
+                        borderRadius: '100px',
+                        border: '1px solid rgba(255,255,255,0.05)',
+                        fontSize: '0.8rem',
+                        color: 'var(--text-muted)'
+                    }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                            <span style={{ color: 'var(--primary)', display: 'flex' }}><Eye size={14} /></span>
+                            <span>Total Visits: <strong style={{ color: '#fff' }}>{visitorStats.total}</strong></span>
+                        </div>
+                        <div style={{ width: '1px', height: '12px', background: 'rgba(255,255,255,0.1)' }} />
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                            <span style={{ color: 'var(--primary)', display: 'flex' }}><Users size={14} /></span>
+                            <span>Unique Visitors: <strong style={{ color: '#fff' }}>{visitorStats.unique}</strong></span>
+                        </div>
+                    </div>
+
                     <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
                         &copy; {new Date().getFullYear()} {resumeData.name}. All rights reserved.
                     </p>
