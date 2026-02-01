@@ -20,6 +20,8 @@ import Contact from './pages/Contact';
 import Resume from './pages/Resume';
 import Certifications from './pages/Certifications';
 import Education from './pages/Education';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsAndConditions from './pages/TermsAndConditions';
 
 const ScrollToTop = () => {
     const { pathname } = useLocation();
@@ -134,6 +136,8 @@ const App = () => {
                     <Route path="/certifications" element={<Certifications />} />
                     <Route path="/education" element={<Education />} />
                     <Route path="/contact" element={<Contact />} />
+                    <Route path="/privacy" element={<PrivacyPolicy />} />
+                    <Route path="/terms" element={<TermsAndConditions />} />
                 </Routes>
 
                 {/* Footer */}
@@ -172,6 +176,16 @@ const App = () => {
                     <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
                         &copy; {new Date().getFullYear()} {resumeData.name}. All rights reserved.
                     </p>
+
+                    {/* Footer Links */}
+                    <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap', fontSize: '0.85rem' }}>
+                        <Link to="/privacy" style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s ease' }} onMouseEnter={(e) => e.target.style.color = 'var(--primary)'} onMouseLeave={(e) => e.target.style.color = 'var(--text-muted)'}>
+                            Privacy Policy
+                        </Link>
+                        <Link to="/terms" style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s ease' }} onMouseEnter={(e) => e.target.style.color = 'var(--primary)'} onMouseLeave={(e) => e.target.style.color = 'var(--text-muted)'}>
+                            Terms & Conditions
+                        </Link>
+                    </div>
                 </footer>
             </div>
         </Router>
