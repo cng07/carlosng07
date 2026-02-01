@@ -9,7 +9,11 @@ import {
     Terminal,
     MapPin,
     Briefcase,
-    GraduationCap
+    GraduationCap,
+    Bot,
+    Search,
+    Infinity,
+    Wrench
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { resumeData } from '../data/resumeData';
@@ -192,7 +196,7 @@ const Home = () => {
                 }}>
                     <div className="glass" style={{ padding: '2rem' }}>
                         <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.2rem' }}>
-                            <CheckCircle2 size={20} color="var(--primary)" /> Test Automation
+                            <Bot size={20} color="var(--primary)" /> Test Automation
                         </h3>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
                             {resumeData.skills.testAutomation.map(s => <span key={s} className="badge">{s}</span>)}
@@ -208,7 +212,7 @@ const Home = () => {
                     </div>
                     <div className="glass" style={{ padding: '2rem' }}>
                         <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.2rem' }}>
-                            <Terminal size={20} color="var(--primary)" /> CI/CD
+                            <Infinity size={20} color="var(--primary)" /> CI/CD
                         </h3>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
                             {resumeData.skills.cicd.map(s => <span key={s} className="badge">{s}</span>)}
@@ -216,7 +220,7 @@ const Home = () => {
                     </div>
                     <div className="glass" style={{ padding: '2rem' }}>
                         <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.2rem' }}>
-                            <MapPin size={20} color="var(--primary)" /> Manual Testing
+                            <Search size={20} color="var(--primary)" /> Manual Testing
                         </h3>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
                             {resumeData.skills.manualTesting.map(s => <span key={s} className="badge">{s}</span>)}
@@ -224,7 +228,7 @@ const Home = () => {
                     </div>
                     <div className="glass" style={{ padding: '2rem' }}>
                         <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.2rem' }}>
-                            <Cpu size={20} color="var(--primary)" /> Other Tools
+                            <Wrench size={20} color="var(--primary)" /> Other Tools
                         </h3>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
                             {resumeData.skills.otherTools.map(s => <span key={s} className="badge">{s}</span>)}
@@ -303,10 +307,8 @@ const Home = () => {
                                     <h3 style={{ color: 'var(--text-main)', fontSize: '1.4rem', marginBottom: '0.25rem' }}>{edu.school}</h3>
                                     {edu.degree && <h4 style={{ marginBottom: '0.5rem', color: 'var(--text-main)' }}>{edu.degree}</h4>}
 
-                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                                        <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                                            <Terminal size={14} color="var(--primary)" /> {edu.period}
-                                        </span>
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginBottom: '1rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+                                        <span style={{ fontWeight: 600 }}>{edu.period}</span>
                                         <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                                             <MapPin size={14} color="var(--primary)" /> {edu.address}
                                         </span>
