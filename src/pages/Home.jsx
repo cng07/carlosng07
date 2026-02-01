@@ -11,7 +11,8 @@ import {
     Terminal,
     MapPin,
     Briefcase,
-    GraduationCap
+    GraduationCap,
+    ShieldCheck
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { resumeData } from '../data/resumeData';
@@ -75,15 +76,18 @@ const Home = () => {
                         A Senior QA Automation Engineer specialized in building robust,
                         scalable testing frameworks that accelerate delivery.
                     </p>
-                    <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-                        <a href={resumeData.linkedIn} className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <a href={resumeData.linkedIn} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <Linkedin size={20} /> LinkedIn
                         </a>
-                        <a href={resumeData.github} className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <a href={resumeData.github} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <Github size={20} /> GitHub
                         </a>
                         <a href={resumeData.ieee} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <IeeeIcon size={20} /> IEEE Xplore
+                        </a>
+                        <a href={resumeData.atsqaProfile} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                            <ShieldCheck size={20} /> Official U.S. List of Certified & Credentialed Software Testers™ Profile
                         </a>
                     </div>
                 </motion.div>

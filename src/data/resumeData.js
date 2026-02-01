@@ -7,6 +7,7 @@ export const resumeData = {
   linkedIn: "https://www.linkedin.com/in/carlosng07",
   github: "https://github.com/cng07",
   ieee: "https://ieeexplore.ieee.org/author/37086553247",
+  atsqaProfile: "https://atsqa.org/certified-testers/profile/6676da6cab1b424aa4070395ff71f490",
 
   about: [
     "I’m a Test Automation Engineer with 7+ years of experience in software testing, helping teams ship more reliable releases through practical and maintainable automation. These days I mainly focus on UI automation using Playwright with TypeScript, building test suites that are fast, stable, and easy to maintain.",
