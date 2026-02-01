@@ -34,7 +34,7 @@ const Contact = () => {
             value: 'View Publications'
         },
         {
-            icon: <img src="https://astqb.org/assets/images/certified-tester-list-logo.png" alt="ASTQB" style={{ height: '24px', width: 'auto' }} />,
+            icon: <img src="https://atsqa.org/assets/images/atsqa-logo-header.svg" alt="ATSQA" style={{ height: '24px', width: 'auto' }} />,
             label: 'AT*SQA Profile',
             href: resumeData.atsqaProfile,
             value: 'View Certified Tester Profile'
