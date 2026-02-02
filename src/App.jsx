@@ -41,8 +41,11 @@ const App = () => {
 
         const fetchStats = async () => {
             try {
+                // Add timestamp to prevent caching
+                const timestamp = Date.now();
+                
                 // 1. Increment Total Visits
-                const totalRes = await fetch(`${API_URL}/${NAMESPACE}/visits/up`);
+                const totalRes = await fetch(`${API_URL}/${NAMESPACE}/visits/up?t=${timestamp}`);
                 const totalData = await totalRes.json();
 
                 // 2. Handle Unique Visitors
@@ -51,12 +54,12 @@ const App = () => {
 
                 if (!hasVisited) {
                     // New visitor: Increment unique count
-                    const uniqueRes = await fetch(`${API_URL}/${NAMESPACE}/unique/up`);
+                    const uniqueRes = await fetch(`${API_URL}/${NAMESPACE}/unique/up?t=${timestamp}`);
                     uniqueData = await uniqueRes.json();
                     localStorage.setItem('site_has_visited', 'true');
                 } else {
                     // Returning visitor: Just get unique count
-                    const uniqueRes = await fetch(`${API_URL}/${NAMESPACE}/unique`);
+                    const uniqueRes = await fetch(`${API_URL}/${NAMESPACE}/unique?t=${timestamp}`);
                     uniqueData = await uniqueRes.json();
                 }
 
