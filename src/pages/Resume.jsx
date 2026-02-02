@@ -34,9 +34,7 @@ const Resume = () => {
                         style={{ borderRadius: '8px' }}
                     >
                         <iframe
-                            // src={`https://drive.google.com/embeddedplayer?fileId=${encodeURIComponent('1GnW2Cdlc5pLg-yTtz0YENjrwEJnHAqbn')}&embedded=true`}
-                            src={`https://drive.google.com/embeddedplayer?fileId=${encodeURIComponent('1F0yXLE4i27hyKDEjQdFNNJmGYr0toXFL')}&embedded=true`}
-                            // src={`https://drive.google.com/file/d/1F0yXLE4i27hyKDEjQdFNNJmGYr0toXFL/view?usp=sharing`}
+                            src={`https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + '/Carlos_Ng_Resume.pdf')}&embedded=true`}
                             title="Carlos Ng Resume"
                             width="100%"
                             height="100%"
