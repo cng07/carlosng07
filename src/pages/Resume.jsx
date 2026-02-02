@@ -40,60 +40,44 @@ const Resume = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
             >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+                {/* Title with Download Button */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
                     <h1 className="section-title" style={{ marginBottom: 0 }}>
                         <FileText size={32} color="var(--primary)" style={{ verticalAlign: 'middle', marginRight: '0.75rem' }} />
                         Resume
                     </h1>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                        {/* Download Count Badge */}
-                        <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.4rem',
-                            padding: '0.5rem 0.75rem',
+                    <button
+                        onClick={handleDownload}
+                        style={{ 
+                            padding: '0.75rem 1.5rem', 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            gap: '0.5rem', 
+                            fontSize: '0.9rem', 
+                            cursor: 'pointer', 
+                            border: 'none',
+                            borderRadius: '8px',
                             background: 'var(--primary)',
-                            borderRadius: '100px',
-                            fontSize: '0.8rem',
                             color: '#fff',
                             fontWeight: 500,
+                            transition: 'all 0.2s ease',
                             boxShadow: '0 2px 8px rgba(59, 130, 246, 0.3)'
-                        }}>
-                            <Eye size={14} />
-                            <span>{downloadCount} download{downloadCount !== 1 ? 's' : ''}</span>
-                        </div>
-                        <button
-                            onClick={handleDownload}
-                            style={{ 
-                                padding: '0.75rem 1.5rem', 
-                                display: 'flex', 
-                                alignItems: 'center', 
-                                gap: '0.5rem', 
-                                fontSize: '0.9rem', 
-                                cursor: 'pointer', 
-                                border: 'none',
-                                borderRadius: '8px',
-                                background: 'var(--primary)',
-                                color: '#fff',
-                                fontWeight: 500,
-                                transition: 'all 0.2s ease',
-                                boxShadow: '0 2px 8px rgba(59, 130, 246, 0.3)'
-                            }}
-                            onMouseEnter={(e) => {
-                                e.target.style.transform = 'translateY(-2px)';
-                                e.target.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.4)';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.target.style.transform = 'translateY(0)';
-                                e.target.style.boxShadow = '0 2px 8px rgba(59, 130, 246, 0.3)';
-                            }}
-                        >
-                            <Download size={18} /> Download PDF
-                        </button>
-                    </div>
+                        }}
+                        onMouseEnter={(e) => {
+                            e.target.style.transform = 'translateY(-2px)';
+                            e.target.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.4)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.target.style.transform = 'translateY(0)';
+                            e.target.style.boxShadow = '0 2px 8px rgba(59, 130, 246, 0.3)';
+                        }}
+                    >
+                        <Download size={18} /> Download PDF
+                    </button>
                 </div>
 
-                <div className="glass" style={{ height: '80vh', padding: '1rem', overflow: 'hidden', position: 'relative', background: '#1e293b' }}>
+                {/* PDF Viewer */}
+                <div className="glass" style={{ height: '80vh', padding: '1rem', overflow: 'hidden', position: 'relative', background: '#1e293b', marginBottom: '1.5rem' }}>
                     <object
                         data="/Carlos_Ng_Resume.pdf"
                         type="application/pdf"
@@ -109,6 +93,30 @@ const Resume = () => {
                             style={{ border: 'none', borderRadius: '8px' }}
                         />
                     </object>
+                </div>
+
+                {/* Download Counter - Bottom */}
+                <div style={{ 
+                    display: 'flex', 
+                    justifyContent: 'center', 
+                    alignItems: 'center', 
+                    padding: '1rem 0'
+                }}>
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.4rem',
+                        padding: '0.6rem 1rem',
+                        background: 'var(--primary)',
+                        borderRadius: '100px',
+                        fontSize: '0.9rem',
+                        color: '#fff',
+                        fontWeight: 500,
+                        boxShadow: '0 2px 8px rgba(59, 130, 246, 0.3)'
+                    }}>
+                        <Eye size={16} />
+                        <span>{downloadCount} download{downloadCount !== 1 ? 's' : ''}</span>
+                    </div>
                 </div>
             </motion.div>
         </div>
