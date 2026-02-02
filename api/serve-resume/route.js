@@ -3,7 +3,7 @@
 
 export const runtime = 'edge';
 
-export async function GET(request) {
+async function servePDF(request) {
     const url = new URL(request.url);
     const baseUrl = url.origin;
     const pdfUrl = `${baseUrl}/Carlos_Ng_Resume.pdf`;
@@ -26,7 +26,8 @@ export async function GET(request) {
                 'Content-Type': 'application/pdf',
                 'Content-Disposition': 'attachment; filename="Carlos_Ng_Resume.pdf"',
                 'Content-Length': pdfBlob.size.toString(),
-                'Access-Control-Allow-Origin': '*'
+                'Access-Control-Allow-Origin': '*',
+                'Cache-Control': 'no-cache, no-store, must-revalidate'
             }
         });
     } catch (error) {
@@ -40,4 +41,12 @@ export async function GET(request) {
             }
         });
     }
+}
+
+export async function GET(request) {
+    return servePDF(request);
+}
+
+export async function POST(request) {
+    return servePDF(request);
 }

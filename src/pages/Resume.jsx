@@ -23,7 +23,7 @@ const Resume = () => {
 
     const handleDownload = async () => {
         try {
-            // Track the download - log response for debugging
+            // Track the download
             const res = await fetch('/api/download-resume', { method: 'GET' });
             const data = await res.json();
             console.log('Download tracking response:', data);
@@ -33,14 +33,14 @@ const Resume = () => {
                 setDownloadCount(data.count);
             }
             
-            // Create hidden anchor and trigger download
-            const link = document.createElement('a');
-            link.href = '/api/serve-resume';
-            link.download = 'Carlos_Ng_Resume.pdf';
-            link.style.display = 'none';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            // Create a form to submit to the serve-resume endpoint
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/api/serve-resume';
+            form.style.display = 'none';
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
         } catch (error) {
             console.error('Error initiating download:', error);
             // Fallback: open in new tab
