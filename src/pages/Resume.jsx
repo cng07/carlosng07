@@ -35,7 +35,7 @@ const Resume = () => {
                     >
                         <iframe
                             // src={`https://drive.google.com/embeddedplayer?fileId=${encodeURIComponent('1GnW2Cdlc5pLg-yTtz0YENjrwEJnHAqbn')}&embedded=true`}
-                            src={`https://drive.google.com/file/d/1GnW2Cdlc5pLg-yTtz0YENjrwEJnHAqbn/preview`}
+                            src={`https://drive.google.com/file/d/1Kis5bPdEuwrTfa1cxbpx5DC8IB5jLCe0/view?usp=drive_link`}
                             title="Carlos Ng Resume"
                             width="100%"
                             height="100%"
