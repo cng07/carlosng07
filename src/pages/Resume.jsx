@@ -1,8 +1,38 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Download } from 'lucide-react';
+import { FileText, Download, Eye } from 'lucide-react';
 
 const Resume = () => {
+    const [downloadCount, setDownloadCount] = React.useState(0);
+
+    React.useEffect(() => {
+        const fetchDownloadCount = async () => {
+            try {
+                const res = await fetch('/api/download-resume');
+                const data = await res.json();
+                if (data.success && data.count !== null) {
+                    setDownloadCount(data.count);
+                }
+            } catch (error) {
+                console.error('Error fetching download count:', error);
+            }
+        };
+        fetchDownloadCount();
+    }, []);
+
+    const handleDownload = async () => {
+        try {
+            const res = await fetch('/api/download-resume');
+            const data = await res.json();
+            if (data.redirectUrl) {
+                window.open(data.redirectUrl, '_blank');
+            }
+        } catch (error) {
+            console.error('Error initiating download:', error);
+            window.open('/Carlos_Ng_Resume.pdf', '_blank');
+        }
+    };
+
     return (
         <div className="section container page-header-padding">
             <motion.div
@@ -15,14 +45,52 @@ const Resume = () => {
                         <FileText size={32} color="var(--primary)" style={{ verticalAlign: 'middle', marginRight: '0.75rem' }} />
                         Resume
                     </h1>
-                    <a
-                        href="/Carlos_Ng_Resume.pdf"
-                        download
-                        className="glass"
-                        style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem' }}
-                    >
-                        <Download size={18} /> Download PDF
-                    </a>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                        {/* Download Count Badge */}
+                        <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.4rem',
+                            padding: '0.5rem 0.75rem',
+                            background: 'var(--primary)',
+                            borderRadius: '100px',
+                            fontSize: '0.8rem',
+                            color: '#fff',
+                            fontWeight: 500,
+                            boxShadow: '0 2px 8px rgba(59, 130, 246, 0.3)'
+                        }}>
+                            <Eye size={14} />
+                            <span>{downloadCount} download{downloadCount !== 1 ? 's' : ''}</span>
+                        </div>
+                        <button
+                            onClick={handleDownload}
+                            style={{ 
+                                padding: '0.75rem 1.5rem', 
+                                display: 'flex', 
+                                alignItems: 'center', 
+                                gap: '0.5rem', 
+                                fontSize: '0.9rem', 
+                                cursor: 'pointer', 
+                                border: 'none',
+                                borderRadius: '8px',
+                                background: 'var(--primary)',
+                                color: '#fff',
+                                fontWeight: 500,
+                                transition: 'all 0.2s ease',
+                                boxShadow: '0 2px 8px rgba(59, 130, 246, 0.3)'
+                            }}
+                            onMouseEnter={(e) => {
+                                e.target.style.transform = 'translateY(-2px)';
+                                e.target.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.4)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.target.style.transform = 'translateY(0)';
+                                e.target.style.boxShadow = '0 2px 8px rgba(59, 130, 246, 0.3)';
+                            }}
+                        >
+                            <Download size={18} /> Download PDF
+                        </button>
+                    </div>
                 </div>
 
                 <div className="glass" style={{ height: '80vh', padding: '1rem', overflow: 'hidden', position: 'relative', background: '#1e293b' }}>
