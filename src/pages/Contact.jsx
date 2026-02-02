@@ -1,20 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail } from 'lucide-react';
 import { resumeData } from '../data/resumeData';
 
 const Contact = () => {
     const contactLinks = [
         {
-            icon: <Mail size={24} />,
+            icon: (
+                <div style={{ backgroundColor: '#fff', borderRadius: '4px', padding: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" style={{ height: '24px', width: 'auto' }} />
+                </div>
+            ),
             label: 'Email',
             href: `mailto:${resumeData.email}`,
             value: resumeData.email
         },
         {
             icon: (
-                <div style={{ backgroundColor: '#fff', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2px' }}>
-                    <img src="/linkedin-logo.png" alt="LinkedIn" style={{ height: '22px', width: 'auto' }} />
+                <div style={{ backgroundColor: '#fff', borderRadius: '4px', padding: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <img src="/linkedin-logo.png" alt="LinkedIn" style={{ height: '24px', width: 'auto' }} />
                 </div>
             ),
             label: 'LinkedIn',
@@ -23,8 +26,8 @@ const Contact = () => {
         },
         {
             icon: (
-                <div style={{ backgroundColor: '#fff', borderRadius: '50%', width: '28px', height: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-                    <img src="/github-logo.png" alt="GitHub" style={{ width: '20px', height: '20px' }} />
+                <div style={{ backgroundColor: '#fff', borderRadius: '4px', padding: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <img src="/github-logo.png" alt="GitHub" style={{ height: '24px', width: 'auto' }} />
                 </div>
             ),
             label: 'GitHub',
@@ -32,15 +35,19 @@ const Contact = () => {
             value: 'Follow on GitHub'
         },
         {
-            icon: <img src="/ieee-logo.png" alt="IEEE" style={{ height: '24px', width: 'auto' }} />,
+            icon: (
+                <div style={{ backgroundColor: '#fff', borderRadius: '4px', padding: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <img src="/ieee-logo.png" alt="IEEE" style={{ height: '24px', width: 'auto' }} />
+                </div>
+            ),
             label: 'IEEE Xplore',
             href: resumeData.ieee,
             value: 'View Publications'
         },
         {
             icon: (
-                <div style={{ backgroundColor: '#fff', borderRadius: '4px', padding: '4px 8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src="https://atsqa.org/assets/images/atsqa-logo-header.svg" alt="ATSQA" style={{ height: '20px', width: 'auto' }} />
+                <div style={{ backgroundColor: '#fff', borderRadius: '4px', padding: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <img src="https://atsqa.org/assets/images/atsqa-logo-header.svg" alt="ATSQA" style={{ height: '24px', width: 'auto' }} />
                 </div>
             ),
             label: 'AT*SQA Profile',
