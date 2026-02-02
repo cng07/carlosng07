@@ -122,77 +122,7 @@ const Home = () => {
                 </motion.div>
             </section>
 
-            {/* Experience Section */}
-            <section id="experience" className="section" style={{ paddingTop: '1rem' }}>
-                <h2 className="section-title"><Briefcase size={28} color="var(--primary)" /> Experience</h2>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-                    {resumeData.experience.map((exp, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="glass"
-                            style={{ padding: '2rem' }}
-                        >
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                    {exp.logo && (
-                                        <div className="company-logo-container">
-                                            <img 
-                                                src={exp.logo} 
-                                                alt={`${exp.company} logo`}
-                                            />
-                                        </div>
-                                    )}
-                                    <div>
-                                        <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>{exp.company}</h3>
-                                        {!exp.roles && <p style={{ color: 'var(--primary)', fontWeight: 600, fontSize: '1.1rem', marginBottom: '0.5rem' }}>{exp.role}</p>}
-                                    </div>
-                                </div>
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                                    <p style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '1rem' }}>{exp.period}</p>
-                                    <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                                        <MapPin size={14} color="var(--primary)" /> {exp.location}
-                                    </p>
-                                </div>
-                            </div>
-
-                            {exp.roles ? (
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
-                                    {exp.roles.map((role, ri) => (
-                                        <div key={ri} style={{ borderLeft: '2px solid rgba(var(--primary-rgb), 0.2)', paddingLeft: '2rem', marginLeft: '0.25rem' }}>
-                                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', marginBottom: '1rem' }}>
-                                                <h4 style={{ fontSize: '1.2rem', color: 'var(--primary)', fontWeight: 600 }}>{role.title}</h4>
-                                                <span style={{ fontSize: '0.95rem', color: 'var(--text-muted)', fontWeight: 600 }}>{role.period}</span>
-                                            </div>
-                                            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                                                {role.achievements.map((item, i) => (
-                                                    <li key={i} style={{ display: 'flex', gap: '1rem', color: 'var(--text-main)', fontSize: '1rem', lineHeight: '1.5' }}>
-                                                        <CheckCircle2 size={18} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.25rem' }} />
-                                                        <span>{item}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    ))}
-                                </div>
-                            ) : (
-                                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                                    {exp.achievements.map((item, i) => (
-                                        <li key={i} style={{ display: 'flex', gap: '1rem', color: 'var(--text-main)', fontSize: '1rem', lineHeight: '1.5' }}>
-                                            <CheckCircle2 size={18} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.25rem' }} />
-                                            <span>{item}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-                        </motion.div>
-                    ))}
-                </div>
-            </section>
-
-            {/* Skills Section */}
+             {/* Skills Section */}
             <section id="skills" className="section">
                 <h2 className="section-title"><Cpu size={28} color="var(--primary)" /> Technical Skills</h2>
                 <div style={{
@@ -271,6 +201,76 @@ const Home = () => {
                             ))}
                         </div>
                     </div>
+                </div>
+            </section>
+
+            {/* Experience Section */}
+            <section id="experience" className="section" style={{ paddingTop: '1rem' }}>
+                <h2 className="section-title"><Briefcase size={28} color="var(--primary)" /> Experience</h2>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+                    {resumeData.experience.map((exp, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            className="glass"
+                            style={{ padding: '2rem' }}
+                        >
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                                    {exp.logo && (
+                                        <div className="company-logo-container">
+                                            <img 
+                                                src={exp.logo} 
+                                                alt={`${exp.company} logo`}
+                                            />
+                                        </div>
+                                    )}
+                                    <div>
+                                        <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>{exp.company}</h3>
+                                        {!exp.roles && <p style={{ color: 'var(--primary)', fontWeight: 600, fontSize: '1.1rem', marginBottom: '0.5rem' }}>{exp.role}</p>}
+                                    </div>
+                                </div>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                                    <p style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '1rem' }}>{exp.period}</p>
+                                    <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                                        <MapPin size={14} color="var(--primary)" /> {exp.location}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {exp.roles ? (
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+                                    {exp.roles.map((role, ri) => (
+                                        <div key={ri} style={{ borderLeft: '2px solid rgba(var(--primary-rgb), 0.2)', paddingLeft: '2rem', marginLeft: '0.25rem' }}>
+                                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', marginBottom: '1rem' }}>
+                                                <h4 style={{ fontSize: '1.2rem', color: 'var(--primary)', fontWeight: 600 }}>{role.title}</h4>
+                                                <span style={{ fontSize: '0.95rem', color: 'var(--text-muted)', fontWeight: 600 }}>{role.period}</span>
+                                            </div>
+                                            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                                                {role.achievements.map((item, i) => (
+                                                    <li key={i} style={{ display: 'flex', gap: '1rem', color: 'var(--text-main)', fontSize: '1rem', lineHeight: '1.5' }}>
+                                                        <CheckCircle2 size={18} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.25rem' }} />
+                                                        <span>{item}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                                    {exp.achievements.map((item, i) => (
+                                        <li key={i} style={{ display: 'flex', gap: '1rem', color: 'var(--text-main)', fontSize: '1rem', lineHeight: '1.5' }}>
+                                            <CheckCircle2 size={18} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.25rem' }} />
+                                            <span>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </motion.div>
+                    ))}
                 </div>
             </section>
 
