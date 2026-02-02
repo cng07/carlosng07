@@ -22,13 +22,20 @@ const Resume = () => {
 
     const handleDownload = async () => {
         try {
-            const res = await fetch('/api/download-resume');
-            const data = await res.json();
-            if (data.redirectUrl) {
-                window.open(data.redirectUrl, '_blank');
-            }
+            // Track the download
+            await fetch('/api/download-resume', { method: 'GET' });
+            
+            // Create hidden anchor and trigger download
+            const link = document.createElement('a');
+            link.href = '/Carlos_Ng_Resume.pdf';
+            link.download = 'Carlos_Ng_Resume.pdf';
+            link.target = '_blank';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         } catch (error) {
             console.error('Error initiating download:', error);
+            // Fallback: open in new tab
             window.open('/Carlos_Ng_Resume.pdf', '_blank');
         }
     };
