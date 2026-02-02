@@ -129,7 +129,7 @@ const About = () => {
                                     padding: '0.75rem'
                                 }}>
                                     <img
-                                        src="https://lh3.googleusercontent.com/d/1P2ZGuFyJVUCVMHp7HpGS6qzuU_P3eTJ0"
+                                        src="https://lh3.googleusercontent.com/d/1ZCtIgL7-l0jWczW0jcPhbBQkLzXE4dD9"
                                         alt={`${resumeData.name} - Original`}
                                         style={{
                                             width: '100%',
