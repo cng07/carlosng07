@@ -33,19 +33,14 @@ const Resume = () => {
                 setDownloadCount(data.count);
             }
             
-            // Fetch PDF as blob and trigger download
-            const pdfRes = await fetch('/Carlos_Ng_Resume.pdf');
-            const blob = await pdfRes.blob();
-            
-            // Create download link with blob URL (same-origin, download will work)
-            const downloadUrl = URL.createObjectURL(blob);
+            // Create hidden anchor and trigger download
             const link = document.createElement('a');
-            link.href = downloadUrl;
+            link.href = '/api/serve-resume';
             link.download = 'Carlos_Ng_Resume.pdf';
+            link.style.display = 'none';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            URL.revokeObjectURL(downloadUrl);
         } catch (error) {
             console.error('Error initiating download:', error);
             // Fallback: open in new tab
