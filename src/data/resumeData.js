@@ -19,7 +19,8 @@ export const resumeData = {
   skills: {
     testAutomation: [
       { name: "Playwright", logo: "https://playwright.dev/img/playwright-logo.svg" },
-      { name: "Selenium WebDriver", logo: "https://cdn.simpleicons.org/selenium/43B02A" }
+      { name: "Selenium WebDriver", logo: "https://cdn.simpleicons.org/selenium/43B02A" },
+      { name: "Cucumber", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cucumber/cucumber-plain.svg" }
     ],
     programmingLanguages: [
       { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"},
