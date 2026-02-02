@@ -54,6 +54,7 @@ export const resumeData = {
       role: "Senior Quality Assurance Automation Engineer",
       period: "April 2025 – Present",
       location: "Taguig City, Philippines",
+      logo: "https://assets.datacom.com/is/content/datacom/Datacom-Primary-Logo-RGB?$header-mega-logo$",
       achievements: [
         "Develop and execute UI automation scripts using Playwright with TypeScript (Cucumber BDD)",
         "Leveraged GitHub Copilot to accelerate development and improve code quality",
@@ -68,6 +69,7 @@ export const resumeData = {
       role: "Test Automation Engineer",
       period: "September 2024 – March 2025",
       location: "Taguig City, Philippines",
+      logo: "https://www.nri.com/content/900026430.png",
       achievements: [
         "Perform manual API testing using Postman",
         "Develop and execute integrated API and UI automation scripts using Playwright with TypeScript (Screenplay Pattern)",
@@ -81,6 +83,7 @@ export const resumeData = {
       company: "DXC Technology",
       period: "March 2022 – September 2024",
       location: "Taguig City, Philippines",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/DXC-Logo-2025.svg/960px-DXC-Logo-2025.svg.png?20251217162112",
       roles: [
         {
           title: "Senior Analyst I Software Engineering || Test Automation Engineer",
@@ -120,6 +123,7 @@ export const resumeData = {
       role: "Quality Assurance Officer",
       period: "April 2021 – February 2022",
       location: "Pasig City, Philippines",
+      logo: "https://www.davi.com.ph/img/bigdavilogo.svg",
       achievements: [
         "Main QA for Go Rewards site and CMS (www.gorewards.com.ph), Go Rewards PH App [Main app, Fly, Pay] (Android and iOS), DAVI site (www.davi.com.ph), and DAVI Finance Portal (internal site)",
         "Provide expertise in planning, constructing, and execution of test scripts",
@@ -132,6 +136,7 @@ export const resumeData = {
       role: "Software Engineering Associate || Test Engineering Associate",
       period: "November 2018 - March 2021",
       location: "Mandaluyong City, Philippines",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg",
       achievements: [
         "Developed, debugged, and executed automated test scripts using Automation Anywhere (RPA)",
         "Provided technical expertise in the planning, design, and execution of test scripts",
@@ -148,6 +153,7 @@ export const resumeData = {
       role: "Intern",
       period: "February 2017 – August 2017",
       location: "Mandaluyong City, Philippines",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Accenture.svg/2560px-Accenture.svg.png",
       achievements: [
         "Tertiary Page Dev and Test",
         "Metadata Verification"
