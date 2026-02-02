@@ -268,3 +268,145 @@ a {
   animation-iteration-count: infinite;
   transform-origin: 70% 70%;
 }
+
+/* Logo Consistency Fixes for Mobile */
+/* Company logos in experience section */
+.company-logo-container {
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  min-height: 56px;
+  background-color: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+  .company-logo-container {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    padding: 6px;
+  }
+}
+
+.company-logo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Social media logos */
+.social-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.social-logo-container img {
+  height: 20px;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .social-logo-container img {
+    height: 18px;
+  }
+}
+
+/* LinkedIn specific */
+.linkedin-logo-container {
+  background-color: #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 768px) {
+  .linkedin-logo-container {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.linkedin-logo-container img {
+  height: 18px;
+  width: auto;
+}
+
+@media (max-width: 768px) {
+  .linkedin-logo-container img {
+    height: 16px;
+  }
+}
+
+/* GitHub specific */
+.github-logo-container {
+  background-color: #fff;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .github-logo-container {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.github-logo-container img {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 768px) {
+  .github-logo-container img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Skills badge logos */
+.badge img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .badge img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* IEEE and other external logos */
+.external-logo {
+  height: 20px;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .external-logo {
+    height: 18px;
+  }
+}

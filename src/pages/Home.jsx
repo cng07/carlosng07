@@ -80,48 +80,42 @@ const Home = () => {
                     </p>
                     <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                         <a href={resumeData.linkedIn} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <div style={{ backgroundColor: '#fff', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2px' }}>
+                            <div className="linkedin-logo-container">
                                 <img
                                     src="/linkedin-logo.png"
                                     alt="LinkedIn Logo"
-                                    style={{ height: '18px', width: 'auto' }}
                                 />
                             </div>
                             LinkedIn
                         </a>
                         <a href={resumeData.github} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <div style={{
-                                backgroundColor: '#fff',
-                                borderRadius: '50%',
-                                width: '24px',
-                                height: '24px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                overflow: 'hidden'
-                            }}>
+                            <div className="github-logo-container">
                                 <img
                                     src="/github-logo.png"
                                     alt="GitHub Logo"
-                                    style={{ width: '18px', height: '18px' }}
                                 />
                             </div>
                             GitHub
                         </a>
                         <a href={resumeData.ieee} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <img
-                                src="/ieee-logo.png"
-                                alt="IEEE Logo"
-                                style={{ height: '20px', width: 'auto' }}
-                            />
+                            <div className="social-logo-container">
+                                <img
+                                    src="/ieee-logo.png"
+                                    alt="IEEE Logo"
+                                    className="external-logo"
+                                />
+                            </div>
                             IEEE Xplore
                         </a>
                         <a href={resumeData.atsqaProfile} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <img
-                                src="https://astqb.org/assets/images/certified-tester-list-logo.png"
-                                alt="ASTQB Logo"
-                                style={{ height: '20px', width: 'auto', borderRadius: '2px' }}
-                            />
+                            <div className="social-logo-container">
+                                <img
+                                    src="https://astqb.org/assets/images/certified-tester-list-logo.png"
+                                    alt="ASTQB Logo"
+                                    className="external-logo"
+                                    style={{ borderRadius: '2px' }}
+                                />
+                            </div>
                             Official U.S. List of Certified & Credentialed Software Testers™ Profile
                         </a>
                     </div>
@@ -142,9 +136,19 @@ const Home = () => {
                             style={{ padding: '2rem' }}
                         >
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem' }}>
-                                <div>
-                                    <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>{exp.company}</h3>
-                                    {!exp.roles && <p style={{ color: 'var(--primary)', fontWeight: 600, fontSize: '1.1rem', marginBottom: '0.5rem' }}>{exp.role}</p>}
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                                    {exp.logo && (
+                                        <div className="company-logo-container">
+                                            <img 
+                                                src={exp.logo} 
+                                                alt={`${exp.company} logo`}
+                                            />
+                                        </div>
+                                    )}
+                                    <div>
+                                        <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>{exp.company}</h3>
+                                        {!exp.roles && <p style={{ color: 'var(--primary)', fontWeight: 600, fontSize: '1.1rem', marginBottom: '0.5rem' }}>{exp.role}</p>}
+                                    </div>
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                                     <p style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '1rem' }}>{exp.period}</p>
