@@ -10,6 +10,7 @@ const Resume = () => {
             try {
                 const res = await fetch('/api/download-resume');
                 const data = await res.json();
+                console.log('Download count response:', data);
                 if (data.success && data.count !== null) {
                     setDownloadCount(data.count);
                 }
@@ -22,8 +23,15 @@ const Resume = () => {
 
     const handleDownload = async () => {
         try {
-            // Track the download
-            await fetch('/api/download-resume', { method: 'GET' });
+            // Track the download - log response for debugging
+            const res = await fetch('/api/download-resume', { method: 'GET' });
+            const data = await res.json();
+            console.log('Download tracking response:', data);
+            
+            // Update count if successful
+            if (data.success && data.count !== null) {
+                setDownloadCount(data.count);
+            }
             
             // Create hidden anchor and trigger download
             const link = document.createElement('a');
