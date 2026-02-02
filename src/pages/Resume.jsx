@@ -33,14 +33,19 @@ const Resume = () => {
                 setDownloadCount(data.count);
             }
             
-            // Create hidden anchor and trigger download
+            // Fetch PDF as blob and trigger download
+            const pdfRes = await fetch('/Carlos_Ng_Resume.pdf');
+            const blob = await pdfRes.blob();
+            
+            // Create download link with blob URL (same-origin, download will work)
+            const downloadUrl = URL.createObjectURL(blob);
             const link = document.createElement('a');
-            link.href = '/Carlos_Ng_Resume.pdf';
+            link.href = downloadUrl;
             link.download = 'Carlos_Ng_Resume.pdf';
-            link.target = '_blank';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+            URL.revokeObjectURL(downloadUrl);
         } catch (error) {
             console.error('Error initiating download:', error);
             // Fallback: open in new tab
