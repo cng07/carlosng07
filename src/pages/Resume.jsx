@@ -3,49 +3,18 @@ import { motion } from 'framer-motion';
 import { FileText, Download, Eye } from 'lucide-react';
 
 const Resume = () => {
-    const [downloadCount, setDownloadCount] = React.useState(0);
+    // const [downloadCount, setDownloadCount] = React.useState(0);
 
-    React.useEffect(() => {
-        const fetchDownloadCount = async () => {
-            try {
-                const res = await fetch('/api/download-resume');
-                const data = await res.json();
-                console.log('Download count response:', data);
-                if (data.success && data.count !== null) {
-                    setDownloadCount(data.count);
-                }
-            } catch (error) {
-                console.error('Error fetching download count:', error);
-            }
-        };
-        fetchDownloadCount();
-    }, []);
+    // Download counter is currently disabled due to CORS issues with CounterAPI
 
-    const handleDownload = async () => {
-        try {
-            // Track the download
-            const res = await fetch('/api/download-resume', { method: 'GET' });
-            const data = await res.json();
-            console.log('Download tracking response:', data);
-            
-            // Update count if successful
-            if (data.success && data.count !== null) {
-                setDownloadCount(data.count);
-            }
-            
-            // Create a form to submit to the serve-resume endpoint
-            const form = document.createElement('form');
-            form.method = 'POST';
-            form.action = '/api/serve-resume';
-            form.style.display = 'none';
-            document.body.appendChild(form);
-            form.submit();
-            document.body.removeChild(form);
-        } catch (error) {
-            console.error('Error initiating download:', error);
-            // Fallback: open in new tab
-            window.open('/Carlos_Ng_Resume.pdf', '_blank');
-        }
+    const handleDownload = () => {
+        // Immediately trigger PDF download
+        const link = document.createElement('a');
+        link.href = '/Carlos_Ng_Resume.pdf';
+        link.download = 'Carlos_Ng_Resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
 
     return (
@@ -110,8 +79,8 @@ const Resume = () => {
                     </object>
                 </div>
 
-                {/* Download Counter - Bottom */}
-                <div style={{ 
+                {/* Download Counter - Bottom (hidden for now) */}
+                {/* <div style={{ 
                     display: 'flex', 
                     justifyContent: 'center', 
                     alignItems: 'center', 
@@ -132,7 +101,7 @@ const Resume = () => {
                         <Eye size={16} />
                         <span>{downloadCount} download{downloadCount !== 1 ? 's' : ''}</span>
                     </div>
-                </div>
+                </div> */}
             </motion.div>
         </div>
     );
