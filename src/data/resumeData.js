@@ -60,6 +60,7 @@ export const resumeData = {
   experience: [
     {
       company: "Datacom",
+      website: "https://datacom.com/nz/en",
       role: "Senior Quality Assurance Automation Engineer",
       period: "April 2025 – Present",
       location: "Taguig City, Philippines",
@@ -75,6 +76,7 @@ export const resumeData = {
     },
     {
       company: "Planit",
+      website: "https://www.planit.com/",
       role: "Test Automation Engineer",
       period: "September 2024 – March 2025",
       location: "Taguig City, Philippines",
@@ -90,6 +92,7 @@ export const resumeData = {
     },
     {
       company: "DXC Technology",
+      website: "https://dxc.com/",
       period: "March 2022 – September 2024",
       location: "Taguig City, Philippines",
       logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/DXC-Logo-2025.svg/960px-DXC-Logo-2025.svg.png?20251217162112",
@@ -129,6 +132,7 @@ export const resumeData = {
     },
     {
       company: "Data Analytics Ventures, Inc.",
+      website: "https://www.davi.com.ph/",
       role: "Quality Assurance Officer",
       period: "April 2021 – February 2022",
       location: "Pasig City, Philippines",
@@ -142,6 +146,7 @@ export const resumeData = {
     },
     {
       company: "Accenture",
+      website: "https://www.accenture.com/ph-en",
       role: "Software Engineering Associate || Test Engineering Associate",
       period: "November 2018 - March 2021",
       location: "Mandaluyong City, Philippines",
@@ -159,6 +164,7 @@ export const resumeData = {
     },
     {
       company: "Accenture",
+      website: "https://www.accenture.com/ph-en",
       role: "Intern",
       period: "February 2017 – August 2017",
       location: "Mandaluyong City, Philippines",

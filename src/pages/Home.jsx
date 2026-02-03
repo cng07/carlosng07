@@ -221,13 +221,31 @@ const Home = () => {
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }} className="experience-company-row">
                                     {exp.logo && (
                                         <div className="company-logo-container">
-                                            <img 
-                                                src={exp.logo} 
-                                                alt={`${exp.company} logo`}
-                                            />
+                                            {exp.website ? (
+                                                <a href={exp.website} target="_blank" rel="noreferrer" style={{ display: 'block', height: '100%' }}>
+                                                    <img 
+                                                        src={exp.logo} 
+                                                        alt={`${exp.company} logo`}
+                                                    />
+                                                </a>
+                                            ) : (
+                                                <img 
+                                                    src={exp.logo} 
+                                                    alt={`${exp.company} logo`}
+                                                />
+                                            )}
                                         </div>
                                     )}
-                                    <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>{exp.company}</h3>
+                                    <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>
+                                        {exp.website ? (
+                                            <a href={exp.website} target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                                                {exp.company}
+                                                <ExternalLink size={14} style={{ marginLeft: '0.5rem', verticalAlign: 'middle' }} />
+                                            </a>
+                                        ) : (
+                                            exp.company
+                                        )}
+                                    </h3>
                                 </div>
                                 {!exp.roles && <p style={{ color: 'var(--primary)', fontWeight: 600, fontSize: '1.1rem', marginBottom: '0.5rem', paddingLeft: '4px' }}>{exp.role}</p>}
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', paddingLeft: '4px' }}>
