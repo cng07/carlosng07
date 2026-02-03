@@ -102,11 +102,11 @@ const App = () => {
                     {/* Desktop Links */}
                     <div className="nav-links">
                         <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Home</Link>
-                        <Link to="/about">About</Link>
-                        <Link to="/resume">Resume</Link>
-                        <Link to="/certifications">Certifications</Link>
-                        <Link to="/education">Education</Link>
-                        <Link to="/contact">Contact</Link>
+                        <Link to="/resume" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Resume</Link>
+                        <Link to="/certifications" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Certifications</Link>
+                        <Link to="/education" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Education</Link>
+                        <Link to="/about" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>About</Link>
+                        <Link to="/contact" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Contact</Link>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -123,12 +123,12 @@ const App = () => {
                         exit={{ opacity: 0, x: '100%' }}
                         className="mobile-nav"
                     >
-                        <Link to="/" onClick={closeMenu}>Home</Link>
-                        <Link to="/about" onClick={closeMenu}>About</Link>
-                        <Link to="/resume" onClick={closeMenu}>Resume</Link>
-                        <Link to="/certifications" onClick={closeMenu}>Certifications</Link>
-                        <Link to="/education" onClick={closeMenu}>Education</Link>
-                        <Link to="/contact" onClick={closeMenu}>Contact</Link>
+                        <Link to="/" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Home</Link>
+                        <Link to="/resume" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Resume</Link>
+                        <Link to="/certifications" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Certifications</Link>
+                        <Link to="/education" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Education</Link>
+                        <Link to="/about" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>About</Link>
+                        <Link to="/contact" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Contact</Link>
                     </motion.div>
                 )}
 
