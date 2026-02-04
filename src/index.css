@@ -18,6 +18,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--background);
   color: var(--text-main);
@@ -46,6 +50,7 @@ a {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border);
   border-radius: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .section {
@@ -76,6 +81,7 @@ a {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media (max-width: 768px) {
@@ -98,9 +104,7 @@ a {
   padding: 0.4rem 0.85rem;
   border-radius: 9999px;
   font-size: 0.875rem;
-  font-weight: 500;
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
 }
 
 .nav-bar {
@@ -409,7 +413,6 @@ a {
   }
 }
 
-/* IEEE and other external logos */
 .external-logo {
   height: 20px;
   width: auto;
@@ -420,4 +423,79 @@ a {
   .external-logo {
     height: 18px;
   }
+}
+
+/* Smooth transitions and animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.6;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.2);
+  }
+}
+
+/* Smooth hover effects for glass elements */
+.glass {
+  cursor: default;
+}
+
+.glass:has(a:hover),
+.glass:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Smooth transitions for all interactive elements */
+button,
+a,
+input,
+select,
+textarea {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Image animations */
+img {
+  transition: all 0.3s ease;
+}
+
+/* Parallax-like effect for sections */
+section {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth line animation for section titles */
+.section-title::after {
+  transition: width 0.3s ease;
+}
+
+/* Enhanced transition for all Framer Motion elements */
+*[style*="opacity"],
+*[style*="transform"] {
+  will-change: auto;
 }

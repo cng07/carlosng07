@@ -124,103 +124,95 @@ const Home = () => {
 
              {/* Skills Section */}
             <section id="skills" className="section">
-                <h2 className="section-title"><Cpu size={28} color="var(--primary)" /> Technical Skills</h2>
+                <motion.h2 
+                    className="section-title"
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <Cpu size={28} color="var(--primary)" /> Technical Skills
+                </motion.h2>
                 <div style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
                     gap: '1.5rem'
                 }}>
-                    <div className="glass" style={{ padding: '2rem' }}>
-                        <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.2rem' }}>
-                            <Bot size={20} color="var(--primary)" /> Test Automation
-                        </h3>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                            {resumeData.skills.testAutomation.map(s => (
-                                <span key={s.name} className="badge" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                    <img src={s.logo} alt={s.name} style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
-                                    {s.name}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="glass" style={{ padding: '2rem' }}>
-                        <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.2rem' }}>
-                            <Code2 size={20} color="var(--primary)" /> Programming Languages
-                        </h3>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                            {resumeData.skills.programmingLanguages.map(s => (
-                                <span key={s.name} className="badge" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                    <img src={s.logo} alt={s.name} style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
-                                    {s.name}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="glass" style={{ padding: '2rem' }}>
-                        <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.2rem' }}>
-                            <Infinity size={20} color="var(--primary)" /> CI/CD
-                        </h3>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                            {resumeData.skills.cicd.map(s => (
-                                <span key={s.name} className="badge" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                    <img src={s.logo} alt={s.name} style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
-                                    {s.name}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="glass" style={{ padding: '2rem' }}>
-                        <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.2rem' }}>
-                            <Search size={20} color="var(--primary)" /> Manual Testing
-                        </h3>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                            {resumeData.skills.manualTesting.map(s => (
-                                <span key={s.name} className="badge" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                    {s.logos ? (
-                                        s.logos.map((logo, idx) => (
-                                            <img key={idx} src={logo} alt={s.name} style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
-                                        ))
-                                    ) : (
-                                        <img src={s.logo} alt={s.name} style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
-                                    )}
-                                    {s.name}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="glass" style={{ padding: '2rem' }}>
-                        <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.2rem' }}>
-                            <Wrench size={20} color="var(--primary)" /> Other Tools
-                        </h3>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                            {resumeData.skills.otherTools.map(s => (
-                                <span key={s.name} className="badge" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                    <img src={s.logo} alt={s.name} style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
-                                    {s.name}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
+                    {[
+                        { icon: Bot, title: 'Test Automation', skills: resumeData.skills.testAutomation },
+                        { icon: Code2, title: 'Programming Languages', skills: resumeData.skills.programmingLanguages },
+                        { icon: Infinity, title: 'CI/CD', skills: resumeData.skills.cicd },
+                        { icon: Search, title: 'Manual Testing', skills: resumeData.skills.manualTesting },
+                        { icon: Wrench, title: 'Other Tools', skills: resumeData.skills.otherTools }
+                    ].map((category, idx) => (
+                        <motion.div
+                            key={category.title}
+                            className="glass"
+                            style={{ padding: '2rem' }}
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.6, delay: idx * 0.1 }}
+                            whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                        >
+                            <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.2rem' }}>
+                                <category.icon size={20} color="var(--primary)" /> {category.title}
+                            </h3>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+                                {category.skills.map(s => (
+                                    <motion.span
+                                        key={s.name}
+                                        className="badge"
+                                        style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                                        whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                                    >
+                                        {s.logos ? (
+                                            s.logos.map((logo, idx) => (
+                                                <img key={idx} src={logo} alt={s.name} style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
+                                            ))
+                                        ) : (
+                                            <img src={s.logo} alt={s.name} style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
+                                        )}
+                                        {s.name}
+                                    </motion.span>
+                                ))}
+                            </div>
+                        </motion.div>
+                    ))}
                 </div>
             </section>
 
             {/* Experience Section */}
             <section id="experience" className="section" style={{ paddingTop: '1rem' }}>
-                <h2 className="section-title"><Briefcase size={28} color="var(--primary)" /> Experience</h2>
+                <motion.h2 
+                    className="section-title"
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <Briefcase size={28} color="var(--primary)" /> Experience
+                </motion.h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
                     {resumeData.experience.map((exp, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, x: -20 }}
+                            initial={{ opacity: 0, x: -40 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.6, delay: index * 0.1 }}
                             className="glass"
                             style={{ padding: '2rem' }}
+                            whileHover={{ y: -4, transition: { duration: 0.3 } }}
                         >
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }} className="experience-company-row">
                                     {exp.logo && (
-                                        <div className="company-logo-container">
+                                        <motion.div
+                                            className="company-logo-container"
+                                            whileHover={{ scale: 1.1 }}
+                                            transition={{ duration: 0.2 }}
+                                        >
                                             {exp.website ? (
                                                 <a href={exp.website} target="_blank" rel="noreferrer" style={{ display: 'block', height: '100%' }}>
                                                     <img 
@@ -234,7 +226,7 @@ const Home = () => {
                                                     alt={`${exp.company} logo`}
                                                 />
                                             )}
-                                        </div>
+                                        </motion.div>
                                     )}
                                     <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>
                                         {exp.website ? (
@@ -259,29 +251,49 @@ const Home = () => {
                             {exp.roles ? (
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
                                     {exp.roles.map((role, ri) => (
-                                        <div key={ri}>
+                                        <motion.div
+                                            key={ri}
+                                            initial={{ opacity: 0 }}
+                                            whileInView={{ opacity: 1 }}
+                                            viewport={{ once: true }}
+                                            transition={{ duration: 0.4, delay: ri * 0.1 }}
+                                        >
                                             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', marginBottom: '1rem' }}>
                                                 <h4 style={{ fontSize: '1.2rem', color: 'var(--primary)', fontWeight: 600 }}>{role.title}</h4>
                                                 <span style={{ fontSize: '0.95rem', color: 'var(--text-muted)', fontWeight: 600 }}>{role.period}</span>
                                             </div>
                                             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                                                 {role.achievements.map((item, i) => (
-                                                    <li key={i} style={{ display: 'flex', gap: '1rem', color: 'var(--text-main)', fontSize: '1rem', lineHeight: '1.5' }}>
+                                                    <motion.li
+                                                        key={i}
+                                                        style={{ display: 'flex', gap: '1rem', color: 'var(--text-main)', fontSize: '1rem', lineHeight: '1.5' }}
+                                                        initial={{ opacity: 0, x: -20 }}
+                                                        whileInView={{ opacity: 1, x: 0 }}
+                                                        viewport={{ once: true }}
+                                                        transition={{ duration: 0.3, delay: i * 0.05 }}
+                                                    >
                                                         <CheckCircle2 size={18} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.25rem' }} />
                                                         <span>{item}</span>
-                                                    </li>
+                                                    </motion.li>
                                                 ))}
                                             </ul>
-                                        </div>
+                                        </motion.div>
                                     ))}
                                 </div>
                             ) : (
                                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                                     {exp.achievements.map((item, i) => (
-                                        <li key={i} style={{ display: 'flex', gap: '1rem', color: 'var(--text-main)', fontSize: '1rem', lineHeight: '1.5' }}>
+                                        <motion.li
+                                            key={i}
+                                            style={{ display: 'flex', gap: '1rem', color: 'var(--text-main)', fontSize: '1rem', lineHeight: '1.5' }}
+                                            initial={{ opacity: 0, x: -20 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ duration: 0.3, delay: i * 0.05 }}
+                                        >
                                             <CheckCircle2 size={18} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.25rem' }} />
                                             <span>{item}</span>
-                                        </li>
+                                        </motion.li>
                                     ))}
                                 </ul>
                             )}
@@ -294,10 +306,27 @@ const Home = () => {
             <section id="certifications" className="section">
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '3rem' }}>
                     <div>
-                        <h2 className="section-title"><Award size={28} color="var(--primary)" /> Certifications</h2>
+                        <motion.h2 
+                            className="section-title"
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.6 }}
+                        >
+                            <Award size={28} color="var(--primary)" /> Certifications
+                        </motion.h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                             {resumeData.certifications.map((cert, i) => (
-                                <div key={i} className="glass" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                                <motion.div
+                                    key={i}
+                                    className="glass"
+                                    style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                                    whileHover={{ y: -4, transition: { duration: 0.3 } }}
+                                >
                                     <div style={{ marginBottom: '0.5rem' }}>
                                         <h4 style={{ color: 'var(--text-main)', fontSize: '1.1rem', marginBottom: '0.2rem', textDecoration: 'underline' }}>{cert.title}</h4>
                                         {cert.subtitle && <p style={{ color: 'var(--text-main)', fontWeight: 600, fontSize: '1rem', marginBottom: '0.25rem' }}>{cert.subtitle}</p>}
@@ -350,26 +379,61 @@ const Home = () => {
                                             <a href={al.url} target="_blank" rel="noreferrer" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>{al.label}</a>
                                         </p>
                                     ))}
-                                </div>
+                                </motion.div>
                             ))}
                         </div>
                     </div>
                     <div>
-                        <h2 className="section-title"><BookOpen size={28} color="var(--primary)" /> Publications</h2>
+                        <motion.h2 
+                            className="section-title"
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.6 }}
+                        >
+                            <BookOpen size={28} color="var(--primary)" /> Publications
+                        </motion.h2>
                         {resumeData.publications.map((pub, i) => (
-                            <div key={i} className="glass" style={{ padding: '1.5rem' }}>
+                            <motion.div
+                                key={i}
+                                className="glass"
+                                style={{ padding: '1.5rem', marginBottom: '1.5rem' }}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-100px" }}
+                                transition={{ duration: 0.5, delay: i * 0.1 }}
+                                whileHover={{ y: -4, transition: { duration: 0.3 } }}
+                            >
                                 <h4 style={{ color: 'var(--text-main)', marginBottom: '0.5rem' }}>{pub.title}</h4>
                                 <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>Published in {pub.publisher}, {pub.date}</p>
                                 <a href={pub.link} target="_blank" rel="noreferrer" style={{ color: 'var(--primary)', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontWeight: 600 }}>
                                     View Paper <ExternalLink size={14} />
                                 </a>
-                            </div>
+                            </motion.div>
                         ))}
 
-                        <h2 className="section-title" style={{ marginTop: '3rem' }}><GraduationCap size={28} color="var(--primary)" /> Education</h2>
+                        <motion.h2 
+                            className="section-title"
+                            style={{ marginTop: '3rem' }}
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.6 }}
+                        >
+                            <GraduationCap size={28} color="var(--primary)" /> Education
+                        </motion.h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                             {resumeData.education.map((edu, i) => (
-                                <div key={i} className="glass" style={{ padding: '2rem' }}>
+                                <motion.div
+                                    key={i}
+                                    className="glass"
+                                    style={{ padding: '2rem' }}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                                    whileHover={{ y: -4, transition: { duration: 0.3 } }}
+                                >
                                     <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.5rem', letterSpacing: '0.05em' }}>
                                         {edu.type}
                                     </p>
@@ -386,23 +450,36 @@ const Home = () => {
                                     {edu.highlights && (
                                         <ul style={{ listStyle: 'none', padding: 0, marginTop: '1rem' }}>
                                             {edu.highlights.map((h, idx) => (
-                                                <li key={idx} style={{ display: 'flex', gap: '0.75rem', color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '0.4rem' }}>
+                                                <motion.li
+                                                    key={idx}
+                                                    style={{ display: 'flex', gap: '0.75rem', color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '0.4rem' }}
+                                                    initial={{ opacity: 0, x: -10 }}
+                                                    whileInView={{ opacity: 1, x: 0 }}
+                                                    viewport={{ once: true }}
+                                                    transition={{ duration: 0.3, delay: idx * 0.05 }}
+                                                >
                                                     <CheckCircle2 size={16} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.2rem' }} />
                                                     {h}
-                                                </li>
+                                                </motion.li>
                                             ))}
                                         </ul>
                                     )}
 
                                     {edu.scholarship && (
-                                        <div style={{ marginTop: '1.5rem', padding: '1rem', borderLeft: '3px solid var(--primary)', background: 'rgba(var(--primary-rgb), 0.05)', borderRadius: '0 8px 8px 0' }}>
+                                        <motion.div
+                                            style={{ marginTop: '1.5rem', padding: '1rem', borderLeft: '3px solid var(--primary)', background: 'rgba(var(--primary-rgb), 0.05)', borderRadius: '0 8px 8px 0' }}
+                                            initial={{ opacity: 0, x: -10 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ duration: 0.4 }}
+                                        >
                                             <p style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--text-main)', marginBottom: '0.4rem' }}>College scholarship: {edu.scholarship.name}</p>
                                             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'flex-start', gap: '0.4rem', lineHeight: '1.4' }}>
                                                 <MapPin size={14} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.2rem' }} /> {edu.scholarship.address}
                                             </p>
-                                        </div>
+                                        </motion.div>
                                     )}
-                                </div>
+                                </motion.div>
                             ))}
                         </div>
                     </div>
