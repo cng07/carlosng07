@@ -53,10 +53,10 @@ export const resumeData = {
       { name: "Azure DevOps", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Azure_DevOps_icon.svg/960px-Azure_DevOps_icon.svg.png?20251031025622" },
       { name: "IntelliJ IDEA", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg" },
       { name: "VS Code", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
-      // { name: "GitHub Copilot", logo: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-copilot-icon.svg" },
     ],
     aiTools: [
-      { name: "GitHub Copilot", logo: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-copilot-icon.svg" }
+      { name: "GitHub Copilot", logo: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-copilot-icon.svg" },
+      { name: "Antigravity", logo: "https://antigravity.google/assets/image/antigravity-logo.png" }
     ]
   },
 
