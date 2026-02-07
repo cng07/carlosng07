@@ -13,7 +13,8 @@ import {
     Bot,
     Search,
     Infinity,
-    Wrench
+    Wrench,
+    Sparkles,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { resumeData } from '../data/resumeData';
@@ -122,9 +123,9 @@ const Home = () => {
                 </motion.div>
             </section>
 
-             {/* Skills Section */}
+            {/* Skills Section */}
             <section id="skills" className="section">
-                <motion.h2 
+                <motion.h2
                     className="section-title"
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -143,7 +144,8 @@ const Home = () => {
                         { icon: Code2, title: 'Programming Languages', skills: resumeData.skills.programmingLanguages },
                         { icon: Infinity, title: 'CI/CD', skills: resumeData.skills.cicd },
                         { icon: Search, title: 'Manual Testing', skills: resumeData.skills.manualTesting },
-                        { icon: Wrench, title: 'Other Tools', skills: resumeData.skills.otherTools }
+                        { icon: Wrench, title: 'Other Tools', skills: resumeData.skills.otherTools },
+                        { icon: Sparkles, title: 'AI Tools', skills: resumeData.skills.aiTools }
                     ].map((category, idx) => (
                         <motion.div
                             key={category.title}
@@ -184,7 +186,7 @@ const Home = () => {
 
             {/* Experience Section */}
             <section id="experience" className="section" style={{ paddingTop: '1rem' }}>
-                <motion.h2 
+                <motion.h2
                     className="section-title"
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -215,14 +217,14 @@ const Home = () => {
                                         >
                                             {exp.website ? (
                                                 <a href={exp.website} target="_blank" rel="noreferrer" style={{ display: 'block', height: '100%' }}>
-                                                    <img 
-                                                        src={exp.logo} 
+                                                    <img
+                                                        src={exp.logo}
                                                         alt={`${exp.company} logo`}
                                                     />
                                                 </a>
                                             ) : (
-                                                <img 
-                                                    src={exp.logo} 
+                                                <img
+                                                    src={exp.logo}
                                                     alt={`${exp.company} logo`}
                                                 />
                                             )}
@@ -306,7 +308,7 @@ const Home = () => {
             <section id="certifications" className="section">
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '3rem' }}>
                     <div>
-                        <motion.h2 
+                        <motion.h2
                             className="section-title"
                             initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -384,7 +386,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div>
-                        <motion.h2 
+                        <motion.h2
                             className="section-title"
                             initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -412,7 +414,7 @@ const Home = () => {
                             </motion.div>
                         ))}
 
-                        <motion.h2 
+                        <motion.h2
                             className="section-title"
                             style={{ marginTop: '3rem' }}
                             initial={{ opacity: 0, y: 40 }}

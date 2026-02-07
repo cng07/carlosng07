@@ -23,7 +23,7 @@ export const resumeData = {
       { name: "Cucumber", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cucumber/cucumber-plain.svg" }
     ],
     programmingLanguages: [
-      { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"},
+      { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
       { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
       { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" }
     ],
@@ -50,10 +50,15 @@ export const resumeData = {
     otherTools: [
       { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
       { name: "Jira", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" },
+      { name: "Azure DevOps", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Azure_DevOps_icon.svg/960px-Azure_DevOps_icon.svg.png?20251031025622" },
       { name: "IntelliJ IDEA", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg" },
       { name: "VS Code", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+      // { name: "GitHub Copilot", logo: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-copilot-icon.svg" },
+      // { name: "Antigravity", logo: "https://antigravity.google/assets/image/antigravity-logo.png" }
+    ],
+    aiTools: [
       { name: "GitHub Copilot", logo: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-copilot-icon.svg" },
-      { name: "Azure DevOps", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Azure_DevOps_icon.svg/960px-Azure_DevOps_icon.svg.png?20251031025622" }
+      { name: "Antigravity", logo: "https://antigravity.google/assets/image/antigravity-logo.png" }
     ]
   },
 
