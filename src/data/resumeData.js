@@ -54,11 +54,9 @@ export const resumeData = {
       { name: "IntelliJ IDEA", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg" },
       { name: "VS Code", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
       // { name: "GitHub Copilot", logo: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-copilot-icon.svg" },
-      // { name: "Antigravity", logo: "https://antigravity.google/assets/image/antigravity-logo.png" }
     ],
     aiTools: [
-      { name: "GitHub Copilot", logo: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-copilot-icon.svg" },
-      { name: "Antigravity", logo: "https://antigravity.google/assets/image/antigravity-logo.png" }
+      { name: "GitHub Copilot", logo: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-copilot-icon.svg" }
     ]
   },
 
