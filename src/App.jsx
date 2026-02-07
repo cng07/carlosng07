@@ -18,6 +18,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Resume from './pages/Resume';
+import Projects from './pages/Projects';
 import Certifications from './pages/Certifications';
 import Education from './pages/Education';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -102,6 +103,7 @@ const App = () => {
                     {/* Desktop Links */}
                     <div className="nav-links">
                         <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Home</Link>
+                        <Link to="/projects" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Projects</Link>
                         <Link to="/resume" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Resume</Link>
                         <Link to="/certifications" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Certifications</Link>
                         <Link to="/education" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Education</Link>
@@ -124,6 +126,7 @@ const App = () => {
                         className="mobile-nav"
                     >
                         <Link to="/" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Home</Link>
+                        <Link to="/projects" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Projects</Link>
                         <Link to="/resume" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Resume</Link>
                         <Link to="/certifications" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Certifications</Link>
                         <Link to="/education" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Education</Link>
@@ -134,6 +137,7 @@ const App = () => {
 
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/projects" element={<Projects />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/resume" element={<Resume />} />
                     <Route path="/certifications" element={<Certifications />} />

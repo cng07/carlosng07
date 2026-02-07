@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Download, Eye } from 'lucide-react';
+import { Download } from 'lucide-react';
 
 const Resume = () => {
     // const [downloadCount, setDownloadCount] = React.useState(0);
@@ -26,10 +26,7 @@ const Resume = () => {
             >
                 {/* Title with Download Button */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
-                    <h1 className="section-title" style={{ marginBottom: 0 }}>
-                        <FileText size={32} color="var(--primary)" style={{ verticalAlign: 'middle', marginRight: '0.75rem' }} />
-                        Resume
-                    </h1>
+                    <h1 className="section-title" style={{ marginBottom: 0 }}>Resume</h1>
                     <button
                         onClick={handleDownload}
                         style={{ 

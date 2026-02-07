@@ -32,7 +32,7 @@ const Education = () => {
     };
 
     return (
-        <main className="container page-header-padding" style={{ minHeight: '100vh', position: 'relative' }}>
+        <div className="container page-header-padding" style={{ minHeight: '100vh', position: 'relative' }}>
             {/* Background Decorative Glows */}
             <div style={{
                 position: 'fixed',
@@ -58,44 +58,11 @@ const Education = () => {
             }} />
 
             <motion.div
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
             >
-                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                    <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.5 }}
-                        style={{
-                            display: 'inline-flex',
-                            padding: '1rem',
-                            borderRadius: '20px',
-                            background: 'rgba(var(--primary-rgb), 0.1)',
-                            marginBottom: '1.5rem',
-                            color: 'var(--primary)'
-                        }}
-                    >
-                        <GraduationCap size={40} />
-                    </motion.div>
-                    <motion.h1
-                        style={{
-                            fontSize: 'clamp(2.5rem, 8vw, 4rem)',
-                            fontWeight: 800,
-                            marginBottom: '1rem',
-                            letterSpacing: '-0.02em'
-                        }}
-                        variants={itemVariants}
-                    >
-                        Academic <span style={{ color: 'var(--primary)' }}>Journey</span>
-                    </motion.h1>
-                    <motion.p
-                        style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto' }}
-                        variants={itemVariants}
-                    >
-                        Foundation of my engineering expertise and professional growth.
-                    </motion.p>
-                </div>
+                <h1 className="section-title">Education</h1>
 
                 <div style={{
                     display: 'flex',
@@ -527,7 +494,7 @@ const Education = () => {
                     </motion.div>
                 </div>
             </motion.div>
-        </main>
+        </div>
     );
 };
 
