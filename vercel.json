@@ -1,4 +1,5 @@
 {
+    "domains": ["carlosng07.vercel.app"],
     "rewrites": [
         {
             "source": "/(.*)",
