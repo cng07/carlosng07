@@ -14,7 +14,9 @@ const Projects = () => {
         // defined map for specific cases not in resumeData
         const customLogos = {
             "Web Automation": null,
-            "Page Object Model": null
+            "Page Object Model": null,
+            "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+            "CSV": null
         };
 
         if (techName in customLogos) return customLogos[techName];
@@ -34,7 +36,7 @@ const Projects = () => {
             id: 1,
             title: "Portfolio Website Automation (JavaScript)",
             description: "Comprehensive Playwright automation test suite for this portfolio website. Tests critical user flows including navigation, form submissions, and responsive design across browsers.",
-            tech: ["Playwright", "JavaScript", "GitHub Actions", "Web Automation"],
+            tech: ["Playwright", "JavaScript", "Node.js", "GitHub Actions", "Web Automation"],
             highlights: [
                 "Cross-browser testing (Chrome, Firefox, Safari, Edge)",
                 "Link integrity checks",
@@ -48,7 +50,7 @@ const Projects = () => {
             id: 2,
             title: "Portfolio Website Automation (TypeScript)",
             description: "Advanced Playwright automation framework using TypeScript. Implements Page Object Model (POM) architecture for better scalability, type safety, and maintainability.",
-            tech: ["Playwright", "TypeScript", "GitHub Actions", "Web Automation"],
+            tech: ["Playwright", "TypeScript", "Node.js", "GitHub Actions", "Web Automation"],
             highlights: [
                 "Strongly typed test architecture with TypeScript",
                 "Page Object Model (POM) implementation",
@@ -56,6 +58,19 @@ const Projects = () => {
             ],
             github: "https://github.com/cng07/playwright_portfolio_automation_typescript",
 
+            status: "Active"
+        },
+        {
+            id: 3,
+            title: "QA Practice Framework",
+            description: "Automated end-to-end test suites written in TypeScript using Playwright. Features a structured approach to testing web applications with reusable components and data-driven tests.",
+            tech: ["Playwright", "TypeScript", "Node.js", "Web Automation"],
+            highlights: [
+                "Data-driven testing via CSV integration",
+                "Page Object Model (POM) architecture",
+                "Automated form validation & edge case handling"
+            ],
+            github: "https://github.com/cng07/qaPractice",
             status: "Active"
         }
     ];
