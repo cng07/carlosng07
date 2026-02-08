@@ -102,7 +102,7 @@ const Projects = () => {
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}
+                    className="projects-grid"
                 >
                     {projects.map((project) => (
                         <motion.div
