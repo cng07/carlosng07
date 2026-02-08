@@ -77,7 +77,7 @@ const About = () => {
                             <div className="glass" style={{ padding: '1.5rem', textAlign: 'center' }}>
                                 <Zap size={24} color="var(--primary)" style={{ margin: '0 auto 1rem' }} />
                                 <h4 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>Fast Execution</h4>
-                                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Reducing execution from hours to minutes.</p>
+                                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Reduced execution time from 19 hours to 4 hours for 300+ test cases.</p>
                             </div>
                             <div className="glass" style={{ padding: '1.5rem', textAlign: 'center' }}>
                                 <Target size={24} color="var(--primary)" style={{ margin: '0 auto 1rem' }} />
