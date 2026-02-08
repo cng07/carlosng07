@@ -306,7 +306,7 @@ const Home = () => {
 
             {/* Certifications & Publications */}
             <section id="certifications" className="section">
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '3rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem' }}>
                     <div>
                         <motion.h2
                             className="section-title"
