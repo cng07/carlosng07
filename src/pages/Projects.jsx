@@ -1,6 +1,7 @@
 import React from 'react';
-import { ExternalLink, Github, Code2, Target, Zap } from 'lucide-react';
+import { ExternalLink, Github, Code2, Target, Zap, Bot, Database, Layout } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { resumeData } from '../data/resumeData';
 
 const Projects = () => {
     const fadeIn = {
@@ -9,35 +10,52 @@ const Projects = () => {
         transition: { duration: 0.6 }
     };
 
+    const getTechLogo = (techName) => {
+        // defined map for specific cases not in resumeData
+        const customLogos = {
+            "Web Automation": null,
+            "Page Object Model": null
+        };
+
+        if (techName in customLogos) return customLogos[techName];
+
+        // Search in resumeData
+        for (const category of Object.values(resumeData.skills)) {
+            if (Array.isArray(category)) {
+                const found = category.find(s => s && s.name && (s.name === techName || s.name.includes(techName)));
+                if (found) return found.logo;
+            }
+        }
+        return null;
+    };
+
     const projects = [
         {
             id: 1,
-            title: "Portfolio Website Automation",
+            title: "Portfolio Website Automation (JavaScript)",
             description: "Comprehensive Playwright automation test suite for this portfolio website. Tests critical user flows including navigation, form submissions, and responsive design across browsers.",
-            tech: ["Playwright", "JavaScript", "GitHub Actions", "Cypress Report", "Web Automation"],
+            tech: ["Playwright", "JavaScript", "GitHub Actions", "Web Automation"],
             highlights: [
                 "Cross-browser testing (Chrome, Firefox, Safari, Edge)",
                 "Link integrity checks",
                 "CI/CD integration with GitHub Actions"
             ],
             github: "https://github.com/cng07/playwright_portfolio_automation_javascript",
-            features: [
-                {
-                    icon: <Code2 size={20} />,
-                    label: "Modern Stack",
-                    value: "Playwright + JavaScript ES6+"
-                },
-                {
-                    icon: <Target size={20} />,
-                    label: "Test Coverage",
-                    value: "E2E & Responsive Design"
-                },
-                {
-                    icon: <Zap size={20} />,
-                    label: "Execution",
-                    value: "Fast & Reliable"
-                }
+
+            status: "Active"
+        },
+        {
+            id: 2,
+            title: "Portfolio Website Automation (TypeScript)",
+            description: "Advanced Playwright automation framework using TypeScript. Implements Page Object Model (POM) architecture for better scalability, type safety, and maintainability.",
+            tech: ["Playwright", "TypeScript", "GitHub Actions", "Web Automation"],
+            highlights: [
+                "Strongly typed test architecture with TypeScript",
+                "Page Object Model (POM) implementation",
+                "Automated CI/CD pipelines via GitHub Actions"
             ],
+            github: "https://github.com/cng07/playwright_portfolio_automation_typescript",
+
             status: "Active"
         }
     ];
@@ -97,13 +115,14 @@ const Projects = () => {
                             {/* Header */}
                             <div style={{ marginBottom: '1.5rem' }}>
                                 <div style={{ display: 'flex', alignItems: 'start', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                                    <h3 style={{ fontSize: '1.5rem', margin: 0 }}>{project.title}</h3>
+                                    <h3 style={{ fontSize: '1.35rem', margin: 0, lineHeight: 1.3 }}>{project.title}</h3>
                                     <span className="badge" style={{
                                         background: 'var(--primary-glow)',
                                         color: '#fff',
                                         fontSize: '0.75rem',
                                         padding: '0.25rem 0.75rem',
-                                        whiteSpace: 'nowrap'
+                                        whiteSpace: 'nowrap',
+                                        marginLeft: '1rem'
                                     }}>
                                         {project.status}
                                     </span>
@@ -128,22 +147,7 @@ const Projects = () => {
                                 </ul>
                             </div>
 
-                            {/* Features */}
-                            <div style={{ marginBottom: '1.5rem', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
-                                {project.features.map((feature, idx) => (
-                                    <div key={idx} style={{ textAlign: 'center' }}>
-                                        <div style={{ color: 'var(--primary)', marginBottom: '0.5rem', display: 'flex', justifyContent: 'center' }}>
-                                            {feature.icon}
-                                        </div>
-                                        <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.25rem' }}>
-                                            {feature.label}
-                                        </p>
-                                        <p style={{ fontSize: '0.85rem', fontWeight: 600 }}>
-                                            {feature.value}
-                                        </p>
-                                    </div>
-                                ))}
-                            </div>
+
 
                             {/* Technologies */}
                             <div style={{ marginBottom: '1.5rem' }}>
@@ -151,17 +155,28 @@ const Projects = () => {
                                     Technologies
                                 </h4>
                                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                                    {project.tech.map((tech, idx) => (
-                                        <span key={idx} className="badge" style={{
-                                            background: 'rgba(59, 130, 246, 0.1)',
-                                            color: 'var(--primary)',
-                                            borderColor: 'var(--primary)',
-                                            fontSize: '0.8rem',
-                                            padding: '0.4rem 0.75rem'
-                                        }}>
-                                            {tech}
-                                        </span>
-                                    ))}
+                                    {project.tech.map((tech, idx) => {
+                                        const logo = getTechLogo(tech);
+                                        return (
+                                            <span key={idx} className="badge" style={{
+                                                background: 'rgba(59, 130, 246, 0.1)',
+                                                color: 'var(--primary)',
+                                                borderColor: 'var(--primary)',
+                                                fontSize: '0.85rem',
+                                                padding: '0.5rem 0.85rem',
+                                                display: 'inline-flex',
+                                                alignItems: 'center',
+                                                gap: '0.5rem'
+                                            }}>
+                                                {logo ? (
+                                                    <img src={logo} alt={tech} style={{ width: '16px', height: '16px', objectFit: 'contain' }} />
+                                                ) : (
+                                                    <Layout size={14} />
+                                                )}
+                                                {tech}
+                                            </span>
+                                        );
+                                    })}
                                 </div>
                             </div>
 
@@ -206,7 +221,7 @@ const Projects = () => {
                     <motion.div {...fadeIn}>
                         <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>More Projects Coming</h2>
                         <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto' }}>
-                            I'm continuously working on new automation frameworks, testing utilities, and performance optimization tools. Check back soon for updates!
+                            Check back soon for updates!
                         </p>
                     </motion.div>
                 </div>
