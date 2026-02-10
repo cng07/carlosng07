@@ -29,7 +29,9 @@ export const resumeData = {
     ],
     cicd: [
       { name: "Azure Pipelines", logo: "https://icons.veryicon.com/png/o/business/vscode-program-item-icon/azure-pipelines.png" },
-      { name: "GitHub Actions", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
+      { name: "GitHub Actions", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+      { name: "Jenkins", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" },
+      { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" }
     ],
     manualTesting: [
       {
