@@ -49,12 +49,13 @@ const Projects = () => {
         {
             id: 2,
             title: "Portfolio Website Automation (TypeScript)",
-            description: "Advanced Playwright automation framework using TypeScript. Implements Page Object Model (POM) architecture for better scalability, type safety, and maintainability.",
-            tech: ["Playwright", "TypeScript", "Node.js", "GitHub Actions", "Web Automation"],
+            description: "Advanced Playwright automation framework using TypeScript with containerization and CI/CD support. Implements Page Object Model (POM) architecture for better scalability, type safety, and maintainability. Features Docker containerization and flexible CI/CD options with Jenkins and GitHub Actions.",
+            tech: ["Playwright", "TypeScript", "Node.js", "GitHub Actions", "Jenkins", "Docker", "Web Automation"],
             highlights: [
                 "Strongly typed test architecture with TypeScript",
                 "Page Object Model (POM) implementation",
-                "Automated CI/CD pipelines via GitHub Actions"
+                "Docker containerization for consistent test environments",
+                "Multi-platform CI/CD support (Jenkins & GitHub Actions)"
             ],
             github: "https://github.com/cng07/playwright_portfolio_automation_typescript",
 
@@ -154,8 +155,8 @@ const Projects = () => {
                                 </h4>
                                 <ul style={{ list: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                                     {project.highlights.map((highlight, idx) => (
-                                        <li key={idx} style={{ color: 'var(--text-muted)', fontSize: '0.95rem', display: 'flex', alignItems: 'start', gap: '0.5rem' }}>
-                                            <span style={{ color: 'var(--primary)', marginTop: '0.2rem' }}>→</span>
+                                        <li key={idx} style={{ color: 'var(--text-muted)', fontSize: '0.95rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                            <span style={{ color: 'var(--primary)' }}>→</span>
                                             <span>{highlight}</span>
                                         </li>
                                     ))}
