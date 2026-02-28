@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
     ExternalLink,
     CheckCircle2,
@@ -184,37 +185,70 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Experience Section */}
+            {/* Experience Timeline Section */}
             <section id="experience" className="section" style={{ paddingTop: '1rem' }}>
                 <motion.h2
                     className="section-title"
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ once: true, margin: '-100px' }}
                     transition={{ duration: 0.6 }}
                 >
                     <Briefcase size={28} color="var(--primary)" /> Experience
                 </motion.h2>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-                    {resumeData.experience.map((exp, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, x: -40 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
-                            className="glass"
-                            style={{ padding: '2rem' }}
-                            whileHover={{ y: -4, transition: { duration: 0.3 } }}
-                        >
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }} className="experience-company-row">
+
+                {/* Vertical timeline */}
+                <div style={{ position: 'relative', paddingLeft: '2rem' }}>
+                    {/* Timeline spine */}
+                    <div style={{
+                        position: 'absolute',
+                        left: '7px',
+                        top: '8px',
+                        bottom: '8px',
+                        width: '2px',
+                        background: 'linear-gradient(to bottom, var(--primary), transparent)',
+                        borderRadius: '2px'
+                    }} />
+
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+                        {resumeData.experience.map((exp, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, margin: '-60px' }}
+                                transition={{ duration: 0.5, delay: index * 0.08 }}
+                                style={{ position: 'relative', paddingBottom: index < resumeData.experience.length - 1 ? '2rem' : '0' }}
+                            >
+                                {/* Timeline dot */}
+                                <div style={{
+                                    position: 'absolute',
+                                    left: 'calc(-2rem + 1px)',
+                                    top: index < resumeData.experience.length - 1 ? 'calc(50% - 1rem)' : '50%',
+                                    width: '14px',
+                                    height: '14px',
+                                    borderRadius: '50%',
+                                    background: index === 0 ? 'var(--primary)' : 'var(--background)',
+                                    border: '2px solid var(--primary)',
+                                    boxShadow: index === 0 ? '0 0 8px var(--primary)' : 'none',
+                                    transform: 'translateY(-50%)',
+                                    zIndex: 1
+                                }} />
+
+                                <motion.div
+                                    className="glass"
+                                    style={{
+                                        padding: '1.25rem 1.5rem',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '1rem',
+                                        flexWrap: 'wrap'
+                                    }}
+                                    whileHover={{ x: 6, transition: { duration: 0.2 } }}
+                                >
+                                    {/* Company logo */}
                                     {exp.logo && (
-                                        <motion.div
-                                            className="company-logo-container"
-                                            whileHover={{ scale: 1.1 }}
-                                            transition={{ duration: 0.2 }}
-                                        >
+                                        <div className="company-logo-container">
                                             {exp.website ? (
                                                 <a href={exp.website} target="_blank" rel="noreferrer" style={{ display: 'block', height: '100%' }}>
                                                     <img
@@ -228,80 +262,82 @@ const Home = () => {
                                                     alt={`${exp.company} logo`}
                                                 />
                                             )}
-                                        </motion.div>
+                                        </div>
                                     )}
-                                    <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>
-                                        {exp.website ? (
-                                            <a href={exp.website} target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
-                                                {exp.company}
-                                                <ExternalLink size={14} style={{ marginLeft: '0.5rem', verticalAlign: 'middle' }} />
-                                            </a>
-                                        ) : (
-                                            exp.company
-                                        )}
-                                    </h3>
-                                </div>
-                                {!exp.roles && <p style={{ color: 'var(--primary)', fontWeight: 600, fontSize: '1.1rem', marginBottom: '0.5rem', paddingLeft: '4px' }}>{exp.role}</p>}
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', paddingLeft: '4px' }}>
-                                    <p style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '1rem' }}>{exp.period}</p>
-                                    <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                                        <MapPin size={14} color="var(--primary)" /> {exp.location}
-                                    </p>
-                                </div>
-                            </div>
 
-                            {exp.roles ? (
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
-                                    {exp.roles.map((role, ri) => (
-                                        <motion.div
-                                            key={ri}
-                                            initial={{ opacity: 0 }}
-                                            whileInView={{ opacity: 1 }}
-                                            viewport={{ once: true }}
-                                            transition={{ duration: 0.4, delay: ri * 0.1 }}
-                                        >
-                                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', marginBottom: '1rem' }}>
-                                                <h4 style={{ fontSize: '1.2rem', color: 'var(--primary)', fontWeight: 600 }}>{role.title}</h4>
-                                                <span style={{ fontSize: '0.95rem', color: 'var(--text-muted)', fontWeight: 600 }}>{role.period}</span>
-                                            </div>
-                                            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                                                {role.achievements.map((item, i) => (
-                                                    <motion.li
-                                                        key={i}
-                                                        style={{ display: 'flex', gap: '1rem', color: 'var(--text-main)', fontSize: '1rem', lineHeight: '1.5' }}
-                                                        initial={{ opacity: 0, x: -20 }}
-                                                        whileInView={{ opacity: 1, x: 0 }}
-                                                        viewport={{ once: true }}
-                                                        transition={{ duration: 0.3, delay: i * 0.05 }}
-                                                    >
-                                                        <CheckCircle2 size={18} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.25rem' }} />
-                                                        <span>{item}</span>
-                                                    </motion.li>
-                                                ))}
-                                            </ul>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            ) : (
-                                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                                    {exp.achievements.map((item, i) => (
-                                        <motion.li
-                                            key={i}
-                                            style={{ display: 'flex', gap: '1rem', color: 'var(--text-main)', fontSize: '1rem', lineHeight: '1.5' }}
-                                            initial={{ opacity: 0, x: -20 }}
-                                            whileInView={{ opacity: 1, x: 0 }}
-                                            viewport={{ once: true }}
-                                            transition={{ duration: 0.3, delay: i * 0.05 }}
-                                        >
-                                            <CheckCircle2 size={18} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.25rem' }} />
-                                            <span>{item}</span>
-                                        </motion.li>
-                                    ))}
-                                </ul>
-                            )}
-                        </motion.div>
-                    ))}
+                                    {/* Info */}
+                                    <div style={{ flex: 1, minWidth: 0 }}>
+                                        <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.6rem', flexWrap: 'wrap' }}>
+                                            <span style={{ fontWeight: 700, fontSize: '1.05rem', color: 'var(--text-main)', whiteSpace: 'nowrap' }}>
+                                                {exp.website ? (
+                                                    <a href={exp.website} target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                                                        {exp.company}
+                                                    </a>
+                                                ) : exp.company}
+                                            </span>
+                                            {index === 0 && (
+                                                <span style={{
+                                                    fontSize: '0.7rem',
+                                                    color: '#fff',
+                                                    background: 'var(--primary-glow)',
+                                                    padding: '0.1rem 0.55rem',
+                                                    borderRadius: '4px',
+                                                    border: '1px solid var(--primary)',
+                                                    fontWeight: 700,
+                                                    textTransform: 'uppercase',
+                                                    letterSpacing: '0.05em'
+                                                }}>Current</span>
+                                            )}
+                                        </div>
+                                        <p style={{ fontSize: '0.9rem', color: 'var(--primary)', fontWeight: 600, margin: '0.1rem 0' }}>
+                                            {exp.roles ? exp.roles[0].title : exp.role}
+                                        </p>
+                                        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '0.2rem' }}>
+                                            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 500 }}>
+                                                {exp.period}
+                                            </span>
+                                            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                                                <MapPin size={11} color="var(--primary)" /> {exp.location}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
+
+                {/* CTA */}
+                <motion.div
+                    style={{ textAlign: 'center', marginTop: '2.5rem' }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                    <Link
+                        to="/experience"
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            padding: '0.8rem 2rem',
+                            background: 'var(--primary-glow)',
+                            border: '1px solid var(--primary)',
+                            borderRadius: '8px',
+                            color: '#fff',
+                            fontWeight: 600,
+                            fontSize: '0.95rem',
+                            textDecoration: 'none',
+                            transition: 'all 0.2s ease'
+                        }}
+                        onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.3)'; }}
+                        onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
+                    >
+                        View Full Experience <ExternalLink size={16} />
+                    </Link>
+                </motion.div>
             </section>
 
             {/* Certifications & Publications */}

@@ -19,6 +19,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Resume from './pages/Resume';
 import Projects from './pages/Projects';
+import Experience from './pages/Experience';
 import Certifications from './pages/Certifications';
 import Education from './pages/Education';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -44,7 +45,7 @@ const App = () => {
             try {
                 // Add timestamp to prevent caching
                 const timestamp = Date.now();
-                
+
                 // 1. Increment Total Visits
                 const totalRes = await fetch(`${API_URL}/${NAMESPACE}/visits/up?t=${timestamp}`);
                 const totalData = await totalRes.json();
@@ -103,6 +104,7 @@ const App = () => {
                     {/* Desktop Links */}
                     <div className="nav-links">
                         <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Home</Link>
+                        <Link to="/experience" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Experience</Link>
                         <Link to="/projects" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Projects</Link>
                         <Link to="/resume" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Resume</Link>
                         <Link to="/certifications" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Certifications</Link>
@@ -126,6 +128,7 @@ const App = () => {
                         className="mobile-nav"
                     >
                         <Link to="/" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Home</Link>
+                        <Link to="/experience" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Experience</Link>
                         <Link to="/projects" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Projects</Link>
                         <Link to="/resume" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Resume</Link>
                         <Link to="/certifications" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Certifications</Link>
@@ -137,6 +140,7 @@ const App = () => {
 
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/experience" element={<Experience />} />
                     <Route path="/projects" element={<Projects />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/resume" element={<Resume />} />
