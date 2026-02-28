@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
     ExternalLink,
-    CheckCircle2,
     Award,
     BookOpen,
     Cpu,
@@ -10,12 +9,13 @@ import {
     Terminal,
     MapPin,
     Briefcase,
-    GraduationCap,
     Bot,
     Search,
     Infinity,
     Wrench,
     Sparkles,
+    Github,
+    FolderGit2,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { resumeData } from '../data/resumeData';
@@ -118,7 +118,7 @@ const Home = () => {
                                     style={{ borderRadius: '2px' }}
                                 />
                             </div>
-                            Official U.S. List of Certified & Credentialed Software Testers™ Profile
+                            Official U.S. List of Certified &amp; Credentialed Software Testers™ Profile
                         </a>
                     </div>
                 </motion.div>
@@ -340,93 +340,97 @@ const Home = () => {
                 </motion.div>
             </section>
 
-            {/* Certifications & Publications */}
+            {/* Highlights: Certifications & Publications */}
             <section id="certifications" className="section">
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem' }}>
+
+                    {/* Key Certification Spotlight */}
                     <div>
                         <motion.h2
                             className="section-title"
                             initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
+                            viewport={{ once: true, margin: '-100px' }}
                             transition={{ duration: 0.6 }}
                         >
                             <Award size={28} color="var(--primary)" /> Certifications
                         </motion.h2>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                            {resumeData.certifications.map((cert, i) => (
-                                <motion.div
-                                    key={i}
-                                    className="glass"
-                                    style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true, margin: "-100px" }}
-                                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                                    whileHover={{ y: -4, transition: { duration: 0.3 } }}
-                                >
-                                    <div style={{ marginBottom: '0.5rem' }}>
-                                        <h4 style={{ color: 'var(--text-main)', fontSize: '1.1rem', marginBottom: '0.2rem', textDecoration: 'underline' }}>{cert.title}</h4>
-                                        {cert.subtitle && <p style={{ color: 'var(--text-main)', fontWeight: 600, fontSize: '1rem', marginBottom: '0.25rem' }}>{cert.subtitle}</p>}
-                                        <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 700, marginBottom: '0.4rem', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
-                                            {cert.period}
-                                            {cert.expired && (
-                                                <span style={{
-                                                    fontSize: '0.7rem',
-                                                    color: '#fff',
-                                                    background: 'rgba(239, 68, 68, 0.7)',
-                                                    padding: '0.1rem 0.6rem',
-                                                    borderRadius: '4px',
-                                                    border: '1px solid rgba(239, 68, 68, 0.5)',
-                                                    textTransform: 'uppercase',
-                                                    letterSpacing: '0.05em',
-                                                    fontWeight: 700
-                                                }}>
-                                                    Expired
-                                                </span>
-                                            )}
-                                            {cert.noExpiry && (
-                                                <span style={{
-                                                    fontSize: '0.7rem',
-                                                    color: '#fff',
-                                                    background: 'rgba(59, 130, 246, 0.7)',
-                                                    padding: '0.1rem 0.6rem',
-                                                    borderRadius: '4px',
-                                                    border: '1px solid rgba(59, 130, 246, 0.5)',
-                                                    textTransform: 'uppercase',
-                                                    letterSpacing: '0.05em',
-                                                    fontWeight: 700
-                                                }}>
-                                                    No Expiry
-                                                </span>
-                                            )}
-                                        </p>
-                                        <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', fontWeight: 600 }}>{cert.issuer}</p>
-                                    </div>
 
-                                    <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                                        {cert.idLabel || 'Credential ID'}: {cert.link ? (
-                                            <a href={cert.link} target="_blank" rel="noreferrer" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>
-                                                {cert.credentialId}
-                                            </a>
-                                        ) : cert.credentialId}
-                                    </p>
+                        {/* Show only the primary (ISTQB) cert as a spotlight */}
+                        {resumeData.certifications.slice(0, 1).map((cert, i) => (
+                            <motion.div
+                                key={i}
+                                className="glass"
+                                style={{
+                                    padding: '1.75rem',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '0.75rem',
+                                    borderLeft: '3px solid var(--primary)'
+                                }}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-100px' }}
+                                transition={{ duration: 0.5 }}
+                                whileHover={{ y: -4, transition: { duration: 0.3 } }}
+                            >
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                                    <Award size={20} color="var(--primary)" style={{ flexShrink: 0 }} />
+                                    <h4 style={{ color: 'var(--text-main)', fontSize: '1.05rem', lineHeight: 1.3 }}>{cert.title}</h4>
+                                </div>
+                                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontWeight: 600 }}>{cert.issuer}</p>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{cert.period}</span>
+                                    {cert.noExpiry && (
+                                        <span style={{
+                                            fontSize: '0.7rem', color: '#fff',
+                                            background: 'rgba(59, 130, 246, 0.7)',
+                                            padding: '0.1rem 0.55rem', borderRadius: '4px',
+                                            border: '1px solid rgba(59, 130, 246, 0.5)',
+                                            textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700
+                                        }}>No Expiry</span>
+                                    )}
+                                </div>
+                                {cert.link && (
+                                    <a
+                                        href={cert.link}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        style={{ color: 'var(--primary)', display: 'inline-flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.9rem', fontWeight: 600, marginTop: '0.25rem' }}
+                                    >
+                                        View Certificate <ExternalLink size={13} />
+                                    </a>
+                                )}
+                            </motion.div>
+                        ))}
 
-                                    {cert.additionalLinks && cert.additionalLinks.map((al, idx) => (
-                                        <p key={idx} style={{ fontSize: '0.9rem', marginTop: '0.25rem' }}>
-                                            <a href={al.url} target="_blank" rel="noreferrer" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>{al.label}</a>
-                                        </p>
-                                    ))}
-                                </motion.div>
-                            ))}
-                        </div>
+                        <motion.div
+                            style={{ marginTop: '1.25rem', textAlign: 'center' }}
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: 0.2 }}
+                        >
+                            <Link
+                                to="/certifications"
+                                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                                style={{
+                                    color: 'var(--primary)', fontWeight: 600, fontSize: '0.9rem',
+                                    textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem'
+                                }}
+                            >
+                                View All {resumeData.certifications.length} Certifications <ExternalLink size={13} />
+                            </Link>
+                        </motion.div>
                     </div>
+
+                    {/* Publication */}
                     <div>
                         <motion.h2
                             className="section-title"
                             initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
+                            viewport={{ once: true, margin: '-100px' }}
                             transition={{ duration: 0.6 }}
                         >
                             <BookOpen size={28} color="var(--primary)" /> Publications
@@ -438,7 +442,7 @@ const Home = () => {
                                 style={{ padding: '1.5rem', marginBottom: '1.5rem' }}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-100px" }}
+                                viewport={{ once: true, margin: '-100px' }}
                                 transition={{ duration: 0.5, delay: i * 0.1 }}
                                 whileHover={{ y: -4, transition: { duration: 0.3 } }}
                             >
@@ -449,79 +453,101 @@ const Home = () => {
                                 </a>
                             </motion.div>
                         ))}
-
-                        <motion.h2
-                            className="section-title"
-                            style={{ marginTop: '3rem' }}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.6 }}
-                        >
-                            <GraduationCap size={28} color="var(--primary)" /> Education
-                        </motion.h2>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                            {resumeData.education.map((edu, i) => (
-                                <motion.div
-                                    key={i}
-                                    className="glass"
-                                    style={{ padding: '2rem' }}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true, margin: "-100px" }}
-                                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                                    whileHover={{ y: -4, transition: { duration: 0.3 } }}
-                                >
-                                    <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.5rem', letterSpacing: '0.05em' }}>
-                                        {edu.type}
-                                    </p>
-                                    <h3 style={{ color: 'var(--text-main)', fontSize: '1.4rem', marginBottom: '0.25rem' }}>{edu.school}</h3>
-                                    {edu.degree && <h4 style={{ marginBottom: '0.5rem', color: 'var(--text-main)' }}>{edu.degree}</h4>}
-
-                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginBottom: '1rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                                        <span style={{ fontWeight: 600 }}>{edu.period}</span>
-                                        <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                                            <MapPin size={14} color="var(--primary)" /> {edu.address}
-                                        </span>
-                                    </div>
-
-                                    {edu.highlights && (
-                                        <ul style={{ listStyle: 'none', padding: 0, marginTop: '1rem' }}>
-                                            {edu.highlights.map((h, idx) => (
-                                                <motion.li
-                                                    key={idx}
-                                                    style={{ display: 'flex', gap: '0.75rem', color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '0.4rem' }}
-                                                    initial={{ opacity: 0, x: -10 }}
-                                                    whileInView={{ opacity: 1, x: 0 }}
-                                                    viewport={{ once: true }}
-                                                    transition={{ duration: 0.3, delay: idx * 0.05 }}
-                                                >
-                                                    <CheckCircle2 size={16} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.2rem' }} />
-                                                    {h}
-                                                </motion.li>
-                                            ))}
-                                        </ul>
-                                    )}
-
-                                    {edu.scholarship && (
-                                        <motion.div
-                                            style={{ marginTop: '1.5rem', padding: '1rem', borderLeft: '3px solid var(--primary)', background: 'rgba(var(--primary-rgb), 0.05)', borderRadius: '0 8px 8px 0' }}
-                                            initial={{ opacity: 0, x: -10 }}
-                                            whileInView={{ opacity: 1, x: 0 }}
-                                            viewport={{ once: true }}
-                                            transition={{ duration: 0.4 }}
-                                        >
-                                            <p style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--text-main)', marginBottom: '0.4rem' }}>College scholarship: {edu.scholarship.name}</p>
-                                            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'flex-start', gap: '0.4rem', lineHeight: '1.4' }}>
-                                                <MapPin size={14} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.2rem' }} /> {edu.scholarship.address}
-                                            </p>
-                                        </motion.div>
-                                    )}
-                                </motion.div>
-                            ))}
-                        </div>
                     </div>
                 </div>
+            </section>
+
+            {/* Featured Projects */}
+            <section id="featured-projects" className="section">
+                <motion.h2
+                    className="section-title"
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-100px' }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <FolderGit2 size={28} color="var(--primary)" /> Featured Projects
+                </motion.h2>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+                    {[
+                        {
+                            title: 'Portfolio Automation (TypeScript)',
+                            description: 'Playwright + TypeScript framework with Page Object Model, Docker containerization, and multi-platform CI/CD support via Jenkins & GitHub Actions.',
+                            tech: ['Playwright', 'TypeScript', 'Docker', 'Jenkins', 'GitHub Actions'],
+                            github: 'https://github.com/cng07/playwright_portfolio_automation_typescript',
+                        },
+                        {
+                            title: 'Portfolio Automation (JavaScript)',
+                            description: 'Playwright automation suite covering navigation, cross-browser testing, and link integrity checks with CI/CD via GitHub Actions.',
+                            tech: ['Playwright', 'JavaScript', 'GitHub Actions'],
+                            github: 'https://github.com/cng07/playwright_portfolio_automation_javascript',
+                        },
+                    ].map((project, idx) => (
+                        <motion.div
+                            key={idx}
+                            className="glass"
+                            style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: '-80px' }}
+                            transition={{ duration: 0.5, delay: idx * 0.1 }}
+                            whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                        >
+                            <h3 style={{ fontSize: '1.1rem', color: 'var(--text-main)', lineHeight: 1.3 }}>{project.title}</h3>
+                            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.6, flex: 1 }}>{project.description}</p>
+
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                                {project.tech.map(t => (
+                                    <span key={t} className="badge" style={{ fontSize: '0.75rem', padding: '0.2rem 0.6rem', background: 'rgba(59,130,246,0.1)', color: 'var(--primary)', borderColor: 'var(--primary)' }}>
+                                        {t}
+                                    </span>
+                                ))}
+                            </div>
+
+                            <a
+                                href={project.github}
+                                target="_blank"
+                                rel="noreferrer"
+                                style={{
+                                    display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                                    padding: '0.55rem 1.1rem', borderRadius: '7px',
+                                    background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border)',
+                                    color: 'var(--text-main)', textDecoration: 'none', fontSize: '0.875rem',
+                                    fontWeight: 600, transition: 'all 0.2s ease', alignSelf: 'flex-start'
+                                }}
+                                onMouseEnter={e => { e.currentTarget.style.background = 'var(--primary-glow)'; e.currentTarget.style.borderColor = 'var(--primary)'; }}
+                                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.borderColor = 'var(--border)'; }}
+                            >
+                                <Github size={15} /> Repository
+                            </a>
+                        </motion.div>
+                    ))}
+                </div>
+
+                <motion.div
+                    style={{ textAlign: 'center', marginTop: '2.5rem' }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                    <Link
+                        to="/projects"
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        style={{
+                            display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                            padding: '0.8rem 2rem',
+                            background: 'var(--primary-glow)', border: '1px solid var(--primary)',
+                            borderRadius: '8px', color: '#fff', fontWeight: 600,
+                            fontSize: '0.95rem', textDecoration: 'none', transition: 'all 0.2s ease'
+                        }}
+                        onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.3)'; }}
+                        onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
+                    >
+                        View All Projects <ExternalLink size={16} />
+                    </Link>
+                </motion.div>
             </section>
         </main>
     );
