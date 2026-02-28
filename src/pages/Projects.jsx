@@ -16,7 +16,9 @@ const Projects = () => {
             "Web Automation": null,
             "Page Object Model": null,
             "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-            "CSV": null
+            "CSV": null,
+            "Python": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+            "pytest": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytest/pytest-original.svg"
         };
 
         if (techName in customLogos) return customLogos[techName];
@@ -63,6 +65,19 @@ const Projects = () => {
         },
         {
             id: 3,
+            title: "Portfolio Website Automation (Python)",
+            description: "UI automation for this portfolio site using Playwright and pytest. Implements a Page Object Model architecture covering Home and Projects page navigation, heading assertions, and HTML report generation.",
+            tech: ["Playwright", "Python", "pytest", "Web Automation"],
+            highlights: [
+                "Page Object Model (POM) for Home & Projects pages",
+                "pytest + playwright integration",
+                "HTML report generation via pytest-html"
+            ],
+            github: "https://github.com/cng07/playwright_portfolio_automation_python",
+            status: "Active"
+        },
+        {
+            id: 4,
             title: "QA Practice Framework",
             description: "Automated end-to-end test suites written in TypeScript using Playwright. Features a structured approach to testing web applications with reusable components and data-driven tests.",
             tech: ["Playwright", "TypeScript", "Node.js", "Web Automation"],
