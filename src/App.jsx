@@ -113,9 +113,19 @@ const routes = [
 ];
 
 const navItems = routes.filter((route) => route.label);
+const primaryNavOrder = ['Home', 'Projects', 'Resume', 'About', 'Contact'];
+const moreNavOrder = ['Experience', 'Certifications', 'Education'];
+const navItemsByLabel = navItems.reduce((acc, item) => {
+    acc[item.label] = item;
+    return acc;
+}, {});
+const primaryNavItems = primaryNavOrder.map((label) => navItemsByLabel[label]).filter(Boolean);
+const moreNavItems = moreNavOrder.map((label) => navItemsByLabel[label]).filter(Boolean);
+const mobileNavItems = [...primaryNavItems, ...moreNavItems];
 
 const App = () => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [isMobileMoreOpen, setIsMobileMoreOpen] = React.useState(false);
     const [visitorStats, setVisitorStats] = React.useState({ total: 0, unique: 0 });
 
     React.useEffect(() => {
@@ -168,8 +178,19 @@ const App = () => {
         fetchStats();
     }, []);
 
-    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-    const closeMenu = () => setIsMenuOpen(false);
+    const toggleMenu = () => {
+        setIsMenuOpen((prev) => {
+            const next = !prev;
+            if (!next) {
+                setIsMobileMoreOpen(false);
+            }
+            return next;
+        });
+    };
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+        setIsMobileMoreOpen(false);
+    };
 
     return (
         <Router>
@@ -193,11 +214,33 @@ const App = () => {
 
                     {/* Desktop Links */}
                     <div className="nav-links">
-                        {navItems.map((item) => (
+                        {primaryNavItems.map((item) => (
                             <Link key={item.path} to={item.path} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                                 {item.label}
                             </Link>
                         ))}
+                        {moreNavItems.length > 0 && (
+                            <div className="nav-more">
+                                <button className="nav-more-trigger" type="button" aria-haspopup="menu">
+                                    More
+                                </button>
+                                <div className="nav-dropdown" role="menu" aria-label="More links">
+                                    {moreNavItems.map((item) => (
+                                        <Link
+                                            key={item.path}
+                                            to={item.path}
+                                            role="menuitem"
+                                            onClick={(event) => {
+                                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                                                event.currentTarget.blur();
+                                            }}
+                                        >
+                                            {item.label}
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -225,11 +268,34 @@ const App = () => {
                         aria-label="Mobile navigation"
                         aria-modal="true"
                     >
-                        {navItems.map((item) => (
+                        {primaryNavItems.map((item) => (
                             <Link key={item.path} to={item.path} onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
                                 {item.label}
                             </Link>
                         ))}
+                        {moreNavItems.length > 0 && (
+                            <div className="mobile-nav-more">
+                                <button
+                                    className="mobile-nav-more-btn"
+                                    type="button"
+                                    aria-expanded={isMobileMoreOpen}
+                                    aria-controls="mobile-more-links"
+                                    onClick={() => setIsMobileMoreOpen((prev) => !prev)}
+                                >
+                                    More
+                                    <span className="mobile-nav-more-caret" aria-hidden="true" />
+                                </button>
+                                {isMobileMoreOpen && (
+                                    <div className="mobile-nav-more-links" id="mobile-more-links">
+                                        {moreNavItems.map((item) => (
+                                            <Link key={item.path} to={item.path} onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+                                                {item.label}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        )}
                     </motion.div>
                 )}
 
