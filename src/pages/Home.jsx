@@ -151,15 +151,15 @@ const Home = () => {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
                     {[
                         {
-                            title: 'Portfolio Automation (TypeScript)',
-                            description: 'Playwright + TypeScript framework with Page Object Model, Docker containerization, and multi-platform CI/CD support via Jenkins & GitHub Actions.',
-                            tech: ['Playwright', 'TypeScript', 'Docker', 'Jenkins', 'GitHub Actions'],
+                            title: 'Portfolio Website Automation (TypeScript)',
+                            description: 'Playwright + TypeScript framework with Page Object Model, Docker containerization, and support via Jenkins',
+                            tech: ['Playwright', 'TypeScript', 'Docker', 'Jenkins'],
                             github: 'https://github.com/cng07/playwright_portfolio_automation_typescript',
                         },
                         {
-                            title: 'Portfolio Automation (JavaScript)',
-                            description: 'Playwright automation suite covering navigation, cross-browser testing, and link integrity checks with CI/CD via GitHub Actions.',
-                            tech: ['Playwright', 'JavaScript', 'GitHub Actions'],
+                            title: 'Portfolio Website Automation (Python)',
+                            description: 'Playwright automation suite covering navigation, cross-browser testing',
+                            tech: ['Playwright', 'Python'],
                             github: 'https://github.com/cng07/playwright_portfolio_automation_javascript',
                         },
                     ].map((project, idx) => (
