@@ -45,12 +45,16 @@ const Experience = () => {
                                                     <img
                                                         src={exp.logo}
                                                         alt={`${exp.company} logo`}
+                                                        loading="lazy"
+                                                        decoding="async"
                                                     />
                                                 </a>
                                             ) : (
                                                 <img
                                                     src={exp.logo}
                                                     alt={`${exp.company} logo`}
+                                                    loading="lazy"
+                                                    decoding="async"
                                                 />
                                             )}
                                         </motion.div>
