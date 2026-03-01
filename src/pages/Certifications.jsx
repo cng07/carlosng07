@@ -57,6 +57,8 @@ const Certifications = () => {
                                         <img
                                             src={cert.image}
                                             alt={cert.title}
+                                            loading="lazy"
+                                            decoding="async"
                                             style={{
                                                 width: '100%',
                                                 height: 'auto',
