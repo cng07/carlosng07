@@ -7,7 +7,7 @@ const Contact = () => {
         {
             icon: (
                 <div style={{ backgroundColor: '#fff', borderRadius: '4px', padding: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" style={{ height: '24px', width: 'auto' }} />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" loading="lazy" decoding="async" style={{ height: '24px', width: 'auto' }} />
                 </div>
             ),
             label: 'Email',
@@ -17,7 +17,7 @@ const Contact = () => {
         {
             icon: (
                 <div style={{ backgroundColor: '#fff', borderRadius: '4px', padding: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src="/linkedin-logo.png" alt="LinkedIn" style={{ height: '24px', width: 'auto' }} />
+                    <img src="/linkedin-logo.png" alt="LinkedIn" loading="lazy" decoding="async" style={{ height: '24px', width: 'auto' }} />
                 </div>
             ),
             label: 'LinkedIn',
@@ -27,7 +27,7 @@ const Contact = () => {
         {
             icon: (
                 <div style={{ backgroundColor: '#fff', borderRadius: '4px', padding: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src="/github-logo.png" alt="GitHub" style={{ height: '24px', width: 'auto' }} />
+                    <img src="/github-logo.png" alt="GitHub" loading="lazy" decoding="async" style={{ height: '24px', width: 'auto' }} />
                 </div>
             ),
             label: 'GitHub',
@@ -37,7 +37,7 @@ const Contact = () => {
         {
             icon: (
                 <div style={{ backgroundColor: '#fff', borderRadius: '4px', padding: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src="/ieee-logo.png" alt="IEEE" style={{ height: '24px', width: 'auto' }} />
+                    <img src="/ieee-logo.png" alt="IEEE" loading="lazy" decoding="async" style={{ height: '24px', width: 'auto' }} />
                 </div>
             ),
             label: 'IEEE Xplore',
@@ -47,7 +47,7 @@ const Contact = () => {
         {
             icon: (
                 <div style={{ backgroundColor: '#fff', borderRadius: '4px', padding: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src="https://atsqa.org/assets/images/atsqa-logo-header.svg" alt="ATSQA" style={{ height: '24px', width: 'auto' }} />
+                    <img src="https://atsqa.org/assets/images/atsqa-logo-header.svg" alt="ATSQA" loading="lazy" decoding="async" style={{ height: '24px', width: 'auto' }} />
                 </div>
             ),
             label: 'AT*SQA Profile',
