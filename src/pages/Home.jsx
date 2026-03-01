@@ -28,7 +28,7 @@ const Home = () => {
     };
 
     return (
-        <main className="container">
+        <div className="container">
             {/* Hero Section */}
             <section id="home" className="section page-header-padding" style={{ textAlign: 'center' }}>
                 <motion.div {...fadeIn}>
@@ -41,6 +41,10 @@ const Home = () => {
                         <img
                             src="/profile.png"
                             alt={resumeData.name}
+                            width="150"
+                            height="150"
+                            fetchPriority="high"
+                            decoding="async"
                             style={{
                                 width: '100%', height: '100%', borderRadius: '50%',
                                 objectFit: 'cover', position: 'relative', border: '2px solid var(--border)'
@@ -86,6 +90,8 @@ const Home = () => {
                                 <img
                                     src="/linkedin-logo.png"
                                     alt="LinkedIn Logo"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                             </div>
                             LinkedIn
@@ -95,6 +101,8 @@ const Home = () => {
                                 <img
                                     src="/github-logo.png"
                                     alt="GitHub Logo"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                             </div>
                             GitHub
@@ -105,6 +113,8 @@ const Home = () => {
                                     src="/ieee-logo.png"
                                     alt="IEEE Logo"
                                     className="external-logo"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                             </div>
                             IEEE Xplore
@@ -116,6 +126,8 @@ const Home = () => {
                                     alt="ASTQB Logo"
                                     className="external-logo"
                                     style={{ borderRadius: '2px' }}
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                             </div>
                             Official U.S. List of Certified &amp; Credentialed Software Testers™ Profile
@@ -171,10 +183,10 @@ const Home = () => {
                                     >
                                         {s.logos ? (
                                             s.logos.map((logo, idx) => (
-                                                <img key={idx} src={logo} alt={s.name} style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
+                                                <img key={idx} src={logo} alt={s.name} loading="lazy" decoding="async" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
                                             ))
                                         ) : (
-                                            <img src={s.logo} alt={s.name} style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
+                                            <img src={s.logo} alt={s.name} loading="lazy" decoding="async" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
                                         )}
                                         {s.name}
                                     </motion.span>
@@ -254,12 +266,16 @@ const Home = () => {
                                                     <img
                                                         src={exp.logo}
                                                         alt={`${exp.company} logo`}
+                                                        loading="lazy"
+                                                        decoding="async"
                                                     />
                                                 </a>
                                             ) : (
                                                 <img
                                                     src={exp.logo}
                                                     alt={`${exp.company} logo`}
+                                                    loading="lazy"
+                                                    decoding="async"
                                                 />
                                             )}
                                         </div>
@@ -549,7 +565,7 @@ const Home = () => {
                     </Link>
                 </motion.div>
             </section>
-        </main>
+        </div>
     );
 };
 
