@@ -4,7 +4,7 @@ import { FileText } from 'lucide-react';
 
 const TermsAndConditions = () => {
     return (
-        <main className="container page-header-padding" style={{ minHeight: '100vh', paddingBottom: '4rem' }}>
+        <div className="container page-header-padding" style={{ minHeight: '100vh', paddingBottom: '4rem' }}>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -145,7 +145,7 @@ const TermsAndConditions = () => {
                     </section>
                 </div>
             </motion.div>
-        </main>
+        </div>
     );
 };
 
