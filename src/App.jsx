@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
@@ -11,19 +11,20 @@ import {
     Users
 } from 'lucide-react';
 import IeeeIcon from './components/CustomIcons';
+import Seo from './components/Seo';
 import { resumeData } from './data/resumeData';
 
-// Pages
-import Home from './pages/Home';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import Resume from './pages/Resume';
-import Projects from './pages/Projects';
-import Experience from './pages/Experience';
-import Certifications from './pages/Certifications';
-import Education from './pages/Education';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import TermsAndConditions from './pages/TermsAndConditions';
+// Pages (lazy-loaded for code splitting)
+const Home = React.lazy(() => import('./pages/Home'));
+const About = React.lazy(() => import('./pages/About'));
+const Contact = React.lazy(() => import('./pages/Contact'));
+const Resume = React.lazy(() => import('./pages/Resume'));
+const Projects = React.lazy(() => import('./pages/Projects'));
+const Experience = React.lazy(() => import('./pages/Experience'));
+const Certifications = React.lazy(() => import('./pages/Certifications'));
+const Education = React.lazy(() => import('./pages/Education'));
+const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
+const TermsAndConditions = React.lazy(() => import('./pages/TermsAndConditions'));
 
 const ScrollToTop = () => {
     const { pathname } = useLocation();
@@ -32,6 +33,86 @@ const ScrollToTop = () => {
     }, [pathname]);
     return null;
 };
+
+const PageLoader = () => (
+    <div className="page-loader" role="status" aria-live="polite">
+        Loading page...
+    </div>
+);
+
+const PageShell = ({ meta, children }) => (
+    <>
+        <Seo {...meta} />
+        {children}
+    </>
+);
+
+const siteName = 'Carlos Ng';
+const baseDescription = 'Senior QA Automation Engineer specializing in Playwright, TypeScript, and scalable test frameworks that speed up reliable releases.';
+const baseImage = '/profile.png';
+
+const routes = [
+    {
+        path: '/',
+        label: 'Home',
+        element: Home,
+        meta: { title: 'QA Automation Portfolio', description: baseDescription, image: baseImage, siteName }
+    },
+    {
+        path: '/experience',
+        label: 'Experience',
+        element: Experience,
+        meta: { title: 'Experience', description: 'Work history, roles, and impact across QA automation and testing.', image: baseImage, siteName }
+    },
+    {
+        path: '/projects',
+        label: 'Projects',
+        element: Projects,
+        meta: { title: 'Projects', description: 'Automation frameworks, test suites, and QA tooling projects with Playwright.', image: baseImage, siteName }
+    },
+    {
+        path: '/resume',
+        label: 'Resume',
+        element: Resume,
+        meta: { title: 'Resume', description: 'Download and review Carlos Ng’s resume and professional experience.', image: baseImage, siteName }
+    },
+    {
+        path: '/certifications',
+        label: 'Certifications',
+        element: Certifications,
+        meta: { title: 'Certifications', description: 'ISTQB and other QA certifications with credentials and verification links.', image: baseImage, siteName }
+    },
+    {
+        path: '/education',
+        label: 'Education',
+        element: Education,
+        meta: { title: 'Education', description: 'Academic background and academic highlights.', image: baseImage, siteName }
+    },
+    {
+        path: '/about',
+        label: 'About',
+        element: About,
+        meta: { title: 'About', description: 'Career story, QA philosophy, and personal highlights.', image: baseImage, siteName }
+    },
+    {
+        path: '/contact',
+        label: 'Contact',
+        element: Contact,
+        meta: { title: 'Contact', description: 'Ways to connect for collaboration, questions, and opportunities.', image: baseImage, siteName }
+    },
+    {
+        path: '/privacy',
+        element: PrivacyPolicy,
+        meta: { title: 'Privacy Policy', description: 'Privacy policy for the portfolio site.', image: baseImage, siteName }
+    },
+    {
+        path: '/terms',
+        element: TermsAndConditions,
+        meta: { title: 'Terms & Conditions', description: 'Terms and conditions for the portfolio site.', image: baseImage, siteName }
+    }
+];
+
+const navItems = routes.filter((route) => route.label);
 
 const App = () => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -94,27 +175,40 @@ const App = () => {
         <Router>
             <ScrollToTop />
             <div className="portfolio">
+                <a className="skip-link" href="#main-content">Skip to content</a>
                 {/* Navigation */}
-                <nav className="glass nav-bar">
+                <nav className="glass nav-bar" aria-label="Primary">
                     <Link to="/" className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                        <img src="/cng07-logo.png" alt="CNG07 Logo" style={{ height: '45px', width: 'auto', borderRadius: '6px' }} />
+                        <img
+                            src="/cng07-logo.png"
+                            alt="CNG07 Logo"
+                            width="45"
+                            height="45"
+                            loading="lazy"
+                            decoding="async"
+                            style={{ height: '45px', width: 'auto', borderRadius: '6px' }}
+                        />
                         Carlos Ng
                     </Link>
 
                     {/* Desktop Links */}
                     <div className="nav-links">
-                        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Home</Link>
-                        <Link to="/experience" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Experience</Link>
-                        <Link to="/projects" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Projects</Link>
-                        <Link to="/resume" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Resume</Link>
-                        <Link to="/certifications" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Certifications</Link>
-                        <Link to="/education" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Education</Link>
-                        <Link to="/about" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>About</Link>
-                        <Link to="/contact" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Contact</Link>
+                        {navItems.map((item) => (
+                            <Link key={item.path} to={item.path} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                                {item.label}
+                            </Link>
+                        ))}
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <button className="mobile-menu-btn" onClick={toggleMenu}>
+                    <button
+                        className="mobile-menu-btn"
+                        onClick={toggleMenu}
+                        type="button"
+                        aria-label="Toggle navigation menu"
+                        aria-expanded={isMenuOpen}
+                        aria-controls="mobile-nav"
+                    >
                         {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
                     </button>
                 </nav>
@@ -126,30 +220,39 @@ const App = () => {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: '100%' }}
                         className="mobile-nav"
+                        id="mobile-nav"
+                        role="dialog"
+                        aria-label="Mobile navigation"
+                        aria-modal="true"
                     >
-                        <Link to="/" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Home</Link>
-                        <Link to="/experience" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Experience</Link>
-                        <Link to="/projects" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Projects</Link>
-                        <Link to="/resume" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Resume</Link>
-                        <Link to="/certifications" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Certifications</Link>
-                        <Link to="/education" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Education</Link>
-                        <Link to="/about" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>About</Link>
-                        <Link to="/contact" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Contact</Link>
+                        {navItems.map((item) => (
+                            <Link key={item.path} to={item.path} onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+                                {item.label}
+                            </Link>
+                        ))}
                     </motion.div>
                 )}
 
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/experience" element={<Experience />} />
-                    <Route path="/projects" element={<Projects />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/resume" element={<Resume />} />
-                    <Route path="/certifications" element={<Certifications />} />
-                    <Route path="/education" element={<Education />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="/privacy" element={<PrivacyPolicy />} />
-                    <Route path="/terms" element={<TermsAndConditions />} />
-                </Routes>
+                <main id="main-content" className="app-main">
+                    <Suspense fallback={<PageLoader />}>
+                        <Routes>
+                            {routes.map((route) => {
+                                const RouteComponent = route.element;
+                                return (
+                                    <Route
+                                        key={route.path}
+                                        path={route.path}
+                                        element={(
+                                            <PageShell meta={route.meta}>
+                                                <RouteComponent />
+                                            </PageShell>
+                                        )}
+                                    />
+                                );
+                            })}
+                        </Routes>
+                    </Suspense>
+                </main>
 
                 {/* Footer */}
                 <footer style={{ padding: '4rem 0', borderTop: '1px solid var(--border)', textAlign: 'center', marginTop: '4rem' }}>
