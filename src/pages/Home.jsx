@@ -494,7 +494,7 @@ const Home = () => {
                                     {/* Info */}
                                     <div style={{ flex: 1, minWidth: 0 }}>
                                         <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.6rem', flexWrap: 'wrap' }}>
-                                            <span style={{ fontWeight: 700, fontSize: '1.05rem', color: 'var(--text-main)', whiteSpace: 'nowrap' }}>
+                                            <span style={{ fontWeight: 700, fontSize: '1.05rem', color: 'var(--text-main)', overflowWrap: 'anywhere', wordBreak: 'break-word' }}>
                                                 {exp.website ? (
                                                     <a href={exp.website} target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
                                                         {exp.company}
