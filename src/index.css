@@ -473,6 +473,11 @@ a {
   object-fit: contain;
 }
 
+.experience-timeline {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
 /* Social media logos */
 .social-logo-container {
   display: flex;

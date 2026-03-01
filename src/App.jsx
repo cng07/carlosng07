@@ -354,7 +354,7 @@ const App = () => {
                     </div>
 
                     <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-                        &copy; {new Date().getFullYear()} {resumeData.name}. All rights reserved.
+                        &copy; {new Date().getFullYear()} Carlos Ng. All rights reserved.
                     </p>
 
                     {/* Footer Links */}

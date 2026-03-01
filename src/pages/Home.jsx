@@ -383,7 +383,7 @@ const Home = () => {
                             viewport={{ once: true, margin: '-100px' }}
                             transition={{ duration: 0.6 }}
                         >
-                            <BookOpen size={28} color="var(--primary)" /> Publications
+                            <BookOpen size={28} color="var(--primary)" /> Publication
                         </motion.h2>
                         {resumeData.publications.map((pub, i) => (
                             <motion.div
@@ -420,7 +420,7 @@ const Home = () => {
                 </motion.h2>
 
                 {/* Vertical timeline */}
-                <div style={{ position: 'relative', paddingLeft: '2rem' }}>
+                <div className="experience-timeline" style={{ position: 'relative', paddingLeft: '2rem' }}>
                     {/* Timeline spine */}
                     <div style={{
                         position: 'absolute',
