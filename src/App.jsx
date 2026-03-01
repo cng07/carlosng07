@@ -56,7 +56,7 @@ const routes = [
         path: '/',
         label: 'Home',
         element: Home,
-        meta: { title: 'QA Automation Portfolio', description: baseDescription, image: baseImage, siteName }
+        meta: { title: 'Portfolio', description: baseDescription, image: baseImage, siteName }
     },
     {
         path: '/experience',

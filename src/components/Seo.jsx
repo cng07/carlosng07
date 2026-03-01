@@ -32,7 +32,7 @@ const Seo = ({
     twitterHandle
 }) => {
     useEffect(() => {
-        const resolvedTitle = title ? `${title} | ${siteName}` : siteName;
+        const resolvedTitle = title ? `${siteName} | ${title}` : siteName;
         const resolvedDescription = description || '';
         const resolvedUrl = url || window.location.href;
         const resolvedImage = image
