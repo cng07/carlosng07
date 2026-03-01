@@ -200,7 +200,7 @@ const Projects = () => {
                                                 gap: '0.5rem'
                                             }}>
                                                 {logo ? (
-                                                    <img src={logo} alt={tech} style={{ width: '16px', height: '16px', objectFit: 'contain' }} />
+                                                    <img src={logo} alt={tech} loading="lazy" decoding="async" style={{ width: '16px', height: '16px', objectFit: 'contain' }} />
                                                 ) : (
                                                     <Layout size={14} />
                                                 )}
