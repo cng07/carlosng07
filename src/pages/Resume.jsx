@@ -71,6 +71,7 @@ const Resume = () => {
                             title="Carlos Ng Resume"
                             width="100%"
                             height="100%"
+                            loading="lazy"
                             style={{ border: 'none', borderRadius: '8px' }}
                         />
                     </object>
