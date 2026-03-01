@@ -193,7 +193,7 @@ const Home = () => {
                                     padding: '0.55rem 1.1rem', borderRadius: '7px',
                                     background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border)',
                                     color: 'var(--text-main)', textDecoration: 'none', fontSize: '0.875rem',
-                                    fontWeight: 600, transition: 'all 0.2s ease', alignSelf: 'flex-start'
+                                    fontWeight: 600, transition: 'all 0.2s ease', alignSelf: 'center'
                                 }}
                                 onMouseEnter={e => { e.currentTarget.style.background = 'var(--primary-glow)'; e.currentTarget.style.borderColor = 'var(--primary)'; }}
                                 onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.borderColor = 'var(--border)'; }}
