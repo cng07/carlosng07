@@ -46,7 +46,7 @@ export const resumeData = {
       {
         name: "API", logos: [
           "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg",
-          "https://docs.usebruno.com/bruno.png"
+          "https://raw.githubusercontent.com/usebruno/bruno/main/assets/images/logo-transparent.png"
         ]
       }
     ],
@@ -174,7 +174,7 @@ export const resumeData = {
       role: "Intern",
       period: "February 2017 – August 2017",
       location: "Mandaluyong City, Philippines",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Accenture.svg/2560px-Accenture.svg.png",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg",
       achievements: [
         "Tertiary Page Dev and Test",
         "Metadata Verification"
