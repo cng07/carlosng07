@@ -148,8 +148,8 @@ const Projects = () => {
                                 <div style={{ display: 'flex', alignItems: 'start', justifyContent: 'space-between', marginBottom: '1rem' }}>
                                     <h3 style={{ fontSize: '1.35rem', margin: 0, lineHeight: 1.3 }}>{project.title}</h3>
                                     <span className="badge" style={{
-                                        background: 'var(--primary-glow)',
-                                        color: '#fff',
+                                        background: 'var(--primary)',
+                                        color: 'var(--text-on-primary)',
                                         fontSize: '0.75rem',
                                         padding: '0.25rem 0.75rem',
                                         whiteSpace: 'nowrap',

@@ -66,8 +66,8 @@ const Home = () => {
                     <div style={{ marginBottom: '2.5rem' }}>
                         <span className="badge" style={{
                             display: 'inline-block',
-                            background: 'var(--primary-glow)',
-                            color: '#fff',
+                            background: 'var(--primary)',
+                            color: 'var(--text-on-primary)',
                             borderColor: 'var(--primary)',
                             padding: '0.4rem 1.25rem',
                             boxShadow: 'none'
@@ -191,12 +191,12 @@ const Home = () => {
                                 style={{
                                     display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
                                     padding: '0.55rem 1.1rem', borderRadius: '7px',
-                                    background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border)',
+                                    background: 'var(--surface-soft)', border: '1px solid var(--border)',
                                     color: 'var(--text-main)', textDecoration: 'none', fontSize: '0.875rem',
                                     fontWeight: 600, transition: 'all 0.2s ease', alignSelf: 'center'
                                 }}
                                 onMouseEnter={e => { e.currentTarget.style.background = 'var(--primary-glow)'; e.currentTarget.style.borderColor = 'var(--primary)'; }}
-                                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.borderColor = 'var(--border)'; }}
+                                onMouseLeave={e => { e.currentTarget.style.background = 'var(--surface-soft)'; e.currentTarget.style.borderColor = 'var(--border)'; }}
                             >
                                 <Github size={15} /> Repository
                             </a>
@@ -217,11 +217,11 @@ const Home = () => {
                         style={{
                             display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
                             padding: '0.8rem 2rem',
-                            background: 'var(--primary-glow)', border: '1px solid var(--primary)',
-                            borderRadius: '8px', color: '#fff', fontWeight: 600,
+                            background: 'var(--primary)', border: '1px solid var(--primary)',
+                            borderRadius: '8px', color: 'var(--text-on-primary)', fontWeight: 600,
                             fontSize: '0.95rem', textDecoration: 'none', transition: 'all 0.2s ease'
                         }}
-                        onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.3)'; }}
+                        onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-pop)'; }}
                         onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
                     >
                         View All Projects <ExternalLink size={16} />
@@ -333,7 +333,7 @@ const Home = () => {
                                     <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{cert.period}</span>
                                     {cert.noExpiry && (
                                         <span style={{
-                                            fontSize: '0.7rem', color: '#fff',
+                                            fontSize: '0.7rem', color: 'var(--text-on-primary)',
                                             background: 'rgba(59, 130, 246, 0.7)',
                                             padding: '0.1rem 0.55rem', borderRadius: '4px',
                                             border: '1px solid rgba(59, 130, 246, 0.5)',
@@ -504,8 +504,8 @@ const Home = () => {
                                             {index === 0 && (
                                                 <span style={{
                                                     fontSize: '0.7rem',
-                                                    color: '#fff',
-                                                    background: 'var(--primary-glow)',
+                                                    color: 'var(--text-on-primary)',
+                                                    background: 'var(--primary)',
                                                     padding: '0.1rem 0.55rem',
                                                     borderRadius: '4px',
                                                     border: '1px solid var(--primary)',
@@ -549,16 +549,16 @@ const Home = () => {
                             alignItems: 'center',
                             gap: '0.5rem',
                             padding: '0.8rem 2rem',
-                            background: 'var(--primary-glow)',
+                            background: 'var(--primary)',
                             border: '1px solid var(--primary)',
                             borderRadius: '8px',
-                            color: '#fff',
+                            color: 'var(--text-on-primary)',
                             fontWeight: 600,
                             fontSize: '0.95rem',
                             textDecoration: 'none',
                             transition: 'all 0.2s ease'
                         }}
-                        onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.3)'; }}
+                        onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-pop)'; }}
                         onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
                     >
                         View Full Experience <ExternalLink size={16} />

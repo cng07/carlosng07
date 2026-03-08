@@ -82,7 +82,7 @@ const Education = () => {
                             <div className="glass" style={{
                                 padding: 'clamp(1.5rem, 5vw, 3.5rem)',
                                 borderRadius: '32px',
-                                border: '1px solid rgba(255,255,255,0.05)',
+                                border: '1px solid var(--border)',
                                 position: 'relative',
                                 overflow: 'hidden',
                                 display: 'flex',
@@ -115,7 +115,7 @@ const Education = () => {
                                             alignItems: 'center',
                                             gap: '0.75rem',
                                             padding: '0.5rem 0',
-                                            color: '#fff',
+                                            color: 'var(--text-main)',
                                             fontWeight: 600,
                                             fontSize: '1.1rem',
                                             width: 'fit-content'
@@ -164,9 +164,9 @@ const Education = () => {
                                                     display: 'flex',
                                                     gap: '1rem',
                                                     padding: '1.25rem',
-                                                    background: 'rgba(255,255,255,0.03)',
+                                                    background: 'var(--surface-muted)',
                                                     borderRadius: '16px',
-                                                    border: '1px solid rgba(255,255,255,0.05)',
+                                                    border: '1px solid var(--border)',
                                                     transition: 'all 0.3s ease'
                                                 }}>
                                                     <Star size={24} style={{ color: '#ffd700', flexShrink: 0, marginTop: '0.1rem' }} />
@@ -191,7 +191,7 @@ const Education = () => {
                                             top: '-12px',
                                             left: '2rem',
                                             background: 'var(--primary)',
-                                            color: '#000',
+                                            color: 'var(--text-on-primary)',
                                             padding: '4px 12px',
                                             borderRadius: '8px',
                                             fontSize: '0.75rem',
@@ -200,7 +200,7 @@ const Education = () => {
                                         }}>
                                             Scholarship
                                         </div>
-                                        <h4 style={{ color: '#fff', fontSize: '1.2rem', marginBottom: '0.5rem' }}>{edu.scholarship.name}</h4>
+                                        <h4 style={{ color: 'var(--text-main)', fontSize: '1.2rem', marginBottom: '0.5rem' }}>{edu.scholarship.name}</h4>
                                         <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', display: 'flex', alignItems: 'flex-start', gap: '0.5rem', lineHeight: '1.5' }}>
                                             <MapPin size={24} color="var(--primary)" style={{ flexShrink: 0, marginTop: '0.25rem' }} /> {edu.scholarship.fullAddress}
                                         </p>
@@ -235,7 +235,7 @@ const Education = () => {
                         style={{
                             padding: 'clamp(1.5rem, 5vw, 2.5rem)',
                             borderRadius: '20px',
-                            border: '1px solid rgba(255,255,255,0.05)'
+                            border: '1px solid var(--border)'
                         }}
                     >
                         <div style={{
@@ -273,7 +273,7 @@ const Education = () => {
                             ].map((org, idx) => (
                                 <div key={idx} style={{
                                     paddingBottom: '1.5rem',
-                                    borderBottom: idx < 3 ? '1px solid rgba(255,255,255,0.05)' : 'none'
+                                    borderBottom: idx < 3 ? '1px solid var(--border)' : 'none'
                                 }}>
                                     <p style={{
                                         fontSize: '1rem',
@@ -345,7 +345,7 @@ const Education = () => {
                                 <div className="glass" style={{
                                     padding: 'clamp(1.5rem, 5vw, 3.5rem)',
                                     borderRadius: '32px',
-                                    border: '1px solid rgba(255,255,255,0.05)',
+                                    border: '1px solid var(--border)',
                                     position: 'relative',
                                     overflow: 'hidden',
                                     display: 'flex',
@@ -408,7 +408,7 @@ const Education = () => {
                         style={{
                             padding: 'clamp(1.5rem, 5vw, 3rem)',
                             borderRadius: '24px',
-                            border: '1px solid rgba(255,255,255,0.05)'
+                            border: '1px solid var(--border)'
                         }}
                     >
                         <h3 style={{
@@ -442,7 +442,7 @@ const Education = () => {
                                 <strong>DOI:</strong> 10.1109/GCCE.2018.8574836
                             </p>
                             
-                            <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                            <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid var(--divider)' }}>
                                 <p style={{ marginBottom: '0.4rem', fontSize: '0.85rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--primary)' }}>
                                     ISBN Information:
                                 </p>
