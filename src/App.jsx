@@ -8,7 +8,9 @@ import {
     Menu,
     X,
     Eye,
-    Users
+    Users,
+    Moon,
+    Sun
 } from 'lucide-react';
 import IeeeIcon from './components/CustomIcons';
 import Seo from './components/Seo';
@@ -121,12 +123,28 @@ const navItemsByLabel = navItems.reduce((acc, item) => {
 }, {});
 const primaryNavItems = primaryNavOrder.map((label) => navItemsByLabel[label]).filter(Boolean);
 const moreNavItems = moreNavOrder.map((label) => navItemsByLabel[label]).filter(Boolean);
-const mobileNavItems = [...primaryNavItems, ...moreNavItems];
 
 const App = () => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const [isMobileMoreOpen, setIsMobileMoreOpen] = React.useState(false);
     const [visitorStats, setVisitorStats] = React.useState({ total: 0, unique: 0 });
+    const [theme, setTheme] = React.useState(() => {
+        if (typeof window === 'undefined') {
+            return 'dark';
+        }
+        return localStorage.getItem('site_theme') === 'light' ? 'light' : 'dark';
+    });
+
+    React.useEffect(() => {
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+        localStorage.setItem('site_theme', theme);
+
+        const themeMeta = document.querySelector('meta[name="theme-color"]');
+        if (themeMeta) {
+            themeMeta.setAttribute('content', theme === 'light' ? '#f4f7fb' : '#0f172a');
+        }
+    }, [theme]);
 
     React.useEffect(() => {
         const NAMESPACE = 'carlosng07-portfolio';
@@ -191,6 +209,10 @@ const App = () => {
         setIsMenuOpen(false);
         setIsMobileMoreOpen(false);
     };
+    const toggleTheme = () => {
+        setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    };
+    const isDarkTheme = theme === 'dark';
 
     return (
         <Router>
@@ -243,17 +265,29 @@ const App = () => {
                         )}
                     </div>
 
-                    {/* Mobile Menu Button */}
-                    <button
-                        className="mobile-menu-btn"
-                        onClick={toggleMenu}
-                        type="button"
-                        aria-label="Toggle navigation menu"
-                        aria-expanded={isMenuOpen}
-                        aria-controls="mobile-nav"
-                    >
-                        {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-                    </button>
+                    <div className="nav-actions">
+                        <button
+                            className="theme-toggle"
+                            onClick={toggleTheme}
+                            type="button"
+                            aria-label={`Switch to ${isDarkTheme ? 'light' : 'dark'} mode`}
+                            title={`Switch to ${isDarkTheme ? 'light' : 'dark'} mode`}
+                        >
+                            {isDarkTheme ? <Sun size={18} /> : <Moon size={18} />}
+                        </button>
+
+                        {/* Mobile Menu Button */}
+                        <button
+                            className="mobile-menu-btn"
+                            onClick={toggleMenu}
+                            type="button"
+                            aria-label="Toggle navigation menu"
+                            aria-expanded={isMenuOpen}
+                            aria-controls="mobile-nav"
+                        >
+                            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                        </button>
+                    </div>
                 </nav>
 
                 {/* Mobile Menu Overlay */}
@@ -268,6 +302,15 @@ const App = () => {
                         aria-label="Mobile navigation"
                         aria-modal="true"
                     >
+                        <button
+                            className="theme-toggle mobile-theme-toggle"
+                            onClick={toggleTheme}
+                            type="button"
+                            aria-label={`Switch to ${isDarkTheme ? 'light' : 'dark'} mode`}
+                        >
+                            {isDarkTheme ? <Sun size={18} /> : <Moon size={18} />}
+                            <span>{isDarkTheme ? 'Light mode' : 'Dark mode'}</span>
+                        </button>
                         {primaryNavItems.map((item) => (
                             <Link key={item.path} to={item.path} onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
                                 {item.label}
@@ -336,20 +379,20 @@ const App = () => {
                         gap: '1.5rem',
                         marginBottom: '1.5rem',
                         padding: '0.6rem 1.25rem',
-                        background: 'rgba(255,255,255,0.03)',
+                        background: 'var(--surface-muted)',
                         borderRadius: '100px',
-                        border: '1px solid rgba(255,255,255,0.05)',
+                        border: '1px solid var(--border)',
                         fontSize: '0.8rem',
                         color: 'var(--text-muted)'
                     }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                             <span style={{ color: 'var(--primary)', display: 'flex' }}><Eye size={14} /></span>
-                            <span>Total Visits: <strong style={{ color: '#fff' }}>{visitorStats.total}</strong></span>
+                            <span>Total Visits: <strong style={{ color: 'var(--text-main)' }}>{visitorStats.total}</strong></span>
                         </div>
-                        <div style={{ width: '1px', height: '12px', background: 'rgba(255,255,255,0.1)' }} />
+                        <div style={{ width: '1px', height: '12px', background: 'var(--divider)' }} />
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                             <span style={{ color: 'var(--primary)', display: 'flex' }}><Users size={14} /></span>
-                            <span>Unique Visitors: <strong style={{ color: '#fff' }}>{visitorStats.unique}</strong></span>
+                            <span>Unique Visitors: <strong style={{ color: 'var(--text-main)' }}>{visitorStats.unique}</strong></span>
                         </div>
                     </div>
 

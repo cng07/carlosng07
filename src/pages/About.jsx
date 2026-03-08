@@ -98,8 +98,8 @@ const About = () => {
                                     width: '100%',
                                     borderRadius: '12px',
                                     overflow: 'hidden',
-                                    background: 'rgba(255,255,255,0.03)',
-                                    border: '1px solid rgba(255,255,255,0.1)',
+                                    background: 'var(--surface-muted)',
+                                    border: '1px solid var(--border)',
                                     padding: '0.75rem'
                                 }}>
                                     <img
@@ -120,8 +120,8 @@ const About = () => {
                                     width: '100%',
                                     borderRadius: '12px',
                                     overflow: 'hidden',
-                                    background: 'rgba(255,255,255,0.03)',
-                                    border: '1px solid rgba(255,255,255,0.1)',
+                                    background: 'var(--surface-muted)',
+                                    border: '1px solid var(--border)',
                                     padding: '0.75rem'
                                 }}>
                                     <img

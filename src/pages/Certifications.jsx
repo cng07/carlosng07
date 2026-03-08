@@ -30,7 +30,7 @@ const Certifications = () => {
                                 gap: '0',
                                 borderRadius: '32px',
                                 overflow: 'hidden',
-                                border: '1px solid rgba(255,255,255,0.05)'
+                                border: '1px solid var(--border)'
                             }}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -40,13 +40,13 @@ const Certifications = () => {
                             {/* Certificate Image Preview */}
                             <div style={{
                                 position: 'relative',
-                                background: 'rgba(0,0,0,0.2)',
+                                background: 'var(--surface-soft)',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 padding: '1rem',
                                 minHeight: '300px',
-                                borderRight: '1px solid rgba(255,255,255,0.05)'
+                                borderRight: '1px solid var(--border)'
                             }}>
                                 <motion.div
                                     whileHover={{ scale: 1.05 }}
@@ -62,7 +62,7 @@ const Certifications = () => {
                                             style={{
                                                 width: '100%',
                                                 height: 'auto',
-                                                boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
+                                                boxShadow: 'var(--shadow-pop)',
                                                 borderRadius: '4px'
                                             }}
                                         />
@@ -70,7 +70,7 @@ const Certifications = () => {
                                         <div style={{
                                             width: '90%',
                                             aspectRatio: '1.414/1',
-                                            background: 'rgba(255,255,255,0.03)',
+                                            background: 'var(--surface-muted)',
                                             borderRadius: '8px',
                                             display: 'flex',
                                             flexDirection: 'column',
@@ -120,7 +120,7 @@ const Certifications = () => {
                                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
                                             <span style={{
                                                 fontSize: '0.85rem',
-                                                color: '#fff',
+                                                color: 'var(--text-on-primary)',
                                                 fontWeight: 700,
                                                 background: 'var(--primary)',
                                                 padding: '0.4rem 0.8rem',
@@ -134,7 +134,7 @@ const Certifications = () => {
                                             {cert.expired && (
                                                 <span style={{
                                                     fontSize: '0.85rem',
-                                                    color: '#fff',
+                                                    color: 'var(--text-on-primary)',
                                                     fontWeight: 700,
                                                     background: 'rgba(239, 68, 68, 0.7)',
                                                     padding: '0.4rem 0.8rem',
@@ -151,7 +151,7 @@ const Certifications = () => {
                                             {cert.noExpiry && (
                                                 <span style={{
                                                     fontSize: '0.85rem',
-                                                    color: '#fff',
+                                                    color: 'var(--text-on-primary)',
                                                     fontWeight: 700,
                                                     background: 'rgba(59, 130, 246, 0.5)',
                                                     padding: '0.4rem 0.8rem',
@@ -180,7 +180,7 @@ const Certifications = () => {
 
                                 <div style={{
                                     paddingTop: '2rem',
-                                    borderTop: '1px solid rgba(255,255,255,0.05)',
+                                    borderTop: '1px solid var(--border)',
                                     display: 'flex',
                                     flexDirection: 'column',
                                     gap: '1rem'
@@ -199,14 +199,14 @@ const Certifications = () => {
                                             style={{
                                                 padding: '0.75rem 1.5rem',
                                                 borderRadius: '12px',
-                                                color: '#fff',
+                                                color: 'var(--text-on-primary)',
                                                 fontSize: '0.95rem',
                                                 fontWeight: 600,
                                                 display: 'flex',
                                                 alignItems: 'center',
                                                 gap: '0.6rem',
-                                                background: 'rgba(var(--primary-rgb), 0.2)',
-                                                border: '1px solid rgba(var(--primary-rgb), 0.3)'
+                                                background: 'var(--primary)',
+                                                border: '1px solid var(--primary)'
                                             }}
                                         >
                                             <ExternalLink size={18} /> View Certificate

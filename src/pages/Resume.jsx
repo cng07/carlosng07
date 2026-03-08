@@ -39,7 +39,7 @@ const Resume = () => {
                             border: 'none',
                             borderRadius: '8px',
                             background: 'var(--primary)',
-                            color: '#fff',
+                            color: 'var(--text-on-primary)',
                             fontWeight: 500,
                             transition: 'all 0.2s ease',
                             boxShadow: '0 2px 8px rgba(59, 130, 246, 0.3)'
@@ -58,7 +58,7 @@ const Resume = () => {
                 </div>
 
                 {/* PDF Viewer */}
-                <div className="glass" style={{ height: '80vh', padding: '1rem', overflow: 'hidden', position: 'relative', background: '#1e293b', marginBottom: '1.5rem' }}>
+                <div className="glass" style={{ height: '80vh', padding: '1rem', overflow: 'hidden', position: 'relative', background: 'var(--resume-viewer-bg)', marginBottom: '1.5rem' }}>
                     <object
                         data="/Carlos_Ng_Resume.pdf"
                         type="application/pdf"
@@ -92,7 +92,7 @@ const Resume = () => {
                         background: 'var(--primary)',
                         borderRadius: '100px',
                         fontSize: '0.9rem',
-                        color: '#fff',
+                        color: 'var(--text-on-primary)',
                         fontWeight: 500,
                         boxShadow: '0 2px 8px rgba(59, 130, 246, 0.3)'
                     }}>

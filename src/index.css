@@ -10,7 +10,40 @@
   --text-main: #f8fafc;
   --text-muted: #cbd5e1;
   --border: rgba(51, 65, 85, 0.5);
+  --surface-muted: rgba(255, 255, 255, 0.03);
+  --surface-soft: rgba(255, 255, 255, 0.05);
+  --surface-overlay: rgba(15, 23, 42, 0.96);
+  --divider: rgba(255, 255, 255, 0.12);
+  --badge-bg: rgba(248, 250, 252, 0.95);
+  --badge-text: #1e293b;
+  --text-on-primary: #ffffff;
+  --shadow-pop: 0 18px 40px rgba(2, 6, 23, 0.45);
+  --resume-viewer-bg: #1e293b;
+  --scrollbar-thumb: #334155;
+  --scrollbar-thumb-hover: #475569;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+[data-theme='light'] {
+  --background: #f4f7fb;
+  --surface: rgba(255, 255, 255, 0.82);
+  --primary: #0f766e;
+  --primary-glow: rgba(15, 118, 110, 0.14);
+  --primary-rgb: 15, 118, 110;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --border: rgba(148, 163, 184, 0.45);
+  --surface-muted: rgba(15, 23, 42, 0.05);
+  --surface-soft: rgba(15, 23, 42, 0.08);
+  --surface-overlay: rgba(255, 255, 255, 0.97);
+  --divider: rgba(15, 23, 42, 0.14);
+  --badge-bg: rgba(15, 23, 42, 0.06);
+  --badge-text: #0f172a;
+  --text-on-primary: #ffffff;
+  --shadow-pop: 0 16px 34px rgba(15, 23, 42, 0.14);
+  --resume-viewer-bg: #e2e8f0;
+  --scrollbar-thumb: #94a3b8;
+  --scrollbar-thumb-hover: #64748b;
 }
 
 * {
@@ -29,6 +62,7 @@ body {
   font-family: var(--font-sans);
   line-height: 1.6;
   overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 :focus-visible {
@@ -45,8 +79,8 @@ body {
   left: -999px;
   top: 1rem;
   z-index: 2000;
-  background: #0b1220;
-  color: #fff;
+  background: var(--surface-overlay);
+  color: var(--text-main);
   padding: 0.75rem 1rem;
   border-radius: 8px;
   border: 1px solid var(--border);
@@ -125,8 +159,8 @@ a {
 }
 
 .badge {
-  background: rgba(255, 255, 255, 0.95);
-  color: #1e293b;
+  background: var(--badge-bg);
+  color: var(--badge-text);
   padding: 0.4rem 0.85rem;
   border-radius: 9999px;
   font-size: 0.875rem;
@@ -157,7 +191,7 @@ a {
 }
 
 .hero-name {
-  color: #fff;
+  color: var(--text-main);
   font-weight: 800;
   letter-spacing: -0.02em;
   display: inline-block;
@@ -175,6 +209,31 @@ a {
   gap: 2rem;
   font-size: 0.9rem;
   font-weight: 500;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.theme-toggle {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  color: var(--text-main);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  color: var(--primary);
+  border-color: rgba(var(--primary-rgb), 0.45);
 }
 
 .nav-links a {
@@ -235,14 +294,14 @@ a {
   top: calc(100% + 0.35rem);
   right: 0;
   min-width: 190px;
-  background: rgba(15, 23, 42, 0.96);
+  background: var(--surface-overlay);
   border: 1px solid var(--border);
   border-radius: 0.75rem;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.45);
+  box-shadow: var(--shadow-pop);
   opacity: 0;
   transform: translateY(8px);
   visibility: hidden;
@@ -258,7 +317,7 @@ a {
 
 .nav-dropdown a:hover,
 .nav-dropdown a:focus-visible {
-  background: rgba(16, 185, 129, 0.12);
+  background: rgba(var(--primary-rgb), 0.12);
   color: var(--primary);
 }
 
@@ -288,12 +347,31 @@ a {
     display: block;
   }
 
+  .theme-toggle {
+    width: 2.1rem;
+    height: 2.1rem;
+  }
+
   .nav-logo-full {
     display: none;
   }
 
   .nav-logo-short {
     display: inline;
+  }
+}
+
+@media (min-width: 769px) {
+  .nav-bar {
+    justify-content: flex-start;
+  }
+
+  .nav-links {
+    margin-left: auto;
+  }
+
+  .nav-actions {
+    margin-left: 0.5rem;
   }
 }
 
@@ -317,6 +395,15 @@ a {
   align-items: center;
   gap: 2rem;
   font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.mobile-theme-toggle {
+  gap: 0.55rem;
+  width: auto;
+  height: auto;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
 }
 
@@ -378,12 +465,12 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: var(--scrollbar-thumb-hover);
 }
 
 /* Waving Hand Animation */
@@ -633,7 +720,7 @@ a {
 
 .glass:has(a:hover),
 .glass:hover {
-  border-color: rgba(16, 185, 129, 0.3);
+  border-color: rgba(var(--primary-rgb), 0.3);
 }
 
 /* Smooth transitions for all interactive elements */

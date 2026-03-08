@@ -17,6 +17,19 @@
   <meta name="twitter:title" content="Carlos Ng | Portfolio">
   <meta name="twitter:description" content="Senior QA Automation Engineer specializing in Playwright, TypeScript, and scalable test frameworks.">
   <meta name="twitter:image" content="/profile.png">
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('site_theme');
+        var theme = savedTheme === 'light' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.documentElement.style.colorScheme = 'dark';
+      }
+    })();
+  </script>
   <title>Carlos Ng | Portfolio</title>
 </head>
 
