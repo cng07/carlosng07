@@ -78,6 +78,32 @@ const Projects = () => {
         },
         {
             id: 4,
+            title: "Portfolio Website Automation (C#)",
+            description: "UI automation framework for this portfolio website using Playwright and C# with NUnit. Implements the Page Object Model (POM) architecture with NUnit 5 assertions and automated test reporting.",
+            tech: ["Playwright", "C#", ".NET", "NUnit", "Web Automation"],
+            highlights: [
+                "Page Object Model (POM) implementation",
+                "NUnit assertions and test framework integration",
+                "Automated test reporting and result generation"
+            ],
+            github: "https://github.com/cng07/playwright_portfolio_automation_csharp",
+            status: "Active"
+        },
+        {
+            id: 5,
+            title: "Portfolio Website Automation (Java)",
+            description: "Enterprise-grade UI automation framework for this portfolio website using Playwright, Java, Maven, and JUnit 5. Features BaseUiTest abstract base class for centralized Playwright setup/teardown and implements the Page Object Model (POM) architecture with CI/CD integration.",
+            tech: ["Playwright", "Java", "Maven", "JUnit 5", "Web Automation"],
+            highlights: [
+                "BaseUiTest framework with browser initialization and cleanup",
+                "Maven build system integration with Playwright plugin",
+                "CI/CD integration with automatic headless mode detection"
+            ],
+            github: "https://github.com/cng07/playwright_portfolio_automation_java",
+            status: "Active"
+        },
+        {
+            id: 6,
             title: "QA Practice Framework",
             description: "Automated end-to-end test suites written in TypeScript using Playwright. Features a structured approach to testing web applications with reusable components and data-driven tests.",
             tech: ["Playwright", "TypeScript", "Node.js", "Web Automation"],
