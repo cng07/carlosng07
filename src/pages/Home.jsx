@@ -157,9 +157,9 @@ const Home = () => {
                             github: 'https://github.com/cng07/playwright_portfolio_automation_typescript',
                         },
                         {
-                            title: 'Portfolio Website Automation (Python)',
-                            description: 'Playwright automation suite covering navigation, cross-browser testing',
-                            tech: ['Playwright', 'Python'],
+                            title: 'Portfolio Website Automation (JavaScript)',
+                            description: 'Comprehensive Playwright test suite with cross-browser testing, link integrity checks, and GitHub Actions CI/CD integration',
+                            tech: ['Playwright', 'JavaScript', 'Node.js', 'GitHub Actions'],
                             github: 'https://github.com/cng07/playwright_portfolio_automation_javascript',
                         },
                     ].map((project, idx) => (
