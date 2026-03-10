@@ -603,14 +603,14 @@ const Projects = () => {
                 </div>
 
                 {/* Coming Soon Section */}
-                <div style={{ textAlign: 'center', marginTop: '6rem' }}>
+                {/* <div style={{ textAlign: 'center', marginTop: '6rem' }}>
                     <motion.div {...fadeIn}>
                         <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>More Projects Coming</h2>
                         <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto' }}>
                             Check back soon for updates!
                         </p>
                     </motion.div>
-                </div>
+                </div> */}
             </motion.div>
 
             {/* Responsive Styles */}
