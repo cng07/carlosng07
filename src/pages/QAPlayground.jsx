@@ -4,15 +4,20 @@ import {
     AlertTriangle,
     Bug,
     CheckCircle2,
+    Database,
     Eye,
+    Pencil,
     Play,
+    RefreshCw,
     RotateCcw,
     Search,
     Server,
     TimerReset,
+    Trash2,
     Upload,
     XCircle
 } from 'lucide-react';
+import { supabase } from '../lib/supabaseClient';
 
 const initialFormState = {
     firstName: '',
@@ -60,6 +65,13 @@ const apiScenarios = [
     { status: 500, message: 'Internal server error from test environment.' }
 ];
 
+const initialUserFormState = {
+    name: '',
+    email: ''
+};
+
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 const wait = (ms) => new Promise((resolve) => {
     window.setTimeout(resolve, ms);
 });
@@ -92,6 +104,13 @@ const QAPlayground = () => {
     const [apiTestBody, setApiTestBody] = React.useState('');
     const [apiTestResponse, setApiTestResponse] = React.useState(null);
     const [apiTestLoading, setApiTestLoading] = React.useState(false);
+    const [users, setUsers] = React.useState([]);
+    const [userForm, setUserForm] = React.useState(initialUserFormState);
+    const [editingUserId, setEditingUserId] = React.useState(null);
+    const [crudLoading, setCrudLoading] = React.useState(false);
+    const [crudSuccessMessage, setCrudSuccessMessage] = React.useState('');
+    const [crudErrorMessage, setCrudErrorMessage] = React.useState('');
+    const [isJsonPreviewOpen, setIsJsonPreviewOpen] = React.useState(true);
     const itemsPerPage = 3;
 
     React.useEffect(() => {
@@ -101,6 +120,70 @@ const QAPlayground = () => {
         }, 1000);
         return () => window.clearInterval(intervalId);
     }, [tokenSeconds]);
+
+    const clearCrudMessages = () => {
+        setCrudSuccessMessage('');
+        setCrudErrorMessage('');
+    };
+
+    const resetCrudForm = () => {
+        setUserForm(initialUserFormState);
+        setEditingUserId(null);
+    };
+
+    const validateCrudForm = () => {
+        const trimmedName = userForm.name.trim();
+        const trimmedEmail = userForm.email.trim();
+
+        if (!trimmedName || !trimmedEmail) {
+            setCrudErrorMessage('Name and email are required.');
+            return null;
+        }
+
+        if (!emailPattern.test(trimmedEmail)) {
+            setCrudErrorMessage('Please enter a valid email address.');
+            return null;
+        }
+
+        return {
+            name: trimmedName,
+            email: trimmedEmail
+        };
+    };
+
+    const fetchUsers = React.useCallback(async ({ preserveMessages = false } = {}) => {
+        if (!supabase) {
+            setCrudErrorMessage('Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY.');
+            return false;
+        }
+
+        if (!preserveMessages) {
+            clearCrudMessages();
+        }
+
+        setCrudLoading(true);
+        console.log('SELECT users');
+
+        const { data, error } = await supabase
+            .from('users')
+            .select('id, name, email, created_at')
+            .order('created_at', { ascending: false });
+
+        if (error) {
+            console.error('SELECT users error:', error);
+            setCrudErrorMessage(error.message);
+            setCrudLoading(false);
+            return false;
+        }
+
+        setUsers(data ?? []);
+        setCrudLoading(false);
+        return true;
+    }, []);
+
+    React.useEffect(() => {
+        void fetchUsers();
+    }, [fetchUsers]);
 
     const validateForm = (data) => {
         const errors = {};
@@ -312,6 +395,119 @@ const QAPlayground = () => {
         setApiTestLoading(false);
     };
 
+    const handleCrudSubmit = async (event) => {
+        event.preventDefault();
+
+        if (!supabase) {
+            setCrudErrorMessage('Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY.');
+            return;
+        }
+
+        clearCrudMessages();
+        const payload = validateCrudForm();
+
+        if (!payload) {
+            return;
+        }
+
+        setCrudLoading(true);
+
+        if (editingUserId) {
+            console.log('UPDATE user:', { id: editingUserId, ...payload });
+            const { error } = await supabase
+                .from('users')
+                .update(payload)
+                .eq('id', editingUserId);
+
+            if (error) {
+                console.error('UPDATE user error:', error);
+                setCrudErrorMessage(error.message);
+                setCrudLoading(false);
+                return;
+            }
+
+            const refreshed = await fetchUsers({ preserveMessages: true });
+            if (!refreshed) {
+                return;
+            }
+
+            resetCrudForm();
+            setCrudSuccessMessage('User updated successfully.');
+            return;
+        }
+
+        console.log('INSERT user:', payload);
+        const { error } = await supabase.from('users').insert(payload);
+
+        if (error) {
+            console.error('INSERT user error:', error);
+            setCrudErrorMessage(error.message);
+            setCrudLoading(false);
+            return;
+        }
+
+        const refreshed = await fetchUsers({ preserveMessages: true });
+        if (!refreshed) {
+            return;
+        }
+
+        resetCrudForm();
+        setCrudSuccessMessage('User added successfully.');
+    };
+
+    const handleEditUser = (user) => {
+        clearCrudMessages();
+        setEditingUserId(user.id);
+        setUserForm({
+            name: user.name ?? '',
+            email: user.email ?? ''
+        });
+        setActiveSection('data-playground');
+    };
+
+    const handleDeleteUser = async (userId) => {
+        if (!supabase) {
+            setCrudErrorMessage('Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY.');
+            return;
+        }
+
+        clearCrudMessages();
+        setCrudLoading(true);
+        console.log('DELETE user:', { id: userId });
+
+        const { error } = await supabase
+            .from('users')
+            .delete()
+            .eq('id', userId);
+
+        if (error) {
+            console.error('DELETE user error:', error);
+            setCrudErrorMessage(error.message);
+            setCrudLoading(false);
+            return;
+        }
+
+        const refreshed = await fetchUsers({ preserveMessages: true });
+        if (!refreshed) {
+            return;
+        }
+
+        if (editingUserId === userId) {
+            resetCrudForm();
+        }
+
+        setCrudSuccessMessage('User deleted successfully.');
+    };
+
+    const handleRefreshUsers = async () => {
+        clearCrudMessages();
+        const refreshed = await fetchUsers({ preserveMessages: true });
+
+        if (refreshed) {
+            setCrudSuccessMessage('Data refreshed successfully.');
+        }
+    };
+
     const handleReset = () => {
         setFormData(initialFormState);
         setFormErrors({});
@@ -406,6 +602,26 @@ const QAPlayground = () => {
                     >
                         <Bug size={16} style={{ display: 'inline', marginRight: '0.5rem', verticalAlign: 'middle' }} />
                         Spot the Bugs Challenge
+                    </button>
+
+                    <button
+                        onClick={() => setActiveSection('data-playground')}
+                        style={{
+                            padding: '0.75rem 1rem',
+                            textAlign: 'left',
+                            border: 'none',
+                            background: activeSection === 'data-playground' ? 'rgba(255,255,255,0.15)' : 'transparent',
+                            color: activeSection === 'data-playground' ? 'var(--primary)' : 'var(--text-secondary)',
+                            borderRadius: '0.5rem',
+                            cursor: 'pointer',
+                            fontWeight: activeSection === 'data-playground' ? 600 : 400,
+                            transition: 'all 0.2s ease',
+                            fontSize: '1rem'
+                        }}
+                        className="qa-nav-item"
+                    >
+                        <Database size={16} style={{ display: 'inline', marginRight: '0.5rem', verticalAlign: 'middle' }} />
+                        Data Playground
                     </button>
 
                     {showApiTesting && (
@@ -798,6 +1014,230 @@ const QAPlayground = () => {
                                             Next
                                         </button>
                                     </div>
+                                )}
+                            </motion.section>
+                        </div>
+                    </motion.div>
+                )}
+
+                {activeSection === 'data-playground' && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 14 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.45 }}
+                    >
+                        <h1 className="section-title" style={{ marginBottom: '0.5rem' }}>
+                            <Database size={30} color="var(--primary)" style={{ display: 'inline', marginRight: '0.75rem', verticalAlign: 'middle' }} />
+                            Data Playground
+                        </h1>
+                        <p style={{ color: 'var(--text-muted)', maxWidth: '820px', marginBottom: '2rem' }}>
+                            This section provides a stable Supabase frontend for automation and data testing.
+                        </p>
+
+                        <div className="qa-playground-grid" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                            <motion.section
+                                className="glass qa-card"
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-80px' }}
+                                transition={{ duration: 0.45 }}
+                            >
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
+                                    <div>
+                                        <h2 className="qa-card-title" style={{ marginBottom: '0.5rem' }}>
+                                            <Database size={20} color="var(--primary)" />
+                                            User Data Dashboard
+                                        </h2>
+                                        <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '0.95rem' }}>
+                                            Frontend-only table and form backed directly by Supabase.
+                                        </p>
+                                    </div>
+
+                                    <button
+                                        type="button"
+                                        className="qa-btn qa-btn-ghost"
+                                        data-testid="refresh-btn"
+                                        onClick={handleRefreshUsers}
+                                        disabled={crudLoading}
+                                    >
+                                        <RefreshCw size={16} />
+                                        Refresh Data
+                                    </button>
+                                </div>
+
+                                {crudLoading && (
+                                    <div className="qa-status" data-testid="loading" style={{ marginBottom: '1rem' }}>
+                                        <RefreshCw size={16} />
+                                        <span>Loading users...</span>
+                                    </div>
+                                )}
+
+                                {crudSuccessMessage && (
+                                    <div className="qa-status qa-status-success" data-testid="success-message" style={{ marginBottom: '1rem' }}>
+                                        <CheckCircle2 size={16} />
+                                        <span>{crudSuccessMessage}</span>
+                                    </div>
+                                )}
+
+                                {crudErrorMessage && (
+                                    <div className="qa-status qa-status-error" data-testid="error-message" style={{ marginBottom: '1rem' }}>
+                                        <XCircle size={16} />
+                                        <span>{crudErrorMessage}</span>
+                                    </div>
+                                )}
+
+                                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(280px, 360px) 1fr', gap: '1.5rem', alignItems: 'start' }} className="qa-crud-layout">
+                                    <form className="qa-stack" onSubmit={handleCrudSubmit} noValidate>
+                                        <label className="qa-field">
+                                            <span className="qa-label">Name</span>
+                                            <input
+                                                type="text"
+                                                className="qa-input"
+                                                data-testid="name-input"
+                                                value={userForm.name}
+                                                onChange={(event) => setUserForm((current) => ({ ...current, name: event.target.value }))}
+                                                disabled={crudLoading}
+                                                placeholder="Enter full name"
+                                            />
+                                        </label>
+
+                                        <label className="qa-field">
+                                            <span className="qa-label">Email</span>
+                                            <input
+                                                type="email"
+                                                className="qa-input"
+                                                data-testid="email-input"
+                                                value={userForm.email}
+                                                onChange={(event) => setUserForm((current) => ({ ...current, email: event.target.value }))}
+                                                disabled={crudLoading}
+                                                placeholder="Enter email address"
+                                            />
+                                        </label>
+
+                                        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                                            <button
+                                                type="submit"
+                                                className="qa-btn qa-btn-primary"
+                                                data-testid={editingUserId ? 'update-user-btn' : 'add-user-btn'}
+                                                disabled={crudLoading}
+                                            >
+                                                {editingUserId ? 'Update User' : 'Add User'}
+                                            </button>
+
+                                            {editingUserId && (
+                                                <button
+                                                    type="button"
+                                                    className="qa-btn qa-btn-ghost"
+                                                    onClick={resetCrudForm}
+                                                    disabled={crudLoading}
+                                                >
+                                                    Cancel Edit
+                                                </button>
+                                            )}
+                                        </div>
+                                    </form>
+
+                                    <div className="qa-table-wrap">
+                                        <table className="qa-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Created At</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {users.length === 0 ? (
+                                                    <tr>
+                                                        <td colSpan="4" style={{ textAlign: 'center', color: 'var(--text-muted)' }}>
+                                                            No users found.
+                                                        </td>
+                                                    </tr>
+                                                ) : (
+                                                    users.map((user) => (
+                                                        <tr key={user.id} data-testid="user-row">
+                                                            <td>{user.name}</td>
+                                                            <td>{user.email}</td>
+                                                            <td>{user.created_at ? new Date(user.created_at).toISOString() : '-'}</td>
+                                                            <td>
+                                                                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                                                                    <button
+                                                                        type="button"
+                                                                        className="qa-btn qa-btn-ghost"
+                                                                        data-testid="edit-user-btn"
+                                                                        onClick={() => handleEditUser(user)}
+                                                                        disabled={crudLoading}
+                                                                        style={{ marginBottom: 0 }}
+                                                                    >
+                                                                        <Pencil size={14} />
+                                                                        Edit
+                                                                    </button>
+                                                                    <button
+                                                                        type="button"
+                                                                        className="qa-btn qa-btn-warn"
+                                                                        data-testid="delete-user-btn"
+                                                                        onClick={() => handleDeleteUser(user.id)}
+                                                                        disabled={crudLoading}
+                                                                        style={{ marginBottom: 0 }}
+                                                                    >
+                                                                        <Trash2 size={14} />
+                                                                        Delete
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    ))
+                                                )}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </motion.section>
+
+                            <motion.section
+                                className="glass qa-card"
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-80px' }}
+                                transition={{ duration: 0.45, delay: 0.05 }}
+                            >
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+                                    <div>
+                                        <h2 className="qa-card-title" style={{ marginBottom: '0.5rem' }}>
+                                            <Eye size={20} color="var(--primary)" />
+                                            JSON Preview
+                                        </h2>
+                                        <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '0.95rem' }}>
+                                            Raw Supabase response data for automation assertions and debugging.
+                                        </p>
+                                    </div>
+
+                                    <button
+                                        type="button"
+                                        className="qa-btn qa-btn-ghost"
+                                        onClick={() => setIsJsonPreviewOpen((current) => !current)}
+                                    >
+                                        {isJsonPreviewOpen ? 'Hide JSON' : 'Show JSON'}
+                                    </button>
+                                </div>
+
+                                {isJsonPreviewOpen && (
+                                    <pre
+                                        data-testid="json-preview"
+                                        style={{
+                                            margin: 0,
+                                            padding: '1rem',
+                                            borderRadius: '0.75rem',
+                                            background: 'rgba(15, 23, 42, 0.85)',
+                                            color: '#dbeafe',
+                                            overflowX: 'auto',
+                                            fontSize: '0.85rem',
+                                            lineHeight: 1.6
+                                        }}
+                                    >
+                                        {JSON.stringify(users, null, 2)}
+                                    </pre>
                                 )}
                             </motion.section>
                         </div>
