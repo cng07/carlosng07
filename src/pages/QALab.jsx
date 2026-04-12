@@ -78,7 +78,7 @@ const wait = (ms) => new Promise((resolve) => {
 
 const showApiTesting = false;
 
-const QAPlayground = () => {
+const QALab = () => {
     const [activeSection, setActiveSection] = React.useState('spot-bugs');
     const [formData, setFormData] = React.useState(initialFormState);
     const [formErrors, setFormErrors] = React.useState({});
@@ -677,7 +677,7 @@ const QAPlayground = () => {
                             Learn validation patterns, form handling, and bug reporting best practices.
                         </p>
 
-                        <div className="qa-playground-stack">
+                        <div className="qa-lab-stack">
                             {/* Bug Form */}
                             <motion.section
                                 className="glass qa-card"
@@ -1045,7 +1045,7 @@ const QAPlayground = () => {
                             This section provides a stable Supabase frontend for automation and data testing.
                         </p>
 
-                        <div className="qa-playground-stack">
+                        <div className="qa-lab-stack">
                             <motion.section
                                 className="glass qa-card"
                                 initial={{ opacity: 0, y: 16 }}
@@ -1468,4 +1468,4 @@ const QAPlayground = () => {
     );
 };
 
-export default QAPlayground;
+export default QALab;

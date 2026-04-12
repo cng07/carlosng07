@@ -785,7 +785,7 @@ section[id] {
   align-items: start;
 }
 
-.qa-playground-grid {
+.qa-lab-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
   gap: 1.5rem;
@@ -1080,14 +1080,14 @@ section[id] {
   margin-bottom: 1rem;
 }
 
-.qa-playground-stack {
+.qa-lab-stack {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   align-items: stretch;
 }
 
-.qa-playground-stack > * {
+.qa-lab-stack > * {
   width: 100%;
   min-width: 0;
 }
@@ -1214,7 +1214,7 @@ section[id] {
 }
 
 @media (max-width: 1024px) {
-  .qa-playground-grid {
+  .qa-lab-grid {
     grid-template-columns: 1fr;
   }
 
