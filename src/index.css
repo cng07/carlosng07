@@ -798,6 +798,13 @@ section[id] {
   gap: 2rem;
 }
 
+.qa-sidebar {
+  position: sticky;
+  top: 8rem;
+  align-self: flex-start;
+  max-height: calc(100vh - 9rem);
+}
+
 .qa-main {
   min-width: 0;
 }
@@ -1161,6 +1168,13 @@ section[id] {
 
   .qa-mobile-notice h1 {
     font-size: 1.35rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .qa-sidebar {
+    top: 7.5rem;
+    max-height: calc(100vh - 8.5rem);
   }
 }
 
