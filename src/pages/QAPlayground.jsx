@@ -348,10 +348,26 @@ const QAPlayground = () => {
     const paginatedIssues = filteredIssues.slice(startIndex, startIndex + itemsPerPage);
 
     return (
-        <div className="section" style={{ display: 'flex', minHeight: '100vh' }}>
+        <div className="section qa-page" style={{ display: 'flex', minHeight: '100vh' }}>
+            <div className="qa-mobile-only">
+                <motion.div
+                    className="glass qa-mobile-notice"
+                    initial={{ opacity: 0, y: 14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4 }}
+                >
+                    <AlertTriangle size={28} color="var(--primary)" />
+                    <h1>QA Lab Is Desktop Only</h1>
+                    <p>
+                        This page is optimized for desktop interaction. Please open QA Lab on a laptop or desktop
+                        screen to use the bug challenge and testing exercises.
+                    </p>
+                </motion.div>
+            </div>
+
             {/* Sidebar Navigation */}
             <motion.aside
-                className="qa-sidebar glass"
+                className="qa-sidebar qa-desktop-only glass"
                 style={{
                     width: '280px',
                     padding: '2rem 1.5rem',
@@ -417,7 +433,7 @@ const QAPlayground = () => {
             </motion.aside>
 
             {/* Main Content Area */}
-            <div className="container page-header-padding" style={{ flex: 1, padding: '2rem 2.5rem' }}>
+            <div className="container page-header-padding qa-main qa-desktop-only" style={{ flex: 1, padding: '2rem 2.5rem', minWidth: 0 }}>
                 {/* Spot the Bugs Challenge Section */}
                 {activeSection === 'spot-bugs' && (
                     <motion.div
@@ -528,7 +544,7 @@ const QAPlayground = () => {
 
                                     <div className="qa-field">
                                         <span className="qa-label">Gender</span>
-                                        <div style={{ display: 'flex', gap: '1.5rem', marginTop: '0.5rem' }}>
+                                        <div className="qa-checkbox-row" style={{ display: 'flex', gap: '1.5rem', marginTop: '0.5rem' }}>
                                             <label className="qa-inline-check">
                                                 <input
                                                     type="checkbox"

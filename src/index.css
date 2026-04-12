@@ -793,6 +793,36 @@ section[id] {
   margin-top: 1.75rem;
 }
 
+.qa-page {
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.qa-main {
+  min-width: 0;
+}
+
+.qa-mobile-only {
+  display: none;
+}
+
+.qa-mobile-notice {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.qa-mobile-notice h1 {
+  font-size: 1.6rem;
+  margin: 1rem 0 0.75rem;
+}
+
+.qa-mobile-notice p {
+  color: var(--text-muted);
+  margin: 0;
+}
+
 .qa-card {
   padding: 1.4rem;
 }
@@ -900,6 +930,13 @@ section[id] {
   gap: 0.55rem;
   color: var(--text-main);
   font-size: 0.88rem;
+}
+
+.qa-checkbox-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .qa-button-row {
@@ -1103,18 +1140,27 @@ section[id] {
 }
 
 @media (max-width: 768px) {
-  .qa-form-grid,
-  .qa-toolbar {
-    grid-template-columns: 1fr;
+  .qa-page {
+    display: block !important;
   }
 
-  .qa-card {
-    padding: 1rem;
+  .qa-desktop-only {
+    display: none !important;
   }
 
-  .qa-token-row {
-    align-items: flex-start;
-    flex-direction: column;
+  .qa-mobile-only {
+    display: block;
+    width: 100%;
+    padding: 7.5rem 1.25rem 0;
+  }
+
+  .qa-mobile-notice {
+    padding: 1.75rem 1.25rem;
+    border-radius: 1.1rem;
+  }
+
+  .qa-mobile-notice h1 {
+    font-size: 1.35rem;
   }
 }
 
