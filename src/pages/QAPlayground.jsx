@@ -544,7 +544,7 @@ const QAPlayground = () => {
     const paginatedIssues = filteredIssues.slice(startIndex, startIndex + itemsPerPage);
 
     return (
-        <div className="section qa-page" style={{ display: 'flex', minHeight: '100vh' }}>
+        <div className="section container page-header-padding" style={{ minHeight: '100vh' }}>
             <div className="qa-mobile-only">
                 <motion.div
                     className="glass qa-mobile-notice"
@@ -561,15 +561,26 @@ const QAPlayground = () => {
                 </motion.div>
             </div>
 
-            {/* Sidebar Navigation */}
-            <motion.aside
-                className="qa-sidebar qa-desktop-only glass"
-                style={{
-                    width: '280px',
-                    padding: '2rem 1.5rem',
-                    overflowY: 'auto',
-                    borderRight: '1px solid var(--border-color, rgba(255,255,255,0.1))'
-                }}
+            <div className="qa-layout" style={{
+                display: 'grid',
+                gridTemplateColumns: 'minmax(280px, 0.25fr) 1fr',
+                gap: '2rem',
+                minHeight: '600px',
+                alignItems: 'start'
+            }}>
+                {/* Sidebar Navigation */}
+                <motion.aside
+                    className="qa-sidebar qa-desktop-only glass"
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '0.75rem',
+                        position: 'sticky',
+                        top: '2rem',
+                        padding: '2rem 1.5rem',
+                        overflowY: 'auto',
+                        borderRight: '1px solid var(--border-color, rgba(255,255,255,0.1))'
+                    }}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4 }}
@@ -649,7 +660,7 @@ const QAPlayground = () => {
             </motion.aside>
 
             {/* Main Content Area */}
-            <div className="container page-header-padding qa-main qa-desktop-only" style={{ flex: 1, padding: '2rem 2.5rem', minWidth: 0 }}>
+            <div className="qa-main qa-desktop-only">
                 {/* Spot the Bugs Challenge Section */}
                 {activeSection === 'spot-bugs' && (
                     <motion.div
@@ -666,7 +677,7 @@ const QAPlayground = () => {
                             Learn validation patterns, form handling, and bug reporting best practices.
                         </p>
 
-                        <div className="qa-playground-grid" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                        <div className="qa-playground-stack">
                             {/* Bug Form */}
                             <motion.section
                                 className="glass qa-card"
@@ -910,7 +921,7 @@ const QAPlayground = () => {
                                 </div>
 
                                 <div className="qa-table-wrap">
-                                    <table className="qa-table" data-testid="qa-issues-table">
+                                    <table className="qa-table qa-table-issues" data-testid="qa-issues-table">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -1034,7 +1045,7 @@ const QAPlayground = () => {
                             This section provides a stable Supabase frontend for automation and data testing.
                         </p>
 
-                        <div className="qa-playground-grid" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                        <div className="qa-playground-stack">
                             <motion.section
                                 className="glass qa-card"
                                 initial={{ opacity: 0, y: 16 }}
@@ -1086,7 +1097,7 @@ const QAPlayground = () => {
                                     </div>
                                 )}
 
-                                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(280px, 360px) 1fr', gap: '1.5rem', alignItems: 'start' }} className="qa-crud-layout">
+                                <div className="qa-crud-layout">
                                     <form className="qa-stack" onSubmit={handleCrudSubmit} noValidate>
                                         <label className="qa-field">
                                             <span className="qa-label">Name</span>
@@ -1138,7 +1149,7 @@ const QAPlayground = () => {
                                     </form>
 
                                     <div className="qa-table-wrap">
-                                        <table className="qa-table">
+                                        <table className="qa-table qa-table-users">
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
@@ -1161,7 +1172,7 @@ const QAPlayground = () => {
                                                             <td>{user.email}</td>
                                                             <td>{user.created_at ? new Date(user.created_at).toISOString() : '-'}</td>
                                                             <td>
-                                                                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                                                                <div className="qa-table-actions">
                                                                     <button
                                                                         type="button"
                                                                         className="qa-btn qa-btn-ghost"
@@ -1451,6 +1462,7 @@ const QAPlayground = () => {
                         </motion.section>
                     </motion.div>
                 )}
+            </div>
             </div>
         </div>
     );
