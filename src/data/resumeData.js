@@ -40,7 +40,7 @@ export const resumeData = {
           "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg",
           "https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg",
           "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firefox/firefox-original.svg",
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Safari_browser_logo.svg/250px-Safari_browser_logo.svg.png?20220831120132"
+          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/safari/safari-original.svg"
         ]
       },
       {
