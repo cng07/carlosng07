@@ -22,6 +22,7 @@ const About = React.lazy(() => import('./pages/About'));
 const Contact = React.lazy(() => import('./pages/Contact'));
 const Resume = React.lazy(() => import('./pages/Resume'));
 const Projects = React.lazy(() => import('./pages/Projects'));
+const QAPlayground = React.lazy(() => import('./pages/QAPlayground'));
 const Experience = React.lazy(() => import('./pages/Experience'));
 const Certifications = React.lazy(() => import('./pages/Certifications'));
 const Education = React.lazy(() => import('./pages/Education'));
@@ -73,6 +74,12 @@ const routes = [
         meta: { title: 'Projects', description: 'Automation frameworks, test suites, and QA tooling projects with Playwright.', image: baseImage, siteName }
     },
     {
+        path: '/qa-playground',
+        label: 'QA Lab',
+        element: QAPlayground,
+        meta: { title: 'QA Playground', description: 'Interactive playground for manual and automation testing experiments.', image: baseImage, siteName }
+    },
+    {
         path: '/resume',
         label: 'Resume',
         element: Resume,
@@ -115,7 +122,7 @@ const routes = [
 ];
 
 const navItems = routes.filter((route) => route.label);
-const primaryNavOrder = ['Home', 'Projects', 'Resume', 'About', 'Contact'];
+const primaryNavOrder = ['Home', 'Projects', 'QA Lab', 'Resume', 'About', 'Contact'];
 const moreNavOrder = ['Experience', 'Certifications', 'Education'];
 const navItemsByLabel = navItems.reduce((acc, item) => {
     acc[item.label] = item;
