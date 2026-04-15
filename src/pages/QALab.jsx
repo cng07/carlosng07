@@ -18,6 +18,7 @@ import {
     XCircle
 } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
+import SQLPracticeTool from '../components/SQLPracticeTool';
 
 const initialFormState = {
     firstName: '',
@@ -46,6 +47,7 @@ const issueFixtures = [
 const menuSections = [
     { id: 'spot-bugs', label: 'Spot the Bugs Challenge', icon: '🐛' },
     { id: 'api-testing', label: 'API Testing', icon: '🔌' },
+    { id: 'sql-practice', label: 'SQL Practice', icon: '🔍' },
     { id: 'pagination', label: 'Pagination', icon: '📄' },
     { id: 'dropdowns', label: 'Dropdowns', icon: '▼' },
     { id: 'buttons', label: 'Buttons', icon: '🔘' },
@@ -667,6 +669,26 @@ const QALab = () => {
                             API Testing
                         </button>
                     )}
+
+                    <button
+                        onClick={() => setActiveSection('sql-practice')}
+                        style={{
+                            padding: '0.75rem 1rem',
+                            textAlign: 'left',
+                            border: 'none',
+                            background: activeSection === 'sql-practice' ? 'rgba(255,255,255,0.15)' : 'transparent',
+                            color: activeSection === 'sql-practice' ? 'var(--primary)' : 'var(--text-secondary)',
+                            borderRadius: '0.5rem',
+                            cursor: 'pointer',
+                            fontWeight: activeSection === 'sql-practice' ? 600 : 400,
+                            transition: 'all 0.2s ease',
+                            fontSize: '1rem'
+                        }}
+                        className="qa-nav-item"
+                    >
+                        <Database size={16} style={{ display: 'inline', marginRight: '0.5rem', verticalAlign: 'middle' }} />
+                        SQL Practice
+                    </button>
                 </nav>
             </motion.aside>
 
@@ -1477,6 +1499,22 @@ const QALab = () => {
                                 </div>
                             </div>
                         </motion.section>
+                    </motion.div>
+                )}
+
+                {/* SQL Practice Tool Section */}
+                {activeSection === 'sql-practice' && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 14 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -14 }}
+                        transition={{ duration: 0.3 }}
+                        style={{
+                            borderRadius: '0.75rem',
+                            overflow: 'hidden'
+                        }}
+                    >
+                        <SQLPracticeTool />
                     </motion.div>
                 )}
             </div>
