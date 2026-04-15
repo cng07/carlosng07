@@ -348,8 +348,8 @@ const SQLPracticeTool = () => {
                 </div>
             </div>
 
-            {/* ── Two-column layout (Editor | Results) ── */}
-            <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1.35rem', alignItems:'start' }}>
+            {/* ── Single-column layout (Editor on top, Results below) ── */}
+            <div style={{ display:'grid', gridTemplateColumns:'1fr', gap:'1.35rem', alignItems:'start' }}>
 
                 {/* LEFT – SQL Editor */}
                 <div style={{ ...panel, display:'flex', flexDirection:'column', gap:'1rem' }}>
