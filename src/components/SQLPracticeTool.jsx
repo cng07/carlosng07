@@ -32,6 +32,16 @@ const CHALLENGES = [
     { id: 8,  title: 'Get total spent per user (completed orders only)',difficulty: 'Hard',   description: 'Sum the amount spent by each user, considering only completed orders.',                              answer: "SELECT user_id, SUM(amount) AS total_spent FROM orders WHERE status = 'completed' GROUP BY user_id;",                                                    tables: 'orders' },
     { id: 9,  title: 'Find inactive users with completed orders',       difficulty: 'Hard',   description: 'Find users with is_active = 0 who have at least one completed order.',                              answer: "SELECT u.* FROM users u JOIN orders o ON u.id = o.user_id WHERE u.is_active = 0 AND o.status = 'completed';",                                           tables: 'users, orders' },
     { id: 10, title: 'Find the user who spent the most',                difficulty: 'Hard',   description: 'Identify which user spent the most money (sum of completed orders), return top 1.',                answer: "SELECT user_id, SUM(amount) AS total_spent FROM orders WHERE status = 'completed' GROUP BY user_id ORDER BY total_spent DESC LIMIT 1;",                 tables: 'orders' },
+    { id: 11, title: 'Find users older than 25',                        difficulty: 'Easy',   description: 'Get all users with age greater than 25.',                                                            answer: 'SELECT * FROM users WHERE age > 25;',                                                                                                                    tables: 'users' },
+    { id: 12, title: 'Sort users by name alphabetically',               difficulty: 'Easy',   description: 'List all users sorted by name in ascending order.',                                                  answer: 'SELECT * FROM users ORDER BY name ASC;',                                                                                                                 tables: 'users' },
+    { id: 13, title: 'Find pending orders sorted by amount',            difficulty: 'Easy',   description: 'Get all pending orders, sorted by amount in descending order.',                                       answer: "SELECT * FROM orders WHERE status = 'pending' ORDER BY amount DESC;",                                                                                     tables: 'orders' },
+    { id: 14, title: 'Count orders by status',                          difficulty: 'Medium', description: 'Count how many orders exist for each status (completed, pending).',                                  answer: "SELECT status, COUNT(*) AS count FROM orders GROUP BY status;",                                                                                           tables: 'orders' },
+    { id: 15, title: 'Get all users with LEFT JOIN their orders',       difficulty: 'Medium', description: 'Show all users and their orders, including users with no orders.',                                   answer: 'SELECT u.id, u.name, u.email, o.id AS order_id, o.amount FROM users u LEFT JOIN orders o ON u.id = o.user_id;',                                         tables: 'users, orders' },
+    { id: 16, title: 'Find users with no orders using LEFT JOIN',       difficulty: 'Medium', description: 'Use LEFT JOIN to find all users who have not placed any orders (order_id is NULL).',                answer: 'SELECT u.* FROM users u LEFT JOIN orders o ON u.id = o.user_id WHERE o.id IS NULL;',                                                                   tables: 'users, orders' },
+    { id: 17, title: 'Calculate average order amount',                  difficulty: 'Medium', description: 'Find the average amount across all orders.',                                                         answer: 'SELECT AVG(amount) AS average_amount FROM orders;',                                                                                                        tables: 'orders' },
+    { id: 18, title: 'Find users with multiple completed orders',       difficulty: 'Hard',   description: 'List users who have placed more than one completed order, with order count.',                       answer: "SELECT u.id, u.name, COUNT(o.id) AS order_count FROM users u JOIN orders o ON u.id = o.user_id WHERE o.status = 'completed' GROUP BY u.id, u.name HAVING COUNT(o.id) > 1;",  tables: 'users, orders' },
+    { id: 19, title: 'LEFT JOIN with aggregation (all users + order count)', difficulty: 'Hard', description: 'Show all users with their order count, including those with no orders.',                   answer: 'SELECT u.id, u.name, COUNT(o.id) AS order_count FROM users u LEFT JOIN orders o ON u.id = o.user_id GROUP BY u.id, u.name;',                            tables: 'users, orders' },
+    { id: 20, title: 'Complex: Active users with expensive orders',     difficulty: 'Hard',   description: 'Find active users who have completed orders with amount > 200, sorted by total spent.',           answer: "SELECT u.id, u.name, SUM(o.amount) AS total_spent FROM users u JOIN orders o ON u.id = o.user_id WHERE u.is_active = 1 AND o.status = 'completed' AND o.amount > 200 GROUP BY u.id, u.name ORDER BY total_spent DESC;",  tables: 'users, orders' },
 ];
 
 const USERS_DATA = [[1,'Carlos','carlos@email.com',26,1],[2,'Anna','anna@email.com',30,1],[3,'John',null,22,1],[4,'Maria','maria@email.com',28,0],[5,'Carlos','carlos@email.com',26,1]];
@@ -285,49 +295,64 @@ const SQLPracticeTool = () => {
                 {activeTab==='orders' && <TableDisplay columns={ORDERS_COLS} data={ORDERS_DATA} />}
             </div>
 
-            {/* ── Three-column layout ── */}
-            <div style={{ display:'grid', gridTemplateColumns:'210px 1fr 250px', gap:'1.35rem', alignItems:'start' }}>
+            {/* ── Challenge Selector Dropdown ── */}
+            <div style={{ ...panel, marginBottom:'1.5rem' }}>
+                <label style={{ fontSize:'0.87rem', fontWeight:700, color:'var(--text-muted)', display:'block', marginBottom:'0.6rem' }}>
+                    Select Challenge
+                </label>
+                <select
+                    value={selectedChallenge.id}
+                    onChange={(e) => {
+                        const ch = CHALLENGES.find(c => c.id === parseInt(e.target.value));
+                        if (ch) handleSelectChallenge(ch);
+                    }}
+                    style={{
+                        width:'100%',
+                        padding:'0.7rem 0.9rem',
+                        borderRadius:'0.65rem',
+                        border:'2px solid rgba(51,65,85,0.6)',
+                        background:'rgba(15,23,42,0.85)',
+                        color:'var(--text-main)',
+                        fontFamily:'inherit',
+                        fontSize:'0.9rem',
+                        fontWeight:600,
+                        cursor:'pointer',
+                        transition:'border-color 0.2s ease',
+                        outline:'none',
+                    }}
+                    onFocus={(e) => { e.target.style.borderColor = 'rgba(16,185,129,0.6)'; }}
+                    onBlur={(e) => { e.target.style.borderColor = 'rgba(51,65,85,0.6)'; }}
+                >
+                    {CHALLENGES.map(ch => (
+                        <option key={ch.id} value={ch.id} style={{ background:'#1e293b' }}>
+                            #{ch.id} - {ch.title} ({ch.difficulty})
+                        </option>
+                    ))}
+                </select>
 
-                {/* LEFT – Challenges */}
-                <div style={{ ...panel, position:'sticky', top:'8rem' }}>
-                    <h2 style={{ fontSize:'1rem', fontWeight:700, marginBottom:'0.9rem', color:'var(--text-main)' }}>Challenges</h2>
-                    <div style={{ display:'flex', flexDirection:'column', gap:'0.5rem' }}>
-                        {CHALLENGES.map(ch => {
-                            const active = selectedChallenge.id === ch.id;
-                            const d = DIFF[ch.difficulty] || DIFF.Easy;
-                            return (
-                                <button key={ch.id} onClick={()=>handleSelectChallenge(ch)} style={challengeBtn(active)}>
-                                    <p style={{ fontWeight:600, fontSize:'0.8rem', color: active ? '#93c5fd' : 'var(--text-main)', marginBottom:'0.35rem', lineHeight:1.4 }}>
-                                        {ch.id}. {ch.title}
-                                    </p>
-                                    <span style={{ ...d.pill, display:'inline-block', fontSize:'0.7rem', fontWeight:700, borderRadius:'999px', padding:'0.1rem 0.5rem' }}>
-                                        {ch.difficulty}
-                                    </span>
-                                </button>
-                            );
-                        })}
+                {/* Challenge Info Below Dropdown */}
+                <div style={{ ...ds.card, borderRadius:'0.65rem', padding:'1rem 1.1rem', marginTop:'1rem' }}>
+                    <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', gap:'0.75rem', marginBottom:'0.45rem' }}>
+                        <h3 style={{ fontSize:'1.05rem', fontWeight:700, color:'var(--text-main)' }}>{selectedChallenge.title}</h3>
+                        <span style={{ ...ds.pill, borderRadius:'999px', padding:'0.14rem 0.6rem', fontSize:'0.72rem', fontWeight:700, flexShrink:0 }}>
+                            {selectedChallenge.difficulty}
+                        </span>
                     </div>
+                    <p style={{ color:'var(--text-muted)', fontSize:'0.88rem', marginBottom:'0.45rem' }}>{selectedChallenge.description}</p>
+                    <p style={{ color:'var(--text-muted)', fontSize:'0.8rem' }}>
+                        <span style={{ fontWeight:600 }}>📊 Tables used:</span>{' '}
+                        <code style={{ background:'rgba(15,23,42,0.4)', padding:'0.1rem 0.4rem', borderRadius:'0.3rem', fontFamily:'monospace' }}>
+                            {selectedChallenge.tables}
+                        </code>
+                    </p>
                 </div>
+            </div>
 
-                {/* MIDDLE – SQL Editor */}
+            {/* ── Two-column layout (Editor | Results) ── */}
+            <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1.35rem', alignItems:'start' }}>
+
+                {/* LEFT – SQL Editor */}
                 <div style={{ ...panel, display:'flex', flexDirection:'column', gap:'1rem' }}>
-                    {/* Challenge description card */}
-                    <div style={{ ...ds.card, borderRadius:'0.65rem', padding:'1rem 1.1rem' }}>
-                        <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', gap:'0.75rem', marginBottom:'0.45rem' }}>
-                            <h3 style={{ fontSize:'1.05rem', fontWeight:700, color:'var(--text-main)' }}>{selectedChallenge.title}</h3>
-                            <span style={{ ...ds.pill, borderRadius:'999px', padding:'0.14rem 0.6rem', fontSize:'0.72rem', fontWeight:700, flexShrink:0 }}>
-                                {selectedChallenge.difficulty}
-                            </span>
-                        </div>
-                        <p style={{ color:'var(--text-muted)', fontSize:'0.88rem', marginBottom:'0.45rem' }}>{selectedChallenge.description}</p>
-                        <p style={{ color:'var(--text-muted)', fontSize:'0.8rem' }}>
-                            <span style={{ fontWeight:600 }}>📊 Tables used:</span>{' '}
-                            <code style={{ background:'rgba(15,23,42,0.4)', padding:'0.1rem 0.4rem', borderRadius:'0.3rem', fontFamily:'monospace' }}>
-                                {selectedChallenge.tables}
-                            </code>
-                        </p>
-                    </div>
-
                     {/* Query label */}
                     <label style={{ fontSize:'0.83rem', fontWeight:700, color:'var(--text-muted)', display:'flex', alignItems:'center', gap:'0.4rem' }}>
                         <Code2 size={15} color="var(--primary)" /> Write Your SQL Query
@@ -338,7 +363,7 @@ const SQLPracticeTool = () => {
                         value={sqlQuery}
                         onChange={e => setSqlQuery(e.target.value)}
                         placeholder="SELECT * FROM users WHERE is_active = 1;"
-                        style={sqlTextarea}
+                        style={{ ...sqlTextarea, minHeight:'200px', flex:1 }}
                         onFocus={e  => { e.target.style.borderColor = 'rgba(16,185,129,0.6)'; }}
                         onBlur={e   => { e.target.style.borderColor = 'rgba(51,65,85,0.6)';   }}
                         spellCheck={false}
@@ -393,7 +418,7 @@ const SQLPracticeTool = () => {
                 </div>
 
                 {/* RIGHT – Query Results */}
-                <div style={{ ...panel, position:'sticky', top:'8rem', display:'flex', flexDirection:'column', gap:'0.9rem' }}>
+                <div style={{ ...panel, display:'flex', flexDirection:'column', gap:'0.9rem' }}>
                     <h2 style={{ fontSize:'1rem', fontWeight:700, color:'var(--text-main)' }}>Query Results</h2>
 
                     {/* Error */}
@@ -410,10 +435,10 @@ const SQLPracticeTool = () => {
                     {/* Results */}
                     {queryResult && !queryError && (
                         queryResult.values && queryResult.values.length > 0 ? (
-                            <div>
-                                <div style={{ overflowX:'auto', borderRadius:'0.55rem', border:'1px solid rgba(51,65,85,0.45)' }}>
+                            <div style={{ flex:1, display:'flex', flexDirection:'column', gap:'0.55rem' }}>
+                                <div style={{ overflowX:'auto', overflowY:'auto', borderRadius:'0.55rem', border:'1px solid rgba(51,65,85,0.45)', maxHeight:'400px' }}>
                                     <table style={{ ...tbl, fontSize:'0.78rem' }}>
-                                        <thead>
+                                        <thead style={{ position:'sticky', top:0 }}>
                                             <tr>{queryResult.columns.map((c,i)=><th key={i} style={{ ...thStyle, fontSize:'0.75rem', padding:'0.45rem 0.65rem' }}>{c}</th>)}</tr>
                                         </thead>
                                         <tbody>
