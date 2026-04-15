@@ -166,7 +166,7 @@ const QALab = () => {
 
         const { data, error } = await supabase
             .from('users')
-            .select('id, name, email, created_at')
+            .select('id, first_name, last_name, email, created_at, Nationality, Role')
             .order('created_at', { ascending: false });
 
         if (error) {
@@ -410,13 +410,24 @@ const QALab = () => {
             return;
         }
 
+        // Split name into first_name and last_name
+        const nameParts = payload.name.trim().split(' ');
+        const first_name = nameParts[0];
+        const last_name = nameParts.slice(1).join(' ') || '';
+
+        const dbPayload = {
+            first_name,
+            last_name,
+            email: payload.email
+        };
+
         setCrudLoading(true);
 
         if (editingUserId) {
-            console.log('UPDATE user:', { id: editingUserId, ...payload });
+            console.log('UPDATE user:', { id: editingUserId, ...dbPayload });
             const { error } = await supabase
                 .from('users')
-                .update(payload)
+                .update(dbPayload)
                 .eq('id', editingUserId);
 
             if (error) {
@@ -436,8 +447,8 @@ const QALab = () => {
             return;
         }
 
-        console.log('INSERT user:', payload);
-        const { error } = await supabase.from('users').insert(payload);
+        console.log('INSERT user:', dbPayload);
+        const { error } = await supabase.from('users').insert(dbPayload);
 
         if (error) {
             console.error('INSERT user error:', error);
@@ -459,7 +470,7 @@ const QALab = () => {
         clearCrudMessages();
         setEditingUserId(user.id);
         setUserForm({
-            name: user.name ?? '',
+            name: `${user.first_name ?? ''} ${user.last_name ?? ''}`.trim(),
             email: user.email ?? ''
         });
         setActiveSection('data-playground');
@@ -1152,8 +1163,11 @@ const QALab = () => {
                                         <table className="qa-table qa-table-users">
                                             <thead>
                                                 <tr>
-                                                    <th>Name</th>
+                                                    <th>First Name</th>
+                                                    <th>Last Name</th>
                                                     <th>Email</th>
+                                                    <th>Nationality</th>
+                                                    <th>Role</th>
                                                     <th>Created At</th>
                                                     <th>Actions</th>
                                                 </tr>
@@ -1168,8 +1182,11 @@ const QALab = () => {
                                                 ) : (
                                                     users.map((user) => (
                                                         <tr key={user.id} data-testid="user-row">
-                                                            <td>{user.name}</td>
+                                                            <td>{user.first_name}</td>
+                                                            <td>{user.last_name}</td>
                                                             <td>{user.email}</td>
+                                                            <td>{user.Nationality}</td>
+                                                            <td>{user.Role}</td>
                                                             <td>{user.created_at ? new Date(user.created_at).toISOString() : '-'}</td>
                                                             <td>
                                                                 <div className="qa-table-actions">
