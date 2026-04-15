@@ -588,11 +588,10 @@ const QALab = () => {
                         display: 'flex',
                         flexDirection: 'column',
                         gap: '0.75rem',
-                        position: 'sticky',
-                        top: '2rem',
                         padding: '2rem 1.5rem',
                         overflowY: 'auto',
-                        borderRight: '1px solid var(--border-color, rgba(255,255,255,0.1))'
+                        borderRight: '1px solid var(--border-color, rgba(255,255,255,0.1))',
+                        height: 'fit-content'
                     }}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
