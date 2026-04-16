@@ -113,6 +113,12 @@ const QALab = () => {
     const [crudSuccessMessage, setCrudSuccessMessage] = React.useState('');
     const [crudErrorMessage, setCrudErrorMessage] = React.useState('');
     const [isJsonPreviewOpen, setIsJsonPreviewOpen] = React.useState(true);
+    const [showIssueExplorer, setShowIssueExplorer] = React.useState(false);
+    const [settings, setSettings] = React.useState({
+        delayedValidation: false,
+        slowResponse: false,
+        randomServerErrors: false
+    });
     const itemsPerPage = 3;
 
     React.useEffect(() => {
@@ -908,7 +914,19 @@ const QALab = () => {
                                 )}
                             </motion.section>
 
+                            <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+                                <button
+                                    type="button"
+                                    className="qa-btn qa-btn-ghost"
+                                    onClick={() => setShowIssueExplorer((current) => !current)}
+                                >
+                                    <Search size={16} />
+                                    {showIssueExplorer ? 'Hide' : 'Show'} Issue Explorer
+                                </button>
+                            </div>
+
                             {/* Issue Explorer */}
+                            {showIssueExplorer && (
                             <motion.section
                                 className="glass qa-card"
                                 initial={{ opacity: 0, y: 16 }}
@@ -1059,6 +1077,7 @@ const QALab = () => {
                                     </div>
                                 )}
                             </motion.section>
+                            )}
                         </div>
                     </motion.div>
                 )}
