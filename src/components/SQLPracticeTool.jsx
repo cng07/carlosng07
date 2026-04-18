@@ -46,7 +46,7 @@ const CHALLENGES = [
 
 const USERS_DATA = [[1,'Carlos','carlos@email.com',26,1],[2,'Anna','anna@email.com',30,1],[3,'John',null,22,1],[4,'Maria','maria@email.com',28,0],[5,'Carlos','carlos@email.com',26,1]];
 const USERS_COLS  = ['id','name','email','age','is_active'];
-const ORDERS_DATA = [[1,1,500,'completed','2024-05-01'],[2,1,300,'completed','2024-05-02'],[3,2,200,'pending','2024-05-03'],[4,3,150,'completed','2024-05-04'],[5,99,999,'completed','2024-05-05']];
+const ORDERS_DATA = [[1,1,500,'completed','2024-05-01'],[2,1,300,'completed','2024-05-02'],[3,2,200,'pending','2024-05-03'],[4,3,150,'completed','2024-05-04'],[5,4,250,'completed','2024-05-05'],[6,99,999,'completed','2024-05-06']];
 const ORDERS_COLS = ['id','user_id','amount','status','created_at'];
 
 /* ─── Difficulty colour maps (no Tailwind) ─── */
@@ -184,7 +184,7 @@ const SQLPracticeTool = () => {
         CREATE TABLE users  (id INTEGER PRIMARY KEY, name TEXT, email TEXT, age INTEGER, is_active INTEGER);
         CREATE TABLE orders (id INTEGER PRIMARY KEY, user_id INTEGER, amount REAL, status TEXT, created_at TEXT);
         INSERT INTO users  VALUES (1,'Carlos','carlos@email.com',26,1),(2,'Anna','anna@email.com',30,1),(3,'John',NULL,22,1),(4,'Maria','maria@email.com',28,0),(5,'Carlos','carlos@email.com',26,1);
-        INSERT INTO orders VALUES (1,1,500,'completed','2024-05-01'),(2,1,300,'completed','2024-05-02'),(3,2,200,'pending','2024-05-03'),(4,3,150,'completed','2024-05-04'),(5,99,999,'completed','2024-05-05');
+        INSERT INTO orders VALUES (1,1,500,'completed','2024-05-01'),(2,1,300,'completed','2024-05-02'),(3,2,200,'pending','2024-05-03'),(4,3,150,'completed','2024-05-04'),(5,4,250,'completed','2024-05-05'),(6,99,999,'completed','2024-05-06');
     `;
 
     const buildDb = async () => {
