@@ -330,6 +330,54 @@ const SQLPracticeTool = () => {
                     ))}
                 </select>
 
+                {/* Navigation Buttons */}
+                <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'0.6rem', marginTop:'0.8rem' }}>
+                    <button
+                        onClick={() => {
+                            const prevId = selectedChallenge.id - 1;
+                            const prevChallenge = CHALLENGES.find(c => c.id === prevId);
+                            if (prevChallenge) handleSelectChallenge(prevChallenge);
+                        }}
+                        disabled={selectedChallenge.id === 1}
+                        style={{
+                            padding:'0.65rem 1rem',
+                            borderRadius:'0.6rem',
+                            border:'1px solid rgba(59,130,246,0.5)',
+                            background: selectedChallenge.id === 1 ? 'rgba(100,116,139,0.2)' : 'rgba(59,130,246,0.15)',
+                            color: selectedChallenge.id === 1 ? 'var(--text-muted)' : '#60a5fa',
+                            fontWeight:600,
+                            fontSize:'0.85rem',
+                            cursor: selectedChallenge.id === 1 ? 'not-allowed' : 'pointer',
+                            transition:'all 0.2s ease',
+                            opacity: selectedChallenge.id === 1 ? 0.5 : 1,
+                        }}
+                    >
+                        ← Previous Challenge
+                    </button>
+                    <button
+                        onClick={() => {
+                            const nextId = selectedChallenge.id + 1;
+                            const nextChallenge = CHALLENGES.find(c => c.id === nextId);
+                            if (nextChallenge) handleSelectChallenge(nextChallenge);
+                        }}
+                        disabled={selectedChallenge.id === CHALLENGES.length}
+                        style={{
+                            padding:'0.65rem 1rem',
+                            borderRadius:'0.6rem',
+                            border:'1px solid rgba(59,130,246,0.5)',
+                            background: selectedChallenge.id === CHALLENGES.length ? 'rgba(100,116,139,0.2)' : 'rgba(59,130,246,0.15)',
+                            color: selectedChallenge.id === CHALLENGES.length ? 'var(--text-muted)' : '#60a5fa',
+                            fontWeight:600,
+                            fontSize:'0.85rem',
+                            cursor: selectedChallenge.id === CHALLENGES.length ? 'not-allowed' : 'pointer',
+                            transition:'all 0.2s ease',
+                            opacity: selectedChallenge.id === CHALLENGES.length ? 0.5 : 1,
+                        }}
+                    >
+                        Next Challenge →
+                    </button>
+                </div>
+
                 {/* Challenge Info Below Dropdown */}
                 <div style={{ ...ds.card, borderRadius:'0.65rem', padding:'1rem 1.1rem', marginTop:'1rem' }}>
                     <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', gap:'0.75rem', marginBottom:'0.45rem' }}>
