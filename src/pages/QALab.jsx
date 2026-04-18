@@ -68,8 +68,11 @@ const apiScenarios = [
 ];
 
 const initialUserFormState = {
-    name: '',
-    email: ''
+    firstName: '',
+    lastName: '',
+    email: '',
+    nationality: '',
+    role: ''
 };
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -140,11 +143,19 @@ const QALab = () => {
     };
 
     const validateCrudForm = () => {
-        const trimmedName = userForm.name.trim();
+        const trimmedFirstName = userForm.firstName.trim();
+        const trimmedLastName = userForm.lastName.trim();
         const trimmedEmail = userForm.email.trim();
+        const trimmedNationality = userForm.nationality.trim();
+        const trimmedRole = userForm.role.trim();
 
-        if (!trimmedName || !trimmedEmail) {
-            setCrudErrorMessage('Name and email are required.');
+        if (!trimmedFirstName || !trimmedLastName) {
+            setCrudErrorMessage('First name and last name are required.');
+            return null;
+        }
+
+        if (!trimmedEmail) {
+            setCrudErrorMessage('Email is required.');
             return null;
         }
 
@@ -154,8 +165,11 @@ const QALab = () => {
         }
 
         return {
-            name: trimmedName,
-            email: trimmedEmail
+            firstName: trimmedFirstName,
+            lastName: trimmedLastName,
+            email: trimmedEmail,
+            nationality: trimmedNationality,
+            role: trimmedRole
         };
     };
 
@@ -419,14 +433,15 @@ const QALab = () => {
         }
 
         // Split name into first_name and last_name
-        const nameParts = payload.name.trim().split(' ');
-        const first_name = nameParts[0];
-        const last_name = nameParts.slice(1).join(' ') || '';
+        const first_name = payload.firstName;
+        const last_name = payload.lastName;
 
         const dbPayload = {
             first_name,
             last_name,
-            email: payload.email
+            email: payload.email,
+            Nationality: payload.nationality,
+            Role: payload.role
         };
 
         setCrudLoading(true);
@@ -478,8 +493,11 @@ const QALab = () => {
         clearCrudMessages();
         setEditingUserId(user.id);
         setUserForm({
-            name: `${user.first_name ?? ''} ${user.last_name ?? ''}`.trim(),
-            email: user.email ?? ''
+            firstName: user.first_name ?? '',
+            lastName: user.last_name ?? '',
+            email: user.email ?? '',
+            nationality: user.Nationality ?? '',
+            role: user.Role ?? ''
         });
         setActiveSection('data-playground');
     };
@@ -1151,15 +1169,28 @@ const QALab = () => {
                                 <div className="qa-crud-layout">
                                     <form className="qa-stack" onSubmit={handleCrudSubmit} noValidate>
                                         <label className="qa-field">
-                                            <span className="qa-label">Name</span>
+                                            <span className="qa-label">First Name</span>
                                             <input
                                                 type="text"
                                                 className="qa-input"
-                                                data-testid="name-input"
-                                                value={userForm.name}
-                                                onChange={(event) => setUserForm((current) => ({ ...current, name: event.target.value }))}
+                                                data-testid="first-name-input"
+                                                value={userForm.firstName}
+                                                onChange={(event) => setUserForm((current) => ({ ...current, firstName: event.target.value }))}
                                                 disabled={crudLoading}
-                                                placeholder="Enter full name"
+                                                placeholder="Enter first name"
+                                            />
+                                        </label>
+
+                                        <label className="qa-field">
+                                            <span className="qa-label">Last Name</span>
+                                            <input
+                                                type="text"
+                                                className="qa-input"
+                                                data-testid="last-name-input"
+                                                value={userForm.lastName}
+                                                onChange={(event) => setUserForm((current) => ({ ...current, lastName: event.target.value }))}
+                                                disabled={crudLoading}
+                                                placeholder="Enter last name"
                                             />
                                         </label>
 
@@ -1173,6 +1204,32 @@ const QALab = () => {
                                                 onChange={(event) => setUserForm((current) => ({ ...current, email: event.target.value }))}
                                                 disabled={crudLoading}
                                                 placeholder="Enter email address"
+                                            />
+                                        </label>
+
+                                        <label className="qa-field">
+                                            <span className="qa-label">Nationality</span>
+                                            <input
+                                                type="text"
+                                                className="qa-input"
+                                                data-testid="nationality-input"
+                                                value={userForm.nationality}
+                                                onChange={(event) => setUserForm((current) => ({ ...current, nationality: event.target.value }))}
+                                                disabled={crudLoading}
+                                                placeholder="Enter nationality"
+                                            />
+                                        </label>
+
+                                        <label className="qa-field">
+                                            <span className="qa-label">Role</span>
+                                            <input
+                                                type="text"
+                                                className="qa-input"
+                                                data-testid="role-input"
+                                                value={userForm.role}
+                                                onChange={(event) => setUserForm((current) => ({ ...current, role: event.target.value }))}
+                                                disabled={crudLoading}
+                                                placeholder="Enter role"
                                             />
                                         </label>
 
