@@ -58,8 +58,8 @@ const DIFF = {
 
 /* ─── Shared style objects ─── */
 const panel = {
-    background:           'rgba(30,41,59,0.75)',
-    border:               '1px solid rgba(51,65,85,0.5)',
+    background:           'var(--surface)',
+    border:               '1px solid var(--border)',
     borderRadius:         '0.9rem',
     padding:              '1.5rem',
     backdropFilter:       'blur(12px)',
@@ -69,7 +69,7 @@ const panel = {
 const tableWrap = {
     width:'100%', overflowX:'auto',
     borderRadius:'0.65rem',
-    border:'1px solid rgba(51,65,85,0.5)',
+    border:'1px solid var(--border)',
 };
 
 const tbl = { width:'100%', borderCollapse:'collapse', fontSize:'0.85rem' };
@@ -77,47 +77,47 @@ const tbl = { width:'100%', borderCollapse:'collapse', fontSize:'0.85rem' };
 const thStyle = {
     padding:'0.6rem 0.85rem', textAlign:'left',
     fontWeight:700, whiteSpace:'nowrap',
-    background:'rgba(255,255,255,0.05)',
-    color:'#93c5fd',
-    borderBottom:'2px solid rgba(51,65,85,0.6)',
+    background:'var(--sql-table-header-bg)',
+    color:'var(--sql-table-header-text)',
+    borderBottom:'2px solid var(--sql-table-border)',
 };
 
 const tdStyle = (row) => ({
     padding:'0.58rem 0.85rem', textAlign:'left',
-    borderBottom:'1px solid rgba(51,65,85,0.35)',
-    background: row%2===0 ? 'rgba(255,255,255,0.02)' : 'transparent',
+    borderBottom:'1px solid var(--sql-table-border)',
+    background: row%2===0 ? 'var(--sql-table-row-alt-bg)' : 'transparent',
     color:'var(--text-muted)',
     fontSize:'0.83rem',
 });
 
 const nullBadge = {
-    fontStyle:'italic', color:'#64748b', fontFamily:'monospace',
-    background:'rgba(15,23,42,0.4)', padding:'0.1rem 0.4rem', borderRadius:'0.3rem',
+    fontStyle:'italic', color:'var(--sql-null-badge-text)', fontFamily:'monospace',
+    background:'var(--sql-null-badge-bg)', padding:'0.1rem 0.4rem', borderRadius:'0.3rem',
 };
 
 const tabBtn = (active) => ({
     padding:'0.5rem 1.2rem', fontWeight:600, fontSize:'0.85rem',
     border:'none', background:'none', cursor:'pointer',
-    borderBottom: active ? '2px solid #60a5fa' : '2px solid transparent',
-    color: active ? '#93c5fd' : 'var(--text-muted)',
+    borderBottom: active ? '2px solid var(--sql-tab-active-border)' : '2px solid transparent',
+    color: active ? 'var(--sql-tab-active-text)' : 'var(--text-muted)',
     transition:'all 0.2s ease',
 });
 
 const challengeBtn = (active) => ({
     width:'100%', textAlign:'left',
     padding:'0.8rem 0.9rem', borderRadius:'0.65rem',
-    border: active ? '2px solid #3b82f6' : '1px solid rgba(51,65,85,0.5)',
-    background: active ? 'rgba(59,130,246,0.18)' : 'rgba(255,255,255,0.03)',
+    border: active ? '2px solid var(--primary)' : '1px solid var(--border)',
+    background: active ? 'var(--primary-glow)' : 'var(--surface-soft)',
     cursor:'pointer', transition:'all 0.2s ease', display:'block',
 });
 
 const sqlTextarea = {
     width:'100%', minHeight:'130px',
-    background:'rgba(15,23,42,0.85)',
-    border:'2px solid rgba(51,65,85,0.6)',
+    background:'var(--sql-textarea-bg)',
+    border:'2px solid var(--sql-textarea-border)',
     borderRadius:'0.65rem',
     padding:'0.85rem 1rem',
-    color:'#4ade80',
+    color:'var(--sql-code-text)',
     fontFamily:'monospace',
     fontSize:'0.875rem',
     resize:'vertical',
@@ -129,10 +129,10 @@ const sqlTextarea = {
 
 const actionBtn = (variant) => {
     const map = {
-        run:   { background:'#2563eb', color:'#fff', border:'none' },
-        check: { background:'#16a34a', color:'#fff', border:'none' },
+        run:   { background:'var(--sql-btn-run-bg)', color:'#fff', border:'none' },
+        check: { background:'var(--sql-btn-check-bg)', color:'#fff', border:'none' },
         show:  { background:'rgba(245,158,11,0.18)', color:'#fbbf24', border:'1px solid rgba(245,158,11,0.4)' },
-        reset: { background:'rgba(100,116,139,0.22)', color:'var(--text-muted)', border:'1px solid rgba(100,116,139,0.4)' },
+        reset: { background:'var(--surface-soft)', color:'var(--text-muted)', border:'1px solid var(--border)' },
     };
     return {
         padding:'0.62rem 1rem', borderRadius:'0.6rem',
@@ -251,7 +251,7 @@ const SQLPracticeTool = () => {
             <div style={{ ...panel, maxWidth:'30rem', margin:'0 auto', borderColor:'rgba(239,68,68,0.4)', background:'rgba(239,68,68,0.1)' }}>
                 <div style={{ display:'flex', gap:'0.65rem', alignItems:'center', marginBottom:'0.65rem' }}>
                     <AlertTriangle size={18} color="#f87171" />
-                    <strong style={{ color:'#f87171' }}>Initialization Error</strong>
+                    <strong style={{ color:'var(--text-main)' }}>Initialization Error</strong>
                 </div>
                 <p style={{ color:'#fca5a5', fontSize:'0.88rem', marginBottom:'1rem' }}>{initError}</p>
                 <button className="qa-btn qa-btn-primary" onClick={() => window.location.reload()}>Reload Page</button>
@@ -286,7 +286,7 @@ const SQLPracticeTool = () => {
                 </h2>
 
                 {/* Tabs */}
-                <div style={{ display:'flex', borderBottom:'1px solid rgba(51,65,85,0.5)', marginBottom:'1rem' }}>
+                <div style={{ display:'flex', borderBottom:'1px solid var(--border)', marginBottom:'1rem' }}>
                     <button style={tabBtn(activeTab==='users')}  onClick={()=>setActiveTab('users')}>👥 Users Table</button>
                     <button style={tabBtn(activeTab==='orders')} onClick={()=>setActiveTab('orders')}>📦 Orders Table</button>
                 </div>
@@ -310,8 +310,8 @@ const SQLPracticeTool = () => {
                         width:'100%',
                         padding:'0.7rem 0.9rem',
                         borderRadius:'0.65rem',
-                        border:'2px solid rgba(51,65,85,0.6)',
-                        background:'rgba(15,23,42,0.85)',
+                        border:'2px solid var(--sql-textarea-border)',
+                        background:'var(--sql-textarea-bg)',
                         color:'var(--text-main)',
                         fontFamily:'inherit',
                         fontSize:'0.9rem',
@@ -320,11 +320,11 @@ const SQLPracticeTool = () => {
                         transition:'border-color 0.2s ease',
                         outline:'none',
                     }}
-                    onFocus={(e) => { e.target.style.borderColor = 'rgba(16,185,129,0.6)'; }}
-                    onBlur={(e) => { e.target.style.borderColor = 'rgba(51,65,85,0.6)'; }}
+                    onFocus={(e) => { e.target.style.borderColor = 'var(--primary)'; }}
+                    onBlur={(e) => { e.target.style.borderColor = 'var(--sql-textarea-border)'; }}
                 >
                     {CHALLENGES.map(ch => (
-                        <option key={ch.id} value={ch.id} style={{ background:'#1e293b' }}>
+                        <option key={ch.id} value={ch.id} style={{ background:'var(--surface)' }}>
                             #{ch.id} - {ch.title} ({ch.difficulty})
                         </option>
                     ))}
@@ -342,9 +342,9 @@ const SQLPracticeTool = () => {
                         style={{
                             padding:'0.65rem 1rem',
                             borderRadius:'0.6rem',
-                            border:'1px solid rgba(59,130,246,0.5)',
-                            background: selectedChallenge.id === 1 ? 'rgba(100,116,139,0.2)' : 'rgba(59,130,246,0.15)',
-                            color: selectedChallenge.id === 1 ? 'var(--text-muted)' : '#60a5fa',
+                            border:'1px solid var(--primary)',
+                            background: selectedChallenge.id === 1 ? 'var(--surface-soft)' : 'var(--primary-glow)',
+                            color: selectedChallenge.id === 1 ? 'var(--text-muted)' : 'var(--primary)',
                             fontWeight:600,
                             fontSize:'0.85rem',
                             cursor: selectedChallenge.id === 1 ? 'not-allowed' : 'pointer',
@@ -364,9 +364,9 @@ const SQLPracticeTool = () => {
                         style={{
                             padding:'0.65rem 1rem',
                             borderRadius:'0.6rem',
-                            border:'1px solid rgba(59,130,246,0.5)',
-                            background: selectedChallenge.id === CHALLENGES.length ? 'rgba(100,116,139,0.2)' : 'rgba(59,130,246,0.15)',
-                            color: selectedChallenge.id === CHALLENGES.length ? 'var(--text-muted)' : '#60a5fa',
+                            border:'1px solid var(--primary)',
+                            background: selectedChallenge.id === CHALLENGES.length ? 'var(--surface-soft)' : 'var(--primary-glow)',
+                            color: selectedChallenge.id === CHALLENGES.length ? 'var(--text-muted)' : 'var(--primary)',
                             fontWeight:600,
                             fontSize:'0.85rem',
                             cursor: selectedChallenge.id === CHALLENGES.length ? 'not-allowed' : 'pointer',
@@ -412,18 +412,18 @@ const SQLPracticeTool = () => {
                         onChange={e => setSqlQuery(e.target.value)}
                         placeholder="SELECT * FROM users WHERE is_active = 1;"
                         style={{ ...sqlTextarea, minHeight:'200px', flex:1 }}
-                        onFocus={e  => { e.target.style.borderColor = 'rgba(16,185,129,0.6)'; }}
-                        onBlur={e   => { e.target.style.borderColor = 'rgba(51,65,85,0.6)';   }}
+                        onFocus={e  => { e.target.style.borderColor = 'var(--primary)'; }}
+                        onBlur={e   => { e.target.style.borderColor = 'var(--sql-textarea-border)';   }}
                         spellCheck={false}
                     />
 
                     {/* Reveal answer */}
                     {showAnswer && (
-                        <div style={{ background:'rgba(245,158,11,0.1)', border:'1px solid rgba(245,158,11,0.35)', borderRadius:'0.6rem', padding:'0.8rem 1rem' }}>
-                            <p style={{ fontSize:'0.72rem', fontWeight:700, color:'#fbbf24', marginBottom:'0.4rem', textTransform:'uppercase', letterSpacing:'0.05em' }}>
+                        <div style={{ background:'var(--surface-soft)', border:'1px solid var(--border)', borderRadius:'0.6rem', padding:'0.8rem 1rem' }}>
+                            <p style={{ fontSize:'0.72rem', fontWeight:700, color:'var(--text-main)', marginBottom:'0.4rem', textTransform:'uppercase', letterSpacing:'0.05em' }}>
                                 Expected Answer:
                             </p>
-                            <code style={{ color:'#fde68a', fontSize:'0.8rem', fontFamily:'monospace', wordBreak:'break-all', display:'block', lineHeight:1.6 }}>
+                            <code style={{ color:'var(--text-main)', fontSize:'0.8rem', fontFamily:'monospace', wordBreak:'break-all', display:'block', lineHeight:1.6 }}>
                                 {selectedChallenge.answer}
                             </code>
                         </div>
@@ -434,13 +434,13 @@ const SQLPracticeTool = () => {
                         <div style={{
                             display:'flex', alignItems:'flex-start', gap:'0.55rem',
                             padding:'0.7rem 1rem', borderRadius:'0.6rem',
-                            border:`2px solid ${answerFeedback.isCorrect ? 'rgba(34,197,94,0.45)' : 'rgba(239,68,68,0.4)'}`,
-                            background: answerFeedback.isCorrect ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
-                            color: answerFeedback.isCorrect ? '#86efac' : '#fca5a5',
+                            border:`2px solid ${answerFeedback.isCorrect ? 'var(--border)' : 'var(--border)'}`,
+                            background: answerFeedback.isCorrect ? 'var(--primary-glow)' : 'var(--surface-soft)',
+                            color: answerFeedback.isCorrect ? 'var(--text-main)' : 'var(--text-main)',
                         }}>
                             {answerFeedback.isCorrect
-                                ? <CheckCircle2 size={17} style={{ flexShrink:0, marginTop:'0.1rem' }} />
-                                : <AlertTriangle size={17} style={{ flexShrink:0, marginTop:'0.1rem' }} />
+                                ? <CheckCircle2 size={17} style={{ flexShrink:0, marginTop:'0.1rem', color:'var(--primary)' }} />
+                                : <AlertTriangle size={17} style={{ flexShrink:0, marginTop:'0.1rem', color:'var(--text-muted)' }} />
                             }
                             <span style={{ fontSize:'0.86rem', fontWeight:500 }}>{answerFeedback.message}</span>
                         </div>
@@ -471,12 +471,12 @@ const SQLPracticeTool = () => {
 
                     {/* Error */}
                     {queryError && (
-                        <div style={{ background:'rgba(239,68,68,0.1)', border:'2px solid rgba(239,68,68,0.4)', borderRadius:'0.6rem', padding:'0.7rem 0.9rem' }}>
+                        <div style={{ background:'var(--surface-soft)', border:'2px solid var(--border)', borderRadius:'0.6rem', padding:'0.7rem 0.9rem' }}>
                             <div style={{ display:'flex', gap:'0.45rem', alignItems:'center', marginBottom:'0.3rem' }}>
-                                <AlertTriangle size={14} color="#f87171" />
-                                <span style={{ fontSize:'0.8rem', fontWeight:700, color:'#f87171' }}>SQL Error</span>
+                                <AlertTriangle size={14} color="var(--text-muted)" />
+                                <span style={{ fontSize:'0.8rem', fontWeight:700, color:'var(--text-main)' }}>SQL Error</span>
                             </div>
-                            <p style={{ fontSize:'0.78rem', fontFamily:'monospace', color:'#fca5a5', wordBreak:'break-word', lineHeight:1.5 }}>{queryError}</p>
+                            <p style={{ fontSize:'0.78rem', fontFamily:'monospace', color:'var(--text-muted)', wordBreak:'break-word', lineHeight:1.5 }}>{queryError}</p>
                         </div>
                     )}
 
@@ -484,7 +484,7 @@ const SQLPracticeTool = () => {
                     {queryResult && !queryError && (
                         queryResult.values && queryResult.values.length > 0 ? (
                             <div style={{ flex:1, display:'flex', flexDirection:'column', gap:'0.55rem' }}>
-                                <div style={{ overflowX:'auto', overflowY:'auto', borderRadius:'0.55rem', border:'1px solid rgba(51,65,85,0.45)', maxHeight:'400px' }}>
+                                <div style={{ overflowX:'auto', overflowY:'auto', borderRadius:'0.55rem', border:'1px solid var(--border)', maxHeight:'400px' }}>
                                     <table style={{ ...tbl, fontSize:'0.78rem' }}>
                                         <thead style={{ position:'sticky', top:0 }}>
                                             <tr>{queryResult.columns.map((c,i)=><th key={i} style={{ ...thStyle, fontSize:'0.75rem', padding:'0.45rem 0.65rem' }}>{c}</th>)}</tr>

@@ -614,7 +614,7 @@ const QALab = () => {
                         gap: '0.75rem',
                         padding: '2rem 1.5rem',
                         overflowY: 'auto',
-                        borderRight: '1px solid var(--border-color, rgba(255,255,255,0.1))',
+                        borderRight: '1px solid var(--border)',
                         height: 'fit-content'
                     }}
                 initial={{ opacity: 0, x: -20 }}
@@ -637,7 +637,7 @@ const QALab = () => {
                             padding: '0.75rem 1rem',
                             textAlign: 'left',
                             border: 'none',
-                            background: activeSection === 'spot-bugs' ? 'rgba(255,255,255,0.15)' : 'transparent',
+                            background: activeSection === 'spot-bugs' ? 'var(--qa-nav-active-bg)' : 'transparent',
                             color: activeSection === 'spot-bugs' ? 'var(--primary)' : 'var(--text-secondary)',
                             borderRadius: '0.5rem',
                             cursor: 'pointer',
@@ -657,7 +657,7 @@ const QALab = () => {
                             padding: '0.75rem 1rem',
                             textAlign: 'left',
                             border: 'none',
-                            background: activeSection === 'data-playground' ? 'rgba(255,255,255,0.15)' : 'transparent',
+                            background: activeSection === 'data-playground' ? 'var(--qa-nav-active-bg)' : 'transparent',
                             color: activeSection === 'data-playground' ? 'var(--primary)' : 'var(--text-secondary)',
                             borderRadius: '0.5rem',
                             cursor: 'pointer',
@@ -678,7 +678,7 @@ const QALab = () => {
                                 padding: '0.75rem 1rem',
                                 textAlign: 'left',
                                 border: 'none',
-                                background: activeSection === 'api-testing' ? 'rgba(255,255,255,0.15)' : 'transparent',
+                                background: activeSection === 'api-testing' ? 'var(--qa-nav-active-bg)' : 'transparent',
                                 color: activeSection === 'api-testing' ? 'var(--primary)' : 'var(--text-secondary)',
                                 borderRadius: '0.5rem',
                                 cursor: 'pointer',
@@ -699,7 +699,7 @@ const QALab = () => {
                             padding: '0.75rem 1rem',
                             textAlign: 'left',
                             border: 'none',
-                            background: activeSection === 'sql-practice' ? 'rgba(255,255,255,0.15)' : 'transparent',
+                            background: activeSection === 'sql-practice' ? 'var(--qa-nav-active-bg)' : 'transparent',
                             color: activeSection === 'sql-practice' ? 'var(--primary)' : 'var(--text-secondary)',
                             borderRadius: '0.5rem',
                             cursor: 'pointer',
@@ -1037,8 +1037,8 @@ const QALab = () => {
                                             disabled={currentPage === 1}
                                             style={{
                                                 padding: '0.5rem 1rem',
-                                                border: '1px solid var(--border-color, rgba(255,255,255,0.2))',
-                                                background: currentPage === 1 ? 'rgba(255,255,255,0.05)' : 'transparent',
+                                                border: '1px solid var(--border)',
+                                                background: currentPage === 1 ? 'var(--qa-pagination-disabled-bg)' : 'transparent',
                                                 color: currentPage === 1 ? 'var(--text-muted)' : 'var(--text-primary)',
                                                 borderRadius: '0.375rem',
                                                 cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
@@ -1058,7 +1058,7 @@ const QALab = () => {
                                                 style={{
                                                     minWidth: '2.5rem',
                                                     padding: '0.5rem 0.75rem',
-                                                    border: currentPage === page ? '1px solid var(--primary)' : '1px solid var(--border-color, rgba(255,255,255,0.2))',
+                                                    border: currentPage === page ? '1px solid var(--primary)' : '1px solid var(--border)',
                                                     background: currentPage === page ? 'var(--primary)' : 'transparent',
                                                     color: currentPage === page ? 'white' : 'var(--text-primary)',
                                                     borderRadius: '0.375rem',
@@ -1079,8 +1079,8 @@ const QALab = () => {
                                             disabled={currentPage === totalPages}
                                             style={{
                                                 padding: '0.5rem 1rem',
-                                                border: '1px solid var(--border-color, rgba(255,255,255,0.2))',
-                                                background: currentPage === totalPages ? 'rgba(255,255,255,0.05)' : 'transparent',
+                                                border: '1px solid var(--border)',
+                                                background: currentPage === totalPages ? 'var(--qa-pagination-disabled-bg)' : 'transparent',
                                                 color: currentPage === totalPages ? 'var(--text-muted)' : 'var(--text-primary)',
                                                 borderRadius: '0.375rem',
                                                 cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
@@ -1354,8 +1354,8 @@ const QALab = () => {
                                             margin: 0,
                                             padding: '1rem',
                                             borderRadius: '0.75rem',
-                                            background: 'rgba(15, 23, 42, 0.85)',
-                                            color: '#dbeafe',
+                                            background: 'var(--api-response-bg)',
+                                            color: 'var(--api-response-text)',
                                             overflowX: 'auto',
                                             fontSize: '0.85rem',
                                             lineHeight: 1.6
@@ -1474,7 +1474,7 @@ const QALab = () => {
 
                                     {/* Response Display */}
                                     {apiTestResponse && (
-                                        <div style={{ border: '1px solid var(--border-color, rgba(255,255,255,0.2))', borderRadius: '0.5rem', padding: '1rem', overflow: 'auto' }}>
+                                        <div style={{ border: '1px solid var(--border)', borderRadius: '0.5rem', padding: '1rem', overflow: 'auto' }}>
                                             <div style={{ marginBottom: '1rem' }}>
                                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
                                                     {apiTestResponse.error ? (

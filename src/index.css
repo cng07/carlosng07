@@ -22,6 +22,29 @@
   --scrollbar-thumb: #334155;
   --scrollbar-thumb-hover: #475569;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* SQL Tool Colors (Dark) */
+  --sql-table-header-bg: rgba(255, 255, 255, 0.05);
+  --sql-table-header-text: #93c5fd;
+  --sql-table-border: rgba(51, 65, 85, 0.6);
+  --sql-table-row-alt-bg: rgba(255, 255, 255, 0.02);
+  --sql-textarea-bg: rgba(15, 23, 42, 0.85);
+  --sql-textarea-border: rgba(51, 65, 85, 0.6);
+  --sql-code-text: #4ade80;
+  --sql-null-badge-bg: rgba(15, 23, 42, 0.4);
+  --sql-null-badge-text: #64748b;
+  --sql-tab-active-border: #60a5fa;
+  --sql-tab-active-text: #93c5fd;
+  --sql-btn-run-bg: #2563eb;
+  --sql-btn-check-bg: #16a34a;
+  
+  /* QA Lab Navigation (Dark) */
+  --qa-nav-active-bg: rgba(255, 255, 255, 0.15);
+  --qa-nav-inactive-bg: transparent;
+  --api-response-bg: rgba(15, 23, 42, 0.85);
+  --api-response-text: #dbeafe;
+  --qa-pagination-disabled-bg: rgba(255, 255, 255, 0.05);
+  --qa-border-light: rgba(255, 255, 255, 0.2);
 }
 
 [data-theme='light'] {
@@ -44,6 +67,29 @@
   --resume-viewer-bg: #e2e8f0;
   --scrollbar-thumb: #94a3b8;
   --scrollbar-thumb-hover: #64748b;
+
+  /* SQL Tool Colors (Light) */
+  --sql-table-header-bg: rgba(15, 23, 42, 0.05);
+  --sql-table-header-text: #0d7377;
+  --sql-table-border: rgba(148, 163, 184, 0.45);
+  --sql-table-row-alt-bg: rgba(15, 23, 42, 0.02);
+  --sql-textarea-bg: rgba(248, 250, 252, 0.95);
+  --sql-textarea-border: rgba(148, 163, 184, 0.5);
+  --sql-code-text: #059669;
+  --sql-null-badge-bg: rgba(15, 23, 42, 0.08);
+  --sql-null-badge-text: #475569;
+  --sql-tab-active-border: #0f766e;
+  --sql-tab-active-text: #0d7377;
+  --sql-btn-run-bg: #0d7377;
+  --sql-btn-check-bg: #059669;
+  
+  /* QA Lab Navigation (Light) */
+  --qa-nav-active-bg: rgba(15, 23, 42, 0.08);
+  --qa-nav-inactive-bg: transparent;
+  --api-response-bg: rgba(248, 250, 252, 0.9);
+  --api-response-text: #0d7377;
+  --qa-pagination-disabled-bg: rgba(15, 23, 42, 0.06);
+  --qa-border-light: rgba(148, 163, 184, 0.45);
 }
 
 * {
