@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Play, RotateCcw, CheckCircle2, AlertTriangle, Code2, Database } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Play, RotateCcw, CheckCircle2, AlertTriangle, Code2, Database, ChevronDown } from 'lucide-react';
 
 // Initialize sql.js from CDN
 const initSQL = async () => {
@@ -179,6 +179,18 @@ const SQLPracticeTool = () => {
     const [initialized,      setInitialized]       = useState(false);
     const [initError,        setInitError]         = useState(null);
     const [activeTab,        setActiveTab]         = useState('users');
+    const [isDropdownOpen,   setIsDropdownOpen]    = useState(false);
+    const dropdownRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+                setIsDropdownOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
     const DB_SQL = `
         CREATE TABLE users  (id INTEGER PRIMARY KEY, name TEXT, email TEXT, age INTEGER, is_active INTEGER);
@@ -296,39 +308,115 @@ const SQLPracticeTool = () => {
             </div>
 
             {/* ── Challenge Selector Dropdown ── */}
-            <div style={{ ...panel, marginBottom:'1.5rem' }}>
+            <div style={{ ...panel, marginBottom:'1.5rem', position:'relative', zIndex:10 }}>
                 <label style={{ fontSize:'0.87rem', fontWeight:700, color:'var(--text-muted)', display:'block', marginBottom:'0.6rem' }}>
                     Select Challenge
                 </label>
-                <select
-                    value={selectedChallenge.id}
-                    onChange={(e) => {
-                        const ch = CHALLENGES.find(c => c.id === parseInt(e.target.value));
-                        if (ch) handleSelectChallenge(ch);
-                    }}
-                    style={{
-                        width:'100%',
-                        padding:'0.7rem 0.9rem',
-                        borderRadius:'0.65rem',
-                        border:'2px solid var(--sql-textarea-border)',
-                        background:'var(--sql-textarea-bg)',
-                        color:'var(--text-main)',
-                        fontFamily:'inherit',
-                        fontSize:'0.9rem',
-                        fontWeight:600,
-                        cursor:'pointer',
-                        transition:'border-color 0.2s ease',
-                        outline:'none',
-                    }}
-                    onFocus={(e) => { e.target.style.borderColor = 'var(--primary)'; }}
-                    onBlur={(e) => { e.target.style.borderColor = 'var(--sql-textarea-border)'; }}
-                >
-                    {CHALLENGES.map(ch => (
-                        <option key={ch.id} value={ch.id} style={{ background:'var(--surface)' }}>
-                            #{ch.id} - {ch.title} ({ch.difficulty})
-                        </option>
-                    ))}
-                </select>
+
+                {/* Custom Dropdown */}
+                <div ref={dropdownRef} style={{ position:'relative', width:'100%' }}>
+                    {/* Trigger */}
+                    <button
+                        onClick={() => setIsDropdownOpen(o => !o)}
+                        style={{
+                            width:'100%',
+                            padding:'0.7rem 0.9rem',
+                            borderRadius: isDropdownOpen ? '0.65rem 0.65rem 0 0' : '0.65rem',
+                            border:`2px solid ${isDropdownOpen ? 'var(--primary)' : 'var(--sql-textarea-border)'}`,
+                            background:'var(--sql-textarea-bg)',
+                            color:'var(--text-main)',
+                            fontFamily:'inherit',
+                            fontSize:'0.9rem',
+                            fontWeight:600,
+                            cursor:'pointer',
+                            transition:'border-color 0.2s ease, border-radius 0.15s ease',
+                            outline:'none',
+                            display:'flex',
+                            alignItems:'center',
+                            justifyContent:'space-between',
+                            gap:'0.5rem',
+                            textAlign:'left',
+                        }}
+                    >
+                        <span style={{ overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>
+                            #{selectedChallenge.id} - {selectedChallenge.title} ({selectedChallenge.difficulty})
+                        </span>
+                        <ChevronDown
+                            size={16}
+                            style={{
+                                flexShrink:0,
+                                transition:'transform 0.2s ease',
+                                transform: isDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                                color:'var(--text-muted)',
+                            }}
+                        />
+                    </button>
+
+                    {/* Menu */}
+                    {isDropdownOpen && (
+                        <div style={{
+                            position:'absolute',
+                            top:'100%',
+                            left:0,
+                            right:0,
+                            zIndex:999,
+                            background:'var(--sql-textarea-bg)',
+                            border:'2px solid var(--primary)',
+                            borderTop:'none',
+                            borderRadius:'0 0 0.65rem 0.65rem',
+                            overflowY:'auto',
+                            maxHeight:'calc(10 * 2.6rem)',
+                            boxShadow:'0 8px 24px rgba(0,0,0,0.35)',
+                        }}>
+                            {CHALLENGES.map((ch, idx) => {
+                                const isSelected = ch.id === selectedChallenge.id;
+                                const diffColor = { Easy:'#86efac', Medium:'#fcd34d', Hard:'#fca5a5' }[ch.difficulty];
+                                return (
+                                    <button
+                                        key={ch.id}
+                                        onClick={() => { handleSelectChallenge(ch); setIsDropdownOpen(false); }}
+                                        style={{
+                                            width:'100%',
+                                            padding:'0.62rem 0.9rem',
+                                            background: isSelected ? 'var(--primary-glow)' : idx % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)',
+                                            border:'none',
+                                            borderBottom: idx < CHALLENGES.length - 1 ? '1px solid var(--border)' : 'none',
+                                            color: isSelected ? 'var(--primary)' : 'var(--text-main)',
+                                            fontFamily:'inherit',
+                                            fontSize:'0.875rem',
+                                            fontWeight: isSelected ? 700 : 500,
+                                            cursor:'pointer',
+                                            textAlign:'left',
+                                            display:'flex',
+                                            alignItems:'center',
+                                            justifyContent:'space-between',
+                                            gap:'0.5rem',
+                                            transition:'background 0.15s ease',
+                                        }}
+                                        onMouseEnter={e => { if (!isSelected) e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}
+                                        onMouseLeave={e => { if (!isSelected) e.currentTarget.style.background = idx % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)'; }}
+                                    >
+                                        <span style={{ overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>
+                                            #{ch.id} - {ch.title}
+                                        </span>
+                                        <span style={{
+                                            flexShrink:0,
+                                            fontSize:'0.7rem',
+                                            fontWeight:700,
+                                            color: diffColor,
+                                            background: `${diffColor}22`,
+                                            border: `1px solid ${diffColor}55`,
+                                            borderRadius:'999px',
+                                            padding:'0.1rem 0.5rem',
+                                        }}>
+                                            {ch.difficulty}
+                                        </span>
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    )}
+                </div>
 
                 {/* Navigation Buttons */}
                 <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'0.6rem', marginTop:'0.8rem' }}>
