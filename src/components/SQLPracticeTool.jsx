@@ -42,12 +42,26 @@ const CHALLENGES = [
     { id: 18, title: 'Find users with multiple completed orders',       difficulty: 'Hard',   description: 'List users who have placed more than one completed order, with order count.',                       answer: "SELECT u.id, u.name, COUNT(o.id) AS order_count FROM users u JOIN orders o ON u.id = o.user_id WHERE o.status = 'completed' GROUP BY u.id, u.name HAVING COUNT(o.id) > 1;",  tables: 'users, orders' },
     { id: 19, title: 'LEFT JOIN with aggregation (all users + order count)', difficulty: 'Hard', description: 'Show all users with their order count, including those with no orders.',                   answer: 'SELECT u.id, u.name, COUNT(o.id) AS order_count FROM users u LEFT JOIN orders o ON u.id = o.user_id GROUP BY u.id, u.name;',                            tables: 'users, orders' },
     { id: 20, title: 'Complex: Active users with expensive orders',     difficulty: 'Hard',   description: 'Find active users who have completed orders with amount > 200, sorted by total spent.',           answer: "SELECT u.id, u.name, SUM(o.amount) AS total_spent FROM users u JOIN orders o ON u.id = o.user_id WHERE u.is_active = 1 AND o.status = 'completed' AND o.amount > 200 GROUP BY u.id, u.name ORDER BY total_spent DESC;",  tables: 'users, orders' },
+    { id: 21, title: 'CASE WHEN: Label orders by amount size',           difficulty: 'Medium', description: 'Label each order as "High" (amount > 400), "Mid" (200–400), or "Low" (< 200) using CASE WHEN. Return id, amount, and the label as size_category.',  answer: "SELECT id, amount, CASE WHEN amount > 400 THEN 'High' WHEN amount >= 200 THEN 'Mid' ELSE 'Low' END AS size_category FROM orders;", tables: 'orders' },
+    { id: 22, title: 'EXISTS: Users with at least one pending order',    difficulty: 'Medium', description: 'Use EXISTS to find all users who have at least one order with status = pending.',               answer: "SELECT * FROM users u WHERE EXISTS (SELECT 1 FROM orders o WHERE o.user_id = u.id AND o.status = 'pending');", tables: 'users, orders' },
+    { id: 23, title: 'NOT EXISTS: Users with no completed order',        difficulty: 'Medium', description: 'Use NOT EXISTS to find all users who have never placed a completed order.',                      answer: "SELECT * FROM users u WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.user_id = u.id AND o.status = 'completed');", tables: 'users, orders' },
+    { id: 24, title: 'Self-join: Find users sharing the same name',      difficulty: 'Medium', description: 'Find pairs of users who share the same name but have different IDs. Return id1, id2, and name.',  answer: 'SELECT a.id AS id1, b.id AS id2, a.name FROM users a JOIN users b ON a.name = b.name AND a.id < b.id;', tables: 'users' },
+    { id: 25, title: 'UNION: Combine user names and product names',      difficulty: 'Medium', description: 'Produce a single list of all user names and all product names with a type column ("User" or "Product"), sorted by name.',  answer: "SELECT name, 'User' AS type FROM users UNION SELECT name, 'Product' AS type FROM products ORDER BY name;", tables: 'users, products' },
+    { id: 26, title: 'Window: ROW_NUMBER per user orders',               difficulty: 'Hard',   description: 'Assign a sequential row number to each order per user, ordered by created_at. Return id, user_id, amount, created_at, and order_num.',   answer: 'SELECT id, user_id, amount, created_at, ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY created_at) AS order_num FROM orders;', tables: 'orders' },
+    { id: 27, title: 'Window: RANK users by total spending',             difficulty: 'Hard',   description: 'Rank all users by their total spending on completed orders, highest first, using RANK(). Return user_id, total_spent, and spending_rank.',  answer: "SELECT user_id, SUM(amount) AS total_spent, RANK() OVER (ORDER BY SUM(amount) DESC) AS spending_rank FROM orders WHERE status = 'completed' GROUP BY user_id;", tables: 'orders' },
+    { id: 28, title: 'CTE: Users spending above average',               difficulty: 'Hard',   description: 'Using a CTE named user_totals, find users whose total completed order amount is above the average total spending per user. Return id, name, and total_spent.',  answer: "WITH user_totals AS (SELECT user_id, SUM(amount) AS total_spent FROM orders WHERE status = 'completed' GROUP BY user_id) SELECT u.id, u.name, ut.total_spent FROM users u JOIN user_totals ut ON u.id = ut.user_id WHERE ut.total_spent > (SELECT AVG(total_spent) FROM user_totals);", tables: 'users, orders' },
+    { id: 29, title: '3-Table JOIN: Products ordered by each user',      difficulty: 'Hard',   description: 'Using a 3-table JOIN across users → orders → order_items → products, find each distinct user name and the product names they purchased.',  answer: 'SELECT DISTINCT u.name AS user_name, p.name AS product_name FROM users u JOIN orders o ON u.id = o.user_id JOIN order_items oi ON o.id = oi.order_id JOIN products p ON oi.product_id = p.id;', tables: 'users, orders, order_items, products' },
+    { id: 30, title: 'Total revenue per product category',               difficulty: 'Hard',   description: 'Calculate total revenue (quantity × price) per product category using order_items and products. Sort by total_revenue descending.',  answer: 'SELECT p.category, SUM(oi.quantity * p.price) AS total_revenue FROM order_items oi JOIN products p ON oi.product_id = p.id GROUP BY p.category ORDER BY total_revenue DESC;', tables: 'products, order_items' },
 ];
 
 const USERS_DATA = [[1,'Carlos','carlos@email.com',26,1],[2,'Anna','anna@email.com',30,1],[3,'John',null,22,1],[4,'Maria','maria@email.com',28,0],[5,'Carlos','carlos@email.com',26,1],[6,'Elena','elena@email.com',35,1],[7,'David',null,19,1],[8,'Sarah','sarah@email.com',31,0],[9,'Michael','michael@email.com',27,1],[10,'Lisa',null,24,0]];
 const USERS_COLS  = ['id','name','email','age','is_active'];
 const ORDERS_DATA = [[1,1,500,'completed','2024-05-01'],[2,1,300,'completed','2024-05-02'],[3,2,200,'pending','2024-05-03'],[4,3,150,'completed','2024-05-04'],[5,4,250,'completed','2024-05-05'],[6,99,999,'completed','2024-05-06'],[7,2,450,'completed','2024-05-07'],[8,5,320,'pending','2024-05-08'],[9,6,600,'completed','2024-05-09'],[10,8,175,'completed','2024-05-10']];
 const ORDERS_COLS = ['id','user_id','amount','status','created_at'];
+const PRODUCTS_DATA = [[1,'Laptop','Electronics',1200,1],[2,'Mouse','Electronics',35,1],[3,'Keyboard','Electronics',75,1],[4,'Monitor','Electronics',450,1],[5,'Desk','Furniture',300,1],[6,'Chair','Furniture',250,0],[7,'Notebook','Stationery',5,1],[8,'Pen','Stationery',2,1],[9,'Headphones','Electronics',150,0],[10,'Webcam','Electronics',90,1]];
+const PRODUCTS_COLS = ['id','name','category','price','is_available'];
+const ORDER_ITEMS_DATA = [[1,1,1,1],[2,1,2,2],[3,2,3,1],[4,3,5,1],[5,4,7,3],[6,5,4,1],[7,6,1,2],[8,7,6,1],[9,8,10,2],[10,9,9,1]];
+const ORDER_ITEMS_COLS = ['id','order_id','product_id','quantity'];
 
 /* ─── Difficulty colour maps (no Tailwind) ─── */
 const DIFF = {
@@ -195,8 +209,12 @@ const SQLPracticeTool = () => {
     const DB_SQL = `
         CREATE TABLE users  (id INTEGER PRIMARY KEY, name TEXT, email TEXT, age INTEGER, is_active INTEGER);
         CREATE TABLE orders (id INTEGER PRIMARY KEY, user_id INTEGER, amount REAL, status TEXT, created_at TEXT);
+        CREATE TABLE products (id INTEGER PRIMARY KEY, name TEXT, category TEXT, price REAL, is_available INTEGER);
+        CREATE TABLE order_items (id INTEGER PRIMARY KEY, order_id INTEGER, product_id INTEGER, quantity INTEGER);
         INSERT INTO users  VALUES (1,'Carlos','carlos@email.com',26,1),(2,'Anna','anna@email.com',30,1),(3,'John',NULL,22,1),(4,'Maria','maria@email.com',28,0),(5,'Carlos','carlos@email.com',26,1),(6,'Elena','elena@email.com',35,1),(7,'David',NULL,19,1),(8,'Sarah','sarah@email.com',31,0),(9,'Michael','michael@email.com',27,1),(10,'Lisa',NULL,24,0);
         INSERT INTO orders VALUES (1,1,500,'completed','2024-05-01'),(2,1,300,'completed','2024-05-02'),(3,2,200,'pending','2024-05-03'),(4,3,150,'completed','2024-05-04'),(5,4,250,'completed','2024-05-05'),(6,99,999,'completed','2024-05-06'),(7,2,450,'completed','2024-05-07'),(8,5,320,'pending','2024-05-08'),(9,6,600,'completed','2024-05-09'),(10,8,175,'completed','2024-05-10');
+        INSERT INTO products VALUES (1,'Laptop','Electronics',1200,1),(2,'Mouse','Electronics',35,1),(3,'Keyboard','Electronics',75,1),(4,'Monitor','Electronics',450,1),(5,'Desk','Furniture',300,1),(6,'Chair','Furniture',250,0),(7,'Notebook','Stationery',5,1),(8,'Pen','Stationery',2,1),(9,'Headphones','Electronics',150,0),(10,'Webcam','Electronics',90,1);
+        INSERT INTO order_items VALUES (1,1,1,1),(2,1,2,2),(3,2,3,1),(4,3,5,1),(5,4,7,3),(6,5,4,1),(7,6,1,2),(8,7,6,1),(9,8,10,2),(10,9,9,1);
     `;
 
     const buildDb = async () => {
@@ -298,13 +316,17 @@ const SQLPracticeTool = () => {
                 </h2>
 
                 {/* Tabs */}
-                <div style={{ display:'flex', borderBottom:'1px solid var(--border)', marginBottom:'1rem' }}>
-                    <button style={tabBtn(activeTab==='users')}  onClick={()=>setActiveTab('users')}>👥 Users Table</button>
-                    <button style={tabBtn(activeTab==='orders')} onClick={()=>setActiveTab('orders')}>📦 Orders Table</button>
+                <div style={{ display:'flex', borderBottom:'1px solid var(--border)', marginBottom:'1rem', flexWrap:'wrap' }}>
+                    <button style={tabBtn(activeTab==='users')}        onClick={()=>setActiveTab('users')}>👥 Users</button>
+                    <button style={tabBtn(activeTab==='orders')}       onClick={()=>setActiveTab('orders')}>📦 Orders</button>
+                    <button style={tabBtn(activeTab==='products')}     onClick={()=>setActiveTab('products')}>🛒 Products</button>
+                    <button style={tabBtn(activeTab==='order_items')}  onClick={()=>setActiveTab('order_items')}>🔗 Order Items</button>
                 </div>
 
-                {activeTab==='users'  && <TableDisplay columns={USERS_COLS}  data={USERS_DATA}  />}
-                {activeTab==='orders' && <TableDisplay columns={ORDERS_COLS} data={ORDERS_DATA} />}
+                {activeTab==='users'       && <TableDisplay columns={USERS_COLS}       data={USERS_DATA}       />}
+                {activeTab==='orders'      && <TableDisplay columns={ORDERS_COLS}      data={ORDERS_DATA}      />}
+                {activeTab==='products'    && <TableDisplay columns={PRODUCTS_COLS}    data={PRODUCTS_DATA}    />}
+                {activeTab==='order_items' && <TableDisplay columns={ORDER_ITEMS_COLS} data={ORDER_ITEMS_DATA} />}
             </div>
 
             {/* ── Challenge Selector Dropdown ── */}
