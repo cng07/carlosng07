@@ -44,9 +44,9 @@ const CHALLENGES = [
     { id: 20, title: 'Complex: Active users with expensive orders',     difficulty: 'Hard',   description: 'Find active users who have completed orders with amount > 200, sorted by total spent.',           answer: "SELECT u.id, u.name, SUM(o.amount) AS total_spent FROM users u JOIN orders o ON u.id = o.user_id WHERE u.is_active = 1 AND o.status = 'completed' AND o.amount > 200 GROUP BY u.id, u.name ORDER BY total_spent DESC;",  tables: 'users, orders' },
 ];
 
-const USERS_DATA = [[1,'Carlos','carlos@email.com',26,1],[2,'Anna','anna@email.com',30,1],[3,'John',null,22,1],[4,'Maria','maria@email.com',28,0],[5,'Carlos','carlos@email.com',26,1]];
+const USERS_DATA = [[1,'Carlos','carlos@email.com',26,1],[2,'Anna','anna@email.com',30,1],[3,'John',null,22,1],[4,'Maria','maria@email.com',28,0],[5,'Carlos','carlos@email.com',26,1],[6,'Elena','elena@email.com',35,1],[7,'David',null,19,1],[8,'Sarah','sarah@email.com',31,0],[9,'Michael','michael@email.com',27,1],[10,'Lisa',null,24,0]];
 const USERS_COLS  = ['id','name','email','age','is_active'];
-const ORDERS_DATA = [[1,1,500,'completed','2024-05-01'],[2,1,300,'completed','2024-05-02'],[3,2,200,'pending','2024-05-03'],[4,3,150,'completed','2024-05-04'],[5,4,250,'completed','2024-05-05'],[6,99,999,'completed','2024-05-06']];
+const ORDERS_DATA = [[1,1,500,'completed','2024-05-01'],[2,1,300,'completed','2024-05-02'],[3,2,200,'pending','2024-05-03'],[4,3,150,'completed','2024-05-04'],[5,4,250,'completed','2024-05-05'],[6,99,999,'completed','2024-05-06'],[7,2,450,'completed','2024-05-07'],[8,5,320,'pending','2024-05-08'],[9,6,600,'completed','2024-05-09'],[10,8,175,'completed','2024-05-10']];
 const ORDERS_COLS = ['id','user_id','amount','status','created_at'];
 
 /* ─── Difficulty colour maps (no Tailwind) ─── */
@@ -183,8 +183,8 @@ const SQLPracticeTool = () => {
     const DB_SQL = `
         CREATE TABLE users  (id INTEGER PRIMARY KEY, name TEXT, email TEXT, age INTEGER, is_active INTEGER);
         CREATE TABLE orders (id INTEGER PRIMARY KEY, user_id INTEGER, amount REAL, status TEXT, created_at TEXT);
-        INSERT INTO users  VALUES (1,'Carlos','carlos@email.com',26,1),(2,'Anna','anna@email.com',30,1),(3,'John',NULL,22,1),(4,'Maria','maria@email.com',28,0),(5,'Carlos','carlos@email.com',26,1);
-        INSERT INTO orders VALUES (1,1,500,'completed','2024-05-01'),(2,1,300,'completed','2024-05-02'),(3,2,200,'pending','2024-05-03'),(4,3,150,'completed','2024-05-04'),(5,4,250,'completed','2024-05-05'),(6,99,999,'completed','2024-05-06');
+        INSERT INTO users  VALUES (1,'Carlos','carlos@email.com',26,1),(2,'Anna','anna@email.com',30,1),(3,'John',NULL,22,1),(4,'Maria','maria@email.com',28,0),(5,'Carlos','carlos@email.com',26,1),(6,'Elena','elena@email.com',35,1),(7,'David',NULL,19,1),(8,'Sarah','sarah@email.com',31,0),(9,'Michael','michael@email.com',27,1),(10,'Lisa',NULL,24,0);
+        INSERT INTO orders VALUES (1,1,500,'completed','2024-05-01'),(2,1,300,'completed','2024-05-02'),(3,2,200,'pending','2024-05-03'),(4,3,150,'completed','2024-05-04'),(5,4,250,'completed','2024-05-05'),(6,99,999,'completed','2024-05-06'),(7,2,450,'completed','2024-05-07'),(8,5,320,'pending','2024-05-08'),(9,6,600,'completed','2024-05-09'),(10,8,175,'completed','2024-05-10');
     `;
 
     const buildDb = async () => {
