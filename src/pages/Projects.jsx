@@ -462,7 +462,7 @@ const Projects = () => {
                                             Framework Structure
                                         </h4>
                                         <div style={{
-                                            background: 'rgba(0, 0, 0, 0.2)',
+                                            background: 'var(--code-block-bg)',
                                             padding: '1rem',
                                             borderRadius: '6px',
                                             fontFamily: 'monospace',
@@ -539,7 +539,7 @@ const Projects = () => {
                                                 className="badge tech-badge"
                                                 whileHover={{ scale: 1.05 }}
                                                 style={{
-                                                    background: 'rgba(59, 130, 246, 0.1)',
+                                                    background: 'var(--primary-glow)',
                                                     color: 'var(--primary)',
                                                     borderColor: 'var(--primary)',
                                                     fontSize: '0.9rem',

@@ -728,7 +728,7 @@ const QALab = () => {
                             <Bug size={30} color="var(--primary)" style={{ display: 'inline', marginRight: '0.75rem', verticalAlign: 'middle' }} />
                             Spot the Bugs Challenge
                         </h1>
-                        <p style={{ color: 'var(--text-muted)', maxWidth: '820px', marginBottom: '2rem' }}>
+                        <p style={{ color: 'var(--text-secondary)', maxWidth: '820px', marginBottom: '2rem' }}>
                             Practice your QA skills by reporting bugs through a form and exploring a database of issues. 
                             Learn validation patterns, form handling, and bug reporting best practices.
                         </p>
@@ -746,7 +746,7 @@ const QALab = () => {
                                     <Bug size={20} color="var(--primary)" />
                                     CHALLENGE - Spot the BUGS!
                                 </h2>
-                                <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
+                                <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
                                     This page contains at least 10 bugs. How many of them can you spot?
                                 </p>
 
@@ -779,7 +779,7 @@ const QALab = () => {
                                         {formErrors.lastName && <span className="qa-error">{formErrors.lastName}</span>}
                                     </label>
 
-                                    <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '1rem' }}>
+                                    <div style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginBottom: '1rem' }}>
                                         Note: All the fields marked with * are mandatory
                                     </div>
 
@@ -796,7 +796,7 @@ const QALab = () => {
                                         />
                                         {formErrors.phoneNumber && <span className="qa-error">{formErrors.phoneNumber}</span>}
                                         {!formErrors.phoneNumber && (
-                                            <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '0.25rem', display: 'block' }}>
+                                            <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginTop: '0.25rem', display: 'block' }}>
                                                 Phone length validation: at least 10 digits
                                             </span>
                                         )}
@@ -894,7 +894,7 @@ const QALab = () => {
                                         />
                                         {formErrors.password && <span className="qa-error">{formErrors.password}</span>}
                                         {!formErrors.password && (
-                                            <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '0.25rem', display: 'block' }}>
+                                            <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginTop: '0.25rem', display: 'block' }}>
                                                 Password length: 8-24 characters
                                             </span>
                                         )}
@@ -1013,7 +1013,7 @@ const QALab = () => {
                                             ))}
                                             {paginatedIssues.length === 0 && (
                                                 <tr>
-                                                    <td colSpan={5} style={{ textAlign: 'center', color: 'var(--text-muted)' }}>
+                                                    <td colSpan={5} style={{ textAlign: 'center', color: 'var(--text-secondary)' }}>
                                                         No issues match the current filters.
                                                     </td>
                                                 </tr>
@@ -1110,7 +1110,7 @@ const QALab = () => {
                             <Database size={30} color="var(--primary)" style={{ display: 'inline', marginRight: '0.75rem', verticalAlign: 'middle' }} />
                             Data Playground
                         </h1>
-                        <p style={{ color: 'var(--text-muted)', maxWidth: '820px', marginBottom: '2rem' }}>
+                        <p style={{ color: 'var(--text-secondary)', maxWidth: '820px', marginBottom: '2rem' }}>
                             This section provides a stable Supabase frontend for automation and data testing.
                         </p>
 
@@ -1128,7 +1128,7 @@ const QALab = () => {
                                             <Database size={20} color="var(--primary)" />
                                             User Data Dashboard
                                         </h2>
-                                        <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '0.95rem' }}>
+                                        <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.95rem' }}>
                                             Frontend-only table and form backed directly by Supabase.
                                         </p>
                                     </div>
@@ -1272,7 +1272,7 @@ const QALab = () => {
                                             <tbody>
                                                 {users.length === 0 ? (
                                                     <tr>
-                                                        <td colSpan="4" style={{ textAlign: 'center', color: 'var(--text-muted)' }}>
+                                                        <td colSpan="4" style={{ textAlign: 'center', color: 'var(--text-secondary)' }}>
                                                             No users found.
                                                         </td>
                                                     </tr>
@@ -1333,7 +1333,7 @@ const QALab = () => {
                                             <Eye size={20} color="var(--primary)" />
                                             JSON Preview
                                         </h2>
-                                        <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '0.95rem' }}>
+                                        <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.95rem' }}>
                                             Raw Supabase response data for automation assertions and debugging.
                                         </p>
                                     </div>
@@ -1380,7 +1380,7 @@ const QALab = () => {
                             <Server size={30} color="var(--primary)" style={{ display: 'inline', marginRight: '0.75rem', verticalAlign: 'middle' }} />
                             API Testing
                         </h1>
-                        <p style={{ color: 'var(--text-muted)', maxWidth: '820px', marginBottom: '2rem' }}>
+                        <p style={{ color: 'var(--text-secondary)', maxWidth: '820px', marginBottom: '2rem' }}>
                             Test API responses, handle flaky behavior, manage session tokens, and practice edge-case scenarios.
                             Learn how to validate HTTP status codes, handle timeouts, and test unreliable endpoints.
                         </p>
@@ -1487,9 +1487,9 @@ const QALab = () => {
                                                     <strong style={{ fontSize: '1.1rem' }}>
                                                         {apiTestResponse.status ? `HTTP ${apiTestResponse.status}` : apiTestResponse.statusText}
                                                     </strong>
-                                                    {apiTestResponse.statusText && <span style={{ color: 'var(--text-muted)' }}>({apiTestResponse.statusText})</span>}
+                                                    {apiTestResponse.statusText && <span style={{ color: 'var(--text-secondary)' }}>({apiTestResponse.statusText})</span>}
                                                 </div>
-                                                <small style={{ color: 'var(--text-muted)' }}>Response at {apiTestResponse.timestamp}</small>
+                                                <small style={{ color: 'var(--text-secondary)' }}>Response at {apiTestResponse.timestamp}</small>
                                             </div>
 
                                             {Object.keys(apiTestResponse.headers).length > 0 && (

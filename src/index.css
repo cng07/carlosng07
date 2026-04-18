@@ -9,6 +9,7 @@
   --primary-rgb: 16, 185, 129;
   --text-main: #f8fafc;
   --text-muted: #cbd5e1;
+  --text-secondary: #cbd5e1;
   --border: rgba(51, 65, 85, 0.5);
   --surface-muted: rgba(255, 255, 255, 0.03);
   --surface-soft: rgba(255, 255, 255, 0.05);
@@ -45,6 +46,9 @@
   --api-response-text: #dbeafe;
   --qa-pagination-disabled-bg: rgba(255, 255, 255, 0.05);
   --qa-border-light: rgba(255, 255, 255, 0.2);
+  
+  /* Projects Page (Dark) */
+  --code-block-bg: rgba(0, 0, 0, 0.2);
 }
 
 [data-theme='light'] {
@@ -55,6 +59,7 @@
   --primary-rgb: 15, 118, 110;
   --text-main: #0f172a;
   --text-muted: #475569;
+  --text-secondary: #1e293b;
   --border: rgba(148, 163, 184, 0.45);
   --surface-muted: rgba(15, 23, 42, 0.05);
   --surface-soft: rgba(15, 23, 42, 0.08);
@@ -90,6 +95,9 @@
   --api-response-text: #0d7377;
   --qa-pagination-disabled-bg: rgba(15, 23, 42, 0.06);
   --qa-border-light: rgba(148, 163, 184, 0.45);
+  
+  /* Projects Page (Light) */
+  --code-block-bg: rgba(15, 23, 42, 0.05);
 }
 
 * {
