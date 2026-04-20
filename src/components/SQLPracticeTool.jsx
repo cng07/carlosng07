@@ -160,6 +160,18 @@ const actionBtn = (variant) => {
     };
 };
 
+const areSqlResultsEquivalent = (userResult, answerResult) => {
+    const userColumns = userResult?.columns ?? [];
+    const answerColumns = answerResult?.columns ?? [];
+    const userValues = userResult?.values ?? [];
+    const answerValues = answerResult?.values ?? [];
+
+    if (userColumns.length !== answerColumns.length) return false;
+    if (userValues.length !== answerValues.length) return false;
+
+    return JSON.stringify(userValues) === JSON.stringify(answerValues);
+};
+
 /* ─── Sub-components ─── */
 const TableDisplay = ({ columns, data }) => (
     <div style={tableWrap}>
@@ -251,14 +263,14 @@ const SQLPracticeTool = () => {
         setIsCheckingAnswer(true);
         setTimeout(() => {
             try {
-                const uRes = db.exec(sqlQuery.trim());
                 const aRes = db.exec(selectedChallenge.answer);
+                const uRes = db.exec(sqlQuery.trim());
                 const u = uRes && uRes.length>0 ? uRes[0] : {columns:[],values:[]};
                 const a = aRes && aRes.length>0 ? aRes[0] : {columns:[],values:[]};
-                const ok = JSON.stringify(u) === JSON.stringify(a);
-                setAnswerFeedback({ isCorrect:ok, message: ok ? '✓ Correct! Your query matches the expected result.' : '✗ Not quite right. Try again or check the answer.' });
+                const ok = areSqlResultsEquivalent(u, a);
+                setAnswerFeedback({ isCorrect:ok, message: ok ? 'Correct! Your query matches the expected result set.' : 'Not quite right. Try again or check the answer.' });
             } catch (err) {
-                setAnswerFeedback({ isCorrect:false, message:'✗ Error in your query: ' + err.message });
+                setAnswerFeedback({ isCorrect:false, message:'Error in your query: ' + err.message });
             }
             setIsCheckingAnswer(false);
         }, 500);
