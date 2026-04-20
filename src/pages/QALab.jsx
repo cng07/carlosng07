@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
 import SQLPracticeTool from '../components/SQLPracticeTool';
+import ApiPlayground from '../components/ApiPlayground';
 
 const initialFormState = {
     firstName: '',
@@ -669,6 +670,26 @@ const QALab = () => {
                     >
                         <Database size={16} style={{ display: 'inline', marginRight: '0.5rem', verticalAlign: 'middle' }} />
                         Data Playground
+                    </button>
+
+                    <button
+                        onClick={() => setActiveSection('api-playground')}
+                        style={{
+                            padding: '0.75rem 1rem',
+                            textAlign: 'left',
+                            border: 'none',
+                            background: activeSection === 'api-playground' ? 'var(--qa-nav-active-bg)' : 'transparent',
+                            color: activeSection === 'api-playground' ? 'var(--primary)' : 'var(--text-secondary)',
+                            borderRadius: '0.5rem',
+                            cursor: 'pointer',
+                            fontWeight: activeSection === 'api-playground' ? 600 : 400,
+                            transition: 'all 0.2s ease',
+                            fontSize: '1rem'
+                        }}
+                        className="qa-nav-item"
+                    >
+                        <Server size={16} style={{ display: 'inline', marginRight: '0.5rem', verticalAlign: 'middle' }} />
+                        API Playground
                     </button>
 
                     {showApiTesting && (
@@ -1575,6 +1596,11 @@ const QALab = () => {
                             </div>
                         </motion.section>
                     </motion.div>
+                )}
+
+                {/* API Playground Section */}
+                {activeSection === 'api-playground' && (
+                    <ApiPlayground />
                 )}
 
                 {/* SQL Practice Tool Section */}
