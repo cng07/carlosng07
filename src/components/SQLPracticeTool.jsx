@@ -76,6 +76,9 @@ const panel = {
     border:               '1px solid var(--border)',
     borderRadius:         '0.9rem',
     padding:              '1.5rem',
+    width:                '100%',
+    maxWidth:             '100%',
+    minWidth:             0,
     backdropFilter:       'blur(12px)',
     WebkitBackdropFilter: 'blur(12px)',
 };
@@ -87,6 +90,12 @@ const tableWrap = {
 };
 
 const tbl = { width:'100%', borderCollapse:'collapse', fontSize:'0.85rem' };
+
+const resultTable = {
+    ...tbl,
+    width:'max-content',
+    minWidth:'100%',
+};
 
 const thStyle = {
     padding:'0.6rem 0.85rem', textAlign:'left',
@@ -135,7 +144,7 @@ const challengeBtn = (active) => ({
 });
 
 const sqlTextarea = {
-    width:'100%', minHeight:'130px',
+    width:'100%', minWidth:0, maxWidth:'100%', minHeight:'130px',
     maxHeight:'calc(32em + 1.7rem + 4px)',
     background:'var(--sql-textarea-bg)',
     border:'2px solid var(--sql-textarea-border)',
@@ -149,6 +158,9 @@ const sqlTextarea = {
     transition:'border-color 0.2s ease',
     display:'block',
     lineHeight:1.6,
+    whiteSpace:'pre',
+    wordBreak:'normal',
+    overflowX:'auto',
     overflowY:'auto',
 };
 
@@ -530,10 +542,10 @@ const SQLPracticeTool = () => {
             </div>
 
             {/* ── Single-column layout (Editor on top, Results below) ── */}
-            <div style={{ display:'grid', gridTemplateColumns:'1fr', gap:'1.35rem', alignItems:'start' }}>
+            <div style={{ display:'grid', gridTemplateColumns:'1fr', gap:'1.35rem', alignItems:'start', minWidth:0 }}>
 
                 {/* LEFT – SQL Editor */}
-                <div style={{ ...panel, display:'flex', flexDirection:'column', gap:'1rem' }}>
+                <div style={{ ...panel, display:'flex', flexDirection:'column', gap:'1rem', minWidth:0 }}>
                     {/* Query label */}
                     <label style={{ fontSize:'0.83rem', fontWeight:700, color:'var(--text-muted)', display:'flex', alignItems:'center', gap:'0.4rem' }}>
                         <Code2 size={15} color="var(--primary)" /> Write Your SQL Query
@@ -545,6 +557,7 @@ const SQLPracticeTool = () => {
                         onChange={e => setSqlQuery(e.target.value)}
                         placeholder="SELECT * FROM users WHERE is_active = 1;"
                         style={{ ...sqlTextarea, minHeight:'200px' }}
+                        wrap="off"
                         onFocus={e  => { e.target.style.borderColor = 'var(--primary)'; }}
                         onBlur={e   => { e.target.style.borderColor = 'var(--sql-textarea-border)';   }}
                         spellCheck={false}
@@ -599,7 +612,7 @@ const SQLPracticeTool = () => {
                 </div>
 
                 {/* RIGHT – Query Results */}
-                <div style={{ ...panel, display:'flex', flexDirection:'column', gap:'0.9rem' }}>
+                <div style={{ ...panel, display:'flex', flexDirection:'column', gap:'0.9rem', minWidth:0 }}>
                     <h2 style={{ fontSize:'1rem', fontWeight:700, color:'var(--text-main)' }}>Query Results</h2>
 
                     {/* Error */}
@@ -616,9 +629,9 @@ const SQLPracticeTool = () => {
                     {/* Results */}
                     {queryResult && !queryError && (
                         queryResult.values && queryResult.values.length > 0 ? (
-                            <div style={{ flex:1, display:'flex', flexDirection:'column', gap:'0.55rem' }}>
-                                <div style={{ overflowX:'auto', overflowY:'auto', borderRadius:'0.55rem', border:'1px solid var(--border)', maxHeight:'400px' }}>
-                                    <table style={{ ...tbl, fontSize:'0.78rem' }}>
+                            <div style={{ flex:1, display:'flex', flexDirection:'column', gap:'0.55rem', minWidth:0 }}>
+                                <div className="sql-results-scroll" style={{ width:'100%', maxWidth:'100%', minWidth:0, overflowX:'auto', overflowY:'auto', borderRadius:'0.55rem', border:'1px solid var(--border)', maxHeight:'400px' }}>
+                                    <table style={{ ...resultTable, fontSize:'0.78rem' }}>
                                         <thead>
                                             <tr>{queryResult.columns.map((c,i)=><th key={i} style={{ ...resultThStyle, fontSize:'0.75rem', padding:'0.45rem 0.65rem' }}>{c}</th>)}</tr>
                                         </thead>
