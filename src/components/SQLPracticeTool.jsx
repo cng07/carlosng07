@@ -127,6 +127,7 @@ const challengeBtn = (active) => ({
 
 const sqlTextarea = {
     width:'100%', minHeight:'130px',
+    maxHeight:'calc(32em + 1.7rem + 4px)',
     background:'var(--sql-textarea-bg)',
     border:'2px solid var(--sql-textarea-border)',
     borderRadius:'0.65rem',
@@ -139,6 +140,7 @@ const sqlTextarea = {
     transition:'border-color 0.2s ease',
     display:'block',
     lineHeight:1.6,
+    overflowY:'auto',
 };
 
 const actionBtn = (variant) => {
@@ -521,7 +523,7 @@ const SQLPracticeTool = () => {
                         value={sqlQuery}
                         onChange={e => setSqlQuery(e.target.value)}
                         placeholder="SELECT * FROM users WHERE is_active = 1;"
-                        style={{ ...sqlTextarea, minHeight:'200px', flex:1 }}
+                        style={{ ...sqlTextarea, minHeight:'200px' }}
                         onFocus={e  => { e.target.style.borderColor = 'var(--primary)'; }}
                         onBlur={e   => { e.target.style.borderColor = 'var(--sql-textarea-border)';   }}
                         spellCheck={false}
