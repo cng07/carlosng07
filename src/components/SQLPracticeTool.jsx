@@ -152,7 +152,7 @@ const sqlTextarea = {
     padding:'0.85rem 1rem',
     color:'var(--sql-code-text)',
     fontFamily:'monospace',
-    fontSize:'0.875rem',
+    fontSize:'1rem',
     resize:'vertical',
     outline:'none',
     transition:'border-color 0.2s ease',
