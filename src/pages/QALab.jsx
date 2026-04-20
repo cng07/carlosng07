@@ -42,7 +42,12 @@ const issueFixtures = [
     { id: 'BUG-307', title: 'Checkbox alignment misaligned with label', severity: 'Low', area: 'UI', status: 'Open' },
     { id: 'BUG-308', title: 'Form does not clear after successful submission', severity: 'Medium', area: 'UX', status: 'Open' },
     { id: 'BUG-309', title: 'Registration date not recorded in database', severity: 'High', area: 'Backend', status: 'In Progress' },
-    { id: 'BUG-310', title: 'First name field missing required indicator', severity: 'Low', area: 'Form', status: 'Open' }
+    { id: 'BUG-310', title: 'First name field missing required indicator', severity: 'Low', area: 'Form', status: 'Open' },
+    { id: 'BUG-311', title: 'Phone number field blocks 10-digit entry', severity: 'Critical', area: 'Validation', status: 'Open' },
+    { id: 'BUG-312', title: 'Last name placeholder references first name', severity: 'Low', area: 'UI', status: 'Open' },
+    { id: 'BUG-313', title: 'Gender marked required but allows empty submission', severity: 'Medium', area: 'Form', status: 'Open' },
+    { id: 'BUG-314', title: 'Password input reveals typed characters', severity: 'High', area: 'Security', status: 'In Progress' },
+    { id: 'BUG-315', title: 'Country dropdown contains duplicate option', severity: 'Low', area: 'UI', status: 'In Review' }
 ];
 
 const menuSections = [
@@ -123,7 +128,7 @@ const QALab = () => {
         slowResponse: false,
         randomServerErrors: false
     });
-    const itemsPerPage = 3;
+    const itemsPerPage = 5;
 
     React.useEffect(() => {
         if (tokenSeconds <= 0) return undefined;
@@ -768,7 +773,7 @@ const QALab = () => {
                                     CHALLENGE - Spot the BUGS!
                                 </h2>
                                 <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
-                                    This page contains at least 10 bugs. How many of them can you spot?
+                                    This page contains at least 15 bugs. How many of them can you spot?
                                 </p>
 
                                 <form className="qa-stack" data-testid="qa-bug-form" onSubmit={handleSubmit} noValidate>
@@ -794,7 +799,7 @@ const QALab = () => {
                                             className="qa-input"
                                             value={formData.lastName}
                                             onChange={handleInputChange}
-                                            placeholder="Enter last name"
+                                            placeholder="Enter first name"
                                             data-testid="qa-input-last-name"
                                         />
                                         {formErrors.lastName && <span className="qa-error">{formErrors.lastName}</span>}
@@ -812,6 +817,7 @@ const QALab = () => {
                                             className="qa-input"
                                             value={formData.phoneNumber}
                                             onChange={handleInputChange}
+                                            maxLength={8}
                                             placeholder="Enter phone number"
                                             data-testid="qa-input-phone"
                                         />
@@ -836,6 +842,7 @@ const QALab = () => {
                                             <option value="">Select a country...</option>
                                             <option value="United States">United States</option>
                                             <option value="Canada">Canada</option>
+                                            <option value="Canada">Canada</option>
                                             <option value="United Kingdom">United Kingdom</option>
                                             <option value="Australia">Australia</option>
                                             <option value="Germany">Germany</option>
@@ -847,7 +854,7 @@ const QALab = () => {
                                     </label>
 
                                     <div className="qa-field">
-                                        <span className="qa-label">Gender</span>
+                                        <span className="qa-label">Gender*</span>
                                         <div className="qa-checkbox-row" style={{ display: 'flex', gap: '1.5rem', marginTop: '0.5rem' }}>
                                             <label className="qa-inline-check">
                                                 <input
@@ -907,7 +914,7 @@ const QALab = () => {
                                             id="password"
                                             name="password"
                                             className="qa-input"
-                                            type="password"
+                                            type="text"
                                             value={formData.password}
                                             onChange={handleInputChange}
                                             placeholder="Password"
