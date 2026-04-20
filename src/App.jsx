@@ -122,8 +122,8 @@ const routes = [
 ];
 
 const navItems = routes.filter((route) => route.label);
-const primaryNavOrder = ['Home', 'Projects', 'QA Lab', 'Resume', 'About', 'Contact'];
-const moreNavOrder = ['Experience', 'Certifications', 'Education'];
+const primaryNavOrder = ['Home', 'Projects', 'QA Lab', 'About', 'Contact'];
+const moreNavOrder = ['Resume', 'Experience', 'Certifications', 'Education'];
 const navItemsByLabel = navItems.reduce((acc, item) => {
     acc[item.label] = item;
     return acc;
