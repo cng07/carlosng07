@@ -27,6 +27,7 @@
   /* SQL Tool Colors (Dark) */
   --sql-table-header-bg: rgba(255, 255, 255, 0.05);
   --sql-table-header-text: #93c5fd;
+  --sql-result-header-bg: #1e293b;
   --sql-table-border: rgba(51, 65, 85, 0.6);
   --sql-table-row-alt-bg: rgba(255, 255, 255, 0.02);
   --sql-textarea-bg: rgba(15, 23, 42, 0.85);
@@ -76,6 +77,7 @@
   /* SQL Tool Colors (Light) */
   --sql-table-header-bg: rgba(15, 23, 42, 0.05);
   --sql-table-header-text: #0d7377;
+  --sql-result-header-bg: #e2e8f0;
   --sql-table-border: rgba(148, 163, 184, 0.45);
   --sql-table-row-alt-bg: rgba(15, 23, 42, 0.02);
   --sql-textarea-bg: rgba(248, 250, 252, 0.95);

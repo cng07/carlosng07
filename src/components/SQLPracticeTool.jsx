@@ -96,6 +96,15 @@ const thStyle = {
     borderBottom:'2px solid var(--sql-table-border)',
 };
 
+const resultThStyle = {
+    ...thStyle,
+    position:'sticky',
+    top:0,
+    zIndex:2,
+    background:'var(--sql-result-header-bg)',
+    boxShadow:'inset 0 -1px 0 var(--sql-table-border)',
+};
+
 const tdStyle = (row) => ({
     padding:'0.58rem 0.85rem', textAlign:'left',
     borderBottom:'1px solid var(--sql-table-border)',
@@ -610,8 +619,8 @@ const SQLPracticeTool = () => {
                             <div style={{ flex:1, display:'flex', flexDirection:'column', gap:'0.55rem' }}>
                                 <div style={{ overflowX:'auto', overflowY:'auto', borderRadius:'0.55rem', border:'1px solid var(--border)', maxHeight:'400px' }}>
                                     <table style={{ ...tbl, fontSize:'0.78rem' }}>
-                                        <thead style={{ position:'sticky', top:0 }}>
-                                            <tr>{queryResult.columns.map((c,i)=><th key={i} style={{ ...thStyle, fontSize:'0.75rem', padding:'0.45rem 0.65rem' }}>{c}</th>)}</tr>
+                                        <thead>
+                                            <tr>{queryResult.columns.map((c,i)=><th key={i} style={{ ...resultThStyle, fontSize:'0.75rem', padding:'0.45rem 0.65rem' }}>{c}</th>)}</tr>
                                         </thead>
                                         <tbody>
                                             {queryResult.values.slice(0,50).map((row,ri)=>(
