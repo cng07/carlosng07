@@ -60,7 +60,9 @@ export const resumeData = {
     ],
     aiTools: [
       { name: "GitHub Copilot", logo: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-copilot-icon.svg" },
-      { name: "Antigravity", logo: "https://antigravity.google/assets/image/antigravity-logo.png" }
+      { name: "Antigravity", logo: "https://antigravity.google/assets/image/antigravity-logo.png" },
+      { name: "Cursor", logo: "https://cursor.com/favicon.ico" },
+      { name: "Codex", logo: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg" }
     ]
   },
 
