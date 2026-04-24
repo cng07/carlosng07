@@ -161,10 +161,11 @@ export const resumeData = {
       location: "Mandaluyong City, Philippines",
       logo: "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg",
       achievements: [
-        "Developed, debugged, and executed automated test scripts using Automation Anywhere (RPA)",
+        "Developed, debugged, and executed automated test scripts using Automation Anywhere (RPA) and Selenium WebDriver - Java",
         "Provided technical expertise in the planning, design, and execution of test scripts",
         "Applied business and functional knowledge of testing standards and methodologies to meet team objectives",
         "Managed the full defect lifecycle, tracking issues to closure and maintaining an accurate repository",
+        "Used SQL queries to validate backend data and support UI/API test verification",
         "Conducted accessibility testing (PWD) using specialized tools to ensure inclusive user experiences",
         "Managed ticket statuses and provided technical support for the attendance website via ServiceNow",
         "Collaborated within a Scrum Agile environment to deliver iterative software improvements",
