@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { resumeData } from '../data/resumeData';
 
 const Projects = () => {
-    const [selectedProjectId, setSelectedProjectId] = useState(1);
+    const [selectedProjectId, setSelectedProjectId] = useState(7);
 
     const fadeIn = {
         initial: { opacity: 0, y: 20 },
@@ -36,6 +36,82 @@ const Projects = () => {
     };
 
     const projects = [
+        {
+            id: 7,
+            title: "Playwright TypeScript QA Lab",
+            description: "A scalable, multi-layer QA automation framework built with Playwright and TypeScript for enterprise-grade validation across UI, API, and database layers. Designed to deliver fast, reliable release confidence with production-like CI reporting.",
+            overview: "This project validates a Supabase-backed Users module through layered test strategies, combining API contract checks, database assertions, UI validation, and API-to-DB integration checks. It is designed as a practical QA lab framework that mirrors how automation is structured in real delivery teams.",
+            tech: ["Playwright", "TypeScript", "Node.js", "GitHub Actions", "QA Automation", "Testing", "Supabase", "PostgreSQL"],
+            highlights: [
+                "Layered coverage with dedicated API, DB, UI, and API+DB integration test suites",
+                "Tag-based execution (@smoke/@regression) for release-focused test selection",
+                "Environment-aware configuration (dev/staging/prod) for safer pipeline runs",
+                "Parallel workers and retries tuned for stable, faster feedback in CI"
+            ],
+            coverageScope: [
+                "UI E2E - User list page and critical rendering checks",
+                "API - Users endpoint response, schema shape, and status assertions",
+                "Database - Data integrity checks (required fields, null handling, table validity)",
+                "API + DB Integration - Row count and contract consistency between service and database"
+            ],
+            reportingAndCicd: [
+                "GitHub Actions workflow for push, pull request, and manual dispatch runs",
+                "Monocart, Playwright HTML, JUnit, and JSON reporters for multi-audience visibility",
+                "dorny/test-reporter integration for structured CI test summaries",
+                "Automated artifact uploads and GitHub Pages publishing for live report access"
+            ],
+            challengesLearnings: [
+                "Maintaining stable assertions across UI, API, and DB layers requires strict test data discipline",
+                "Cross-layer validation improves defect detection but needs clear ownership of fixtures and environments",
+                "Reporter standardization is critical so developers, QA, and managers can consume results quickly"
+            ],
+            futureImprovements: [
+                "Add contract/schema validation to harden API regression detection",
+                "Introduce visual regression and accessibility checks into the UI layer",
+                "Expand reusable fixtures and test data builders for larger domain coverage",
+                "Scale to multi-service testing with environment-specific quality gates"
+            ],
+            github: "https://github.com/cng07/playwright_typescript_qa_lab",
+            status: "Active",
+            architecture: {
+                description: "A TypeScript-first Playwright framework structured for maintainability and growth, with clear separation of API, DB, UI, and integration tests plus CI-ready reporting and deployment.",
+                frameworkStructure: [
+                    ".github/workflows/",
+                    "└── playwright.yml           # CI pipeline",
+                    "tests/",
+                    "├── api/",
+                    "│   ├── users.spec.ts        # API tests",
+                    "│   └── users.integration.spec.ts  # API + DB integration tests",
+                    "├── db/",
+                    "│   └── users.db.spec.ts     # Database tests",
+                    "└── ui/",
+                    "    └── users.ui.spec.ts     # UI tests",
+                    "utils/",
+                    "└── dbClient.ts              # PostgreSQL helper",
+                    "playwright.config.ts         # Environment + reporter config"
+                ],
+                toolsUsed: [
+                    "Playwright - Unified UI/API test runner and assertions",
+                    "TypeScript - Type-safe framework and maintainable test design",
+                    "Node.js - Runtime and dependency ecosystem",
+                    "Supabase - API/data layer under test",
+                    "PostgreSQL - Direct database verification",
+                    "GitHub Actions - Automated CI execution and report publishing"
+                ],
+                cicdPipeline: [
+                    "Workflow triggers on push, pull request, and workflow_dispatch",
+                    "Runs selected layers (all/api/db/ui) with optional tag filters",
+                    "Publishes JUnit summaries and uploads HTML + Monocart artifacts",
+                    "Deploys latest Monocart report to GitHub Pages for live visibility"
+                ],
+                testLayers: [
+                    "UI Layer - Functional page validation and core user journeys",
+                    "API Layer - Endpoint reliability and response contract checks",
+                    "DB Layer - Data quality and schema-level assertions",
+                    "Integration Layer - End-to-end consistency between API and database"
+                ]
+            }
+        },
         {
             id: 1,
             title: "Portfolio Website Automation (JavaScript)",
@@ -425,6 +501,17 @@ const Projects = () => {
 
                             {/* Highlights */}
                             <div>
+                                {selectedProject.overview && (
+                                    <div style={{ marginBottom: '1.5rem' }}>
+                                        <h3 style={{ fontSize: '1rem', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem' }}>
+                                            Overview
+                                        </h3>
+                                        <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, fontSize: '1rem', margin: 0 }}>
+                                            {selectedProject.overview}
+                                        </p>
+                                    </div>
+                                )}
+
                                 <h3 style={{ fontSize: '1rem', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem' }}>
                                     Key Features
                                 </h3>
@@ -437,6 +524,38 @@ const Projects = () => {
                                     ))}
                                 </ul>
                             </div>
+
+                            {selectedProject.coverageScope && (
+                                <div>
+                                    <h3 style={{ fontSize: '1rem', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem' }}>
+                                        Test Coverage Scope
+                                    </h3>
+                                    <ul style={{ list: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                                        {selectedProject.coverageScope.map((item, idx) => (
+                                            <li key={idx} style={{ color: 'var(--text-muted)', fontSize: '0.95rem', display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                                                <span style={{ color: 'var(--primary)', marginTop: '2px' }}>•</span>
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
+                            {selectedProject.reportingAndCicd && (
+                                <div>
+                                    <h3 style={{ fontSize: '1rem', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem' }}>
+                                        Reporting &amp; CI/CD
+                                    </h3>
+                                    <ul style={{ list: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                                        {selectedProject.reportingAndCicd.map((item, idx) => (
+                                            <li key={idx} style={{ color: 'var(--text-muted)', fontSize: '0.95rem', display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                                                <span style={{ color: 'var(--primary)', marginTop: '2px' }}>◆</span>
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
 
                             {/* Architecture Section */}
                             {selectedProject.architecture && (
@@ -560,6 +679,38 @@ const Projects = () => {
                                     })}
                                 </div>
                             </div>
+
+                            {selectedProject.challengesLearnings && (
+                                <div>
+                                    <h3 style={{ fontSize: '1rem', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem' }}>
+                                        Challenges &amp; Learnings
+                                    </h3>
+                                    <ul style={{ list: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                                        {selectedProject.challengesLearnings.map((item, idx) => (
+                                            <li key={idx} style={{ color: 'var(--text-muted)', fontSize: '0.95rem', display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                                                <span style={{ color: 'var(--primary)', marginTop: '2px' }}>→</span>
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
+                            {selectedProject.futureImprovements && (
+                                <div>
+                                    <h3 style={{ fontSize: '1rem', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem' }}>
+                                        Future Improvements
+                                    </h3>
+                                    <ul style={{ list: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                                        {selectedProject.futureImprovements.map((item, idx) => (
+                                            <li key={idx} style={{ color: 'var(--text-muted)', fontSize: '0.95rem', display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                                                <span style={{ color: 'var(--primary)', marginTop: '2px' }}>▸</span>
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
 
                             {/* Repository Link */}
                             <motion.div
