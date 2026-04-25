@@ -151,16 +151,16 @@ const Home = () => {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
                     {[
                         {
+                            title: 'Playwright TypeScript QA Lab',
+                            description: 'Scalable Playwright + TypeScript QA framework with layered UI, API, DB, and integration coverage, plus GitHub Actions reporting',
+                            tech: ['Playwright', 'TypeScript', 'QA Automation', 'GitHub Actions'],
+                            github: 'https://github.com/cng07/playwright_typescript_qa_lab',
+                        },
+                        {
                             title: 'Portfolio Website Automation (TypeScript)',
                             description: 'Playwright + TypeScript framework with Page Object Model, Docker containerization, and support via Jenkins',
                             tech: ['Playwright', 'TypeScript', 'Docker', 'Jenkins'],
                             github: 'https://github.com/cng07/playwright_portfolio_automation_typescript',
-                        },
-                        {
-                            title: 'Portfolio Website Automation (JavaScript)',
-                            description: 'Comprehensive Playwright test suite with cross-browser testing, link integrity checks, and GitHub Actions CI/CD integration',
-                            tech: ['Playwright', 'JavaScript', 'Node.js', 'GitHub Actions'],
-                            github: 'https://github.com/cng07/playwright_portfolio_automation_javascript',
                         },
                     ].map((project, idx) => (
                         <motion.div
