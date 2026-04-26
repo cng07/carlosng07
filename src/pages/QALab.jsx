@@ -194,7 +194,7 @@ const QALab = () => {
 
         const { data, error } = await supabase
             .from('users')
-            .select('id, first_name, last_name, email, created_at, Nationality, Role')
+            .select('id, first_name, last_name, email, created_at, nationality, role')
             .order('created_at', { ascending: false });
 
         if (error) {
@@ -446,8 +446,8 @@ const QALab = () => {
             first_name,
             last_name,
             email: payload.email,
-            Nationality: payload.nationality,
-            Role: payload.role
+            nationality: payload.nationality,
+            role: payload.role
         };
 
         setCrudLoading(true);
@@ -502,8 +502,8 @@ const QALab = () => {
             firstName: user.first_name ?? '',
             lastName: user.last_name ?? '',
             email: user.email ?? '',
-            nationality: user.Nationality ?? '',
-            role: user.Role ?? ''
+            nationality: user.nationality ?? '',
+            role: user.role ?? ''
         });
         setActiveSection('data-playground');
     };
@@ -1310,8 +1310,8 @@ const QALab = () => {
                                                             <td>{user.first_name}</td>
                                                             <td>{user.last_name}</td>
                                                             <td>{user.email}</td>
-                                                            <td>{user.Nationality}</td>
-                                                            <td>{user.Role}</td>
+                                                            <td>{user.nationality}</td>
+                                                            <td>{user.role}</td>
                                                             <td>{user.created_at ? new Date(user.created_at).toISOString() : '-'}</td>
                                                             <td>
                                                                 <div className="qa-table-actions">
