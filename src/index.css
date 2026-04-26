@@ -1311,6 +1311,65 @@ section[id] {
   border-color: rgba(239, 68, 68, 0.45);
 }
 
+.test-reports-page {
+  width: 100%;
+}
+
+.test-reports-intro {
+  margin-bottom: 2rem;
+}
+
+.test-reports-title {
+  margin-bottom: 0.5rem;
+}
+
+.test-reports-subtitle {
+  margin: 0;
+}
+
+.test-reports-grid {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.test-reports-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.test-reports-card-title {
+  margin-bottom: 0.5rem;
+}
+
+.test-reports-card-description {
+  margin: 0;
+  max-width: 760px;
+}
+
+.test-reports-embed-wrap {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.test-reports-iframe {
+  width: 100%;
+  min-height: 540px;
+  height: min(800px, 74vh);
+  border: none;
+  display: block;
+}
+
+.test-reports-fallback-note {
+  margin-top: 1rem;
+  color: var(--text-secondary);
+}
+
 @media (max-width: 1024px) {
   .qa-lab-grid {
     grid-template-columns: 1fr;
@@ -1347,6 +1406,66 @@ section[id] {
 
   .qa-toolbar {
     grid-template-columns: 1fr;
+  }
+
+  .test-reports-intro {
+    margin-bottom: 1.25rem;
+  }
+
+  .test-reports-title {
+    align-items: flex-start;
+  }
+
+  .test-reports-title::after {
+    display: none;
+  }
+
+  .test-reports-title-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5rem !important;
+    margin-top: 0.1rem;
+    flex-shrink: 0;
+  }
+
+  .test-reports-subtitle {
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  .test-reports-grid {
+    gap: 1rem;
+  }
+
+  .test-reports-card-header {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 0.85rem;
+  }
+
+  .test-reports-card-title {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .test-reports-card-description {
+    max-width: none;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .test-reports-card-header .qa-btn {
+    width: 100%;
+  }
+
+  .test-reports-iframe {
+    min-height: 420px;
+    height: 66vh;
+  }
+
+  .test-reports-fallback-note {
+    font-size: 0.9rem;
+    line-height: 1.55;
   }
 }
 

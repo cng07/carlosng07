@@ -21,23 +21,23 @@ const testProjects = [
 
 const TestReports = () => {
     return (
-        <div className="section container page-header-padding" style={{ minHeight: '100vh' }}>
+        <div className="section container page-header-padding test-reports-page" style={{ minHeight: '100vh' }}>
             <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
-                style={{ marginBottom: '2rem' }}
+                className="test-reports-intro"
             >
-                <h1 className="section-title" style={{ marginBottom: '0.5rem' }}>
-                    <BarChart2 size={30} color="var(--primary)" style={{ display: 'inline', marginRight: '0.75rem', verticalAlign: 'middle' }} />
+                <h1 className="section-title test-reports-title" style={{ marginBottom: '0.5rem' }}>
+                    <BarChart2 size={30} color="var(--primary)" className="test-reports-title-icon" style={{ display: 'inline', marginRight: '0.75rem', verticalAlign: 'middle' }} />
                     Test Reports
                 </h1>
-                <p style={{ color: 'var(--text-secondary)', maxWidth: '900px' }}>
+                <p className="test-reports-subtitle" style={{ color: 'var(--text-secondary)', maxWidth: '900px' }}>
                     Automated test results from CI pipelines (GitHub Actions).
                 </p>
             </motion.div>
 
-            <div style={{ display: 'grid', gap: '1.75rem' }}>
+            <div className="test-reports-grid" style={{ display: 'grid', gap: '1.75rem' }}>
                 {testProjects.map((project, index) => (
                     <motion.section
                         key={project.name}
@@ -48,13 +48,13 @@ const TestReports = () => {
                         transition={{ duration: 0.4, delay: index * 0.06 }}
                         style={{ padding: '1.5rem' }}
                     >
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
+                        <div className="test-reports-card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
                             <div>
-                                <h2 className="qa-card-title" style={{ marginBottom: '0.5rem' }}>
+                                <h2 className="qa-card-title test-reports-card-title" style={{ marginBottom: '0.5rem' }}>
                                     <FlaskConical size={20} color="var(--primary)" />
                                     {project.name}
                                 </h2>
-                                <p style={{ color: 'var(--text-secondary)', margin: 0, maxWidth: '760px' }}>
+                                <p className="test-reports-card-description" style={{ color: 'var(--text-secondary)', margin: 0, maxWidth: '760px' }}>
                                     {project.description}
                                 </p>
                             </div>
@@ -83,18 +83,19 @@ const TestReports = () => {
 
                         {project.embedUrl ? (
                             <>
-                                <div style={{ borderRadius: '0.75rem', overflow: 'hidden', border: '1px solid var(--border)', background: 'var(--surface)' }}>
+                                <div className="test-reports-embed-wrap" style={{ borderRadius: '0.75rem', overflow: 'hidden', border: '1px solid var(--border)', background: 'var(--surface)' }}>
                                     <iframe
                                         src={project.embedUrl}
                                         width="100%"
                                         height="800"
+                                        className="test-reports-iframe"
                                         style={{ border: 'none', display: 'block' }}
                                         title={`${project.name} Monocart report`}
                                         loading="lazy"
                                     />
                                 </div>
-                                {project.name === 'Portfolio Automation Test Report' && (
-                                    <p style={{ marginTop: '1rem', color: 'var(--text-secondary)' }}>
+                                {project.name === 'playwright_portfolio_automation_typescript Test Report' && (
+                                    <p className="test-reports-fallback-note" style={{ marginTop: '1rem', color: 'var(--text-secondary)' }}>
                                         If the report does not load,{` `}
                                         <a href={project.reportUrl} target="_blank" rel="noopener noreferrer">
                                             click here to open the report
