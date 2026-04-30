@@ -539,7 +539,7 @@ const QALab = () => {
 
         if (editingUserId === userId) {
             resetCrudForm();
-        }
+        } 
 
         setCrudSuccessMessage('User deleted successfully.');
     };
