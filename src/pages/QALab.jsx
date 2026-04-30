@@ -17,7 +17,7 @@ import {
     Upload,
     XCircle
 } from 'lucide-react';
-import { supabase } from '../lib/supabaseClient';
+import { supabase, supabaseConfigError } from '../lib/supabaseClient';
 import SQLPracticeTool from '../components/SQLPracticeTool';
 import ApiPlayground from '../components/ApiPlayground';
 
@@ -88,6 +88,8 @@ const wait = (ms) => new Promise((resolve) => {
 });
 
 const showApiTesting = false;
+const supabaseUnavailableMessage = supabaseConfigError
+    || 'Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY.';
 
 const QALab = () => {
     const [activeSection, setActiveSection] = React.useState('spot-bugs');
@@ -181,7 +183,7 @@ const QALab = () => {
 
     const fetchUsers = React.useCallback(async ({ preserveMessages = false } = {}) => {
         if (!supabase) {
-            setCrudErrorMessage('Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY.');
+            setCrudErrorMessage(supabaseUnavailableMessage);
             return false;
         }
 
@@ -427,7 +429,7 @@ const QALab = () => {
         event.preventDefault();
 
         if (!supabase) {
-            setCrudErrorMessage('Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY.');
+            setCrudErrorMessage(supabaseUnavailableMessage);
             return;
         }
 
@@ -510,7 +512,7 @@ const QALab = () => {
 
     const handleDeleteUser = async (userId) => {
         if (!supabase) {
-            setCrudErrorMessage('Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY.');
+            setCrudErrorMessage(supabaseUnavailableMessage);
             return;
         }
 
