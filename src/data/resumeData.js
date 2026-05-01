@@ -1,4 +1,4 @@
-import planitLogo from '../assets/planit-logo.svg';
+import planitLogo from '../assets/planit-logo.png';
 
 export const resumeData = {
   name: "Carlos Angelo E. Ng",
