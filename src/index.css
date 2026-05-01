@@ -1354,13 +1354,23 @@ section[id] {
   flex-wrap: wrap;
 }
 
+.test-reports-card-copy {
+  min-width: 0;
+}
+
 .test-reports-card-title {
   margin-bottom: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .test-reports-card-description {
   margin: 0;
   max-width: 760px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .test-reports-embed-wrap {
@@ -1381,6 +1391,12 @@ section[id] {
 .test-reports-fallback-note {
   margin-top: 1rem;
   color: var(--text-secondary);
+}
+
+@media (min-width: 769px) {
+  .test-reports-card-copy {
+    flex: 1 1 18rem;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -1454,6 +1470,10 @@ section[id] {
     flex-direction: column;
     align-items: stretch;
     margin-bottom: 0.85rem;
+  }
+
+  .test-reports-card-copy {
+    flex: none;
   }
 
   .test-reports-card-title {

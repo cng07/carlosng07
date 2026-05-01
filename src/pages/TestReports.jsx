@@ -49,7 +49,7 @@ const TestReports = () => {
                         style={{ padding: '1.5rem' }}
                     >
                         <div className="test-reports-card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
-                            <div>
+                            <div className="test-reports-card-copy">
                                 <h2 className="qa-card-title test-reports-card-title" style={{ marginBottom: '0.5rem' }}>
                                     <FlaskConical size={20} color="var(--primary)" />
                                     {project.name}
