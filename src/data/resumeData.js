@@ -1,3 +1,5 @@
+import planitLogo from '../assets/planit-logo.svg';
+
 export const resumeData = {
   name: "Carlos Angelo E. Ng",
   role: "Senior Quality Assurance Automation Engineer",
@@ -89,7 +91,7 @@ export const resumeData = {
       role: "Test Automation Engineer",
       period: "September 2024 – March 2025",
       location: "Taguig City, Philippines",
-      logo: "https://www.nri.com/content/900026430.png",
+      logo: planitLogo,
       achievements: [
         "Perform manual API testing using Postman",
         "Develop and execute integrated API and UI automation scripts using Playwright with TypeScript (Screenplay Pattern)",

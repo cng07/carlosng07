@@ -6,6 +6,7 @@ import {
     Briefcase,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import CompanyLogo from '../components/CompanyLogo';
 import { resumeData } from '../data/resumeData';
 
 const Experience = () => {
@@ -40,23 +41,11 @@ const Experience = () => {
                                             whileHover={{ scale: 1.1 }}
                                             transition={{ duration: 0.2 }}
                                         >
-                                            {exp.website ? (
-                                                <a href={exp.website} target="_blank" rel="noreferrer" style={{ display: 'block', height: '100%' }}>
-                                                    <img
-                                                        src={exp.logo}
-                                                        alt={`${exp.company} logo`}
-                                                        loading="lazy"
-                                                        decoding="async"
-                                                    />
-                                                </a>
-                                            ) : (
-                                                <img
-                                                    src={exp.logo}
-                                                    alt={`${exp.company} logo`}
-                                                    loading="lazy"
-                                                    decoding="async"
-                                                />
-                                            )}
+                                            <CompanyLogo
+                                                company={exp.company}
+                                                logo={exp.logo}
+                                                website={exp.website}
+                                            />
                                         </motion.div>
                                     )}
                                     <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>

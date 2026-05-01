@@ -18,6 +18,7 @@ import {
     FolderGit2,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import CompanyLogo from '../components/CompanyLogo';
 import { resumeData } from '../data/resumeData';
 
 const Home = () => {
@@ -471,23 +472,11 @@ const Home = () => {
                                     {/* Company logo */}
                                     {exp.logo && (
                                         <div className="company-logo-container">
-                                            {exp.website ? (
-                                                <a href={exp.website} target="_blank" rel="noreferrer" style={{ display: 'block', height: '100%' }}>
-                                                    <img
-                                                        src={exp.logo}
-                                                        alt={`${exp.company} logo`}
-                                                        loading="lazy"
-                                                        decoding="async"
-                                                    />
-                                                </a>
-                                            ) : (
-                                                <img
-                                                    src={exp.logo}
-                                                    alt={`${exp.company} logo`}
-                                                    loading="lazy"
-                                                    decoding="async"
-                                                />
-                                            )}
+                                            <CompanyLogo
+                                                company={exp.company}
+                                                logo={exp.logo}
+                                                website={exp.website}
+                                            />
                                         </div>
                                     )}
 
