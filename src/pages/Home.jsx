@@ -123,7 +123,8 @@ const Home = () => {
                         <a href={resumeData.atsqaProfile} target="_blank" rel="noreferrer" className="glass" style={{ padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <div className="social-logo-container">
                                 <img
-                                    src="https://astqb.org/assets/images/certified-tester-list-logo.png"
+                                    // src="https://astqb.org/assets/images/certified-tester-list-logo.png"
+                                    src="/certified-tester-list-logo.png"
                                     alt="ASTQB Logo"
                                     className="external-logo"
                                     style={{ borderRadius: '2px' }}
