@@ -16,7 +16,14 @@ const testProjects = [
         reportUrl: 'https://cng07.github.io/playwright_portfolio_automation_typescript/',
         embedUrl: 'https://cng07.github.io/playwright_portfolio_automation_typescript/',
         status: 'live'
-    }
+    },
+    {
+        name: 'playwright_salesforce Test Report',
+        description: 'Salesforce automation Playwright Monocart test report.',
+        reportUrl: 'https://cng07.github.io/playwright_salesforce/',
+        embedUrl: 'https://cng07.github.io/playwright_salesforce/',
+        status: 'live'
+    },
 ];
 
 const TestReports = () => {
