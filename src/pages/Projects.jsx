@@ -791,8 +791,8 @@ const Projects = () => {
                         position: relative !important;
                         top: 0 !important;
                         display: grid !important;
-                        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
-                        gap: 0.5rem !important;
+                        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)) !important;
+                        gap: 0.75rem !important;
                         width: 100% !important;
                         margin-bottom: 1rem !important;
                     }
@@ -800,10 +800,24 @@ const Projects = () => {
                         display: none !important;
                     }
                     .projects-sidebar button {
-                        padding: 0.75rem !important;
+                        min-height: 4.25rem !important;
+                        padding: 0.85rem 0.9rem !important;
                         font-size: 0.85rem !important;
+                        line-height: 1.25 !important;
+                        align-items: flex-start !important;
+                        color: var(--text-main) !important;
+                        overflow: visible !important;
                     }
-                    .projects-sidebar button span:last-child {
+                    .projects-sidebar button[style*="var(--primary)"] {
+                        color: var(--text-on-primary) !important;
+                    }
+                    .projects-sidebar button span:first-child {
+                        display: block !important;
+                        min-width: 0 !important;
+                        overflow-wrap: anywhere !important;
+                        white-space: normal !important;
+                    }
+                    .projects-sidebar button svg {
                         display: none !important;
                     }
                 }
