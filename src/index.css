@@ -238,7 +238,7 @@ a {
   transition: all 0.3s ease;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .nav-bar {
     width: 95%;
     top: 0.5rem;
@@ -394,7 +394,7 @@ a {
   padding: 0.5rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .nav-links {
     display: none;
   }
@@ -417,7 +417,7 @@ a {
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
   .nav-bar {
     justify-content: flex-start;
   }
@@ -431,7 +431,7 @@ a {
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
   .nav-logo-short {
     display: none;
   }
